@@ -1,0 +1,288 @@
+{
+  "project_id": "PCT",
+  "phase": "P1",
+  "version": "0.1-draft",
+  "updated_at": "2026-08-21",
+  "decisions": [
+    {
+      "id": "PCT-P1-D01",
+      "title": "Primary annotation unit",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Research Owner + Domain Lead",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Candidate-stop episode with transition-level localization"
+        },
+        {
+          "id": "B",
+          "summary": "Whole trajectory only"
+        },
+        {
+          "id": "C",
+          "summary": "Independent step labels only"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D02",
+      "title": "Taxonomy organization",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Domain Lead",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Multi-axis mechanism + certification effect + localization"
+        },
+        {
+          "id": "B",
+          "summary": "One mutually exclusive root-cause label"
+        },
+        {
+          "id": "C",
+          "summary": "Checklist without taxonomy"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D03",
+      "title": "Verdict and recommendation scale",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Research Owner + Domain Lead",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Four-way PASS/FAIL/UNKNOWN/NOT_APPLICABLE plus separate termination recommendation"
+        },
+        {
+          "id": "B",
+          "summary": "Binary pass/fail"
+        },
+        {
+          "id": "C",
+          "summary": "Single ordinal quality score"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D04",
+      "title": "First Invalid Transition localization policy",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Domain Lead",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Exact event when supportable, otherwise bounded range or UNKNOWN"
+        },
+        {
+          "id": "B",
+          "summary": "Force one exact event for every failure"
+        },
+        {
+          "id": "C",
+          "summary": "Do not localize"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D05",
+      "title": "Hard versus soft process treatment in P1",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Research Owner + Domain Lead",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Only P0-approved hard-gate classes are hard; new taxonomy codes stay descriptive"
+        },
+        {
+          "id": "B",
+          "summary": "Every taxonomy code blocks certification"
+        },
+        {
+          "id": "C",
+          "summary": "No process code may block certification in P1"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D06",
+      "title": "P1 pilot corpus composition",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Research Owner + Data Steward",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Controlled synthetic fixtures plus public/development traces; no held-out or sealed data"
+        },
+        {
+          "id": "B",
+          "summary": "Natural traces only"
+        },
+        {
+          "id": "C",
+          "summary": "Use hidden evaluator traces immediately"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D07",
+      "title": "Human annotation independence design",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Two independent annotations for a pilot subset plus adjudication; temporary blind re-annotation if only one human is available"
+        },
+        {
+          "id": "B",
+          "summary": "One unblinded human pass"
+        },
+        {
+          "id": "C",
+          "summary": "Agent annotations only"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D08",
+      "title": "Exploratory pilot size and composition",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "12 calibration episodes plus 30 blinded development episodes with clean, single-fault, and compound/natural strata"
+        },
+        {
+          "id": "B",
+          "summary": "Ten or fewer convenience episodes"
+        },
+        {
+          "id": "C",
+          "summary": "One hundred or more episodes before revising the codebook"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D09",
+      "title": "Structured decision-checkpoint policy",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Data Steward + Domain Lead",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Optional observational field; required only in synthetic/instrumented studies, never treated as self-authenticating proof"
+        },
+        {
+          "id": "B",
+          "summary": "Mandatory detailed reasoning checkpoint for every step"
+        },
+        {
+          "id": "C",
+          "summary": "Exclude decision checkpoints entirely"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P1-D10",
+      "title": "P1 completion standard",
+      "normative": true,
+      "blocks_p1": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {
+          "id": "A",
+          "summary": "Complete after approved codebook/taxonomy, pilot annotations, agreement/ambiguity report, revision log, and P1 Exit Gate"
+        },
+        {
+          "id": "B",
+          "summary": "Complete when schemas and code merge"
+        },
+        {
+          "id": "C",
+          "summary": "Complete only after the online termination plugin is implemented"
+        }
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    }
+  ]
+}

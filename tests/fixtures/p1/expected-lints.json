@@ -1,0 +1,18 @@
+{
+  "valid-alternative-path.json": [],
+  "premature-promotion.json": [
+    "EVD.MISSING_REQUIRED_EVIDENCE",
+    "TRN.PREMATURE_STATE_PROMOTION"
+  ],
+  "stale-evidence.json": [
+    "EVD.STALE_EVIDENCE"
+  ],
+  "ignored-tool-failure.json": [
+    "ACT.TOOL_FAILURE_IGNORED",
+    "EVD.MISSING_REQUIRED_EVIDENCE",
+    "TRN.PREMATURE_STATE_PROMOTION"
+  ],
+  "scope-mismatch.json": [
+    "EVD.SCOPE_MISMATCH"
+  ]
+}

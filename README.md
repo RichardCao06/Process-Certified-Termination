@@ -1,7 +1,7 @@
 # Process-Certified Termination
 
-> **Phase status:** P0 complete and approved on 2026-08-21  
-> **Next authorized phase:** P1 — descriptive process review, failure taxonomy, annotation feasibility, and development-only infrastructure
+> **Phase status:** P0 approved; P1 active  
+> **P1 status:** Agent-owned taxonomy/annotation foundation complete; human decisions and annotation pilot pending
 
 This is an independent research project. Its approved near-term subject is:
 
@@ -20,15 +20,23 @@ Can an additional, evidence-grounded process-certification layer improve an LLM 
 - [Autonomy Contract v0.1](docs/p0/contracts/autonomy-contract-v0.1.md)
 - [Assurance Contract v0.1](docs/p0/contracts/assurance-contract-v0.1.md)
 - [Capability Envelope v0.1](docs/p0/contracts/capability-envelope-v0.1.md)
-- [Human Decision Register](docs/p0/decision-register.md)
 - [P0 Closure Report](docs/p0/p0-closure-report.md)
 - [Human–Agent Collaboration Protocol v0.1](docs/governance/human-agent-collaboration-protocol-v0.1.md)
-- [Threat Model](docs/p0/threat-model.md)
-- [Causal Model](docs/p0/causal-model.md)
-- [Claim Ladder](docs/p0/claim-ladder.md)
-- [Literature Baseline](docs/p0/literature-baseline.md)
 
-Files ending in `-draft.md` are retained as historical pre-approval records and are not authoritative.
+Historical `-draft.md` P0 files are retained as pre-approval records and are not authoritative.
+
+## P1 development foundation
+
+- [P1 phase index](docs/p1/README.md)
+- [Human Decision Pack](docs/p1/human-decision-pack.md)
+- [Failure Taxonomy v0.1 Draft](docs/p1/failure-taxonomy-v0.1-draft.md)
+- [Annotation Codebook v0.1 Draft](docs/p1/annotation-codebook-v0.1-draft.md)
+- [Annotation Feasibility Protocol](docs/p1/annotation-feasibility-protocol-v0.1-draft.md)
+- [Observable Trace Model](docs/p1/trace-observation-model-v0.1-draft.md)
+- [DeepSeek Harness event mapping](docs/p1/deepseek-harness-event-mapping.md)
+- [P1 Exit Gate](docs/p1/p1-exit-gate.md)
+
+P1 includes dependency-free structural validation, deterministic candidate lints, exploratory annotation-agreement tooling, and controlled synthetic fixtures. These are development instruments, not evidence that the taxonomy is reliable or that PCT improves task performance.
 
 ## Approved P1 development configuration
 
@@ -38,11 +46,9 @@ Files ending in `-draft.md` are retained as historical pre-approval records and 
 - Primary initial stream: highly verifiable tasks
 - Semi-open tasks: exploratory until process labels and adjudication are reliable
 
-This is a P1 development selection, not a confirmatory Protocol Freeze.
+This is a development selection, not a confirmatory Protocol Freeze.
 
 ## Deferred gates
-
-P1 may proceed, but two later gates remain mandatory:
 
 1. independent Methods / Statistics review before confirmatory protocol freeze or approval of primary margins, thresholds, exclusions, power, and sample design;
 2. a separate Independent Custodian before any held-out or sealed evaluator material is created, accessed, or unsealed.
@@ -53,7 +59,14 @@ P1 may proceed, but two later gates remain mandatory:
 make validate
 ```
 
-The validator checks required artifacts, human decision authority, P0 closure, role-gate consistency, cross-file identifiers, candidate upstream commit format, project independence, JSON validity, and local Markdown links.
+Useful P1 development commands:
+
+```bash
+python3 scripts/lint_trajectory.py data/p1/synthetic/stale-evidence.json
+python3 scripts/annotation_agreement.py \
+  tests/fixtures/p1/annotator-a.jsonl \
+  tests/fixtures/p1/annotator-b.jsonl
+```
 
 ## Governance principle
 

@@ -1,0 +1,44 @@
+{
+  "project_id": "PCT",
+  "phase": "P1",
+  "status": "agent-foundation-complete-human-gate-pending",
+  "protocol_version": "0.1-development-draft",
+  "updated_at": "2026-08-21",
+  "work_order": "PCT-P1-001",
+  "branch": "research/p1-taxonomy-annotation-infrastructure-v0.1",
+  "selected_configuration": {
+    "worker_model": "DeepSeek-V4-Pro",
+    "harness_repository": "deepseek-ai/deepseek-harness",
+    "harness_commit": "141eb6fef83422698aef7a981029e843e8161534",
+    "confirmatory_frozen": false
+  },
+  "agent_completed_artifacts": [
+    "taxonomy-draft",
+    "annotation-codebook-draft",
+    "trace-schema",
+    "annotation-schema",
+    "taxonomy-schema",
+    "dependency-free-validator",
+    "deterministic-linter",
+    "agreement-tooling",
+    "synthetic-fixtures",
+    "red-team-review",
+    "human-decision-pack"
+  ],
+  "blocking_decision_ids": [
+    "PCT-P1-D01",
+    "PCT-P1-D02",
+    "PCT-P1-D03",
+    "PCT-P1-D04",
+    "PCT-P1-D05",
+    "PCT-P1-D06",
+    "PCT-P1-D07",
+    "PCT-P1-D08",
+    "PCT-P1-D09",
+    "PCT-P1-D10"
+  ],
+  "pilot_started": false,
+  "held_out_or_sealed_data_accessed": false,
+  "effectiveness_claim_allowed": false,
+  "next_gate": "Human approval of P1 decisions before the annotation pilot and any promotion of the taxonomy/codebook."
+}
