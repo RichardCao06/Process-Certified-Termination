@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/role-assignments.schema.json",
+  "title": "PCT Human Role Assignments",
+  "type": "object",
+  "required": ["project_id", "version", "policy", "assignments"],
+  "properties": {
+    "project_id": {"const": "PCT"},
+    "version": {"type": "string"},
+    "policy": {"const": "minimum-viable-separation"},
+    "assignments": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["role", "status"],
+        "properties": {
+          "role": {"type": "string"},
+          "identity": {"type": ["string", "null"]},
+          "status": {"enum": ["assigned", "provisional", "deferred"]},
+          "required_by": {"type": "string"}
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "project_id": "PCT",
+  "phase": "P0",
+  "status": "approved",
+  "protocol_version": "0.1",
+  "approved_at": "2026-08-21",
+  "approved_by": "RichardCao06",
+  "approval_source": "https://github.com/RichardCao06/Process-Certified-Termination/pull/1#issuecomment-5364822055",
+  "candidate_harness": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "branch": "master",
+    "commit": "141eb6fef83422698aef7a981029e843e8161534",
+    "selected_for_p1": true,
+    "confirmatory_frozen": false
+  },
+  "completed_artifacts": [
+    "protocol-v0.1",
+    "four-contracts-v0.1",
+    "decision-records",
+    "threat-model",
+    "role-map",
+    "causal-model",
+    "claim-ladder",
+    "literature-baseline",
+    "collaboration-protocol-v0.1",
+    "validator-ci",
+    "p0-closure-report"
+  ],
+  "blocking_decision_ids": [],
+  "deferred_role_requirements": [
+    "Appoint or obtain independent review from a Methods / Statistics Lead before confirmatory protocol freeze.",
+    "Appoint a separate Independent Custodian before any held-out or sealed evaluator material is created, accessed, or unsealed."
+  ],
+  "next_phase": "P1",
+  "next_phase_authorized": true,
+  "next_phase_scope": "Descriptive process review, failure taxonomy, annotation feasibility, and development-only artifacts; no confirmatory or sealed-test claims."
+}
