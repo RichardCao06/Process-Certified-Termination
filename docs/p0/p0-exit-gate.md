@@ -1,45 +1,42 @@
-# P0 Exit Gate
+# P0 Exit Gate — Passed
 
-## Current status
+## Status
 
-**Agent work complete; human decisions pending.**
+**P0 approved and complete on 2026-08-21. P1 descriptive and development work is authorized.**
 
 ## Required checks
 
-- [x] Independent project identity and claim ladder drafted
-- [x] Protocol Draft v0.1 created
-- [x] Goal Contract drafted
-- [x] Autonomy Contract drafted
-- [x] Assurance Contract drafted
-- [x] Capability Envelope drafted
-- [x] RQs and hypotheses drafted
-- [x] Candidate causal model drafted
-- [x] Research Stream V / S and sealed boundaries drafted
-- [x] Threat model drafted
-- [x] Role and authority map drafted
-- [x] Human decision pack and machine-readable register created
-- [x] Collaboration protocol drafted
-- [x] Deterministic validation and CI created
-- [ ] All blocking decisions have authorized human dispositions
-- [ ] Rejected options and accepted risks are recorded
-- [ ] Human role assignments are complete enough for P1
-- [ ] P0 protocol is approved or amended
-- [ ] Research Owner signs P0 closure
+- [x] Independent project identity and claim ladder approved
+- [x] Protocol v0.1 approved
+- [x] Goal Contract v0.1 approved
+- [x] Autonomy Contract v0.1 approved
+- [x] Assurance Contract v0.1 approved
+- [x] Capability Envelope v0.1 approved
+- [x] RQs and hypothesis hierarchy approved
+- [x] Candidate causal model accepted as the P1 baseline
+- [x] Research Stream V / S and blind evaluator boundaries approved
+- [x] Threat model accepted as the P1 baseline
+- [x] Role and authority map approved under minimum viable separation
+- [x] Human decisions and rejected alternatives preserved
+- [x] Collaboration protocol v0.1 approved
+- [x] Deterministic validation and CI present
+- [x] All blocking P0 decisions have authorized human dispositions
+- [x] P0 closure authorized by the Research Owner
 
-## P0 closure record
+## Closure record
 
 ```text
-Protocol version:
-Decision register commit:
-Research Owner:
-Methods / Statistics reviewer:
-Date:
-Status: APPROVED / APPROVED WITH AMENDMENTS / NOT APPROVED
-Rationale:
-Accepted risks:
-Deferred items:
+Protocol version: 0.1
+Decision source: PR #1 comment 5364822055
+Research Owner: RichardCao06
+Methods / Statistics Lead: deferred; mandatory before confirmatory protocol freeze
+Independent Custodian: deferred; mandatory before held-out/sealed material exists or is accessed
+Date: 2026-08-21
+Status: APPROVED WITH DEFERRED ROLE APPOINTMENTS
+Rationale: all ten P0 normative choices were approved; deferred independent roles do not block reversible P1 development but explicitly block confirmatory and sealed work.
+Accepted risks: limited early human-role separation; configuration-specific initial scope; exact confirmatory thresholds remain unfrozen.
 ```
 
 ## Gate semantics
 
-Passing P0 authorizes P1 descriptive and taxonomy work. It does not authorize confirmatory claims, sealed-test access, online intervention, or publication of method effectiveness.
+P0 completion authorizes P1 descriptive process review, failure taxonomy, annotation feasibility, and development-only infrastructure. It does not authorize confirmatory claims, sealed-test access, online production deployment, or a general LLM-agent framework claim.

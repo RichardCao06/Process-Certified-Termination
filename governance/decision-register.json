@@ -1,8 +1,9 @@
 {
   "project_id": "PCT",
   "phase": "P0",
-  "version": "0.1-draft",
+  "version": "0.1-approved",
   "updated_at": "2026-08-21",
+  "approval_source": "https://github.com/RichardCao06/Process-Certified-Termination/pull/1#issuecomment-5364822055",
   "decisions": [
     {
       "id": "PCT-P0-D01",
@@ -10,18 +11,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Research Owner",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Plugin first"},
         {"id": "B", "summary": "General framework now"},
         {"id": "C", "summary": "Evaluation-only"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "The project will first establish a causal, configuration-specific result for a DeepSeek Harness plugin. Broader framework language must be earned through cross-model, cross-harness, and cross-task evidence.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Prematurely broadens scope, increases confounding, and would overstate evidence before external-validity studies."},
+        {"option_id": "C", "reason": "Would remove the central online termination-control and repair contribution."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D02",
@@ -29,7 +33,7 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Methods / Statistics Lead",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Exit calibration: FAR reduction with FCR non-inferiority"},
         {"id": "B", "summary": "Final pass rate only"},
@@ -37,11 +41,15 @@
         {"id": "D", "summary": "Composite score"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "False Accept and False Continue directly measure whether the termination controller is better calibrated. Certified Success and Repair Conversion remain important secondary outcomes; exact margins and thresholds require later independent methods review.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Final pass rate alone cannot isolate termination quality, corrupt success, or simple extra-compute effects."},
+        {"option_id": "C", "reason": "Judge agreement validates an evaluator but does not establish system usefulness."},
+        {"option_id": "D", "reason": "A composite would introduce arbitrary weights and allow hard failures to be compensated by unrelated gains."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D03",
@@ -49,18 +57,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Research Owner + Methods / Statistics Lead",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "RQ4 primary; RQ1 foundational; RQ5-RQ6 secondary; RQ2-RQ3 method; RQ7 external"},
         {"id": "B", "summary": "All RQs co-primary"},
         {"id": "C", "summary": "RQ6 only"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "The hierarchy preserves the evidence chain from information value to auditability, calibration, repair, system benefit, and finally external validity while controlling multiplicity.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Treating every question as co-primary creates an unnecessary multiplicity and interpretation burden."},
+        {"option_id": "C", "reason": "A final-success-only claim would skip mechanism, audit reliability, and calibration evidence needed to interpret the result."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D04",
@@ -68,18 +79,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Research Owner",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "DeepSeek-V4-Pro + fixed DSH; Stream V first"},
         {"id": "B", "summary": "Multiple models/harnesses immediately"},
         {"id": "C", "summary": "Semi-open tasks first"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "A fixed DeepSeek-V4-Pro and DeepSeek Harness development configuration with highly verifiable tasks gives the cleanest mechanism test. Semi-open tasks and external configurations follow after reliable labels and interfaces exist.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Immediate breadth would slow mechanism development and make causal attribution difficult."},
+        {"option_id": "C", "reason": "Semi-open tasks do not provide sufficiently strong initial ground truth for auditor calibration."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D05",
@@ -87,18 +101,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Research Owner + Domain Lead",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Dual certification with hard process gates"},
         {"id": "B", "summary": "Outcome dominates"},
         {"id": "C", "summary": "Process dominates"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "Trusted success requires both outcome completion and satisfaction of non-compensatory authorization, integrity, mandatory-precondition, and current-evidence rules. No additional P0 hard gates were added beyond the drafted list.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Outcome-only acceptance cannot detect corrupt success or unauthorized and integrity-violating paths."},
+        {"option_id": "C", "reason": "A compliant process cannot substitute for an outcome that did not satisfy the goal."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D06",
@@ -106,18 +123,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Research Owner",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Worker proposes; Certifier commits completion"},
         {"id": "B", "summary": "Worker self-certifies"},
         {"id": "C", "summary": "Human-only completion"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "Separating PROPOSED_COMPLETE from COMPLETE removes circular worker self-certification while retaining scalable autonomous benchmark execution.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Preserves the exact self-evaluation and premature-exit problem under study."},
+        {"option_id": "C", "reason": "Creates an unnecessary human bottleneck for every verifiable benchmark completion."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D07",
@@ -125,18 +145,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Data Steward",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Observable trace + structured checkpoints; no private CoT requirement"},
         {"id": "B", "summary": "Full textual reasoning"},
         {"id": "C", "summary": "Tool calls only"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "Observable events, tool outcomes, state changes, evidence links, and short structured checkpoints are auditable and portable. Worker explanations remain claims rather than self-authenticating evidence.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Full textual reasoning has faithfulness, privacy, availability, and cross-model comparability risks."},
+        {"option_id": "C", "reason": "Tool calls alone may not expose unsupported obligation promotion or evidence interpretation errors."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D08",
@@ -144,18 +167,28 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Research Owner",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Full human-role separation"},
         {"id": "B", "summary": "Minimum viable separation"},
         {"id": "C", "summary": "Single-person role collapse"}
       ],
       "agent_recommendation": "B",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "B",
+      "rationale": "Early development may combine Research Owner, Domain Lead, and Data Steward under RichardCao06. Independent methods review is mandatory before confirmatory protocol freeze, and a separate Independent Custodian is mandatory before any sealed evaluator or sealed test is created, accessed, or unsealed.",
+      "rejected_options_and_reasons": [
+        {"option_id": "A", "reason": "Full separation is desirable but not required for reversible P1 development and would unnecessarily block the project at P0."},
+        {"option_id": "C", "reason": "Permanent single-person control cannot support strong confirmatory, sealed-test, or independent-approval claims."}
+      ],
+      "role_assignments": {
+        "Research Owner": {"identity": "RichardCao06", "status": "assigned"},
+        "Domain Lead": {"identity": "RichardCao06", "status": "provisional"},
+        "Data Steward": {"identity": "RichardCao06", "status": "provisional"},
+        "Methods / Statistics Lead": {"identity": null, "status": "deferred", "deadline": "Before confirmatory protocol freeze or approval of primary margins, thresholds, exclusions, and sample design"},
+        "Independent Custodian": {"identity": null, "status": "deferred", "deadline": "Before any held-out or sealed evaluator material is created, accessed, hashed for release, or unsealed"}
+      },
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D09",
@@ -163,18 +196,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Independent Custodian",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Blind offline hidden-evaluator labeling"},
         {"id": "B", "summary": "Hidden failure feedback to worker"},
         {"id": "C", "summary": "No sealed split"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "Hidden evaluators may label copied candidate-stop snapshots offline, but detailed hidden failures cannot enter Worker or online Auditor context. Oracle feedback is permitted only as a separately labeled upper-bound condition.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Would confound process certification with privileged benchmark-oracle access."},
+        {"option_id": "C", "reason": "Would prevent credible held-out and generalization claims."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     },
     {
       "id": "PCT-P0-D10",
@@ -182,18 +218,21 @@
       "normative": true,
       "blocks_p0": true,
       "owner_role": "Research Owner",
-      "status": "pending-human",
+      "status": "approved",
       "options": [
         {"id": "A", "summary": "Adopt draft protocol and PR governance"},
         {"id": "B", "summary": "Informal chat governance"},
         {"id": "C", "summary": "Agent-led normative governance"}
       ],
       "agent_recommendation": "A",
-      "human_decision": null,
-      "rationale": null,
-      "rejected_options_and_reasons": [],
-      "approver_identity": null,
-      "effective_from": null
+      "human_decision": "A",
+      "rationale": "PR-based Work Orders, decision records, role separation, failure preservation, deterministic checks, and amendments make research changes visible and reduce post-result drift.",
+      "rejected_options_and_reasons": [
+        {"option_id": "B", "reason": "Informal chat decisions are difficult to audit, freeze, and distinguish from post hoc changes."},
+        {"option_id": "C", "reason": "Allowing an Agent to approve normative rules conflicts with the project's own separation-of-authority principle."}
+      ],
+      "approver_identity": "RichardCao06",
+      "effective_from": "2026-08-21"
     }
   ]
 }

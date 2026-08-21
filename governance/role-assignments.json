@@ -1,0 +1,42 @@
+{
+  "project_id": "PCT",
+  "version": "0.1",
+  "effective_from": "2026-08-21",
+  "policy": "minimum-viable-separation",
+  "assignments": [
+    {
+      "role": "Research Owner",
+      "identity": "RichardCao06",
+      "status": "assigned",
+      "authority": ["project scope", "Goal Contract", "phase gates", "publication claim ceiling"]
+    },
+    {
+      "role": "Domain Lead",
+      "identity": "RichardCao06",
+      "status": "provisional",
+      "authority": ["candidate hard process semantics", "domain interpretation for development work"],
+      "restriction": "Hard-gate codebook changes remain visible, versioned human decisions."
+    },
+    {
+      "role": "Data Steward",
+      "identity": "RichardCao06",
+      "status": "provisional",
+      "authority": ["development trace schema", "retention and release draft policy"],
+      "restriction": "Cannot act as independent sealed custodian."
+    },
+    {
+      "role": "Methods / Statistics Lead",
+      "identity": null,
+      "status": "deferred",
+      "required_by": "Before confirmatory protocol freeze or approval of primary margins, thresholds, exclusions, power, and sample design",
+      "p0_effect": "Does not block P1 descriptive and development work."
+    },
+    {
+      "role": "Independent Custodian",
+      "identity": null,
+      "status": "deferred",
+      "required_by": "Before any held-out or sealed evaluator material is created, accessed, hashed for release, or unsealed",
+      "p0_effect": "Does not block P1 work that uses development-only data."
+    }
+  ]
+}
