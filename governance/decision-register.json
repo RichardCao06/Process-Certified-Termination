@@ -1,0 +1,199 @@
+{
+  "project_id": "PCT",
+  "phase": "P0",
+  "version": "0.1-draft",
+  "updated_at": "2026-08-21",
+  "decisions": [
+    {
+      "id": "PCT-P0-D01",
+      "title": "Project claim level and public name",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Plugin first"},
+        {"id": "B", "summary": "General framework now"},
+        {"id": "C", "summary": "Evaluation-only"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D02",
+      "title": "Primary estimand and endpoint family",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Methods / Statistics Lead",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Exit calibration: FAR reduction with FCR non-inferiority"},
+        {"id": "B", "summary": "Final pass rate only"},
+        {"id": "C", "summary": "Auditor agreement only"},
+        {"id": "D", "summary": "Composite score"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D03",
+      "title": "Hypothesis hierarchy",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Research Owner + Methods / Statistics Lead",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "RQ4 primary; RQ1 foundational; RQ5-RQ6 secondary; RQ2-RQ3 method; RQ7 external"},
+        {"id": "B", "summary": "All RQs co-primary"},
+        {"id": "C", "summary": "RQ6 only"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D04",
+      "title": "Initial model, harness, and task-stream scope",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "DeepSeek-V4-Pro + fixed DSH; Stream V first"},
+        {"id": "B", "summary": "Multiple models/harnesses immediately"},
+        {"id": "C", "summary": "Semi-open tasks first"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D05",
+      "title": "Certified Success and hard process violations",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Research Owner + Domain Lead",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Dual certification with hard process gates"},
+        {"id": "B", "summary": "Outcome dominates"},
+        {"id": "C", "summary": "Process dominates"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D06",
+      "title": "Completion authority",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Worker proposes; Certifier commits completion"},
+        {"id": "B", "summary": "Worker self-certifies"},
+        {"id": "C", "summary": "Human-only completion"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D07",
+      "title": "Trace and reasoning-data policy",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Data Steward",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Observable trace + structured checkpoints; no private CoT requirement"},
+        {"id": "B", "summary": "Full textual reasoning"},
+        {"id": "C", "summary": "Tool calls only"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D08",
+      "title": "Human role assignments and separation",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Full human-role separation"},
+        {"id": "B", "summary": "Minimum viable separation"},
+        {"id": "C", "summary": "Single-person role collapse"}
+      ],
+      "agent_recommendation": "B",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D09",
+      "title": "Sealed-data and hidden-evaluator boundary",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Independent Custodian",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Blind offline hidden-evaluator labeling"},
+        {"id": "B", "summary": "Hidden failure feedback to worker"},
+        {"id": "C", "summary": "No sealed split"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    },
+    {
+      "id": "PCT-P0-D10",
+      "title": "Human–Agent collaboration and repository governance",
+      "normative": true,
+      "blocks_p0": true,
+      "owner_role": "Research Owner",
+      "status": "pending-human",
+      "options": [
+        {"id": "A", "summary": "Adopt draft protocol and PR governance"},
+        {"id": "B", "summary": "Informal chat governance"},
+        {"id": "C", "summary": "Agent-led normative governance"}
+      ],
+      "agent_recommendation": "A",
+      "human_decision": null,
+      "rationale": null,
+      "rejected_options_and_reasons": [],
+      "approver_identity": null,
+      "effective_from": null
+    }
+  ]
+}
