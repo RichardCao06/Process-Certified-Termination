@@ -4,20 +4,12 @@ on:
   push:
     branches:
       - research/p1-taxonomy-annotation-infrastructure-v0.1
-    paths:
-      - .p1bundle.b64
-  pull_request:
-    branches:
-      - main
-    paths:
-      - .p1bundle.b64
 
 permissions:
   contents: write
 
 jobs:
   materialize:
-    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -27,12 +19,14 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Expand reviewed P1 bundle
+      - name: Reassemble and expand reviewed P1 bundle
         run: |
-          base64 --decode .p1bundle.b64 > /tmp/p1bundle.tar.gz
+          cat .p1bundle/part-* > /tmp/p1bundle.b64
+          base64 --decode /tmp/p1bundle.b64 > /tmp/p1bundle.tar.gz
           test "$(sha256sum /tmp/p1bundle.tar.gz | cut -d' ' -f1)" = "d05446520300c89d14b1670d86edc61057efb1bffed130c4f6aba2381cab50bc"
           tar -xzf /tmp/p1bundle.tar.gz
-          rm .p1bundle.b64
+          rm -rf .p1bundle
+          rm .github/workflows/p1-materialize.yml
       - name: Validate materialized P1 package
         run: make validate
       - name: Commit materialized files
