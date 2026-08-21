@@ -33,7 +33,7 @@ jobs:
           test "$(sha256sum /tmp/p1bundle.tar.gz | cut -d' ' -f1)" = "d05446520300c89d14b1670d86edc61057efb1bffed130c4f6aba2381cab50bc"
           tar -xzf /tmp/p1bundle.tar.gz
           rm -rf .p1bundle
-          rm .github/workflows/p1-materialize.yml
+          git checkout HEAD -- .github/workflows/p0-validate.yml .github/workflows/p1-materialize.yml
       - name: Validate materialized P1 package
         run: make validate
       - name: Commit materialized files
