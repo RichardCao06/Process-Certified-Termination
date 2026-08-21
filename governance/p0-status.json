@@ -1,0 +1,40 @@
+{
+  "project_id": "PCT",
+  "phase": "P0",
+  "status": "agent-work-complete-human-gate-pending",
+  "protocol_version": "0.1-draft",
+  "updated_at": "2026-08-21",
+  "candidate_harness": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "branch": "master",
+    "commit": "141eb6fef83422698aef7a981029e843e8161534",
+    "frozen": false
+  },
+  "agent_completed_artifacts": [
+    "protocol",
+    "four-contracts",
+    "decision-pack",
+    "decision-register",
+    "threat-model",
+    "role-map",
+    "causal-model",
+    "claim-ladder",
+    "literature-baseline",
+    "collaboration-protocol",
+    "validator-ci"
+  ],
+  "blocking_decision_ids": [
+    "PCT-P0-D01",
+    "PCT-P0-D02",
+    "PCT-P0-D03",
+    "PCT-P0-D04",
+    "PCT-P0-D05",
+    "PCT-P0-D06",
+    "PCT-P0-D07",
+    "PCT-P0-D08",
+    "PCT-P0-D09",
+    "PCT-P0-D10"
+  ],
+  "next_phase": "P1",
+  "next_phase_gate": "All blocking P0 decisions have authorized human dispositions and the P0 Exit Gate is signed."
+}
