@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/p0-status.schema.json",
+  "title": "PCT P0 Status",
+  "type": "object",
+  "required": [
+    "project_id",
+    "phase",
+    "status",
+    "protocol_version",
+    "blocking_decision_ids"
+  ],
+  "properties": {
+    "project_id": {
+      "const": "PCT"
+    },
+    "phase": {
+      "const": "P0"
+    },
+    "status": {
+      "enum": [
+        "drafting",
+        "agent-work-complete-human-gate-pending",
+        "approved",
+        "rejected"
+      ]
+    },
+    "blocking_decision_ids": {
+      "type": "array"
+    }
+  }
+}
