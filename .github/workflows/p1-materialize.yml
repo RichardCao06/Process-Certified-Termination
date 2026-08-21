@@ -4,12 +4,19 @@ on:
   push:
     branches:
       - research/p1-taxonomy-annotation-infrastructure-v0.1
+  pull_request:
+    branches:
+      - main
+    paths:
+      - .p1bundle/**
+      - .github/workflows/p1-materialize.yml
 
 permissions:
   contents: write
 
 jobs:
   materialize:
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
