@@ -1,29 +1,42 @@
-# P0 — Governance and Scope
+# P0 — Complete
 
-P0 answers two questions before system implementation begins:
+P0 established what the project is allowed to claim, what counts as trusted completion, who has authority to define and certify it, and what evidence is required before later experiments can be interpreted.
 
-1. **What exactly is the project allowed to claim?**
-2. **Who has authority to define, execute, evaluate, and approve each part?**
+## Closure
 
-P0 does not test whether Process-Certified Termination works. It creates the conditions under which later tests can produce interpretable, auditable evidence.
+- Approved by: `RichardCao06`
+- Date: 2026-08-21
+- Decision source: [PR #1 comment 5364822055](https://github.com/RichardCao06/Process-Certified-Termination/pull/1#issuecomment-5364822055)
+- Status: approved with deferred independent-role appointments
+- Next phase: P1 descriptive and development work
 
-## Agent-completed work
+## Authoritative P0 artifacts
 
-- Competing project claim levels and a claim ladder
-- Four contract drafts: Goal, Autonomy, Assurance, Capability
-- RQ and hypothesis draft
-- Initial causal model
-- Research stream and sealed-test boundaries
-- Threat model and red-team cases
-- Human–Agent role and authority map
-- Human decision pack and structured decision register
-- Deterministic P0 validator and CI
-- Verified literature and DeepSeek Harness engineering baseline
+- [Protocol v0.1](protocol-v0.1.md)
+- [Goal Contract](contracts/goal-contract-v0.1.md)
+- [Autonomy Contract](contracts/autonomy-contract-v0.1.md)
+- [Assurance Contract](contracts/assurance-contract-v0.1.md)
+- [Capability Envelope](contracts/capability-envelope-v0.1.md)
+- [Decision Register](decision-register.md)
+- [P0 Exit Gate](p0-exit-gate.md)
+- [P0 Closure Report](p0-closure-report.md)
+- [Role and Authority Map](role-and-authority-map.md)
+- [Threat Model](threat-model.md)
+- [Causal Model](causal-model.md)
+- [Claim Ladder](claim-ladder.md)
+- [Literature Baseline](literature-baseline.md)
 
-## Human Gate
+The original `*-draft.md` files remain in Git history and the working tree as pre-approval evidence; they are not the governing baseline.
 
-P0 remains open until all blocking decisions in the Human Decision Pack are approved, rejected, or explicitly deferred by the authorized human role. The agent recommendation is not approval.
+## Deferred later gates
 
-## P0 outputs
+P0 completion does not waive:
 
-The authoritative draft index is [Protocol v0.1](protocol-v0.1-draft.md). The easiest place for the project owner to respond is [Human Decision Pack](human-decision-pack.md).
+- independent methods/statistics review before confirmatory protocol freeze;
+- appointment of a separate Independent Custodian before held-out or sealed material exists or is accessed.
+
+## Allowed conclusion
+
+> The project has an approved, auditable protocol for beginning P1.
+
+P0 provides no empirical evidence that Process-Certified Termination works.

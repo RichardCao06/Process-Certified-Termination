@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic integrity checks for the PCT P0 governance package."""
+"""Deterministic integrity checks for the approved PCT P0 package."""
 from __future__ import annotations
 
 import json
@@ -12,8 +12,8 @@ REQUIRED_FILES = [
     'README.md',
     'AGENTS.md',
     '.gitignore',
-    'docs/p0/protocol-v0.1-draft.md',
-    'docs/p0/human-decision-pack.md',
+    'docs/p0/protocol-v0.1.md',
+    'docs/p0/p0-closure-report.md',
     'docs/p0/decision-register.md',
     'docs/p0/threat-model.md',
     'docs/p0/role-and-authority-map.md',
@@ -21,14 +21,15 @@ REQUIRED_FILES = [
     'docs/p0/claim-ladder.md',
     'docs/p0/literature-baseline.md',
     'docs/p0/p0-exit-gate.md',
-    'docs/p0/contracts/goal-contract-v0.1-draft.md',
-    'docs/p0/contracts/autonomy-contract-v0.1-draft.md',
-    'docs/p0/contracts/assurance-contract-v0.1-draft.md',
-    'docs/p0/contracts/capability-envelope-v0.1-draft.md',
-    'docs/governance/human-agent-collaboration-protocol-v0.1-draft.md',
+    'docs/p0/contracts/goal-contract-v0.1.md',
+    'docs/p0/contracts/autonomy-contract-v0.1.md',
+    'docs/p0/contracts/assurance-contract-v0.1.md',
+    'docs/p0/contracts/capability-envelope-v0.1.md',
+    'docs/governance/human-agent-collaboration-protocol-v0.1.md',
     'docs/references/SOURCE-MANIFEST.md',
     'governance/decision-register.json',
     'governance/p0-status.json',
+    'governance/role-assignments.json',
 ]
 ALLOWED_STATUS = {'pending-human', 'approved', 'rejected', 'deferred'}
 AGENT_ROLE_WORDS = ('Agent', 'Builder', 'Auditor', 'Red-Team', 'Experimental')
@@ -65,6 +66,7 @@ def validate_decision_register(data: dict) -> list[str]:
         options = decision.get('options')
         if not isinstance(options, list) or len(options) < 2:
             errors.append(f'{did}: at least two options are required')
+            continue
         option_ids = {item.get('id') for item in options if isinstance(item, dict)}
         if decision.get('agent_recommendation') not in option_ids:
             errors.append(f'{did}: recommendation must reference a declared option')
@@ -73,9 +75,14 @@ def validate_decision_register(data: dict) -> list[str]:
             if not isinstance(owner, str) or any(word in owner for word in AGENT_ROLE_WORDS):
                 errors.append(f'{did}: normative decision must have a human owner role')
         if decision.get('status') in {'approved', 'rejected'}:
-            for field in ('human_decision', 'rationale', 'approver_identity', 'effective_from'):
+            if decision.get('human_decision') not in option_ids:
+                errors.append(f'{did}: resolved human decision must reference a declared option')
+            for field in ('rationale', 'approver_identity', 'effective_from'):
                 if not decision.get(field):
                     errors.append(f'{did}: resolved decision missing {field}')
+            rejected = decision.get('rejected_options_and_reasons')
+            if not isinstance(rejected, list) or not rejected:
+                errors.append(f'{did}: resolved decision must preserve rejected options and reasons')
     if len(ids) != len(set(ids)):
         errors.append('decision ids must be unique')
     expected = [f'PCT-P0-D{i:02d}' for i in range(1, len(decisions) + 1)]
@@ -90,38 +97,72 @@ def validate_status(status: dict, register: dict) -> list[str]:
         errors.append('P0 status must identify project PCT and phase P0')
     commit = status.get('candidate_harness', {}).get('commit')
     if not isinstance(commit, str) or not re.fullmatch(r'[0-9a-f]{40}', commit):
-        errors.append('candidate DeepSeek Harness commit must be a 40-character SHA')
+        errors.append('selected DeepSeek Harness commit must be a 40-character SHA')
     pending_blockers = [d['id'] for d in register['decisions'] if d.get('blocks_p0') and d.get('status') == 'pending-human']
     if status.get('blocking_decision_ids') != pending_blockers:
         errors.append('p0-status blocking_decision_ids must exactly match pending blocking decisions')
     expected_status = 'agent-work-complete-human-gate-pending' if pending_blockers else 'approved'
     if status.get('status') != expected_status:
         errors.append(f'p0-status status must be {expected_status!r} for current decision states')
+    if expected_status == 'approved':
+        for field in ('approved_at', 'approved_by'):
+            if not status.get(field):
+                errors.append(f'approved P0 status missing {field}')
+        if status.get('next_phase_authorized') is not True:
+            errors.append('approved P0 must authorize the next phase')
+    return errors
+
+
+def validate_roles(data: dict) -> list[str]:
+    errors: list[str] = []
+    assignments = data.get('assignments')
+    if not isinstance(assignments, list):
+        return ['role assignments require an assignments array']
+    by_role = {item.get('role'): item for item in assignments if isinstance(item, dict)}
+    required = {'Research Owner', 'Domain Lead', 'Data Steward', 'Methods / Statistics Lead', 'Independent Custodian'}
+    missing = required - set(by_role)
+    if missing:
+        errors.append(f'missing required roles: {sorted(missing)}')
+    if by_role.get('Research Owner', {}).get('identity') != 'RichardCao06':
+        errors.append('P0-approved Research Owner must be RichardCao06')
+    for role in ('Methods / Statistics Lead', 'Independent Custodian'):
+        item = by_role.get(role, {})
+        if item.get('status') == 'deferred' and not item.get('required_by'):
+            errors.append(f'{role}: deferred assignment requires an explicit deadline')
+    if by_role.get('Independent Custodian', {}).get('identity') == by_role.get('Research Owner', {}).get('identity'):
+        errors.append('Independent Custodian must not collapse into the Research Owner')
     return errors
 
 
 def validate_identity() -> list[str]:
     errors: list[str] = []
-    # The collaboration-protocol provenance note may describe an external source;
-    # core project identity documents must not adopt unrelated project branding.
-    paths = [ROOT / 'README.md', ROOT / 'docs/p0/protocol-v0.1-draft.md']
+    paths = [ROOT / 'README.md', ROOT / 'docs/p0/protocol-v0.1.md']
     for path in paths:
         if 'GoalEvo' in path.read_text(encoding='utf-8'):
             errors.append(f'{path.relative_to(ROOT)}: external project branding leaked into project identity')
     return errors
 
 
-def validate_cross_file_recommendations(register: dict) -> list[str]:
+def validate_cross_file(register: dict, status: dict) -> list[str]:
     errors: list[str] = []
-    recommendations = {item['id']: item.get('agent_recommendation') for item in register.get('decisions', [])}
-    if recommendations.get('PCT-P0-D08') != 'B':
-        errors.append('PCT-P0-D08 recommendation must match the human decision pack: B')
-    protocol = (ROOT / 'docs/p0/protocol-v0.1-draft.md').read_text(encoding='utf-8')
-    if 'P0 creates a research contract. It does **not** establish that the proposed method is effective.' not in protocol:
+    decisions = {item['id']: item for item in register.get('decisions', [])}
+    expected = {
+        'PCT-P0-D01': 'A', 'PCT-P0-D02': 'A', 'PCT-P0-D03': 'A',
+        'PCT-P0-D04': 'A', 'PCT-P0-D05': 'A', 'PCT-P0-D06': 'A',
+        'PCT-P0-D07': 'A', 'PCT-P0-D08': 'B', 'PCT-P0-D09': 'A',
+        'PCT-P0-D10': 'A',
+    }
+    actual = {did: decisions.get(did, {}).get('human_decision') for did in expected}
+    if actual != expected:
+        errors.append(f'approved P0 choices differ from the human PR decision: {actual}')
+    protocol = (ROOT / 'docs/p0/protocol-v0.1.md').read_text(encoding='utf-8')
+    if 'does **not** establish that the proposed method is effective' not in protocol:
         errors.append('protocol must preserve the P0 no-effectiveness-claim boundary')
-    agents = (ROOT / 'AGENTS.md').read_text(encoding='utf-8')
-    if 'not a GoalEvo subproject' not in agents:
-        errors.append('AGENTS.md must state project independence explicitly')
+    gate = (ROOT / 'docs/p0/p0-exit-gate.md').read_text(encoding='utf-8')
+    if 'P0 approved and complete' not in gate:
+        errors.append('P0 Exit Gate must record approved completion')
+    if status.get('protocol_version') != '0.1':
+        errors.append('P0 status must point to Protocol v0.1')
     return errors
 
 
@@ -164,12 +205,14 @@ def main() -> int:
     try:
         register = load_json(ROOT / 'governance/decision-register.json')
         status = load_json(ROOT / 'governance/p0-status.json')
+        roles = load_json(ROOT / 'governance/role-assignments.json')
     except (OSError, ValueError, json.JSONDecodeError) as exc:
         errors.append(str(exc))
     else:
         errors.extend(validate_decision_register(register))
         errors.extend(validate_status(status, register))
-        errors.extend(validate_cross_file_recommendations(register))
+        errors.extend(validate_roles(roles))
+        errors.extend(validate_cross_file(register, status))
     errors.extend(validate_identity())
     errors.extend(validate_json_files())
     errors.extend(validate_markdown_links())
@@ -178,7 +221,7 @@ def main() -> int:
         for error in errors:
             print(f' - {error}', file=sys.stderr)
         return 1
-    print('P0 validation passed.')
+    print('P0 validation passed: approved baseline is internally consistent.')
     return 0
 
 
