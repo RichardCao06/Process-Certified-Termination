@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the frozen 25-case P1 Development Pilot Pass A package."""
+"""Validate the frozen P1 Development Pilot Pass A and amended Pass-B gate."""
 from __future__ import annotations
 
 import base64
@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 PILOT = ROOT / "data" / "p1" / "development-pilot"
 PASS_A = PILOT / "pass-a"
+PASS_B = PILOT / "pass-b"
 
 EXPECTED_COMPLETED = [
     "dev-023", "dev-014", "dev-026", "dev-020", "dev-013",
@@ -26,6 +27,10 @@ EXPECTED_ALL = EXPECTED_COMPLETED + EXPECTED_RESERVE
 EXPECTED_ANNOTATION_SHA256 = "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8"
 EXPECTED_TIMING_SHA256 = "c484a8813598ffcc0b3eac40867b6d9c89c4e342b152d7c01756747b4c0fc413"
 EXPECTED_PASS_B_COMMITMENT = "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86"
+EXPECTED_PASS_A_FREEZE_TIME = "2026-08-24T07:48:20Z"
+EXPECTED_ORIGINAL_RELEASE = "2026-08-27T07:48:20Z"
+EXPECTED_AMENDED_RELEASE = "2026-08-24T19:48:20Z"
+EXPECTED_MINIMUM_DELAY_HOURS = 12
 
 
 def sha256_bytes(value: bytes) -> str:
@@ -73,14 +78,31 @@ def read_jsonl(path: Path) -> list[dict]:
     return result
 
 
+def _validate_commitment_common(commitment: dict, label: str, errors: list[str]) -> None:
+    if commitment.get("source_pass_a_sha256") != EXPECTED_ANNOTATION_SHA256:
+        errors.append(f"{label} points to the wrong Pass-A file")
+    if commitment.get("selected_count") != 12:
+        errors.append(f"{label} must preserve a 12-case subset")
+    if commitment.get("ordered_subset_sha256") != EXPECTED_PASS_B_COMMITMENT:
+        errors.append(f"{label} ordered-subset commitment mismatch")
+    if commitment.get("identifiers_disclosed_before_pass_b") is not False:
+        errors.append(f"{label} must keep identifiers undisclosed before release")
+    if "selected_trajectory_ids" in commitment or "ordered_trajectory_ids" in commitment:
+        errors.append(f"{label} must not disclose selected IDs")
+    if commitment.get("fixture_author_expectations_used") is not False:
+        errors.append(f"{label} must not use Fixture Author Expectations")
+
+
 def validate() -> list[str]:
     errors: list[str] = []
     required = [
         PASS_A / "bundle-manifest.json",
         PASS_A / "bundle-parts" / "part-00",
         PASS_A / "delivery-manifest-v0.2.json",
-        PILOT / "pass-b" / "subset-commitment-v0.1.json",
+        PASS_B / "subset-commitment-v0.1.json",
+        PASS_B / "subset-commitment-v0.2.json",
         ROOT / "docs" / "p1" / "amendment-PCT-P1-A01.md",
+        ROOT / "docs" / "p1" / "amendment-PCT-P1-A02.md",
     ]
     for path in required:
         if not path.is_file():
@@ -168,28 +190,45 @@ def validate() -> list[str]:
         if "PCT_P1_Development_Pilot_Author_Key_Custody_v0.2.zip" not in delivery.get("files", {}):
             errors.append("delivery manifest is missing the out-of-repository author-key custody commitment")
 
-        commitment = load_json(PILOT / "pass-b" / "subset-commitment-v0.1.json")
-        if commitment.get("source_pass_a_sha256") != EXPECTED_ANNOTATION_SHA256:
-            errors.append("Pass-B subset commitment points to the wrong Pass-A file")
-        if commitment.get("selected_count") != 12:
-            errors.append("Pass B must remain a 12-case subset")
-        if commitment.get("ordered_subset_sha256") != EXPECTED_PASS_B_COMMITMENT:
-            errors.append("Pass-B ordered-subset commitment mismatch")
-        if commitment.get("identifiers_disclosed_before_pass_b") is not False:
-            errors.append("Pass-B identifiers must remain undisclosed before release")
-        if "selected_trajectory_ids" in commitment or "ordered_trajectory_ids" in commitment:
-            errors.append("Pass-B commitment must not disclose selected IDs")
-        if commitment.get("fixture_author_expectations_used") is not False:
-            errors.append("Pass-B selection must not use Fixture Author Expectations")
+        original = load_json(PASS_B / "subset-commitment-v0.1.json")
+        _validate_commitment_common(original, "original Pass-B commitment", errors)
+        if original.get("release_not_before") != EXPECTED_ORIGINAL_RELEASE:
+            errors.append("historical v0.1 release condition must remain preserved")
+
+        amended = load_json(PASS_B / "subset-commitment-v0.2.json")
+        _validate_commitment_common(amended, "amended Pass-B commitment", errors)
+        if amended.get("amendment_id") != "PCT-P1-A02":
+            errors.append("amended Pass-B commitment must cite PCT-P1-A02")
+        if amended.get("supersedes_release_condition_in") != "PCT-P1-PASS-B-SUBSET-COMMITMENT-v0.1":
+            errors.append("amended commitment must preserve and supersede only the v0.1 release condition")
+        if amended.get("pass_a_freeze_reference_time") != EXPECTED_PASS_A_FREEZE_TIME:
+            errors.append("amended commitment uses the wrong Pass-A freeze reference time")
+        if amended.get("minimum_delay_hours") != EXPECTED_MINIMUM_DELAY_HOURS:
+            errors.append("Pass-B minimum delay must be 12 hours under A02")
+        if amended.get("release_not_before") != EXPECTED_AMENDED_RELEASE:
+            errors.append("amended Pass-B release time mismatch")
+        if amended.get("selection_or_order_changed_by_amendment") is not False:
+            errors.append("A02 must not change the selected Pass-B cases or order")
 
         status = load_json(ROOT / "governance" / "p1-status.json")
-        if status.get("pilot_stage") != "development-pilot-pass-a-25-frozen":
-            errors.append("P1 status must record the 25-case Pass-A freeze")
+        if status.get("pilot_stage") != "development-pilot-pass-a-25-frozen-pass-b-12h-gated":
+            errors.append("P1 status must record the amended 12-hour Pass-B gate")
         design = status.get("pilot_design", {})
         if design.get("pass_a_completed_episodes") != 25 or design.get("pass_a_unannotated_reserve") != 5:
             errors.append("P1 status Pilot counts mismatch")
         if design.get("pass_b_selected_episodes") != 12:
             errors.append("P1 status must record the 12-case Pass-B subset")
+        if design.get("pass_b_minimum_delay_hours") != EXPECTED_MINIMUM_DELAY_HOURS:
+            errors.append("P1 status must record the 12-hour minimum delay")
+        if design.get("pass_b_release_not_before") != EXPECTED_AMENDED_RELEASE:
+            errors.append("P1 status amended release time mismatch")
+        if design.get("pass_b_order_commitment_sha256") != EXPECTED_PASS_B_COMMITMENT:
+            errors.append("P1 status must preserve the original subset/order commitment")
+        if design.get("pass_b_selection_or_order_changed_by_a02") is not False:
+            errors.append("P1 status must confirm A02 did not change selection/order")
+        amendment_ids = {item.get("id") for item in status.get("amendments", [])}
+        if not {"PCT-P1-A01", "PCT-P1-A02"}.issubset(amendment_ids):
+            errors.append("P1 status must preserve both A01 and A02")
         if status.get("fixture_author_expectations_opened") is not False:
             errors.append("P1 status must record unopened Fixture Author Expectations")
         if status.get("held_out_or_sealed_data_accessed") is not False:
@@ -204,14 +243,14 @@ def validate() -> list[str]:
 def main() -> int:
     errors = validate()
     if errors:
-        print("P1 Development Pilot Pass-A validation failed:")
+        print("P1 Development Pilot validation failed:")
         for error in errors:
             print(f" - {error}")
         return 1
     print(
-        "P1 Development Pilot Pass-A validation passed: "
+        "P1 Development Pilot validation passed: "
         "25 raw annotations are frozen, five reserve cases are excluded without imputation, "
-        "and the 12-case delayed Pass-B subset remains hash-committed and undisclosed."
+        "the Pass-B subset/order commitment is unchanged, and A02 applies a documented 12-hour release delay."
     )
     return 0
 
