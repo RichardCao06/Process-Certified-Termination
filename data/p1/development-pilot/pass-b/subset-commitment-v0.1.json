@@ -1,0 +1,12 @@
+{
+  "commitment_id": "PCT-P1-PASS-B-SUBSET-COMMITMENT-v0.1",
+  "created_at": "2026-08-24T08:05:00Z",
+  "source_pass_a_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+  "eligible_completed_count": 25,
+  "selected_count": 12,
+  "ordered_subset_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86",
+  "release_not_before": "2026-08-27T07:48:20Z",
+  "identifiers_disclosed_before_pass_b": false,
+  "selection_note": "The ordered subset was deterministically generated from the frozen Pass-A hash under the project script. The ordered identifiers are intentionally not included in this public commitment before Pass B.",
+  "fixture_author_expectations_used": false
+}
