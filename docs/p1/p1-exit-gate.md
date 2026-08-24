@@ -2,53 +2,30 @@
 
 ## Current status
 
-**Calibration and blind comparison completed; post-calibration human decisions and annotation pilot pending.**
+**Calibration complete; Codebook v0.2 Pilot authorized; 30-episode Development Pilot Pass A ready. P1 is not complete.**
 
-The previous P1 method decisions D01–D10 are approved. Human Pass 1 and Context-Isolated Agent Blind Pass 1 are frozen. The Research Owner accepted the evidence-based Case recommendations. P1 remains open because D11–D14, the v0.2 regression, and the 30-episode blinded development pilot are not complete.
+## Completed
 
-## Engineering and calibration foundation
+- [x] P1-D01 through D14 have authorized human dispositions.
+- [x] Human Calibration Pass 1 preserved.
+- [x] Context-isolated Agent Blind Pass preserved and hash-verified.
+- [x] Human–Agent comparison completed.
+- [x] Research Owner accepted the evidence-based disputed-Case recommendations.
+- [x] Original Human and Agent records remain separate from adjudication.
+- [x] Codebook and Schema v0.2 Pilot produced.
+- [x] Twelve-episode approved-semantic regression passed 12/12.
+- [x] Thirty-episode blind Development Pilot Pass A package generated and hash-committed.
+- [x] No held-out or sealed data was accessed.
 
-- [x] P1 Work Order created
-- [x] taxonomy and v0.1 codebook drafts created
-- [x] observable trace and annotation schemas created
-- [x] structural validator and deterministic linter created
-- [x] agreement-development tool created
-- [x] clean, failure, stale-evidence, and alternate-path fixtures created
-- [x] red-team review created
-- [x] P1-D01 through D10 approved and recorded
-- [x] Human Calibration Pass 1 completed and frozen
-- [x] Context-Isolated Agent Blind Pass 1 completed and frozen
-- [x] Human Pass 1 QC completed
-- [x] Human–Agent comparison completed
-- [x] Research Owner accepted disputed-Case recommendations
-- [x] development adjudication v0.1 created without overwriting original passes
-- [x] Codebook, Trace, Annotation, and Adjudication v0.2 drafts created
-- [x] migration record and Codebook Regression Set prepared
-- [x] hash-verified data bundle and calibration validator created
-- [ ] PCT-P1-D11 through D14 have authorized human dispositions
-- [ ] v0.2 Codebook and schemas are revised to those decisions
-- [ ] 12-episode Codebook Regression Set is run under finalized v0.2 semantics
-- [ ] regression findings and any additional migration are preserved
-- [ ] 30-episode blinded development pilot is constructed and frozen
-- [ ] delayed, reordered, blind Human Pass 2 is completed under the approved intra-rater design
-- [ ] agreement, ambiguity, and valid-alternative-path error rates are reported
-- [ ] disagreements are adjudicated without deleting original labels
-- [ ] taxonomy migration/revision record is complete
-- [ ] no held-out or sealed data was accessed
-- [ ] Research Owner approves the P1 closure report
+## Human empirical Gate still open
 
-## Current allowed conclusion
-
-The project may state that coarse Human–Agent stop acceptance showed promising descriptive agreement in the Calibration sample and that the Calibration identified concrete Codebook, schema, interface, and control-state defects.
-
-It may not state that:
-
-- the current detailed Taxonomy is reliable Gold;
-- the Agent is a validated annotator;
-- human annotation reliability is established;
-- an automated Process Auditor works;
-- Process-Certified Termination improves task outcomes.
+- [ ] Human Pass A completed and frozen.
+- [ ] Delayed, reordered, blind Human Pass B completed and frozen.
+- [ ] Intra-rater agreement, ambiguity, valid-alternative-path, and field-level disagreement reports generated.
+- [ ] Disagreements adjudicated without deleting either pass.
+- [ ] Taxonomy migration and classes reliably/unreliably annotatable documented.
+- [ ] Research Owner approves P1 Closure Report.
 
 ## Allowed conclusion after P1
 
-If the full Gate passes, the project may state which process classes, stop states, and localization rules appear feasible or infeasible to annotate within the tested development setting. P1 still will not establish that an automated Auditor or online PCT controller improves task outcomes.
+P1 may report which annotation layers appear feasible or infeasible in the tested development setting. P1 still cannot claim automated Auditor accuracy or online PCT effectiveness.
