@@ -9,7 +9,7 @@ validate-p1:
 	python3 scripts/validate_p1.py
 
 validate-calibration:
-	python3 scripts/validate_p1_calibration.py
+	python3 scripts/validate_p1_calibration_current.py
 
 validate-development-pilot:
 	python3 scripts/validate_p1_development_pilot.py
