@@ -4,7 +4,7 @@
 
 Pre-analysis implementation plan. It is prepared before Human Pass B is released and does not contain the selected Case identifiers, Pass A labels, Fixture Author Expectations, or semantic feedback.
 
-This is a developmental intra-rater feasibility analysis, not an independent inter-rater study, Gold-label validation, or an online PCT effectiveness experiment.
+This is a developmental intra-rater feasibility analysis. It is **not independent inter-rater reliability**, **not Gold-label validation**, and not an online PCT effectiveness experiment.
 
 ## 1. Frozen inputs
 
