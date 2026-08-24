@@ -1,0 +1,22 @@
+{
+  "delivery_id": "PCT-P1-DEV-PILOT-PASS-A-DELIVERY-v0.2",
+  "episode_count": 30,
+  "files": {
+    "PCT_P1_Development_Pilot_Pass_A_Bilingual_v0.2.html": {
+      "sha256": "85792c16f1d05ac808c4819aac83acfcecce1c163d9ef3eb70032dc3f236fd16",
+      "bytes": 113519
+    },
+    "PCT_P1_Development_Pilot_Pass_A_v0.2.zip": {
+      "sha256": "c007837d0bec7d5df493ea67d1c168d7622f68df751b6b980ce8d4db77ae654e",
+      "bytes": 60709
+    },
+    "PCT_P1_Development_Pilot_Pass_A_Manifest_v0.2.json": {
+      "sha256": "d83827bdd64c6ce740437ad4dbe20698470a2908d00cfff0affe79e33581c7fe",
+      "bytes": 1087
+    },
+    "PCT_P1_Development_Pilot_Author_Key_Custody_v0.2.zip": {
+      "sha256": "3e48b0df57d2fb65a8fee4e4a68f5c58aebc7f9169c280172301430d6ed37579",
+      "bytes": 852
+    }
+  }
+}
