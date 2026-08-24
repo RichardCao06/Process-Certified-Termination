@@ -7,9 +7,13 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+import sys
 from typing import Any
 
-from pct.pilot_analysis import intrarater_report, pair_annotations
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from pct.pilot_analysis import intrarater_report, pair_annotations  # noqa: E402
 
 
 def read_jsonl(path: Path) -> list[dict[str, Any]]:
