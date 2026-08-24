@@ -1,1 +1,72 @@
-{"project_id":"PCT","phase":"P1","work_order":"PCT-P1-001","status":"pilot-authorized","protocol_version":"0.2-pilot","updated_at":"2026-08-24","method_decisions_approved":true,"approved_choices":{"PCT-P1-D01":"A","PCT-P1-D02":"A","PCT-P1-D03":"A","PCT-P1-D04":"A","PCT-P1-D05":"A","PCT-P1-D06":"A","PCT-P1-D07":"A","PCT-P1-D08":"A","PCT-P1-D09":"A","PCT-P1-D10":"A","PCT-P1-D11":"A","PCT-P1-D12":"A","PCT-P1-D13":"A","PCT-P1-D14":"A"},"human_decision_sources":["https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5365882275","https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5390328320"],"annotation_design":{"annotator_pass_1":"RichardCao06","pass_2":"same annotator, delayed, reordered, blinded to pass A","reporting":"intra-rater feasibility only","adjudicator":"RichardCao06, developmental and not independent"},"pilot_design":{"calibration_episodes":12,"blinded_development_episodes":30,"pass_a_status":"ready-for-human-annotation","pass_b_status":"sealed-order-not-released"},"held_out_or_sealed_data_accessed":false,"effectiveness_claim_allowed":false,"blocking_decision_ids":[],"pilot_started":true,"pilot_stage":"development-pilot-pass-a-ready","human_pass1_frozen":true,"agent_blind_pass1_frozen":true,"human_agent_comparison_complete":true,"core_adjudication_accepted_by_research_owner":true,"calibration_adjudication_version":"0.2-pilot","codebook_version":"0.2-pilot","regression_status":"passed-12-of-12-structural-and-semantic-expectations","next_gate":"Complete the 30-episode blinded Development Pilot Pass A, preserve exports, then conduct the delayed reordered blind Pass B before agreement analysis and P1 closure.","branch":"research/p1-taxonomy-annotation-infrastructure-v0.1","selected_configuration":{"worker_model":"DeepSeek-V4-Pro","harness_repository":"deepseek-ai/deepseek-harness","harness_commit":"141eb6fef83422698aef7a981029e843e8161534","confirmatory_frozen":false}}
+{
+  "project_id": "PCT",
+  "phase": "P1",
+  "work_order": "PCT-P1-001",
+  "status": "pilot-authorized",
+  "protocol_version": "0.2-pilot",
+  "updated_at": "2026-08-24",
+  "method_decisions_approved": true,
+  "approved_choices": {
+    "PCT-P1-D01": "A",
+    "PCT-P1-D02": "A",
+    "PCT-P1-D03": "A",
+    "PCT-P1-D04": "A",
+    "PCT-P1-D05": "A",
+    "PCT-P1-D06": "A",
+    "PCT-P1-D07": "A",
+    "PCT-P1-D08": "A",
+    "PCT-P1-D09": "A",
+    "PCT-P1-D10": "A",
+    "PCT-P1-D11": "A",
+    "PCT-P1-D12": "A",
+    "PCT-P1-D13": "A",
+    "PCT-P1-D14": "A"
+  },
+  "human_decision_sources": [
+    "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5365882275",
+    "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5390328320",
+    "ChatGPT conversation on 2026-08-24: Research Owner explicitly froze Pass A after the first 25 cases because the 30-case burden was excessive and instructed the project to continue."
+  ],
+  "annotation_design": {
+    "annotator_pass_a": "RichardCao06",
+    "pass_b": "same annotator, delayed, reordered, blinded to Pass A, 12-case deterministic subset",
+    "reporting": "developmental intra-rater feasibility only",
+    "adjudicator": "RichardCao06, developmental and not independent"
+  },
+  "pilot_design": {
+    "calibration_episodes": 12,
+    "planned_blinded_development_episodes": 30,
+    "pass_a_completed_episodes": 25,
+    "pass_a_unannotated_reserve": 5,
+    "pass_a_status": "frozen-at-fixed-order-position-25",
+    "pass_a_missingness": "administrative-right-truncation-no-imputation",
+    "pass_b_selected_episodes": 12,
+    "pass_b_status": "subset-hash-committed-not-released",
+    "pass_b_release_not_before": "2026-08-27T07:48:20Z",
+    "pass_b_order_commitment_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86"
+  },
+  "held_out_or_sealed_data_accessed": false,
+  "fixture_author_expectations_opened": false,
+  "effectiveness_claim_allowed": false,
+  "blocking_decision_ids": [],
+  "pilot_started": true,
+  "pilot_stage": "development-pilot-pass-a-25-frozen",
+  "human_pass1_frozen": true,
+  "agent_blind_pass1_frozen": true,
+  "human_agent_comparison_complete": true,
+  "core_adjudication_accepted_by_research_owner": true,
+  "calibration_adjudication_version": "0.2-pilot",
+  "codebook_version": "0.2-pilot",
+  "regression_status": "passed-12-of-12-structural-and-semantic-expectations",
+  "pass_a_freeze_manifest_sha256": "cf58bdd4ca9e725c6b2c04e56864a14b0d24014e689c3a9f83146d1e980d6f2f",
+  "pass_a_raw_annotations_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+  "pass_a_raw_timing_sha256": "c484a8813598ffcc0b3eac40867b6d9c89c4e342b152d7c01756747b4c0fc413",
+  "next_gate": "Do not release Pass B before 2026-08-27T07:48:20Z. Then release only the precommitted 12-case reordered subset, freeze Pass B, and perform intra-rater agreement and ambiguity analysis before author-expectation opening or P1 closure.",
+  "branch": "research/p1-taxonomy-annotation-infrastructure-v0.1",
+  "selected_configuration": {
+    "worker_model": "DeepSeek-V4-Pro",
+    "harness_repository": "deepseek-ai/deepseek-harness",
+    "harness_commit": "141eb6fef83422698aef7a981029e843e8161534",
+    "confirmatory_frozen": false
+  }
+}
