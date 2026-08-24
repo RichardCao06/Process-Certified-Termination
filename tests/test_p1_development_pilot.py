@@ -40,12 +40,25 @@ class DevelopmentPilotPassAIntegrityTests(unittest.TestCase):
 
     def test_pass_b_commitment_does_not_disclose_ids(self) -> None:
         commitment = module.load_json(
-            module.PILOT / "pass-b" / "subset-commitment-v0.1.json"
+            module.PASS_B / "subset-commitment-v0.2.json"
         )
         self.assertEqual(commitment["selected_count"], 12)
         self.assertFalse(commitment["identifiers_disclosed_before_pass_b"])
         self.assertNotIn("selected_trajectory_ids", commitment)
         self.assertNotIn("ordered_trajectory_ids", commitment)
+
+    def test_a02_changes_only_delay_not_subset_or_order(self) -> None:
+        original = module.load_json(module.PASS_B / "subset-commitment-v0.1.json")
+        amended = module.load_json(module.PASS_B / "subset-commitment-v0.2.json")
+        self.assertEqual(original["ordered_subset_sha256"], amended["ordered_subset_sha256"])
+        self.assertEqual(original["selected_count"], amended["selected_count"])
+        self.assertEqual(amended["minimum_delay_hours"], 12)
+        self.assertEqual(amended["release_not_before"], module.EXPECTED_AMENDED_RELEASE)
+        self.assertFalse(amended["selection_or_order_changed_by_amendment"])
+
+    def test_original_release_condition_is_preserved_historically(self) -> None:
+        original = module.load_json(module.PASS_B / "subset-commitment-v0.1.json")
+        self.assertEqual(original["release_not_before"], module.EXPECTED_ORIGINAL_RELEASE)
 
     def test_delivery_manifest_preserves_source_and_key_commitments(self) -> None:
         delivery = module.load_json(module.PASS_A / "delivery-manifest-v0.2.json")
