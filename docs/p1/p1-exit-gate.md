@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Calibration and Codebook v0.2 are complete. Human Development Pilot Pass A is frozen after the first 25 fixed-order episodes under Amendment `PCT-P1-A01`. P1 is not complete.**
+**Calibration and Codebook v0.2 are complete. Human Development Pilot Pass A is frozen after the first 25 fixed-order episodes under Amendment `PCT-P1-A01`. P1 is not complete; human decisions and annotation pilot pending items remain below.**
 
 ## Completed
 
