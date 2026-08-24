@@ -16,6 +16,9 @@ P1 remains open until Pass B, agreement analysis, author-expectation opening, ad
 - `post-calibration-decision-record-d11-d14.md`
 - `development-pilot-pass-a.md`
 - `amendment-PCT-P1-A01.md`
+- `pass-b-interface-requirements-v0.1.md`
+- `pass-b-analysis-plan-v0.1.md`
+- `p1-closure-report-template.md`
 - `p1-exit-gate.md`
 - `governance/p1-decision-register.json`
 - `governance/p1-status.json`
@@ -24,11 +27,26 @@ P1 remains open until Pass B, agreement analysis, author-expectation opening, ad
 
 Historical drafts and original annotation records are retained as provenance and must not be overwritten.
 
+## Prepared analysis tooling
+
+The following non-contaminating tools are implemented before Pass B release:
+
+- `pct/pilot_analysis.py` — hierarchical nominal, FIT, hard-gate, and multilabel agreement metrics;
+- `scripts/p1_pass_b_agreement.py` — reproducible JSON and CSV A/B reports;
+- `scripts/p1_prepare_adjudication_packet.py` — pre-author-opening disagreement packet;
+- `scripts/p1_verify_author_opening.py` — verifies both human passes are frozen and the opened author file matches its commitment.
+
+These tools use synthetic tests until the real Pass B is frozen. They do not contain the selected 12 identifiers or any author expectation.
+
 ## Development signal
 
 Excluding the taught `cal-006` case, Human and Blind Agent agreed on `ACCEPT` versus `DO_NOT_ACCEPT` in 10/11 Calibration cases. Fine-grained Outcome and mechanism labels were less stable. The Pilot therefore evaluates layers hierarchically rather than treating the detailed Taxonomy as Gold.
 
 Pass-A structural QC found 25 parseable records, one aggregate internal field conflict, and a systematic citation-capture gap. Case-specific feedback is embargoed until Pass B to avoid contaminating the delayed re-annotation.
+
+## P2 preparation
+
+A non-operative Shadow-mode architecture and draft P2 Work Order are available under `docs/p2/`. They do not authorize P2, runtime intervention, or an effectiveness experiment.
 
 ## Boundaries
 
