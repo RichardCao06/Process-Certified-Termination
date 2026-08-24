@@ -1,0 +1,34 @@
+{
+  "report_id": "PCT-P1-PASS-B-RELEASE-GATE-CHECK-2026-08-24",
+  "checked_at_local": "2026-08-24T01:30:34-07:00",
+  "checked_at_utc": "2026-08-24T08:30:34Z",
+  "release_not_before": "2026-08-27T07:48:20Z",
+  "decision": "WITHHOLD_PASS_B",
+  "reason": "The precommitted minimum delay has not elapsed. Releasing the selected identifiers or annotation package now would invalidate the approved delayed, reordered, blind Pass-B design.",
+  "verified": {
+    "pass_a_completed_count": 25,
+    "pass_a_raw_annotations_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+    "pass_a_raw_timing_sha256": "c484a8813598ffcc0b3eac40867b6d9c89c4e342b152d7c01756747b4c0fc413",
+    "pass_b_selected_count": 12,
+    "pass_b_order_commitment_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86",
+    "selected_identifiers_disclosed": false,
+    "fixture_author_expectations_opened": false,
+    "held_out_or_sealed_data_accessed": false,
+    "current_ci_conclusion": "success",
+    "current_pr_head": "13766d5ed00630286960d0ae5804068512680fc3"
+  },
+  "prohibited_before_release_gate": [
+    "disclose selected trajectory identifiers",
+    "release the reordered Pass-B package",
+    "provide case-specific Pass-A semantic feedback",
+    "open Fixture Author Expectations"
+  ],
+  "allowed_after_release_gate": [
+    "materialize only the precommitted 12-case ordered subset",
+    "apply neutral Pass-B display identifiers",
+    "verify the ordered-subset commitment",
+    "run leakage and artifact-integrity checks",
+    "release the bilingual Pass-B annotation package"
+  ],
+  "effectiveness_claim_allowed": false
+}
