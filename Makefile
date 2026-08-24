@@ -1,6 +1,6 @@
-.PHONY: validate validate-p0 validate-p1 validate-calibration unit test materialize-calibration
+.PHONY: validate validate-p0 validate-p1 validate-calibration validate-development-pilot unit test materialize-calibration
 
-validate: validate-p0 validate-p1 validate-calibration unit
+validate: validate-p0 validate-p1 validate-calibration validate-development-pilot unit
 
 validate-p0:
 	python3 scripts/validate_p0.py
@@ -10,6 +10,9 @@ validate-p1:
 
 validate-calibration:
 	python3 scripts/validate_p1_calibration.py
+
+validate-development-pilot:
+	python3 scripts/validate_p1_development_pilot.py
 
 unit:
 	python3 -m unittest discover -s tests -v
