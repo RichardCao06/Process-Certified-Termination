@@ -25,7 +25,9 @@ Completed:
 - original 30-episode Development Pilot package;
 - Human Pass A frozen after fixed-order positions 1–25 under Amendment `PCT-P1-A01`;
 - five unannotated reserve cases recorded without imputation;
-- delayed 12-case Pass-B order precommitted by SHA-256.
+- delayed 12-case Pass-B order precommitted by SHA-256;
+- Pass-B agreement, adjudication-packet, and author-opening verification tools implemented with synthetic tests;
+- P1 Closure Report template and P2 Shadow architecture draft prepared without exposing Pass-B identities.
 
 Still required before P1 closes:
 
@@ -41,6 +43,9 @@ Still required before P1 closes:
 - [P1 index](docs/p1/README.md)
 - [P1 Codebook v0.2](docs/p1/annotation-codebook-v0.2.md)
 - [Pass-A workload Amendment](docs/p1/amendment-PCT-P1-A01.md)
+- [Pass-B analysis plan](docs/p1/pass-b-analysis-plan-v0.1.md)
+- [P1 Closure Report template](docs/p1/p1-closure-report-template.md)
+- [P2 Shadow architecture draft](docs/p2/p2-shadow-plugin-architecture-v0.1-draft.md)
 - [P1 Exit Gate](docs/p1/p1-exit-gate.md)
 
 ## Validation
