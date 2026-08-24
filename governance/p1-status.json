@@ -25,12 +25,25 @@
   "human_decision_sources": [
     "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5365882275",
     "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5390328320",
-    "ChatGPT conversation on 2026-08-24: Research Owner explicitly froze Pass A after the first 25 cases because the 30-case burden was excessive and instructed the project to continue."
+    "ChatGPT conversation on 2026-08-24: Research Owner explicitly froze Pass A after the first 25 cases because the 30-case burden was excessive and instructed the project to continue.",
+    "ChatGPT conversation on 2026-08-24: Research Owner explicitly requested that the Pass-B minimum delay be shortened to 12 hours."
+  ],
+  "amendments": [
+    {
+      "id": "PCT-P1-A01",
+      "status": "effective",
+      "scope": "Pass-A truncation, no-imputation rule, and 12-case Pass-B subset"
+    },
+    {
+      "id": "PCT-P1-A02",
+      "status": "effective",
+      "scope": "Pass-B minimum delay shortened from approximately 72 hours to 12 hours"
+    }
   ],
   "annotation_design": {
     "annotator_pass_a": "RichardCao06",
-    "pass_b": "same annotator, delayed, reordered, blinded to Pass A, 12-case deterministic subset",
-    "reporting": "developmental intra-rater feasibility only",
+    "pass_b": "same annotator, 12-hour delayed, reordered, blinded to Pass A, 12-case deterministic subset",
+    "reporting": "developmental intra-rater feasibility only; explicit elevated memory-carryover risk",
     "adjudicator": "RichardCao06, developmental and not independent"
   },
   "pilot_design": {
@@ -42,15 +55,18 @@
     "pass_a_missingness": "administrative-right-truncation-no-imputation",
     "pass_b_selected_episodes": 12,
     "pass_b_status": "subset-hash-committed-not-released",
-    "pass_b_release_not_before": "2026-08-27T07:48:20Z",
-    "pass_b_order_commitment_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86"
+    "pass_a_freeze_reference_time": "2026-08-24T07:48:20Z",
+    "pass_b_minimum_delay_hours": 12,
+    "pass_b_release_not_before": "2026-08-24T19:48:20Z",
+    "pass_b_order_commitment_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86",
+    "pass_b_selection_or_order_changed_by_a02": false
   },
   "held_out_or_sealed_data_accessed": false,
   "fixture_author_expectations_opened": false,
   "effectiveness_claim_allowed": false,
   "blocking_decision_ids": [],
   "pilot_started": true,
-  "pilot_stage": "development-pilot-pass-a-25-frozen",
+  "pilot_stage": "development-pilot-pass-a-25-frozen-pass-b-12h-gated",
   "human_pass1_frozen": true,
   "agent_blind_pass1_frozen": true,
   "human_agent_comparison_complete": true,
@@ -61,7 +77,12 @@
   "pass_a_freeze_manifest_sha256": "cf58bdd4ca9e725c6b2c04e56864a14b0d24014e689c3a9f83146d1e980d6f2f",
   "pass_a_raw_annotations_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
   "pass_a_raw_timing_sha256": "c484a8813598ffcc0b3eac40867b6d9c89c4e342b152d7c01756747b4c0fc413",
-  "next_gate": "Do not release Pass B before 2026-08-27T07:48:20Z. Then release only the precommitted 12-case reordered subset, freeze Pass B, and perform intra-rater agreement and ambiguity analysis before author-expectation opening or P1 closure.",
+  "next_gate": "Do not release Pass B before 2026-08-24T19:48:20Z. Then release only the unchanged precommitted 12-case reordered subset, freeze Pass B, and perform intra-rater agreement and ambiguity analysis before author-expectation opening or P1 closure.",
+  "interpretation_constraints": [
+    "The Pass-B interval is 12 hours, not the originally planned approximately 72 hours.",
+    "Memory carryover is an explicit threat to validity.",
+    "The results are not independent inter-rater reliability, Gold-label validation, or evidence of PCT effectiveness."
+  ],
   "branch": "research/p1-taxonomy-annotation-infrastructure-v0.1",
   "selected_configuration": {
     "worker_model": "DeepSeek-V4-Pro",
