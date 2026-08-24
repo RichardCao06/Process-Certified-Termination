@@ -1,0 +1,35 @@
+{
+  "report_id": "PCT-P1-DEV-PASS-A-STRUCTURAL-QC-v0.1",
+  "generated_at": "2026-08-24T08:05:00Z",
+  "input_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+  "records_checked": 25,
+  "scope": "STRUCTURAL_AND_INTERNAL_CONSISTENCY_ONLY",
+  "fixture_author_expectations_used": false,
+  "case_level_semantic_adjudication_performed": false,
+  "results": {
+    "json_parse_success": 25,
+    "unique_annotation_ids": 25,
+    "unique_trajectory_ids": 25,
+    "metadata_matches_fixed_episode_order": true,
+    "required_core_fields_complete": 25,
+    "fit_locators_structurally_valid": 25,
+    "hard_gate_codes_from_approved_catalog": 25,
+    "records_with_internal_hard_error": 1,
+    "records_with_empty_event_and_evidence_citations": 25,
+    "records_with_observable_evidence_but_no_evidence_citation": 23
+  },
+  "interpretation": [
+    "The 25 raw records are preserved and are not corrected in place.",
+    "One record has an internally exclusive certification-effect combination; its identity and correction are embargoed until blind Pass B to avoid contaminating re-annotation.",
+    "All 25 records have empty citation arrays. This is treated as a data-capture/UI defect rather than automatically as a judgment error.",
+    "Pass B tooling must auto-cite the selected FIT event and require at least one event citation; where Evidence objects materially affect the verdict, at least one Evidence citation is required.",
+    "No case-specific semantic feedback is released before Pass B."
+  ],
+  "pass_b_tool_fixes_required": [
+    "NONE certification effect is mutually exclusive with all other effects.",
+    "FIT EXACT/RANGE locator automatically enters Event citations.",
+    "Save is blocked when all Event citations are empty.",
+    "When material Evidence objects exist, the interface prompts for Evidence citations or an explicit no-material-evidence explanation.",
+    "Recommendation-specific control-action hints are shown without auto-changing the human judgment."
+  ]
+}
