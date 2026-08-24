@@ -1,0 +1,15 @@
+{
+  "decoded_filename": "PCT_P1_PostCalibration_v0.2.tar.gz",
+  "sha256": "47f423eae186ce7377443a4bb559f96025c239091e21492708b1134f28cb299e",
+  "encoding": "base64",
+  "parts": [
+    "bundle-parts/part-00"
+  ],
+  "files": [
+    "data/p1/regression/calibration-adjudication-v0.2-pilot.json",
+    "data/p1/regression/regression-set-v0.2-pilot.json",
+    "reports/p1/codebook-regression-report-v0.2.json"
+  ],
+  "fixture_author_expectations_used": false,
+  "held_out_or_sealed_data": false
+}
