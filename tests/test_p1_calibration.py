@@ -5,8 +5,8 @@ from pathlib import Path
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-MODULE_PATH = ROOT / "scripts" / "validate_p1_calibration.py"
-spec = importlib.util.spec_from_file_location("validate_p1_calibration", MODULE_PATH)
+MODULE_PATH = ROOT / "scripts" / "validate_p1_calibration_current.py"
+spec = importlib.util.spec_from_file_location("validate_p1_calibration_current", MODULE_PATH)
 module = importlib.util.module_from_spec(spec)
 assert spec.loader is not None
 spec.loader.exec_module(module)
@@ -50,7 +50,7 @@ class CalibrationIntegrityTests(unittest.TestCase):
         self.assertEqual(item["valid_alternative_path"], "YES")
         self.assertEqual(item["first_invalid_transition"]["status"], "NONE")
 
-    def test_outcome_process_split_for_irreversible_case(self) -> None:
+    def test_historical_irreversible_case_preserves_predecision_state(self) -> None:
         item = self.dmap["cal-010"]
         self.assertEqual(item["outcome_verdict"], "PASS")
         self.assertEqual(item["process_verdict"], "FAIL")
@@ -75,10 +75,14 @@ class CalibrationIntegrityTests(unittest.TestCase):
                 with self.subTest(tid=tid):
                     self.assertIn("HARD_VIOLATION", item["certification_effects"])
 
-    def test_only_four_new_human_decisions_are_pending(self) -> None:
+    def test_all_method_decisions_are_approved(self) -> None:
         register = module.load_json(ROOT / "governance" / "p1-decision-register.json")
         pending = [d["id"] for d in register["decisions"] if d["status"] == "pending-human"]
-        self.assertEqual(pending, ["PCT-P1-D11", "PCT-P1-D12", "PCT-P1-D13", "PCT-P1-D14"])
+        self.assertEqual(pending, [])
+        for decision in register["decisions"]:
+            with self.subTest(decision=decision["id"]):
+                self.assertEqual(decision["status"], "approved")
+                self.assertEqual(decision["human_decision"], "A")
 
     def test_original_human_annotation_is_not_overwritten(self) -> None:
         inputs = module.load_json(module.CAL / "calibration-inputs-v0.1.json")
