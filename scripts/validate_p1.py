@@ -214,8 +214,10 @@ def validate_research_boundaries() -> list[str]:
     if "does not make an effectiveness claim" not in readme:
         errors.append("P1 README must preserve the no-effectiveness-claim boundary")
     gate = (ROOT / "docs/p1/p1-exit-gate.md").read_text(encoding="utf-8")
-    if "human decisions and annotation pilot pending" not in gate:
-        errors.append("P1 Exit Gate must not claim P1 is complete")
+    if "P1 is not complete" not in gate:
+        errors.append("P1 Exit Gate must explicitly state that P1 is not complete")
+    if "independent inter-rater reliability" not in gate or "Gold-label validation" not in gate:
+        errors.append("P1 Exit Gate must preserve intra-rater and non-Gold interpretation boundaries")
     return errors
 
 
