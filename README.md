@@ -1,7 +1,7 @@
 # Process-Certified Termination
 
 > **Phase status:** P0 approved; P1 active  
-> **P1 status:** Agent-owned taxonomy/annotation foundation complete; human decisions and annotation pilot pending
+> **P1 status:** Calibration completed; post-calibration revision Gate active; four human decisions pending
 
 This is an independent research project. Its approved near-term subject is:
 
@@ -25,18 +25,37 @@ Can an additional, evidence-grounded process-certification layer improve an LLM 
 
 Historical `-draft.md` P0 files are retained as pre-approval records and are not authoritative.
 
-## P1 development foundation
+## P1 post-calibration state
+
+P1 has completed one human Calibration pass and one context-isolated Agent Blind Pass across 12 Candidate-Stop episodes. The original passes are frozen separately. The Research Owner accepted the analysis recommendations for disputed Cases, and the project now has:
+
+- a development adjudication layer;
+- a Codebook v0.2 draft;
+- strict FIT locator rules;
+- separate certification-effect and control-action vocabularies;
+- stop-scope and recovery-authority trace extensions;
+- a 12-episode Codebook Regression Set;
+- hash-verified Calibration data preservation and validation.
+
+Excluding the taught `cal-006` example, Human and Agent agreed on `ACCEPT` versus `DO_NOT_ACCEPT` in 10 of 11 Cases. Exact Outcome and detailed mechanism-code agreement were substantially lower, so those layers remain developmental rather than Gold.
+
+Current P1 materials:
 
 - [P1 phase index](docs/p1/README.md)
-- [Human Decision Pack](docs/p1/human-decision-pack.md)
-- [Failure Taxonomy v0.1 Draft](docs/p1/failure-taxonomy-v0.1-draft.md)
-- [Annotation Codebook v0.1 Draft](docs/p1/annotation-codebook-v0.1-draft.md)
-- [Annotation Feasibility Protocol](docs/p1/annotation-feasibility-protocol-v0.1-draft.md)
-- [Observable Trace Model](docs/p1/trace-observation-model-v0.1-draft.md)
-- [DeepSeek Harness event mapping](docs/p1/deepseek-harness-event-mapping.md)
+- [Calibration Adjudication Report](docs/p1/calibration-adjudication-report-v0.1.md)
+- [Post-Calibration Human Decision Pack](docs/p1/post-calibration-human-decision-pack.md)
+- [Annotation Codebook v0.2 Draft](docs/p1/annotation-codebook-v0.2-draft.md)
+- [Observable Trace Model v0.2 Draft](docs/p1/trace-observation-model-v0.2-draft.md)
 - [P1 Exit Gate](docs/p1/p1-exit-gate.md)
 
-P1 includes dependency-free structural validation, deterministic candidate lints, exploratory annotation-agreement tooling, and controlled synthetic fixtures. These are development instruments, not evidence that the taxonomy is reliable or that PCT improves task performance.
+## Human decisions still open
+
+P1-D11 through P1-D14 must be resolved before the v0.2 pilot protocol can be finalized:
+
+1. Outcome semantics for correctly escalated process-only goals;
+2. First Invalid Transition decision/action/effect boundary;
+3. terminal recommendation after an irreversible authorization or integrity breach;
+4. recommendation policy when recovery authority is absent from the trace.
 
 ## Approved P1 development configuration
 
@@ -59,13 +78,10 @@ This is a development selection, not a confirmatory Protocol Freeze.
 make validate
 ```
 
-Useful P1 development commands:
+Materialize the reviewed Calibration bundle when direct access to derived JSON artifacts is needed:
 
 ```bash
-python3 scripts/lint_trajectory.py data/p1/synthetic/stale-evidence.json
-python3 scripts/annotation_agreement.py \
-  tests/fixtures/p1/annotator-a.jsonl \
-  tests/fixtures/p1/annotator-b.jsonl
+make materialize-calibration
 ```
 
 ## Governance principle
