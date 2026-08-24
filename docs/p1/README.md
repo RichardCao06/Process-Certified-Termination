@@ -36,5 +36,5 @@ Pass-A structural QC found 25 parseable records, one aggregate internal field co
 - No Fixture Author Expectations opened before both human passes are frozen.
 - No case-level semantic correction of Pass A before Pass B.
 - No online stop interception.
-- No effectiveness claim.
+- This P1 work does not make an effectiveness claim.
 - Same-human Pass A/Pass B results are intra-rater feasibility, not independent inter-rater validation.
