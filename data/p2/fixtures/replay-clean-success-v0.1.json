@@ -1,0 +1,17 @@
+{
+  "schema_version": "0.1",
+  "events": [
+    {"event_id":"E1","sequence":1,"event_type":"GOAL_STATE","source":"SYSTEM","goal_id":"goal-clean","goal_revision":1,"snapshot_id":"S1","payload":{"obligation_ids":["O1"]},"created_at":"2026-08-25T09:10:00Z"},
+    {"event_id":"E2","sequence":2,"event_type":"TOOL_RESULT","source":"TOOL","goal_id":"goal-clean","goal_revision":1,"snapshot_id":"S1","payload":{"evidence_id":"EV1","result":"PASS","authoritative":true},"created_at":"2026-08-25T09:10:01Z"},
+    {"event_id":"E3","sequence":3,"event_type":"OBLIGATION_TRANSITION","source":"HARNESS","goal_id":"goal-clean","goal_revision":1,"snapshot_id":"S1","payload":{"obligation_id":"O1","from_state":"ATTEMPTED","to_state":"VERIFIED","evidence_ids":["EV1"]},"created_at":"2026-08-25T09:10:02Z"},
+    {"event_id":"E4","sequence":4,"event_type":"CANDIDATE_STOP","source":"HARNESS","goal_id":"goal-clean","goal_revision":1,"snapshot_id":"S1","payload":{"stop_scope":"GOAL_COMPLETION_PROPOSAL","recovery_authority":"NOT_APPLICABLE","claims_goal_complete":true},"created_at":"2026-08-25T09:10:03Z"}
+  ],
+  "evidence_records": [
+    {"evidence_id":"EV1","producer":"fixture-validator","source_class":"DETERMINISTIC_VALIDATOR","goal_id":"goal-clean","goal_revision":1,"snapshot_id":"S1","obligation_ids":["O1"],"result":"PASS","scope":["artifact"],"digest":"e1369de1b2078cecc19f1284c5a42f85360f7ee78d553068eaafe16d83c7ab1c","created_event_id":"E2","authoritative":true,"invalidated_by_event_ids":[]}
+  ],
+  "obligations": [
+    {"obligation_id":"O1","kind":"DELIVERABLE","severity":"HARD","state":"VERIFIED","evidence_ids":["EV1"],"last_transition_event_id":"E3"}
+  ],
+  "candidate_stop": {"stop_id":"STOP1","stop_event_id":"E4","stop_scope":"GOAL_COMPLETION_PROPOSAL","goal_id":"goal-clean","goal_revision":1,"snapshot_id":"S1","recovery_authority":"NOT_APPLICABLE"},
+  "policy": null
+}

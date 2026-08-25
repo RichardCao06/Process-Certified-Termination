@@ -1,0 +1,245 @@
+{
+  "register_id": "PCT-P2-DECISION-REGISTER-v0.1",
+  "project_id": "PCT",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "PENDING_HUMAN_DECISIONS",
+  "created_at": "2026-08-25T09:15:00Z",
+  "authorization_context": {
+    "p1_merge_commit": "77e991a5c1f5a101ef03ffb5154b6735f73ddef4",
+    "research_owner_instruction": "Begin P2, route normative decisions to the human, and autonomously advance the remainder.",
+    "authorized_now": [
+      "A0_ANALYSIS",
+      "A1_DRAFTING",
+      "A2_REVERSIBLE_SANDBOX_FOUNDATION"
+    ],
+    "not_authorized_now": [
+      "LIVE_SHADOW_MEASUREMENT",
+      "SEMANTIC_AUDIT_AGENT_CALLS",
+      "PRIVATE_RUNTIME_TRACE_COLLECTION",
+      "SEALED_OR_HIDDEN_REFERENCE_ACCESS",
+      "ONLINE_BLOCKING_OR_STEERING",
+      "EFFECTIVENESS_CLAIMS"
+    ]
+  },
+  "decisions": [
+    {
+      "decision_id": "PCT-P2-D01",
+      "title": "Label scope for P2 Shadow endpoints",
+      "status": "PENDING_HUMAN",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "summary": "Use the P1 layered Reliability Matrix.",
+          "primary": [
+            "accept_decision",
+            "process_verdict",
+            "stop_scope",
+            "recovery_authority"
+          ],
+          "human_review": [
+            "outcome_verdict",
+            "certification_recommendation",
+            "fit_status",
+            "fit_locator",
+            "hard_gate_presence",
+            "certification_effects"
+          ],
+          "exploratory": [
+            "control_actions",
+            "failure_codes",
+            "evidence_assessment"
+          ],
+          "excluded_pending_repair": [
+            "valid_alternative_path"
+          ]
+        },
+        "B": {
+          "summary": "Promote Outcome to a primary endpoint despite P1 shared semantic error.",
+          "risk": "High repeatability may be mistaken for construct correctness."
+        },
+        "C": {
+          "summary": "Use only ACCEPT/DO_NOT_ACCEPT as the primary endpoint.",
+          "risk": "Most conservative, but loses process and scope diagnostics."
+        }
+      },
+      "recommendation_reason": "A preserves the final P1 Reliability Matrix without overstating unstable layers."
+    },
+    {
+      "decision_id": "PCT-P2-D02",
+      "title": "Runtime trace retention and privacy policy",
+      "status": "PENDING_HUMAN",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "summary": "Foundation and first pilot use synthetic or explicitly public tasks only.",
+          "raw_retention": "30 days in access-controlled local research storage",
+          "derived_retention": "Redacted hashes, metrics, and non-sensitive reports may be retained",
+          "prohibited": [
+            "secrets",
+            "personal data",
+            "private enterprise content",
+            "credentials"
+          ],
+          "incident_rule": "Stop ingestion and quarantine the record if prohibited data appears"
+        },
+        "B": {
+          "summary": "Permit private operational traces with encryption and 90-day retention.",
+          "risk": "Requires a named Data Steward and stronger access/erasure controls."
+        },
+        "C": {
+          "summary": "Retain complete raw traces indefinitely.",
+          "risk": "Not recommended because it maximizes privacy and governance exposure."
+        }
+      },
+      "recommendation_reason": "A is sufficient to establish measurement and replay feasibility with minimal data risk."
+    },
+    {
+      "decision_id": "PCT-P2-D03",
+      "title": "Deterministic checks that retain hard-gate status",
+      "status": "PENDING_HUMAN",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "summary": "Only exact checks mapped to an already approved P0 hard-gate rule may be hard.",
+          "candidate_hard_check_ids": [
+            "P2.CHK.VERIFIED_WITHOUT_VALID_EVIDENCE",
+            "P2.CHK.STALE_EVIDENCE_REFERENCED",
+            "P2.CHK.AUTHORITATIVE_FAILURE_NOT_PROPAGATED",
+            "P2.CHK.UNAUTHORIZED_IRREVERSIBLE_ACTION",
+            "P2.CHK.PROTECTED_EVALUATOR_MODIFICATION"
+          ],
+          "descriptive_only_check_ids": [
+            "P2.CHK.UNRESOLVED_HARD_OBLIGATION_AT_COMPLETION",
+            "P2.CHK.UNKNOWN_RECOVERY_AUTHORITY",
+            "P2.CHK.FALSE_BLOCKER_WITH_SELF_SERVICE",
+            "P2.CHK.TURN_STOP_CLAIMED_COMPLETE",
+            "P2.CHK.BUDGET_STOP_AS_SUCCESS"
+          ]
+        },
+        "B": {
+          "summary": "Treat every implemented deterministic check as a hard gate.",
+          "risk": "Would silently promote P1 exploratory rules into non-compensatory gates."
+        },
+        "C": {
+          "summary": "Keep all checks descriptive throughout P2.",
+          "risk": "Safest but does not test a hard-gate Shadow policy."
+        }
+      },
+      "recommendation_reason": "A preserves P0 provenance and prevents the implementation from defining new normative gates."
+    },
+    {
+      "decision_id": "PCT-P2-D04",
+      "title": "Semantic Audit Agent configuration",
+      "status": "PENDING_HUMAN",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "summary": "P2.0-P2.2 are deterministic-only; open a later exact-model gate before P2.3.",
+          "current_effect": "No model calls, web, shell, or semantic judge in the foundation",
+          "later_requirements": [
+            "exact model identifier",
+            "fresh isolated context",
+            "read-only structured snapshot",
+            "fixed token/time budget",
+            "no Human labels, Author Intent, Gold, hidden, or sealed data"
+          ]
+        },
+        "B": {
+          "summary": "Enable a separate read-only semantic model during the first Shadow pilot.",
+          "risk": "Adds cost, leakage surface, and judge variability before replay is established."
+        },
+        "C": {
+          "summary": "Use the same model instance/family as Worker and Auditor.",
+          "risk": "Increases correlated error and weakens independence."
+        }
+      },
+      "recommendation_reason": "A lets the project validate observability and replay before adding an LLM judge."
+    },
+    {
+      "decision_id": "PCT-P2-D05",
+      "title": "Offline reference-evaluator isolation",
+      "status": "PENDING_HUMAN",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "summary": "Reference labels are produced on copied snapshots in a separate offline lane.",
+          "controls": [
+            "freeze Shadow outputs before opening references",
+            "encrypt or custody reference material separately",
+            "never return reference details to Worker or Shadow Auditor",
+            "Author Intent remains not Gold",
+            "preserve access and opening records"
+          ]
+        },
+        "B": {
+          "summary": "Reveal reference labels to the Shadow Auditor after every case.",
+          "risk": "Creates adaptive leakage and invalidates unbiased comparison."
+        },
+        "C": {
+          "summary": "Expose the reference evaluator to the live Worker/Harness.",
+          "risk": "Prohibited because it changes the task and may leak hidden evaluation."
+        }
+      },
+      "recommendation_reason": "A continues the project's separation of execution, auditing, and reference evaluation."
+    },
+    {
+      "decision_id": "PCT-P2-D06",
+      "title": "Initial Shadow sample and resource budget",
+      "status": "PENDING_HUMAN",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "summary": "Use a staged budget rather than immediately running natural trajectories.",
+          "p2_0_to_p2_2": {
+            "synthetic_replay_fixtures": 20,
+            "malformed_or_leakage_fixtures": 10,
+            "live_model_calls": 0
+          },
+          "p2_3": "Separate gate, maximum 20 semantic-auditor Candidate Stops",
+          "p2_4": "Separate protocol freeze for exact Worker model, Harness commit, tasks, repeats, tokens, time, and cost"
+        },
+        "B": {
+          "summary": "Immediately collect 100 natural Candidate Stops.",
+          "risk": "Premature before event compatibility, privacy, and replay are verified."
+        },
+        "C": {
+          "summary": "Use an open-ended sample and budget.",
+          "risk": "Not reproducible and vulnerable to stopping-rule bias."
+        }
+      },
+      "recommendation_reason": "A preserves progress while deferring expensive or privacy-relevant runs until the infrastructure is verified."
+    },
+    {
+      "decision_id": "PCT-P2-D07",
+      "title": "Evidence gate before any online-intervention protocol may be proposed",
+      "status": "PENDING_HUMAN",
+      "recommended_option": "A",
+      "options": {
+        "A": {
+          "summary": "Conservative precondition for proposing—not deploying—an online controller.",
+          "requirements": [
+            "at least 100 independently reference-labeled natural Candidate Stops not used to tune the frozen policy",
+            "100% deterministic replay equality",
+            "zero runtime-mutation incidents",
+            "zero hidden/reference leakage incidents",
+            "Shadow decision coverage at least 90%",
+            "95% upper confidence bound for false-accept rate no greater than 5%",
+            "false-continue point estimate no greater than 15%",
+            "independent Methods/Statistics and data-governance review"
+          ]
+        },
+        "B": {
+          "summary": "Moderate gate: 50 stops and false-accept upper bound no greater than 10%.",
+          "risk": "Faster but materially weaker evidence for a safety-relevant intervention study."
+        },
+        "C": {
+          "summary": "No numeric gate; proceed by qualitative judgment.",
+          "risk": "Allows convenience and outcome-dependent escalation."
+        }
+      },
+      "recommendation_reason": "A treats false acceptance as the dominant safety risk and still only permits a later protocol proposal."
+    }
+  ],
+  "reply_template": "PCT-P2-D01: A\nPCT-P2-D02: A\nPCT-P2-D03: A\nPCT-P2-D04: A\nPCT-P2-D05: A\nPCT-P2-D06: A\nPCT-P2-D07: A\n\nAdditional constraints:"
+}
