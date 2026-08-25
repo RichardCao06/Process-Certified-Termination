@@ -1,6 +1,6 @@
-.PHONY: validate validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness unit test materialize-calibration materialize-p1-closure
+.PHONY: validate validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure unit test materialize-calibration materialize-p1-closure
 
-validate: validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness unit
+validate: validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure unit
 
 validate-p0:
 	python3 scripts/validate_p0.py
@@ -19,6 +19,9 @@ validate-analysis-readiness:
 
 validate-closure-readiness:
 	python3 scripts/validate_p1_closure_readiness.py
+
+validate-closure:
+	python3 scripts/validate_p1_closure.py
 
 unit:
 	python3 -m unittest discover -s tests -v
