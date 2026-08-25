@@ -1,0 +1,60 @@
+{
+  "bundle_id": "PCT-P1-PRE-AUTHOR-FREEZE-BUNDLE-v0.1",
+  "created_at": "2026-08-25T03:19:27.901546+00:00",
+  "decoded_filename": "PCT_P1_Development_Pilot_Pre_Author_Freeze_Bundle_v0.1.tar.gz",
+  "sha256": "d3616def7e74e89fcea113099f848b2bce9f6238c862869d922393080529a519",
+  "encoding": "base64",
+  "parts": [
+    "bundle-parts/pre-author-freeze-part-00"
+  ],
+  "files": [
+    {
+      "name": "PCT_P1_Development_Pilot_Pass_B_Raw_Bundle_Manifest_v0.1.json",
+      "sha256": "1e8b97068a362f8806b0d3a19be6a8d411acebf74ed53b0ad3729c15f5ca001e",
+      "bytes": 631
+    },
+    {
+      "name": "PCT_P1_Pass_B_Raw_Bundle_part-00.b64",
+      "sha256": "9e74e9cb19ac3e8e28f528ce45f36c1c009d51c2463566e1c68290caffbaf21d",
+      "bytes": 6393
+    },
+    {
+      "name": "PCT_P1_Development_Pilot_Pass_B_Structural_QC_v0.1.json",
+      "sha256": "64af412573c8d9637d7f5c8a09752186efce32ab69e56b71980fe7b9b262fcad",
+      "bytes": 1028
+    },
+    {
+      "name": "PCT_P1_Development_Pilot_Raw_AB_Agreement_v0.1.json",
+      "sha256": "c61a2b8d00fc083184048a73ffc7c60a692847541e0f15c31a107b8817352dc8",
+      "bytes": 29368
+    },
+    {
+      "name": "PCT_P1_Development_Pilot_Raw_AB_Per_Case_v0.1.csv",
+      "sha256": "0738070fa740cb4c78f4dcea20d7aa946981b143327cd1f1fa575ad9de3dc6fa",
+      "bytes": 2236
+    },
+    {
+      "name": "PCT_P1_Development_Pilot_Raw_AB_Agreement_Report_v0.1.html",
+      "sha256": "fafd1096c1ab316ffa50fb9ac846b66889258c32f5cb476f1ce7d4d5a22e68b3",
+      "bytes": 6885
+    },
+    {
+      "name": "PCT_P1_Development_Pilot_Pre_Author_Disagreement_Packet_v0.1.json",
+      "sha256": "eab36f7c921c9ee2802612f144d2cf76dc095350c8b856d556197a998e9ab82c",
+      "bytes": 20941
+    },
+    {
+      "name": "PCT_P1_Development_Pilot_Pass_B_Raw_AB_Freeze_Manifest_v0.1.json",
+      "sha256": "576d5b1d1aa132c61dc3b5701a9111ab2f8a4070b1ffe08454273cc880f342db",
+      "bytes": 1602
+    }
+  ],
+  "pass_b_records": 12,
+  "raw_ab_paired_denominator": 12,
+  "fixture_author_expectations_opened": false,
+  "fixture_author_expectations_used": false,
+  "raw_a_or_b_modified": false,
+  "not_gold": true,
+  "not_independent_inter_rater": true,
+  "memory_carryover_risk": "elevated_due_to_12_hour_interval"
+}
