@@ -33,4 +33,4 @@
 
 ## Interpretation
 
-The five reserve cases are excluded from all A/B denominators. No imputation is permitted. The 12-hour interval creates elevated memory-carryover risk and must be reported. P1 may only report developmental feasibility and intra-rater stability; it cannot claim automated Auditor accuracy or online PCT effectiveness.
+The five reserve cases are excluded from all A/B denominators. No imputation is permitted. The 12-hour interval creates elevated memory-carryover risk and must be reported. The resulting same-human comparison is developmental intra-rater feasibility; it is not independent inter-rater reliability and not Gold-label validation. P1 cannot claim automated Auditor accuracy or online PCT effectiveness.
