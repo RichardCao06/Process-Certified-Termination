@@ -1,0 +1,88 @@
+{
+  "delivery_id": "PCT-P1-FINAL-DELIVERY-v0.1",
+  "status": "FINAL",
+  "generated_at": "2026-08-25T08:14:19Z",
+  "phase_status": "APPROVED_WITH_LIMITATIONS",
+  "p1_closed": true,
+  "p2_authorized": false,
+  "online_intervention_authorized": false,
+  "effectiveness_claim_allowed": false,
+  "raw_layers_overwritten": false,
+  "source_hashes": {
+    "pass_a_annotations_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+    "pass_b_annotations_sha256": "ff5bb76b5b168dd546f61f2dd065f2091ed841e6a2335c014e2a3f1441a5ed5f",
+    "pass_b_episodes_sha256": "d5f5bc3dc0172d1e3f860037d178306d87f1514048835272fb326d69e3769e90",
+    "raw_human_adjudication_sha256": "03b8a87b61cce8ef5e0a1d5b07b0df909562a142c83d30898fab594d1856e3ce",
+    "fixture_author_plaintext_sha256": "fea1de6361b5821bd817f2787a1a27b85b6066671bfbc36d628c2555ace27a44"
+  },
+  "accepted_provenance_incident_ids": [
+    "PCT-P1-I01"
+  ],
+  "files": [
+    {
+      "path": "governance/p1-d15-decision-record-v0.1.json",
+      "sha256": "fcc3afc12a0dab682650a083314f5ae377126a1a1cecbed5b6005594a1365701",
+      "bytes": 3275
+    },
+    {
+      "path": "data/p1/development-pilot/pass-b/human-adjudication-codebook-correction-v0.1.json",
+      "sha256": "c851d17cc3b7f54efa90c5677d6284d6941c34760bd5fce73263ca032928585c",
+      "bytes": 2208
+    },
+    {
+      "path": "data/p1/development-pilot/pass-b/adjudicated-material-fields-final-v0.1.json",
+      "sha256": "9a7f64903e9517d85f640f8583f8a30da1663f9e57eeab752c77febc26a82f58",
+      "bytes": 18937
+    },
+    {
+      "path": "reports/p1/pass-b/reliability-matrix-final-v0.1.json",
+      "sha256": "fcd99e6c42dc165b660ee5bf5a5ec07a29cb83bf281007a208afba2f88e0f362",
+      "bytes": 6085
+    },
+    {
+      "path": "docs/p1/p1-taxonomy-migration-v0.1.md",
+      "sha256": "c6c334d24cf0cc49b8d84a5cb8a8bfdd1c22ea9d5635231f48e4607bf25b21f7",
+      "bytes": 4395
+    },
+    {
+      "path": "docs/p1/p1-closure-approval-record-v0.1.md",
+      "sha256": "5d2c91f6aacab2f38c46e1395ec960ad53f3abb9f8343e4c51c352e759b6bce6",
+      "bytes": 1879
+    },
+    {
+      "path": "docs/p1/p1-closure-report-v0.1.md",
+      "sha256": "660364dfada11f239fc2b8d81935e22b7ae2e98dcbd3419ebf2db99231d64695",
+      "bytes": 8613
+    },
+    {
+      "path": "docs/p1/p1-exit-gate-v0.2-final.md",
+      "sha256": "5910d2a871c2099bdabe7cc04a71383466f81b951becb99b652adc28adb58cca",
+      "bytes": 2260
+    },
+    {
+      "path": "governance/p1-closure-status-v0.1.json",
+      "sha256": "c5ab7057d01b3ac8bef758a961a78d0f346726f327aa83babaeda50755681490",
+      "bytes": 2663
+    },
+    {
+      "path": "reports/p1/p1-final-output-summary-v0.1.json",
+      "sha256": "e89d93c8757833e0b3048c1d9e0b50d12fb2189f41ccd860dc3c15767a17f193",
+      "bytes": 3992
+    },
+    {
+      "path": "docs/p1/p1-final-output-summary-v0.1.html",
+      "sha256": "943d693fb3d08306d73573eb2db07d0abffa45a4d46c1f7a081a50a02a1c4650",
+      "bytes": 7777
+    },
+    {
+      "path": "scripts/validate_p1_closure.py",
+      "sha256": "38d5aacb5e361e28d4758b3892ecc30f0dbcaacf148924f6d4a5c5851275a151",
+      "bytes": 9507
+    },
+    {
+      "path": "tests/test_p1_closure.py",
+      "sha256": "5e9790b40a5dd8489f06bac4b0806c5059869a4212509c9eeccb14f421d3fa0b",
+      "bytes": 1911
+    }
+  ]
+}
