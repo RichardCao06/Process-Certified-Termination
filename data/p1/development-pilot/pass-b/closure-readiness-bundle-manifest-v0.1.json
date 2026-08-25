@@ -5,7 +5,8 @@
   "parts": [
     "bundle-parts/closure-readiness-part-00",
     "bundle-parts/closure-readiness-part-01",
-    "bundle-parts/closure-readiness-part-02",
+    "bundle-parts/closure-readiness-part-02a",
+    "bundle-parts/closure-readiness-part-02b",
     "bundle-parts/closure-readiness-part-03"
   ],
   "sha256": "9e4c39107a746e54360214d71ef0d03d025b9c5324e06411dbdc71fecb306691",
@@ -89,9 +90,14 @@
       "bytes": 9001
     },
     {
-      "path": "bundle-parts/closure-readiness-part-02",
-      "sha256": "1353b026e941a072004e30d97451f08862bf393fe30b4241d785b50c61fd37f5",
-      "bytes": 9001
+      "path": "bundle-parts/closure-readiness-part-02a",
+      "sha256": "0bda484a8d23b3338831024240a8c2889b50196d52a2cfdc01fce60b3012e585",
+      "bytes": 4501
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02b",
+      "sha256": "5b7b83f24acfd3c856ffa4d913de6e36a3523c3646821d5a63d0534ab3645d35",
+      "bytes": 4501
     },
     {
       "path": "bundle-parts/closure-readiness-part-03",
