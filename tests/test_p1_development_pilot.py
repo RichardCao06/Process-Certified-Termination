@@ -12,12 +12,12 @@ assert spec.loader is not None
 spec.loader.exec_module(module)
 
 
-class DevelopmentPilotPassAIntegrityTests(unittest.TestCase):
+class DevelopmentPilotIntegrityTests(unittest.TestCase):
     def test_full_validator(self) -> None:
         self.assertEqual(module.main(), 0)
 
-    def test_frozen_counts_and_order(self) -> None:
-        temp, root = module.extract_bundle()
+    def test_pass_a_frozen_counts_and_order(self) -> None:
+        temp, root = module.extract_pass_a_bundle()
         try:
             annotations = module.read_jsonl(
                 root / "data/p1/development-pilot/pass-a/human-pass-a-raw.jsonl"
@@ -28,7 +28,7 @@ class DevelopmentPilotPassAIntegrityTests(unittest.TestCase):
             temp.cleanup()
 
     def test_reserve_cases_are_not_imputed(self) -> None:
-        temp, root = module.extract_bundle()
+        temp, root = module.extract_pass_a_bundle()
         try:
             freeze = module.load_json(
                 root / "data/p1/development-pilot/pass-a/freeze-manifest-v0.1.json"
@@ -38,33 +38,30 @@ class DevelopmentPilotPassAIntegrityTests(unittest.TestCase):
         finally:
             temp.cleanup()
 
-    def test_pass_b_commitment_does_not_disclose_ids(self) -> None:
-        commitment = module.load_json(
-            module.PASS_B / "subset-commitment-v0.2.json"
+    def test_historical_commitments_do_not_disclose_ids(self) -> None:
+        for name in ("subset-commitment-v0.1.json", "subset-commitment-v0.2.json"):
+            commitment = module.load_json(module.PASS_B / name)
+            self.assertEqual(commitment["selected_count"], 12)
+            self.assertFalse(commitment["identifiers_disclosed_before_pass_b"])
+            self.assertNotIn("selected_trajectory_ids", commitment)
+            self.assertNotIn("ordered_trajectory_ids", commitment)
+
+    def test_release_matches_precommitted_order(self) -> None:
+        release = module.load_json(module.PASS_B / "release-record-v0.1.json")
+        self.assertEqual(release["ordered_trajectory_ids"], module.EXPECTED_PASS_B_ORDER)
+        self.assertEqual(
+            module.canonical_order_sha(release["ordered_trajectory_ids"]),
+            module.EXPECTED_PASS_B_COMMITMENT,
         )
-        self.assertEqual(commitment["selected_count"], 12)
-        self.assertFalse(commitment["identifiers_disclosed_before_pass_b"])
-        self.assertNotIn("selected_trajectory_ids", commitment)
-        self.assertNotIn("ordered_trajectory_ids", commitment)
+        self.assertTrue(release["commitment_verified"])
+        self.assertFalse(release["selection_or_order_changed_at_release"])
 
-    def test_a02_changes_only_delay_not_subset_or_order(self) -> None:
-        original = module.load_json(module.PASS_B / "subset-commitment-v0.1.json")
-        amended = module.load_json(module.PASS_B / "subset-commitment-v0.2.json")
-        self.assertEqual(original["ordered_subset_sha256"], amended["ordered_subset_sha256"])
-        self.assertEqual(original["selected_count"], amended["selected_count"])
-        self.assertEqual(amended["minimum_delay_hours"], 12)
-        self.assertEqual(amended["release_not_before"], module.EXPECTED_AMENDED_RELEASE)
-        self.assertFalse(amended["selection_or_order_changed_by_amendment"])
-
-    def test_original_release_condition_is_preserved_historically(self) -> None:
-        original = module.load_json(module.PASS_B / "subset-commitment-v0.1.json")
-        self.assertEqual(original["release_not_before"], module.EXPECTED_ORIGINAL_RELEASE)
-
-    def test_delivery_manifest_preserves_source_and_key_commitments(self) -> None:
-        delivery = module.load_json(module.PASS_A / "delivery-manifest-v0.2.json")
-        self.assertEqual(delivery["episode_count"], 30)
-        self.assertIn("PCT_P1_Development_Pilot_Pass_A_v0.2.zip", delivery["files"])
-        self.assertIn("PCT_P1_Development_Pilot_Author_Key_Custody_v0.2.zip", delivery["files"])
+    def test_release_delivery_contains_no_author_expectations(self) -> None:
+        manifest = module.load_json(module.PASS_B / "release-delivery-manifest-v0.1.json")
+        self.assertFalse(manifest["contains_pass_a_annotations"])
+        self.assertFalse(manifest["contains_pass_a_qc"])
+        self.assertFalse(manifest["contains_fixture_author_expectations"])
+        self.assertFalse(manifest["held_out_or_sealed_data"])
 
 
 if __name__ == "__main__":
