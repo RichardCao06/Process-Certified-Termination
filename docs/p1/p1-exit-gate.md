@@ -2,7 +2,7 @@
 
 ## Current status
 
-**Calibration and Codebook v0.2 are complete. Human Pass A is frozen at 25 cases. The unchanged precommitted 12-case Human Pass B was released after the A02 12-hour gate and awaits completion. P1 is not complete; human annotation and closure items remain below.**
+**Pass A, Pass B, raw A/B reconstruction, Author Intent opening, three-way comparison, and the submitted human developmental adjudication are complete. P1 is not complete: PCT-P1-D15 and final Research Owner closure approval remain open.**
 
 ## Completed
 
@@ -13,24 +13,24 @@
 - [x] Human Pass A completed for fixed-order positions 1–25 and frozen without correction.
 - [x] Positions 26–30 recorded as unannotated administrative reserve without imputation.
 - [x] A01 and A02 preserve workload, denominator, and 12-hour timing changes.
-- [x] Pass-B selected cases and order were committed before release.
-- [x] The release gate elapsed and the reconstructed order matched commitment `1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86`.
-- [x] Pass B released with 12 neutral display IDs and no Pass-A labels/QC or author expectations.
-- [x] Fixture Author Expectations remain encrypted and unopened.
-- [x] Analysis, disagreement-packet, guarded author-opening, and Closure tooling prepared.
+- [x] The precommitted 12-case Human Pass B was completed and frozen.
+- [x] Raw Pass-B annotations, timing, and episode package were hash-verified.
+- [x] Raw A/B agreement and disagreement arithmetic were deterministically reconstructed from frozen A/B inputs.
+- [x] Fixture Author Expectations were opened after both passes and matched the pre-existing plaintext commitment.
+- [x] Author Intent remained a developmental third reference and not Gold.
+- [x] Human developmental adjudication completed 20/20 required fields across eight Cases with no unresolved required field.
+- [x] Reliability Matrix, Taxonomy Migration, and Closure Report drafts prepared.
+- [x] PCT-P1-I01 records that the previously announced pre-author report persistence could not be independently recovered from the branch.
 - [x] No held-out or sealed data accessed.
 
-## Human empirical Gate still open
+## Final human Gate still open
 
-- [ ] Human completes all 12 Pass-B cases.
-- [ ] Raw Pass-B Backup, JSONL, and timing files are frozen and hash-verified.
-- [ ] Raw intra-rater agreement and field-level disagreement reports generated and frozen.
-- [ ] Pre-author-opening disagreement packet generated.
-- [ ] Fixture Author Expectations opened only after both passes and raw A/B report are frozen and commitment verified.
-- [ ] Disagreements adjudicated without deleting either pass.
-- [ ] Taxonomy migration and reliably/unreliably annotatable classes documented.
-- [ ] Research Owner approves P1 Closure Report.
+- [ ] Research Owner resolves PCT-P1-D15: three submitted Outcome labels versus frozen Codebook v0.2 semantics.
+- [ ] A versioned final adjudication layer is generated without overwriting the submitted adjudication.
+- [ ] Final Reliability Matrix and Taxonomy Migration are regenerated.
+- [ ] Research Owner approves the P1 Closure Report and accepts all listed limitations.
+- [ ] Any P2 Shadow Work Order is authorized separately; no online intervention is authorized by P1.
 
 ## Interpretation
 
-The five reserve cases are excluded from all A/B denominators. No imputation is permitted. The 12-hour interval creates elevated memory-carryover risk and must be reported. The resulting same-human comparison is developmental intra-rater feasibility; it is not independent inter-rater reliability and not Gold-label validation. P1 cannot claim automated Auditor accuracy or online PCT effectiveness.
+The five reserve cases remain excluded without imputation. The 12-hour interval creates elevated memory-carryover risk. The same-human comparison is developmental intra-rater feasibility; it is not independent inter-rater reliability and not Gold-label validation. P1 does not establish automated Auditor accuracy or online PCT effectiveness.
