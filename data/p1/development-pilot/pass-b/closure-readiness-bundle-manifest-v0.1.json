@@ -5,7 +5,10 @@
   "parts": [
     "bundle-parts/closure-readiness-part-00",
     "bundle-parts/closure-readiness-part-01",
-    "bundle-parts/closure-readiness-part-02a",
+    "bundle-parts/closure-readiness-part-02a0",
+    "bundle-parts/closure-readiness-part-02a1",
+    "bundle-parts/closure-readiness-part-02a2",
+    "bundle-parts/closure-readiness-part-02a3",
     "bundle-parts/closure-readiness-part-02b",
     "bundle-parts/closure-readiness-part-03"
   ],
@@ -90,9 +93,24 @@
       "bytes": 9001
     },
     {
-      "path": "bundle-parts/closure-readiness-part-02a",
-      "sha256": "0bda484a8d23b3338831024240a8c2889b50196d52a2cfdc01fce60b3012e585",
-      "bytes": 4501
+      "path": "bundle-parts/closure-readiness-part-02a0",
+      "sha256": "d17eea71e5517c14163a310eba11c5cbb1aaa86317ee7bbd22ad1e86db2e67f6",
+      "bytes": 1126
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02a1",
+      "sha256": "9f8ffd2806e7c49fcf857541b52f4ecd2f519bc87afda2433331cd0917621c35",
+      "bytes": 1126
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02a2",
+      "sha256": "a40a1babcc4ac6682a94c930df20b44e1fde8de1067787225035a880729629bc",
+      "bytes": 1126
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02a3",
+      "sha256": "68898a1fc02dce92cdf083cab856f51596ba8a4410801a8622f7d04fd03abf71",
+      "bytes": 1126
     },
     {
       "path": "bundle-parts/closure-readiness-part-02b",
