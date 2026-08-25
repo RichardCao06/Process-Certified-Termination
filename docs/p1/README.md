@@ -38,5 +38,5 @@ The participant must complete all 12 records and freeze Backup, JSONL, and timin
 - No Fixture Author Expectations before raw Pass B and raw A/B report are frozen.
 - No case-level Pass-A semantic correction before Pass B.
 - No online stop interception.
-- No effectiveness claim.
-- Same-human A/B results are developmental intra-rater feasibility, not independent inter-rater validation or Gold-label validation.
+- This P1 work does not make an effectiveness claim.
+- Same-human A/B results are developmental intra-rater feasibility, not independent inter-rater reliability and not Gold-label validation.
