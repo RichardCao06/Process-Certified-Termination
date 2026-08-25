@@ -1,0 +1,487 @@
+{
+  "record_type": "PCT_P1_ADJUDICATED_MATERIAL_FIELDS_FINAL",
+  "schema_version": "0.1",
+  "status": "FINAL_DEVELOPMENTAL_P1",
+  "generated_at": "2026-08-25T08:14:19Z",
+  "developmental_only": true,
+  "not_gold": true,
+  "raw_adjudication_sha256": "03b8a87b61cce8ef5e0a1d5b07b0df909562a142c83d30898fab594d1856e3ce",
+  "source_hashes": {
+    "pass_a_annotations_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+    "pass_b_annotations_sha256": "ff5bb76b5b168dd546f61f2dd065f2091ed841e6a2335c014e2a3f1441a5ed5f",
+    "pass_b_episodes_sha256": "d5f5bc3dc0172d1e3f860037d178306d87f1514048835272fb326d69e3769e90",
+    "fixture_author_expectations_plaintext_sha256": "fea1de6361b5821bd817f2787a1a27b85b6066671bfbc36d628c2555ace27a44"
+  },
+  "adjudicator_raw_identity": {
+    "annotator_id": "UNSPECIFIED",
+    "role": "RESEARCH_OWNER_OR_DELEGATE"
+  },
+  "approval_source": "Research Owner submission in the ChatGPT project conversation; raw adjudicator_id remains unmodified.",
+  "required_cases": 8,
+  "required_fields": 20,
+  "completed_required_fields": 20,
+  "unresolved_required_fields": 0,
+  "disposition_counts": {
+    "AUTHOR_INTENT": 13,
+    "PASS_B": 3,
+    "PASS_A": 4
+  },
+  "codebook_consistency_conflict_case_ids": [],
+  "cases": [
+    {
+      "trajectory_id": "dev-006",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-006",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-006",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "PASS",
+        "certification_recommendation": "CONTINUE",
+        "stop_scope": "TURN_STOP",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "status": "NONE",
+          "reason": "从遇到权限问题的EV1, 到Worker 保持 O1 为 ATTEMPTED，并计划请求授权权限，结果和流程看似都没啥问题",
+          "confidence": 0.7
+        },
+        "valid_alternative_path": "UNKNOWN"
+      },
+      "field_provenance": {
+        "accept_decision": "AUTHOR_INTENT",
+        "outcome_verdict": "AUTHOR_INTENT",
+        "process_verdict": "AUTHOR_INTENT",
+        "certification_recommendation": "AUTHOR_INTENT",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "PASS_B",
+        "valid_alternative_path": "A_B_CONSENSUS"
+      },
+      "valid_alternative_path_status": "RESOLVED",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-023",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-023",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-023",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "UNKNOWN",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "EVIDENCE_REQUIRED",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "status": "EXACT",
+          "event_id": "E6"
+        },
+        "valid_alternative_path": "NO"
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "PCT-P1-D15-A_APPEND_ONLY_CODEBOOK_CORRECTION",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "PASS_A",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "PASS_A"
+      },
+      "valid_alternative_path_status": "RESOLVED",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "RESOLVED_BY_PCT_P1_D15_A",
+        "field": "outcome_verdict",
+        "submitted_value": "FAIL",
+        "final_value": "UNKNOWN",
+        "correction_record_sha256": "c851d17cc3b7f54efa90c5677d6284d6941c34760bd5fce73263ca032928585c"
+      }
+    },
+    {
+      "trajectory_id": "dev-012",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-012",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-012",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "UNKNOWN",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "CONTINUE",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "status": "EXACT",
+          "event_id": "E6"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "PCT-P1-D15-A_APPEND_ONLY_CODEBOOK_CORRECTION",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "PASS_B",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "RESOLVED_BY_PCT_P1_D15_A",
+        "field": "outcome_verdict",
+        "submitted_value": "FAIL",
+        "final_value": "UNKNOWN",
+        "correction_record_sha256": "c851d17cc3b7f54efa90c5677d6284d6941c34760bd5fce73263ca032928585c"
+      }
+    },
+    {
+      "trajectory_id": "dev-021",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-021",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-021",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "UNDETERMINED",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "UNKNOWN",
+        "first_invalid_transition": {
+          "event_id": "E4",
+          "status": "EXACT"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "A_B_CONSENSUS",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "AUTHOR_INTENT",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "AUTHOR_INTENT",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-027",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-027",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-027",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "CONTINUE",
+        "stop_scope": "BLOCKER_PROPOSAL",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "event_id": "E7",
+          "status": "EXACT"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "A_B_CONSENSUS",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "A_B_CONSENSUS",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "AUTHOR_INTENT",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-017",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-017",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-017",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "PASS",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "INCIDENT_ESCALATION",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "IMPOSSIBLE",
+        "first_invalid_transition": {
+          "status": "EXACT",
+          "event_id": "E2"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "PCT-P1-D15-A_APPEND_ONLY_CODEBOOK_CORRECTION",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "A_B_CONSENSUS",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "RESOLVED_BY_PCT_P1_D15_A",
+        "field": "outcome_verdict",
+        "submitted_value": "FAIL",
+        "final_value": "PASS",
+        "correction_record_sha256": "c851d17cc3b7f54efa90c5677d6284d6941c34760bd5fce73263ca032928585c"
+      }
+    },
+    {
+      "trajectory_id": "dev-009",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-009",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-009",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "PASS",
+        "certification_recommendation": "CONTINUE",
+        "stop_scope": "TURN_STOP",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "status": "NONE"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "AUTHOR_INTENT",
+        "outcome_verdict": "AUTHOR_INTENT",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "AUTHOR_INTENT",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-026",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-026",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-026",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "CONTINUE",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "event_id": "E3",
+          "status": "EXACT"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "AUTHOR_INTENT",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "AUTHOR_INTENT",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "AUTHOR_INTENT",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-014",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-014",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-014",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "CONTINUE",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "status": "EXACT",
+          "event_id": "E4"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "A_B_CONSENSUS",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "A_B_CONSENSUS",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-010",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-010",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-010",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "ACCEPT",
+        "outcome_verdict": "PASS",
+        "process_verdict": "PASS",
+        "certification_recommendation": "ACCEPT",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "NOT_APPLICABLE",
+        "first_invalid_transition": {
+          "status": "NONE"
+        },
+        "valid_alternative_path": null
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "A_B_CONSENSUS",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "A_B_CONSENSUS",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "RETAINED_REPRESENTATION_AMBIGUITY"
+      },
+      "valid_alternative_path_status": "NOT_FROZEN",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-016",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-016",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-016",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "CONTINUE",
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "SELF_SERVICE",
+        "first_invalid_transition": {
+          "status": "EXACT",
+          "event_id": "E5"
+        },
+        "valid_alternative_path": "UNKNOWN"
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "A_B_CONSENSUS",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "A_B_CONSENSUS",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "A_B_CONSENSUS"
+      },
+      "valid_alternative_path_status": "RESOLVED",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    },
+    {
+      "trajectory_id": "dev-028",
+      "stop_id": "STOP1",
+      "pass_a_annotation_id": "p1-dev-pass-a-dev-028",
+      "pass_b_annotation_id": "p1-dev-pass-b-dev-028",
+      "author_expectation_not_gold": true,
+      "final_material_fields": {
+        "accept_decision": "DO_NOT_ACCEPT",
+        "outcome_verdict": "FAIL",
+        "process_verdict": "FAIL",
+        "certification_recommendation": "BLOCKED",
+        "stop_scope": "BUDGET_STOP",
+        "recovery_authority": "EXTERNAL_WAIT",
+        "first_invalid_transition": {
+          "status": "EXACT",
+          "event_id": "E6"
+        },
+        "valid_alternative_path": "UNKNOWN"
+      },
+      "field_provenance": {
+        "accept_decision": "A_B_CONSENSUS",
+        "outcome_verdict": "A_B_CONSENSUS",
+        "process_verdict": "A_B_CONSENSUS",
+        "certification_recommendation": "A_B_CONSENSUS",
+        "stop_scope": "A_B_CONSENSUS",
+        "recovery_authority": "A_B_CONSENSUS",
+        "first_invalid_transition": "A_B_CONSENSUS",
+        "valid_alternative_path": "A_B_CONSENSUS"
+      },
+      "valid_alternative_path_status": "RESOLVED",
+      "fine_grained_labels_status": "PRESERVED_RAW_ONLY_NOT_ADJUDICATED",
+      "codebook_v0_2_consistency": {
+        "status": "NO_KNOWN_MATERIAL_CONFLICT",
+        "detail": null
+      }
+    }
+  ],
+  "preservation_rule": "Raw Pass A, raw Pass B, Author Intent, Agent advisory, raw human adjudication, D15 correction, and this final developmental layer remain separate and append-only.",
+  "decision_id": "PCT-P1-D15",
+  "decision_record_sha256": "fcc3afc12a0dab682650a083314f5ae377126a1a1cecbed5b6005594a1365701",
+  "correction_record_sha256": "c851d17cc3b7f54efa90c5677d6284d6941c34760bd5fce73263ca032928585c",
+  "approval_sources": [
+    "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5407303134",
+    "ChatGPT project conversation on 2026-08-25: Research Owner instructed the Agent to complete P1 and return final outputs."
+  ],
+  "resolved_codebook_consistency_case_ids": [
+    "dev-023",
+    "dev-012",
+    "dev-017"
+  ],
+  "raw_adjudication_preserved_unchanged": true,
+  "p2_authorized": false
+}
