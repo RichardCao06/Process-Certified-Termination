@@ -1,0 +1,231 @@
+{
+  "schema_version": "0.1-draft",
+  "trajectory_id": "traj-valid-alternative",
+  "task": {
+    "task_id": "task-valid-alternative",
+    "stream": "V",
+    "description": "Complete two obligations through any valid path",
+    "source_class": "SYNTHETIC",
+    "contains_sensitive_data": false
+  },
+  "run": {
+    "worker_model": "deepseek-v4-pro",
+    "harness": "deepseek-harness",
+    "harness_commit": "141eb6fef83422698aef7a981029e843e8161534",
+    "resource_policy": {
+      "max_tool_calls": 20,
+      "max_rounds": 5,
+      "max_wall_seconds": 300
+    },
+    "visibility_policy": {
+      "hidden_evaluator_visible": false,
+      "gold_labels_visible": false,
+      "other_condition_outputs_visible": false
+    }
+  },
+  "goal": {
+    "goal_id": "goal-traj-valid-alternative",
+    "revision": 1,
+    "objective": "Complete two obligations through any valid path",
+    "obligations": [
+      {
+        "obligation_id": "O1",
+        "description": "Produce the required artifact or state",
+        "kind": "OUTCOME",
+        "severity": "HARD",
+        "required_evidence_classes": [
+          "DETERMINISTIC_VALIDATOR"
+        ]
+      },
+      {
+        "obligation_id": "O2",
+        "description": "Preserve the required invariant",
+        "kind": "INVARIANT",
+        "severity": "HARD",
+        "required_evidence_classes": [
+          "DETERMINISTIC_VALIDATOR"
+        ]
+      }
+    ]
+  },
+  "snapshots": [
+    {
+      "snapshot_id": "S0",
+      "sequence": 0,
+      "digest": "65683504302c3d4c3d5894c39e7bc22abbba7f46f1ab599eb3aa5b890d59ee54",
+      "scope": "workspace"
+    },
+    {
+      "snapshot_id": "S1",
+      "sequence": 3,
+      "digest": "1edc93ae65c79a666e7c68f2ac88b4ab3cea1522307253f07c7ca147b13f1ad6",
+      "scope": "workspace"
+    },
+    {
+      "snapshot_id": "S2",
+      "sequence": 6,
+      "digest": "973b523f229235c91073d8cc898646f00b88803c3e9e3f6e7ab38e4850b0ec0d",
+      "scope": "workspace"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "EV2",
+      "created_event_id": "E4",
+      "source_class": "DETERMINISTIC_VALIDATOR",
+      "goal_revision": 1,
+      "snapshot_id": "S1",
+      "obligation_ids": [
+        "O2"
+      ],
+      "verdict": "PASS",
+      "scope": "required invariant",
+      "invalidated_by_event_ids": []
+    },
+    {
+      "evidence_id": "EV1",
+      "created_event_id": "E7",
+      "source_class": "DETERMINISTIC_VALIDATOR",
+      "goal_revision": 1,
+      "snapshot_id": "S2",
+      "obligation_ids": [
+        "O1"
+      ],
+      "verdict": "PASS",
+      "scope": "required artifact",
+      "invalidated_by_event_ids": []
+    }
+  ],
+  "events": [
+    {
+      "event_id": "E1",
+      "sequence": 1,
+      "event_type": "GOAL_DEFINED",
+      "source": "HUMAN",
+      "goal_revision": 1,
+      "payload": {
+        "goal_id": "goal-traj-valid-alternative"
+      },
+      "snapshot_id": "S0"
+    },
+    {
+      "event_id": "E2",
+      "sequence": 2,
+      "event_type": "OBSERVATION",
+      "source": "WORKER",
+      "goal_revision": 1,
+      "payload": {
+        "summary": "The invariant can be checked before writing the artifact."
+      },
+      "snapshot_id": "S0"
+    },
+    {
+      "event_id": "E3",
+      "sequence": 3,
+      "event_type": "VERIFIER_RESULT",
+      "source": "VERIFIER",
+      "goal_revision": 1,
+      "payload": {
+        "status": "PASS",
+        "obligation_ids": [
+          "O2"
+        ],
+        "authoritative": true
+      },
+      "snapshot_id": "S1"
+    },
+    {
+      "event_id": "E4",
+      "sequence": 4,
+      "event_type": "EVIDENCE_RECORDED",
+      "source": "SYSTEM",
+      "goal_revision": 1,
+      "payload": {
+        "evidence_id": "EV2"
+      },
+      "snapshot_id": "S1"
+    },
+    {
+      "event_id": "E5",
+      "sequence": 5,
+      "event_type": "OBLIGATION_TRANSITION",
+      "source": "WORKER",
+      "goal_revision": 1,
+      "payload": {
+        "obligation_id": "O2",
+        "from_state": "PENDING",
+        "to_state": "VERIFIED",
+        "evidence_ids": [
+          "EV2"
+        ],
+        "reason": "authoritative invariant check passed"
+      },
+      "snapshot_id": "S1"
+    },
+    {
+      "event_id": "E6",
+      "sequence": 6,
+      "event_type": "TOOL_RESULT",
+      "source": "TOOL",
+      "goal_revision": 1,
+      "payload": {
+        "status": "PASS",
+        "obligation_ids": [
+          "O1"
+        ],
+        "authoritative": true
+      },
+      "snapshot_id": "S2"
+    },
+    {
+      "event_id": "E7",
+      "sequence": 7,
+      "event_type": "EVIDENCE_RECORDED",
+      "source": "SYSTEM",
+      "goal_revision": 1,
+      "payload": {
+        "evidence_id": "EV1"
+      },
+      "snapshot_id": "S2"
+    },
+    {
+      "event_id": "E8",
+      "sequence": 8,
+      "event_type": "OBLIGATION_TRANSITION",
+      "source": "WORKER",
+      "goal_revision": 1,
+      "payload": {
+        "obligation_id": "O1",
+        "from_state": "PENDING",
+        "to_state": "VERIFIED",
+        "evidence_ids": [
+          "EV1"
+        ],
+        "reason": "artifact check passed"
+      },
+      "snapshot_id": "S2"
+    },
+    {
+      "event_id": "E9",
+      "sequence": 9,
+      "event_type": "CANDIDATE_STOP",
+      "source": "HARNESS",
+      "goal_revision": 1,
+      "payload": {
+        "worker_claim": "COMPLETE"
+      },
+      "snapshot_id": "S2"
+    }
+  ],
+  "candidate_stops": [
+    {
+      "stop_id": "STOP1",
+      "event_id": "E9",
+      "goal_revision": 1,
+      "snapshot_id": "S2",
+      "worker_claim": "COMPLETE",
+      "harness_stop_reason": "model returned an assistant message without further tool calls",
+      "proposed_terminal_state": "CERTIFIED"
+    }
+  ]
+}

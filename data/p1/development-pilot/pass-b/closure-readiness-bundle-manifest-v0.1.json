@@ -1,0 +1,126 @@
+{
+  "bundle_id": "PCT-P1-CLOSURE-READINESS-DATA-v0.1",
+  "decoded_filename": "PCT_P1_Closure_Readiness_Data_Bundle_v0.1.tar.gz",
+  "encoding": "base64",
+  "parts": [
+    "bundle-parts/closure-readiness-part-00",
+    "bundle-parts/closure-readiness-part-01",
+    "bundle-parts/closure-readiness-part-02a0",
+    "bundle-parts/closure-readiness-part-02a1",
+    "bundle-parts/closure-readiness-part-02a2",
+    "bundle-parts/closure-readiness-part-02a3",
+    "bundle-parts/closure-readiness-part-02b",
+    "bundle-parts/closure-readiness-part-03"
+  ],
+  "sha256": "9e4c39107a746e54360214d71ef0d03d025b9c5324e06411dbdc71fecb306691",
+  "bytes": 26101,
+  "files": [
+    {
+      "path": "data/p1/development-pilot/pass-b/adjudicated-material-fields-provisional-v0.1.json",
+      "sha256": "e029777f90c3b85a814cdbffaa7ab03433fcd08fa278d0ecb840261b338e65e3",
+      "bytes": 18308
+    },
+    {
+      "path": "data/p1/development-pilot/pass-b/episodes-v0.1.json",
+      "sha256": "d5f5bc3dc0172d1e3f860037d178306d87f1514048835272fb326d69e3769e90",
+      "bytes": 52047
+    },
+    {
+      "path": "data/p1/development-pilot/pass-b/human-developmental-adjudication-raw-v0.1.json",
+      "sha256": "03b8a87b61cce8ef5e0a1d5b07b0df909562a142c83d30898fab594d1856e3ce",
+      "bytes": 10448
+    },
+    {
+      "path": "data/p1/development-pilot/pass-b/human-pass-b-raw.jsonl",
+      "sha256": "ff5bb76b5b168dd546f61f2dd065f2091ed841e6a2335c014e2a3f1441a5ed5f",
+      "bytes": 18716
+    },
+    {
+      "path": "data/p1/development-pilot/pass-b/opened-author-expectations-subset-v0.1.json",
+      "sha256": "2dee4dd20a967d453d8112a89f8a2b2647b7e6ea82463a6ab854ed22be3cb1b7",
+      "bytes": 9389
+    },
+    {
+      "path": "data/p1/development-pilot/pass-b/timing-raw.csv",
+      "sha256": "6b614fbda006995cbd90b80e1a928207084b29dbb6ab86032b38e194fa88c023",
+      "bytes": 399
+    },
+    {
+      "path": "reports/p1/pass-b/ab-author-threeway-report-v0.1.json",
+      "sha256": "2c0ca4392f2a58a1ef550584382832612636fc94c0f9d00a17806aa2078e0e94",
+      "bytes": 27974
+    },
+    {
+      "path": "reports/p1/pass-b/agent-adjudication-advisory-v0.1.json",
+      "sha256": "da5f08a41a4e4cce9316eda6ffcd4cbf3da3604fa3a97fa9f9b014ba0bd0d5c9",
+      "bytes": 19490
+    },
+    {
+      "path": "reports/p1/pass-b/agent-adjudication-advisory-v0.1.md",
+      "sha256": "bee4f844a60b50d4056e8f01f0faa281a869b963eb83b8dce27c6c119f8d874f",
+      "bytes": 10494
+    },
+    {
+      "path": "reports/p1/pass-b/author-opening-verification-v0.1.json",
+      "sha256": "8a8cac01b4954e225576bb22df61cf1a408622395416ef3e8ca91ffde1089d47",
+      "bytes": 1509
+    },
+    {
+      "path": "reports/p1/pass-b/raw-ab-intrarater-report-v0.1.json",
+      "sha256": "e3df9acb1b94d9d62900024e70a30e98920b54eb106c15af6a9e8417e2660e37",
+      "bytes": 13267
+    },
+    {
+      "path": "reports/p1/pass-b/reliability-matrix-provisional-v0.1.json",
+      "sha256": "547b7c03e51d40f1c31664ac5eaf7bde5033c311a5cf7258bdfbc2656adcbce9",
+      "bytes": 5622
+    }
+  ],
+  "contains_custody_key_material": false,
+  "contains_full_30_case_author_plaintext": false,
+  "contains_opened_author_subset": true,
+  "developmental_only": true,
+  "not_gold": true,
+  "part_files": [
+    {
+      "path": "bundle-parts/closure-readiness-part-00",
+      "sha256": "183fb946efb4e1367b0207dd1e0c1f55afb9576ece2950f7f032db74f55dc9f5",
+      "bytes": 9001
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-01",
+      "sha256": "cc03c1af6861d5ee1bca5c71b7d62240de63a9901c3f734d939d0625698f6ecc",
+      "bytes": 9001
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02a0",
+      "sha256": "d17eea71e5517c14163a310eba11c5cbb1aaa86317ee7bbd22ad1e86db2e67f6",
+      "bytes": 1126
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02a1",
+      "sha256": "9f8ffd2806e7c49fcf857541b52f4ecd2f519bc87afda2433331cd0917621c35",
+      "bytes": 1126
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02a2",
+      "sha256": "a40a1babcc4ac6682a94c930df20b44e1fde8de1067787225035a880729629bc",
+      "bytes": 1126
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02a3",
+      "sha256": "68898a1fc02dce92cdf083cab856f51596ba8a4410801a8622f7d04fd03abf71",
+      "bytes": 1126
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-02b",
+      "sha256": "5b7b83f24acfd3c856ffa4d913de6e36a3523c3646821d5a63d0534ab3645d35",
+      "bytes": 4501
+    },
+    {
+      "path": "bundle-parts/closure-readiness-part-03",
+      "sha256": "bb58ea89a07fc8a840e218615ee2236ea3fdcc08ab00f013daf4c01a9b9dc71b",
+      "bytes": 7805
+    }
+  ]
+}

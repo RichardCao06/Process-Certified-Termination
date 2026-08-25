@@ -1,0 +1,153 @@
+{
+  "report_id": "PCT-P1-RELIABILITY-MATRIX-FINAL-v0.1",
+  "status": "FINAL_APPROVED_WITH_LIMITATIONS",
+  "generated_at": "2026-08-25T08:14:19Z",
+  "developmental_only": true,
+  "not_gold": true,
+  "rows": [
+    {
+      "layer": "accept_decision",
+      "classification": "PILOT_STABLE_ENOUGH_FOR_SHADOW_MEASUREMENT",
+      "raw_agreement": "11/12 (91.7%)",
+      "kappa": 0.75,
+      "use_in_p2": "Primary Shadow measurement label; retain human review for boundary cases.",
+      "limitations": "Same annotator, 12-hour interval, n=12."
+    },
+    {
+      "layer": "outcome_verdict",
+      "classification": "USABLE_WITH_HUMAN_REVIEW",
+      "raw_agreement": "12/12 (100%)",
+      "kappa": 1.0,
+      "use_in_p2": "Secondary Shadow measurement only, with Codebook-conformance review; not a primary unreviewed target.",
+      "limitations": "Raw 12/12 repeatability concealed shared semantic error in 3/12 cases; D15 corrected those labels append-only."
+    },
+    {
+      "layer": "process_verdict",
+      "classification": "PILOT_STABLE_ENOUGH_FOR_SHADOW_MEASUREMENT",
+      "raw_agreement": "11/12 (91.7%)",
+      "kappa": 0.75,
+      "use_in_p2": "Primary Shadow measurement label with trace citations.",
+      "limitations": "One dev-006 difference and developmental-only sample."
+    },
+    {
+      "layer": "stop_scope",
+      "classification": "PILOT_STABLE_ENOUGH_FOR_SHADOW_MEASUREMENT",
+      "raw_agreement": "12/12 (100%)",
+      "kappa": 1.0,
+      "use_in_p2": "Primary observable context field.",
+      "limitations": "Synthetic cases and small denominator."
+    },
+    {
+      "layer": "recovery_authority",
+      "classification": "PILOT_STABLE_ENOUGH_FOR_SHADOW_MEASUREMENT",
+      "raw_agreement": "12/12 (100%)",
+      "kappa": 1.0,
+      "use_in_p2": "Primary observable context field; UNKNOWN must be allowed.",
+      "limitations": "Synthetic cases and small denominator."
+    },
+    {
+      "layer": "certification_recommendation",
+      "classification": "USABLE_WITH_HUMAN_REVIEW",
+      "raw_agreement": "8/12 (66.7%)",
+      "kappa": 0.5514018691588783,
+      "use_in_p2": "Secondary Shadow output; do not apply online.",
+      "limitations": "CONTINUE/EVIDENCE_REQUIRED/HUMAN_REQUIRED/INCIDENT boundaries remain less stable."
+    },
+    {
+      "layer": "fit_status",
+      "classification": "USABLE_WITH_HUMAN_REVIEW",
+      "raw_agreement": "11/12 (91.7%)",
+      "kappa": null,
+      "use_in_p2": "Measure whether an invalid transition exists; review before training use.",
+      "limitations": "One status disagreement and exact locator is less stable."
+    },
+    {
+      "layer": "fit_locator",
+      "classification": "USABLE_WITH_HUMAN_REVIEW",
+      "raw_agreement": "9/12 (75.0%)",
+      "kappa": null,
+      "use_in_p2": "Diagnostic localization only; require event-backed review.",
+      "limitations": "Three locator disputes required adjudication."
+    },
+    {
+      "layer": "hard_gate_presence",
+      "classification": "USABLE_WITH_HUMAN_REVIEW",
+      "raw_agreement": "11/12 (91.7%)",
+      "kappa": null,
+      "use_in_p2": "Secondary risk flag, not an unreviewed online blocker.",
+      "limitations": "Exact hard-gate code set agreement was only 4/12."
+    },
+    {
+      "layer": "certification_effects",
+      "classification": "USABLE_WITH_HUMAN_REVIEW",
+      "raw_agreement": "8/12 exact; mean Jaccard 0.778",
+      "kappa": null,
+      "use_in_p2": "Descriptive consequences with human review.",
+      "limitations": "Set composition remains inconsistent."
+    },
+    {
+      "layer": "control_actions",
+      "classification": "EXPLORATORY_ONLY",
+      "raw_agreement": "2/12 exact; mean Jaccard 0.306",
+      "kappa": null,
+      "use_in_p2": "Log candidate actions only; never actuate from this Pilot.",
+      "limitations": "Very low exact agreement."
+    },
+    {
+      "layer": "detailed_failure_codes",
+      "classification": "EXPLORATORY_ONLY",
+      "raw_agreement": "2/12 exact; mean Jaccard 0.463",
+      "kappa": null,
+      "use_in_p2": "Diagnostic tags only; no training Gold or hard blocking.",
+      "limitations": "Granularity and code-count selection are unstable."
+    },
+    {
+      "layer": "evidence_assessment",
+      "classification": "EXPLORATORY_ONLY",
+      "raw_agreement": "Sufficiency 75%; currentness 83.3%; scope 50%; conflicts 83.3%",
+      "kappa": null,
+      "use_in_p2": "Log each dimension separately and refine definitions.",
+      "limitations": "Scope-match semantics are particularly unstable."
+    },
+    {
+      "layer": "valid_alternative_path",
+      "classification": "NOT_RELIABLY_ANNOTATABLE_IN_CURRENT_FORM",
+      "raw_agreement": "3/12 (25.0%)",
+      "kappa": 0.0,
+      "use_in_p2": "Exclude from primary Shadow metrics until schema/UI repair and regression.",
+      "limitations": "Systematic NOT_APPLICABLE-versus-UNKNOWN representation mismatch."
+    }
+  ],
+  "p2_recommendation": {
+    "recommendation": "ELIGIBLE_FOR_SEPARATE_P2_SHADOW_AUTHORIZATION",
+    "stable_primary_layers": [
+      "accept_decision",
+      "process_verdict",
+      "stop_scope",
+      "recovery_authority"
+    ],
+    "human_review_layers": [
+      "outcome_verdict",
+      "certification_recommendation",
+      "fit_status",
+      "fit_locator",
+      "hard_gate_presence",
+      "certification_effects"
+    ],
+    "exploratory_layers": [
+      "control_actions",
+      "detailed_failure_codes",
+      "evidence_assessment"
+    ],
+    "excluded_until_representation_repair": [
+      "valid_alternative_path"
+    ],
+    "online_intervention_authorized": false,
+    "p2_work_order_authorized": false,
+    "note": "P1 closure establishes annotation-feasibility guidance only. P2 Shadow requires a separate human-approved Work Order."
+  },
+  "source_raw_ab_report_sha256": "e3df9acb1b94d9d62900024e70a30e98920b54eb106c15af6a9e8417e2660e37",
+  "source_final_adjudication_sha256": "9a7f64903e9517d85f640f8583f8a30da1663f9e57eeab752c77febc26a82f58",
+  "d15_decision_record_sha256": "fcc3afc12a0dab682650a083314f5ae377126a1a1cecbed5b6005594a1365701",
+  "raw_repeatability_is_not_correctness": true
+}

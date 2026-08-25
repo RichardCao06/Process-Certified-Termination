@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/schemas/pct-taxonomy.schema.json",
+  "title": "PCT Process Failure Taxonomy",
+  "type": "object",
+  "required": [
+    "taxonomy_id",
+    "version",
+    "phase",
+    "status",
+    "annotation_model",
+    "axes",
+    "families"
+  ],
+  "properties": {
+    "taxonomy_id": {
+      "const": "pct-process-failure-taxonomy"
+    },
+    "version": {
+      "type": "string"
+    },
+    "families": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "name",
+          "codes"
+        ],
+        "properties": {
+          "id": {
+            "pattern": "^[A-Z]+$"
+          },
+          "codes": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": [
+                "code",
+                "name",
+                "definition",
+                "include_when",
+                "exclude_when",
+                "candidate_hard_gate"
+              ],
+              "properties": {
+                "code": {
+                  "pattern": "^[A-Z]+\\.[A-Z0-9_]+$"
+                },
+                "candidate_hard_gate": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

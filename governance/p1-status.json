@@ -1,0 +1,79 @@
+{
+  "project_id": "PCT",
+  "phase": "P1",
+  "work_order": "PCT-P1-001",
+  "status": "pilot-authorized",
+  "protocol_version": "0.2-pilot",
+  "updated_at": "2026-08-25",
+  "method_decisions_approved": true,
+  "approved_choices": {
+    "PCT-P1-D01": "A", "PCT-P1-D02": "A", "PCT-P1-D03": "A", "PCT-P1-D04": "A",
+    "PCT-P1-D05": "A", "PCT-P1-D06": "A", "PCT-P1-D07": "A", "PCT-P1-D08": "A",
+    "PCT-P1-D09": "A", "PCT-P1-D10": "A", "PCT-P1-D11": "A", "PCT-P1-D12": "A",
+    "PCT-P1-D13": "A", "PCT-P1-D14": "A"
+  },
+  "human_decision_sources": [
+    "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5365882275",
+    "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5390328320",
+    "ChatGPT conversation on 2026-08-24: Research Owner froze Pass A after 25 cases and continued under A01.",
+    "ChatGPT conversation on 2026-08-24: Research Owner shortened the Pass-B minimum delay to 12 hours under A02."
+  ],
+  "amendments": [
+    {"id": "PCT-P1-A01", "status": "effective", "scope": "Pass-A truncation, no-imputation rule, and 12-case Pass-B subset"},
+    {"id": "PCT-P1-A02", "status": "effective", "scope": "Pass-B minimum delay shortened to 12 hours"}
+  ],
+  "annotation_design": {
+    "annotator_pass_a": "RichardCao06",
+    "pass_b": "same annotator, 12-hour delayed, reordered, blinded to Pass A, 12-case precommitted subset",
+    "reporting": "developmental intra-rater feasibility only; elevated memory-carryover risk",
+    "adjudicator": "RichardCao06, developmental and not independent"
+  },
+  "pilot_design": {
+    "calibration_episodes": 12,
+    "planned_blinded_development_episodes": 30,
+    "pass_a_completed_episodes": 25,
+    "pass_a_unannotated_reserve": 5,
+    "pass_a_status": "frozen-at-fixed-order-position-25",
+    "pass_a_missingness": "administrative-right-truncation-no-imputation",
+    "pass_b_selected_episodes": 12,
+    "pass_b_status": "released-awaiting-human-annotation",
+    "pass_a_freeze_reference_time": "2026-08-24T07:48:20Z",
+    "pass_b_minimum_delay_hours": 12,
+    "pass_b_release_not_before": "2026-08-24T19:48:20Z",
+    "pass_b_released_at": "2026-08-25T01:41:39Z",
+    "pass_b_order_commitment_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86",
+    "pass_b_selection_or_order_changed_by_a02": false,
+    "pass_b_commitment_verified_at_release": true
+  },
+  "held_out_or_sealed_data_accessed": false,
+  "fixture_author_expectations_opened": false,
+  "effectiveness_claim_allowed": false,
+  "blocking_decision_ids": [],
+  "pilot_started": true,
+  "pilot_stage": "development-pilot-pass-b-released-awaiting-human",
+  "human_pass1_frozen": true,
+  "agent_blind_pass1_frozen": true,
+  "human_agent_comparison_complete": true,
+  "core_adjudication_accepted_by_research_owner": true,
+  "calibration_adjudication_version": "0.2-pilot",
+  "codebook_version": "0.2-pilot",
+  "regression_status": "passed-12-of-12-structural-and-semantic-expectations",
+  "pass_a_freeze_manifest_sha256": "cf58bdd4ca9e725c6b2c04e56864a14b0d24014e689c3a9f83146d1e980d6f2f",
+  "pass_a_raw_annotations_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+  "pass_a_raw_timing_sha256": "c484a8813598ffcc0b3eac40867b6d9c89c4e342b152d7c01756747b4c0fc413",
+  "pass_b_release_record": "data/p1/development-pilot/pass-b/release-record-v0.1.json",
+  "pass_b_participant_zip_sha256": "264064f716d1a4b734a54afba9679869a832b90826ac8e0ee63dd224921765f6",
+  "next_gate": "Complete and freeze all 12 Human Pass-B annotations and timing exports. Then compute and freeze the raw A/B report before opening Fixture Author Expectations.",
+  "interpretation_constraints": [
+    "The Pass-B interval is 12 hours, not the superseded approximately 72-hour interval.",
+    "Memory carryover is an explicit threat to validity.",
+    "The results are not independent inter-rater reliability, Gold-label validation, or evidence of PCT effectiveness."
+  ],
+  "branch": "research/p1-taxonomy-annotation-infrastructure-v0.1",
+  "selected_configuration": {
+    "worker_model": "DeepSeek-V4-Pro",
+    "harness_repository": "deepseek-ai/deepseek-harness",
+    "harness_commit": "141eb6fef83422698aef7a981029e843e8161534",
+    "confirmatory_frozen": false
+  }
+}

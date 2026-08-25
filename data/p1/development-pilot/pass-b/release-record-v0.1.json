@@ -1,0 +1,65 @@
+{
+  "record_id": "PCT-P1-PASS-B-RELEASE-v0.1",
+  "released_at": "2026-08-25T01:41:39Z",
+  "amendment_id": "PCT-P1-A02",
+  "release_not_before": "2026-08-24T19:48:20Z",
+  "release_gate_satisfied": true,
+  "minimum_delay_hours": 12,
+  "source_pass_a_annotations_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+  "selected_count": 12,
+  "ordered_trajectory_ids": [
+    "dev-014",
+    "dev-006",
+    "dev-023",
+    "dev-010",
+    "dev-016",
+    "dev-012",
+    "dev-021",
+    "dev-027",
+    "dev-028",
+    "dev-017",
+    "dev-009",
+    "dev-026"
+  ],
+  "neutral_display_mapping": [
+    {"display_id": "P1-DEV-B-01", "trajectory_id": "dev-014"},
+    {"display_id": "P1-DEV-B-02", "trajectory_id": "dev-006"},
+    {"display_id": "P1-DEV-B-03", "trajectory_id": "dev-023"},
+    {"display_id": "P1-DEV-B-04", "trajectory_id": "dev-010"},
+    {"display_id": "P1-DEV-B-05", "trajectory_id": "dev-016"},
+    {"display_id": "P1-DEV-B-06", "trajectory_id": "dev-012"},
+    {"display_id": "P1-DEV-B-07", "trajectory_id": "dev-021"},
+    {"display_id": "P1-DEV-B-08", "trajectory_id": "dev-027"},
+    {"display_id": "P1-DEV-B-09", "trajectory_id": "dev-028"},
+    {"display_id": "P1-DEV-B-10", "trajectory_id": "dev-017"},
+    {"display_id": "P1-DEV-B-11", "trajectory_id": "dev-009"},
+    {"display_id": "P1-DEV-B-12", "trajectory_id": "dev-026"}
+  ],
+  "ordered_subset_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86",
+  "expected_ordered_subset_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86",
+  "commitment_verified": true,
+  "selection_or_order_changed_at_release": false,
+  "participant_package": {
+    "PCT_P1_Development_Pilot_Pass_B_Bilingual_v0.1.html": {"sha256": "5ef9766d326b0bb8a84cceb3decc2e57ccd709005b533507053d8e63e384e462", "bytes": 68637},
+    "PCT_P1_Development_Pilot_Pass_B_Episodes_v0.1.json": {"sha256": "d5f5bc3dc0172d1e3f860037d178306d87f1514048835272fb326d69e3769e90", "bytes": 52047},
+    "PCT_P1_Development_Pilot_Pass_B_Annotation_Guide_v0.1.md": {"sha256": "bddc39bab4ed42f8cee602c7cc61973d78c749591991b1dcbddba4e3406e829e", "bytes": 1723},
+    "PCT_P1_Development_Pilot_Pass_B_Manifest_v0.1.json": {"sha256": "635fa257aad1cedce02178f17f21e4938b075eb9b2b8679f6c2ab65b0165efb5", "bytes": 1818},
+    "PCT_P1_Development_Pilot_Pass_B_v0.1.zip": {"sha256": "264064f716d1a4b734a54afba9679869a832b90826ac8e0ee63dd224921765f6", "bytes": 28151},
+    "PCT_P1_Development_Pilot_Pass_B_Delivery_Manifest_v0.1.json": {"sha256": "d210b073c10bc534476392ccbc41cf3bad8caece0caf7af76c8196b0d9fe743c", "bytes": 2151}
+  },
+  "blinding": {
+    "pass_a_annotations_in_package": false,
+    "pass_a_qc_in_package": false,
+    "fixture_author_expectations_opened": false,
+    "fixture_author_expectations_in_package": false,
+    "hidden_evaluator_or_gold_in_package": false,
+    "case_specific_semantic_feedback_in_package": false
+  },
+  "interpretation": "12-hour delayed, reordered same-annotator re-annotation; developmental intra-rater feasibility only.",
+  "prohibited_claims": [
+    "independent inter-rater reliability",
+    "Gold-label validation",
+    "automated Auditor accuracy",
+    "online PCT effectiveness"
+  ]
+}

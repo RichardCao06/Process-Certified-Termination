@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/schemas/pct-trace-extension-v0.2.schema.json",
+  "title": "PCT Trace Extension v0.2 Draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["trajectory_id", "stop_id", "stop_scope", "recovery_authority"],
+  "properties": {
+    "trajectory_id": {"type": "string", "minLength": 1},
+    "stop_id": {"type": "string", "minLength": 1},
+    "stop_scope": {"enum": [
+      "TURN_STOP", "GOAL_COMPLETION_PROPOSAL", "HUMAN_ESCALATION",
+      "NO_FURTHER_ACTION_PROPOSAL", "BLOCKER_PROPOSAL", "BUDGET_STOP", "OTHER"
+    ]},
+    "recovery_authority": {"enum": [
+      "SELF_SERVICE", "HUMAN_ONLY", "EXTERNAL_WAIT", "IMPOSSIBLE", "UNKNOWN", "NOT_APPLICABLE"
+    ]},
+    "source_event_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "note": {"type": "string"}
+  }
+}

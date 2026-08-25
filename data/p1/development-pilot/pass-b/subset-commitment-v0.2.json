@@ -1,0 +1,19 @@
+{
+  "commitment_id": "PCT-P1-PASS-B-SUBSET-COMMITMENT-v0.2",
+  "created_at": "2026-08-24T08:05:00Z",
+  "amended_at": "2026-08-24T09:49:43Z",
+  "supersedes_release_condition_in": "PCT-P1-PASS-B-SUBSET-COMMITMENT-v0.1",
+  "amendment_id": "PCT-P1-A02",
+  "source_pass_a_sha256": "d561b442053293c94c13db6ff5c49af6ef187fa12cff351f0e94dbb1e92364b8",
+  "eligible_completed_count": 25,
+  "selected_count": 12,
+  "ordered_subset_sha256": "1465d1b21da860660a90a24b5e9c1bc8673c49f4052fbf8d647c15f55e026e86",
+  "pass_a_freeze_reference_time": "2026-08-24T07:48:20Z",
+  "minimum_delay_hours": 12,
+  "release_not_before": "2026-08-24T19:48:20Z",
+  "identifiers_disclosed_before_pass_b": false,
+  "selection_or_order_changed_by_amendment": false,
+  "selection_note": "The ordered subset was deterministically generated from the frozen Pass-A hash. Amendment PCT-P1-A02 changes only the minimum release delay; the selected cases, order, and commitment hash remain unchanged and undisclosed before Pass B.",
+  "fixture_author_expectations_used": false,
+  "interpretation_boundary": "Developmental 12-hour delayed, reordered same-annotator re-annotation; higher memory-carryover risk than the superseded approximately 72-hour condition."
+}

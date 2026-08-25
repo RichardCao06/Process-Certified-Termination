@@ -1,60 +1,55 @@
 # Process-Certified Termination
 
-> **Phase status:** P0 complete and approved on 2026-08-21  
-> **Next authorized phase:** P1 — descriptive process review, failure taxonomy, annotation feasibility, and development-only infrastructure
+> **Phase status:** P0 approved; P1 Development Pilot active  
+> **Current Gate:** Human Pass B released; 12 annotations awaiting completion
 
-This is an independent research project. Its approved near-term subject is:
+This independent research project studies whether an evidence-grounded process-certification layer can improve an LLM Agent Harness's termination decision.
+
+The approved near-term subject is:
 
 > **A Process-Certified Termination Plugin for DeepSeek Harness**
 
-The broader phrase **A General Termination Framework for LLM Agents** remains a later, evidence-dependent claim. It must not be presented as established until cross-model, cross-harness, and cross-task evidence satisfies the approved claim ladder.
+A general LLM-Agent termination framework remains an evidence-dependent later claim.
 
-## Research question
+## P1 state
 
-Can an additional, evidence-grounded process-certification layer improve an LLM agent harness's decision to stop—reducing premature success claims without causing harmful over-continuation—and can localized process feedback help the agent repair the task before exit?
+Completed:
 
-## Approved P0 baseline
+- process taxonomy and observable trace foundation;
+- Human Calibration Pass 1 and context-isolated Agent Blind Pass;
+- Human–Agent comparison and development adjudication;
+- P1 decisions D01–D14;
+- Codebook / Schema v0.2 Pilot and 12/12 semantic regression;
+- Human Pass A frozen after positions 1–25 under A01;
+- five reserve cases recorded without imputation;
+- A02 12-hour release condition;
+- unchanged 12-case Pass-B order commitment verified;
+- Pass B released with neutral IDs and no Pass-A labels, author expectations, or hidden data;
+- agreement, adjudication-packet, guarded author-opening, P1 Closure, and P2 Shadow-design tools prepared.
 
-- [Protocol v0.1](docs/p0/protocol-v0.1.md)
-- [Goal Contract v0.1](docs/p0/contracts/goal-contract-v0.1.md)
-- [Autonomy Contract v0.1](docs/p0/contracts/autonomy-contract-v0.1.md)
-- [Assurance Contract v0.1](docs/p0/contracts/assurance-contract-v0.1.md)
-- [Capability Envelope v0.1](docs/p0/contracts/capability-envelope-v0.1.md)
-- [Human Decision Register](docs/p0/decision-register.md)
-- [P0 Closure Report](docs/p0/p0-closure-report.md)
-- [Human–Agent Collaboration Protocol v0.1](docs/governance/human-agent-collaboration-protocol-v0.1.md)
-- [Threat Model](docs/p0/threat-model.md)
-- [Causal Model](docs/p0/causal-model.md)
-- [Claim Ladder](docs/p0/claim-ladder.md)
-- [Literature Baseline](docs/p0/literature-baseline.md)
+Still required before P1 closes:
 
-Files ending in `-draft.md` are retained as historical pre-approval records and are not authoritative.
+- Human completes and freezes all 12 Pass-B annotations;
+- raw A/B intra-rater and ambiguity analysis;
+- author-expectation opening after the raw A/B report is frozen;
+- developmental adjudication, migration report, and P1 Closure approval.
 
-## Approved P1 development configuration
+## Key documents
 
-- Worker: DeepSeek-V4-Pro
-- Harness: DeepSeek Harness
-- Selected upstream development baseline: `deepseek-ai/deepseek-harness@141eb6fef83422698aef7a981029e843e8161534`
-- Primary initial stream: highly verifiable tasks
-- Semi-open tasks: exploratory until process labels and adjudication are reliable
+- [P0 Protocol v0.1](docs/p0/protocol-v0.1.md)
+- [P1 index](docs/p1/README.md)
+- [P1 Codebook v0.2](docs/p1/annotation-codebook-v0.2.md)
+- [Pass-A Amendment A01](docs/p1/amendment-PCT-P1-A01.md)
+- [Pass-B Amendment A02](docs/p1/amendment-PCT-P1-A02.md)
+- [Pass-B participant instructions](docs/p1/development-pilot-pass-b.md)
+- [Pass-B analysis plan](docs/p1/pass-b-analysis-plan-v0.1.md)
+- [P2 Shadow architecture draft](docs/p2/p2-shadow-plugin-architecture-v0.1-draft.md)
+- [P1 Exit Gate](docs/p1/p1-exit-gate.md)
 
-This is a P1 development selection, not a confirmatory Protocol Freeze.
-
-## Deferred gates
-
-P1 may proceed, but two later gates remain mandatory:
-
-1. independent Methods / Statistics review before confirmatory protocol freeze or approval of primary margins, thresholds, exclusions, power, and sample design;
-2. a separate Independent Custodian before any held-out or sealed evaluator material is created, accessed, or unsealed.
-
-## Validate the repository
+## Validation
 
 ```bash
 make validate
 ```
 
-The validator checks required artifacts, human decision authority, P0 closure, role-gate consistency, cross-file identifiers, candidate upstream commit format, project independence, JSON validity, and local Markdown links.
-
-## Governance principle
-
-Humans retain normative authority and responsibility. Agents may generate alternatives, formalizations, code, tests, simulations, and audits, but may not silently redefine success, approve their own normative changes, or declare unverified work complete.
+P1 evidence is developmental and does not establish automated Auditor accuracy or online PCT effectiveness.

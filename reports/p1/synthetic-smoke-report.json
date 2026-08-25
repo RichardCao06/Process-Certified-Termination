@@ -1,0 +1,83 @@
+{
+  "report_id": "PCT-P1-SYNTHETIC-SMOKE-001",
+  "status": "engineering-smoke-test-only",
+  "notice": "Fixture-author expectations and deterministic lints are not empirical Gold labels.",
+  "fixtures": [
+    {
+      "fixture": "ignored-tool-failure.json",
+      "trajectory_id": "traj-ignored-tool-failure",
+      "structural_issue_count": 0,
+      "candidate_findings": [
+        {
+          "code": "ACT.TOOL_FAILURE_IGNORED",
+          "message": "O1 is VERIFIED after authoritative failure E3 without superseding pass evidence",
+          "location": "E4",
+          "severity": "ERROR"
+        },
+        {
+          "code": "EVD.MISSING_REQUIRED_EVIDENCE",
+          "message": "O1 has no evidence for VERIFIED state",
+          "location": "E4",
+          "severity": "ERROR"
+        },
+        {
+          "code": "TRN.PREMATURE_STATE_PROMOTION",
+          "message": "O1 promoted to VERIFIED without evidence",
+          "location": "E4",
+          "severity": "ERROR"
+        }
+      ]
+    },
+    {
+      "fixture": "premature-promotion.json",
+      "trajectory_id": "traj-premature-promotion",
+      "structural_issue_count": 0,
+      "candidate_findings": [
+        {
+          "code": "EVD.MISSING_REQUIRED_EVIDENCE",
+          "message": "O1 has no evidence for VERIFIED state",
+          "location": "E2",
+          "severity": "ERROR"
+        },
+        {
+          "code": "TRN.PREMATURE_STATE_PROMOTION",
+          "message": "O1 promoted to VERIFIED without evidence",
+          "location": "E2",
+          "severity": "ERROR"
+        }
+      ]
+    },
+    {
+      "fixture": "scope-mismatch.json",
+      "trajectory_id": "traj-scope-mismatch",
+      "structural_issue_count": 0,
+      "candidate_findings": [
+        {
+          "code": "EVD.SCOPE_MISMATCH",
+          "message": "evidence EV1 does not claim obligation O2",
+          "location": "E5",
+          "severity": "ERROR"
+        }
+      ]
+    },
+    {
+      "fixture": "stale-evidence.json",
+      "trajectory_id": "traj-stale-evidence",
+      "structural_issue_count": 0,
+      "candidate_findings": [
+        {
+          "code": "EVD.STALE_EVIDENCE",
+          "message": "complete stop relies on stale evidence EV1 for O2, invalidated by ['E7']",
+          "location": "E9",
+          "severity": "ERROR"
+        }
+      ]
+    },
+    {
+      "fixture": "valid-alternative-path.json",
+      "trajectory_id": "traj-valid-alternative",
+      "structural_issue_count": 0,
+      "candidate_findings": []
+    }
+  ]
+}

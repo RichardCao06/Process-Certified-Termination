@@ -1,0 +1,128 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/schemas/pct-annotation-v0.2.schema.json",
+  "title": "PCT Candidate-Stop Annotation v0.2 Draft",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version", "annotation_id", "trajectory_id", "stop_id",
+    "annotation_role", "adjudication_status", "source_annotation_ids",
+    "pending_decision_ids", "stop_scope", "outcome_verdict", "process_verdict",
+    "certification_recommendation", "certification_effects", "control_actions",
+    "failure_codes", "hard_gate_codes", "first_invalid_transition",
+    "evidence_assessment", "valid_alternative_path", "citations", "rationale", "created_at"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.2-draft"},
+    "annotation_id": {"type": "string", "minLength": 1},
+    "trajectory_id": {"type": "string", "minLength": 1},
+    "stop_id": {"type": "string", "minLength": 1},
+    "annotation_role": {"enum": ["DEVELOPMENT_ADJUDICATION", "HUMAN", "AUDIT_AGENT"]},
+    "adjudication_status": {"enum": [
+      "APPROVED_BY_RESEARCH_OWNER",
+      "PROVISIONAL_PENDING_HUMAN_DECISION",
+      "TAUGHT_CALIBRATION_EXAMPLE_EXCLUDED_FROM_BLIND_METRICS"
+    ]},
+    "source_annotation_ids": {"type": "array", "minItems": 2, "uniqueItems": true, "items": {"type": "string"}},
+    "human_acceptance_source": {"type": "string"},
+    "pending_decision_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^PCT-P1-D[0-9]{2}$"}},
+    "stop_scope": {"enum": [
+      "TURN_STOP", "GOAL_COMPLETION_PROPOSAL", "HUMAN_ESCALATION",
+      "NO_FURTHER_ACTION_PROPOSAL", "BLOCKER_PROPOSAL", "BUDGET_STOP", "OTHER"
+    ]},
+    "outcome_verdict": {"$ref": "#/$defs/fourWayVerdict"},
+    "process_verdict": {"$ref": "#/$defs/fourWayVerdict"},
+    "certification_recommendation": {"enum": [
+      "ACCEPT", "CONTINUE", "EVIDENCE_REQUIRED", "HUMAN_REQUIRED",
+      "BLOCKED", "NO_PROGRESS", "UNDETERMINED"
+    ]},
+    "certification_effects": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": [
+      "HARD_VIOLATION", "EVIDENCE_GAP", "OUTCOME_FAILURE",
+      "SOFT_QUALITY_ISSUE", "LIMITATION", "NONE", "UNKNOWN"
+    ]}},
+    "control_actions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": [
+      "CERTIFY_GOAL_COMPLETE", "CLOSE_GOAL", "WITHHOLD_CERTIFICATION",
+      "KEEP_GOAL_ACTIVE", "KEEP_O1_ATTEMPTED", "REOPEN_O1", "REOPEN_O2",
+      "REQUEST_VALIDATION", "REQUEST_FRESH_VALIDATION", "REQUEST_SYSTEM_WIDE_VALIDATION",
+      "CONTINUE_REPAIR", "CONTINUE_DIAGNOSIS_AND_REPAIR", "REVALIDATE",
+      "REQUEST_HUMAN_DECISION", "PAUSE_GATED_ACTION",
+      "REQUEST_RECOVERY_AUTHORITY_METADATA", "PRESERVE_ADVERSE_EVIDENCE",
+      "PRESERVE_INCIDENT_RECORD", "ESCALATE_TO_HUMAN"
+    ]}},
+    "failure_codes": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z]+\\.[A-Z0-9_]+$"}},
+    "hard_gate_codes": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z]+\\.[A-Z0-9_]+$"}},
+    "first_invalid_transition": {"$ref": "#/$defs/localization"},
+    "evidence_assessment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["sufficiency", "currentness", "scope_match", "conflicts_resolved"],
+      "properties": {
+        "sufficiency": {"$ref": "#/$defs/fourWayVerdict"},
+        "currentness": {"$ref": "#/$defs/fourWayVerdict"},
+        "scope_match": {"$ref": "#/$defs/fourWayVerdict"},
+        "conflicts_resolved": {"$ref": "#/$defs/fourWayVerdict"}
+      }
+    },
+    "valid_alternative_path": {"enum": ["YES", "NO", "UNKNOWN", "NOT_APPLICABLE"]},
+    "citations": {
+      "type": "object", "additionalProperties": false,
+      "required": ["event_ids", "evidence_ids"],
+      "properties": {
+        "event_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+        "evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "rationale": {"type": "string", "minLength": 20},
+    "uncertainty_note": {"type": "string"},
+    "created_at": {"type": "string", "format": "date-time"}
+  },
+  "$defs": {
+    "fourWayVerdict": {"enum": ["PASS", "FAIL", "UNKNOWN", "NOT_APPLICABLE"]},
+    "localization": {
+      "oneOf": [
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "event_id", "reason", "confidence"],
+          "properties": {
+            "status": {"const": "EXACT"}, "event_id": {"type": "string", "minLength": 1},
+            "reason": {"type": "string", "minLength": 1},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "start_event_id", "end_event_id", "reason", "confidence"],
+          "properties": {
+            "status": {"const": "RANGE"},
+            "start_event_id": {"type": "string", "minLength": 1},
+            "end_event_id": {"type": "string", "minLength": 1},
+            "reason": {"type": "string", "minLength": 1},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        },
+        {
+          "type": "object", "additionalProperties": false,
+          "required": ["status", "reason", "confidence"],
+          "properties": {
+            "status": {"enum": ["NONE", "UNKNOWN"]},
+            "reason": {"type": "string", "minLength": 1},
+            "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+          }
+        }
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"process_verdict": {"const": "PASS"}}, "required": ["process_verdict"]},
+      "then": {"properties": {"hard_gate_codes": {"maxItems": 0}}}
+    },
+    {
+      "if": {"properties": {"hard_gate_codes": {"minItems": 1}}, "required": ["hard_gate_codes"]},
+      "then": {"properties": {"certification_effects": {"contains": {"const": "HARD_VIOLATION"}}}}
+    },
+    {
+      "if": {"properties": {"certification_recommendation": {"const": "ACCEPT"}}, "required": ["certification_recommendation"]},
+      "then": {"properties": {"process_verdict": {"const": "PASS"}, "hard_gate_codes": {"maxItems": 0}}}
+    }
+  ]
+}

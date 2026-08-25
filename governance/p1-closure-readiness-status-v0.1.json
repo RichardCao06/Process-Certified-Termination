@@ -1,0 +1,28 @@
+{
+  "project_id": "PCT",
+  "phase": "P1",
+  "status": "CLOSURE_HUMAN_GATE_PENDING",
+  "updated_at": "2026-08-25T07:30:00Z",
+  "empirical_work_complete": true,
+  "pass_a_frozen": true,
+  "pass_b_frozen": true,
+  "raw_ab_report_complete": true,
+  "fixture_author_expectations_opened_after_freeze": true,
+  "author_opening_verified": true,
+  "human_adjudication_complete": true,
+  "human_adjudication_sha256": "03b8a87b61cce8ef5e0a1d5b07b0df909562a142c83d30898fab594d1856e3ce",
+  "open_normative_gate_ids": [
+    "PCT-P1-D15"
+  ],
+  "p1_closed": false,
+  "p2_authorized": false,
+  "effectiveness_claim_allowed": false,
+  "held_out_or_sealed_data_accessed": false,
+  "next_gate": "Research Owner resolves D15, then approves P1 Closure Report and separately authorizes P2 Shadow Work Order.",
+  "source_of_truth_note": "This closure-readiness record supersedes the release-stage fields in governance/p1-status.json until the final synchronized status migration.",
+  "provenance_incident_ids": [
+    "PCT-P1-I01"
+  ],
+  "raw_ab_report_historical_preopening_freeze_verified": false,
+  "raw_ab_metrics_reconstructed_from_frozen_inputs": true
+}

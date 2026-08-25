@@ -1,0 +1,22 @@
+{
+  "decoded_filename": "PCT_P1_Calibration_Data_Bundle_v0.2.tar.gz",
+  "sha256": "4baf6d8176b1c2718f28ddea48d1d5e6775cfcd8495bedc41d844eb0e82afed0",
+  "encoding": "base64",
+  "files": [
+    "data/p1/calibration/calibration-inputs-v0.1.json",
+    "data/p1/calibration/episodes-v0.1.json",
+    "data/p1/calibration/calibration-adjudication-v0.1.json",
+    "data/p1/regression/regression-set-v0.2.json",
+    "reports/p1/calibration-human-agent-analysis-v0.1.json",
+    "reports/p1/human-pass1-qc-v0.1.json"
+  ],
+  "contains_fixture_author_expectations": false,
+  "held_out_or_sealed_data": false,
+  "parts": [
+    "bundle-parts/part-00",
+    "bundle-parts/part-01",
+    "bundle-parts/part-02",
+    "bundle-parts/part-03",
+    "bundle-parts/part-04"
+  ]
+}

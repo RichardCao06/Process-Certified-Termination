@@ -1,0 +1,57 @@
+{
+  "project_id": "PCT",
+  "phase": "P1",
+  "work_order": "PCT-P1-001",
+  "record_type": "PCT_P1_FINAL_CLOSURE_STATUS",
+  "version": "0.1",
+  "status": "APPROVED_WITH_LIMITATIONS",
+  "updated_at": "2026-08-25T08:14:19Z",
+  "p1_closed": true,
+  "p1_exit_gate_passed": true,
+  "empirical_work_complete": true,
+  "open_normative_gate_ids": [],
+  "approved_decision_ids": [
+    "PCT-P1-D15"
+  ],
+  "d15_choice": "A",
+  "d15_decision_record_sha256": "fcc3afc12a0dab682650a083314f5ae377126a1a1cecbed5b6005594a1365701",
+  "human_adjudication_complete": true,
+  "human_adjudication_sha256": "03b8a87b61cce8ef5e0a1d5b07b0df909562a142c83d30898fab594d1856e3ce",
+  "correction_record_sha256": "c851d17cc3b7f54efa90c5677d6284d6941c34760bd5fce73263ca032928585c",
+  "final_adjudication_sha256": "9a7f64903e9517d85f640f8583f8a30da1663f9e57eeab752c77febc26a82f58",
+  "final_reliability_matrix_sha256": "fcd99e6c42dc165b660ee5bf5a5ec07a29cb83bf281007a208afba2f88e0f362",
+  "taxonomy_migration_sha256": "c6c334d24cf0cc49b8d84a5cb8a8bfdd1c22ea9d5635231f48e4607bf25b21f7",
+  "closure_report_sha256": "660364dfada11f239fc2b8d81935e22b7ae2e98dcbd3419ebf2db99231d64695",
+  "closure_approval_record_sha256": "5d2c91f6aacab2f38c46e1395ec960ad53f3abb9f8343e4c51c352e759b6bce6",
+  "accepted_limitations": [
+    "SAME_HUMAN_BOTH_PASSES_AND_ADJUDICATION",
+    "PASS_B_DELAY_12_HOURS_MEMORY_CARRYOVER_RISK",
+    "PAIRED_SAMPLE_N_12",
+    "PASS_A_RIGHT_TRUNCATED_AT_25_WITH_5_ADMINISTRATIVE_RESERVES",
+    "SYNTHETIC_DEVELOPMENT_CORPUS",
+    "AUTHOR_INTENT_NOT_GOLD",
+    "NO_INDEPENDENT_HELD_OUT_HUMAN_ANNOTATION_SET",
+    "PCT-P1-I01_MISSING_HISTORICAL_PERSISTENCE_PROOF",
+    "NO_AUTOMATED_AUDITOR_OR_ONLINE_EFFECTIVENESS_TEST"
+  ],
+  "provenance_incident_ids": [
+    "PCT-P1-I01"
+  ],
+  "raw_ab_metrics_reconstructed_from_frozen_inputs": true,
+  "raw_ab_report_historical_preopening_freeze_verified": false,
+  "held_out_or_sealed_data_accessed": false,
+  "effectiveness_claim_allowed": false,
+  "p2_authorized": false,
+  "p2_shadow_eligible_for_separate_human_decision": true,
+  "online_intervention_authorized": false,
+  "supersedes_status_snapshots": [
+    "governance/p1-status.json",
+    "governance/p1-closure-readiness-status-v0.1.json"
+  ],
+  "historical_status_snapshots_preserved_unchanged": true,
+  "closure_authorization_sources": [
+    "https://github.com/RichardCao06/Process-Certified-Termination/pull/2#issuecomment-5407303134",
+    "ChatGPT project conversation on 2026-08-25: Research Owner instructed the Agent to complete P1 and return final outputs."
+  ],
+  "next_gate": "A separate human decision may authorize P2 Shadow; no P2 execution is authorized by P1 closure."
+}

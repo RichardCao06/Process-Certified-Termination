@@ -1,0 +1,28 @@
+{
+  "paired_items": 5,
+  "nominal": {
+    "outcome_verdict": {
+      "percent_agreement": 1.0,
+      "cohens_kappa": 1.0
+    },
+    "process_verdict": {
+      "percent_agreement": 1.0,
+      "cohens_kappa": 1.0
+    },
+    "certification_recommendation": {
+      "percent_agreement": 1.0,
+      "cohens_kappa": 1.0
+    },
+    "valid_alternative_path": {
+      "percent_agreement": 0.8,
+      "cohens_kappa": 0.5833333333333334
+    }
+  },
+  "failure_code_jaccard": 0.9,
+  "hard_gate_jaccard": 1.0,
+  "localization_status_agreement": 0.8,
+  "localization_exact_or_status_agreement": 0.8,
+  "report_id": "PCT-P1-AGREEMENT-SMOKE-001",
+  "status": "engineering-smoke-test-only",
+  "notice": "Synthetic development diagnostic; not a human reliability result or frozen threshold."
+}

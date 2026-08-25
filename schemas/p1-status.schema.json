@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/p1-status.schema.json",
+  "title": "PCT P1 Status",
+  "type": "object",
+  "required": [
+    "project_id",
+    "phase",
+    "status",
+    "protocol_version",
+    "work_order",
+    "blocking_decision_ids",
+    "pilot_started",
+    "held_out_or_sealed_data_accessed",
+    "effectiveness_claim_allowed"
+  ],
+  "properties": {
+    "project_id": {
+      "const": "PCT"
+    },
+    "phase": {
+      "const": "P1"
+    },
+    "status": {
+      "enum": [
+        "drafting",
+        "agent-foundation-complete-human-gate-pending",
+        "pilot-authorized",
+        "pilot-running",
+        "pilot-complete-human-gate-pending",
+        "approved",
+        "rejected"
+      ]
+    },
+    "blocking_decision_ids": {
+      "type": "array"
+    },
+    "pilot_started": {
+      "type": "boolean"
+    },
+    "held_out_or_sealed_data_accessed": {
+      "type": "boolean"
+    },
+    "effectiveness_claim_allowed": {
+      "const": false
+    }
+  }
+}

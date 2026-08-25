@@ -1,4 +1,4 @@
-name: P0 governance validation
+name: Research artifact validation
 
 on:
   pull_request:
@@ -17,5 +17,5 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate P0 package
+      - name: Validate approved P0 and active P1 artifacts
         run: make validate
