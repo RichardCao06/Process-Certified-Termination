@@ -1,0 +1,57 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NATURAL_PILOT_PREFLIGHT_INPUT_SOURCE",
+  "record_id": "PCT-P2-PREFLIGHT-INPUT-SOURCE-v0.1",
+  "status": "RECORDED_WITH_DECLARED_GAPS",
+  "created_at": "2026-08-26T06:00:00Z",
+  "source": {
+    "repository": "RichardCao06/Process-Certified-Termination",
+    "pull_request": 3,
+    "comment_id": 5422046471,
+    "submitted_by": "RichardCao06"
+  },
+  "worker_profile_input": {
+    "display_name": "DeepSeek V4-Pro",
+    "provider": "DeepSeek official API platform",
+    "base_url": "https://api.deepseek.com",
+    "requested_model_identifier": "deepseek-v4-pro",
+    "human_reported_returned_model_identifier": "deepseek-v4-pro",
+    "model_revision_or_snapshot": "NOT_EXPOSED_BY_PROVIDER",
+    "thinking_enabled": true,
+    "reasoning_effort": "high",
+    "sampling": "PROVIDER_DEFAULT",
+    "per_trajectory_monetary_cap": 30,
+    "currency": "CNY"
+  },
+  "credential_declaration": {
+    "environment": "p2-natural-pilot",
+    "secret_name": "DEEPSEEK_API_KEY",
+    "research_alias": "P2-DEEPSEEK-KEY-01",
+    "secret_value_received_by_agent": false,
+    "secret_value_in_pr": false,
+    "secret_value_in_repository": false,
+    "secret_value_in_logs_or_artifacts": false,
+    "secret_value_in_digest": false
+  },
+  "reference_declaration": {
+    "rater_a_alias": "P2-RATER-A",
+    "rater_b_alias": "P2-RATER-B",
+    "adjudicator_alias": "P2-ADJUDICATOR",
+    "two_distinct_real_raters_available": false,
+    "second_independent_rater_available": false,
+    "human_note": "当前无法安排第二位独立评审人",
+    "applicable_preapproved_rule": "D17 downgrade to developmental single-rater evidence"
+  },
+  "declared_gaps": [
+    "returned model identifier requires controlled provider evidence rather than human self-report",
+    "retry policy is not frozen",
+    "operational context-window cap is not frozen",
+    "operational maximum-output cap is not frozen",
+    "per-trajectory token cap is not frozen",
+    "two-person independent semi-open Reference lane is unavailable"
+  ],
+  "natural_task_worker_calls_performed": 0,
+  "reference_packets_opened": 0,
+  "semantic_auditor_calls": 0,
+  "record_digest": "561c07beb216a8fd0eb5ff21b8aaa0f957f67d795282e6b1a4e839d32b2fdad4"
+}
