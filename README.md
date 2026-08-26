@@ -1,7 +1,7 @@
 # Process-Certified Termination
 
-> **Phase status:** P0 approved; P1 closed with limitations; P2 deterministic Shadow engineering active  
-> **Current Gate:** Human decisions `PCT-P2-D13` through `PCT-P2-D18`
+> **Phase status:** P0 approved; P1 closed with limitations; P2 deterministic Shadow protocol preflight active  
+> **Current state:** D01-D18 option A approved; natural-task pilot BLOCKED pending exact Worker identity, profile-derived caps, and independent Reference custody
 
 This independent research project studies whether an evidence-grounded process-certification layer can improve an LLM Agent Harness's termination decision.
 
@@ -17,46 +17,39 @@ P1 is complete and merged. It produced the Candidate-Stop Codebook v0.2-pilot, a
 
 ## P2 active state
 
-Human decisions `PCT-P2-D01` through `PCT-P2-D12` selected option A and are materialized as append-only Decision Records.
+Human decisions `PCT-P2-D01` through `PCT-P2-D18` selected option A and are preserved in append-only Decision Records. The D12 read-only sidecar, exact frozen DeepSeek Harness conformance, 20+10 synthetic regression, and deterministic replay remain active.
 
-Implemented and policy-frozen:
-
-- observable-only DeepSeek Harness event normalization;
-- append-only Event Log and Evidence Ledger;
-- Candidate-Stop Snapshot and deterministic replay;
-- P1 Reliability-Matrix label layering;
-- approved deterministic hard-versus-descriptive checks;
-- DeepSeek Harness freeze at `b150a551b8d465e31e418e1b2eaf5e79bbb7d28e`;
-- source/envelope conformance validation against the exact frozen checkout;
-- explicit read-only Candidate-Stop sidecar;
-- missing-sidecar `UNKNOWN` / `UNDETERMINED` behavior;
-- 20 normal/boundary + 10 malformed/leakage synthetic regression;
-- recursive hidden/reference input rejection and static runtime-mutation guard.
-
-Current controlled regression:
+D13-D18 have materialized the first natural-task protocol:
 
 ```text
-30/30 PASS
-live model calls = 0
-natural-task runs = 0
+20 public non-sensitive tasks
+10 highly verifiable + 10 semi-open
+3 repetitions per task
+60 planned trajectories
+first Candidate Stop = primary unit
+fixed base caps = 30 minutes / 20 model requests / 50 tool calls / 2 Candidate Stops
+Semantic Auditor = disabled
+mode = SHADOW
 applied_to_runtime = false
 ```
 
-## Current Human Gate
+The protocol is not authorized to run yet. Current Preflight blockers:
 
-- [D13–D18 Natural Pilot Decision Pack](docs/p2/p2-human-decision-pack-d13-d18-v0.1.md)
+```text
+PCT-P2-PF-IDENTITY-01  exact DeepSeek V4-Pro provider/model/profile identity missing
+PCT-P2-PF-BUDGET-01    profile-derived retry/token/context/output/monetary caps missing
+PCT-P2-PF-REFERENCE-01 two independent semi-open raters and adjudication custody unassigned
+```
+
+No live Worker call, natural-task trajectory, Reference opening, private trace, Semantic Auditor call, Steering, blocking, Goal mutation, online intervention, production deployment, or effectiveness claim is authorized.
+
+## Current protocol documents
+
+- [Natural-task Shadow Pilot Protocol v0.1](docs/p2/p2-natural-task-shadow-pilot-protocol-v0.1.md)
+- [Preflight Input Request v0.1](docs/p2/p2-preflight-input-request-v0.1.md)
 - [D12 Sidecar Contract](docs/p2/p2-candidate-stop-sidecar-contract-v0.1.md)
 - [P2 Work Order v0.2](docs/p2/work-order-PCT-P2-001-v0.2.md)
 - [P2 index](docs/p2/README.md)
-
-Natural-task Worker calls, Semantic Auditor calls, private traces, Reference opening, Steering, blocking, Goal mutation, online intervention, production deployment, and effectiveness claims remain unauthorized.
-
-## Key P1 documents
-
-- [P1 Closure Report](docs/p1/p1-closure-report-v0.1.md)
-- [P1 Codebook v0.2](docs/p1/annotation-codebook-v0.2.md)
-- [P1 Taxonomy Migration](docs/p1/p1-taxonomy-migration-v0.1.md)
-- [P1 Final Exit Gate](docs/p1/p1-exit-gate-v0.2-final.md)
 
 ## Validation
 

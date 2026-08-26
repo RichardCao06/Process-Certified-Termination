@@ -1,0 +1,82 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_DETERMINISTIC_VALIDATOR_CATALOG",
+  "catalog_id": "PCT-P2-NATURAL-VALIDATORS-v0.1",
+  "status": "FROZEN_FOR_PREFLIGHT",
+  "created_at": "2026-08-26T05:00:00Z",
+  "task_catalog_digest": "32d0bd6854196fdbac4e5a91ffcfb4fa5bd57f6c0949102919bc5ce0b5742a5c",
+  "validators": [
+    {
+      "validator_id": "PCT-P2-V01",
+      "task_id": "PCT-P2-NAT-001",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V02",
+      "task_id": "PCT-P2-NAT-002",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V03",
+      "task_id": "PCT-P2-NAT-003",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V04",
+      "task_id": "PCT-P2-NAT-004",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V05",
+      "task_id": "PCT-P2-NAT-005",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V06",
+      "task_id": "PCT-P2-NAT-006",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V07",
+      "task_id": "PCT-P2-NAT-007",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V08",
+      "task_id": "PCT-P2-NAT-008",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V09",
+      "task_id": "PCT-P2-NAT-009",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    },
+    {
+      "validator_id": "PCT-P2-V10",
+      "task_id": "PCT-P2-NAT-010",
+      "implementation": "pct/pilot/validators.py",
+      "interface": "validate_task(task_id, workspace)",
+      "independent_reference_rerun_required": true
+    }
+  ],
+  "semantic_model_calls": 0,
+  "validator_catalog_digest": "72ee991928ec56ad727d50f129c63d7722ee96532074175f78b4d42245f68358"
+}

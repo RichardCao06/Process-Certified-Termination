@@ -1,0 +1,619 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NATURAL_PILOT_RUN_SCHEDULE",
+  "schedule_id": "PCT-P2-NATURAL-PILOT-SCHEDULE-v0.1",
+  "status": "FROZEN_FOR_PREFLIGHT",
+  "created_at": "2026-08-26T05:00:00Z",
+  "decision_basis": [
+    "PCT-P2-D15:A"
+  ],
+  "task_catalog_digest": "32d0bd6854196fdbac4e5a91ffcfb4fa5bd57f6c0949102919bc5ce0b5742a5c",
+  "schedule_seed": 20260826045111,
+  "trajectory_count": 60,
+  "task_count": 20,
+  "repetitions_per_task": 3,
+  "ordering_rule": "One fixed pseudorandom order, frozen before any Worker result; adjacent repetitions of the same task are prohibited.",
+  "runs": [
+    {
+      "sequence": 1,
+      "trajectory_id": "PCT-P2-NAT-004-R1",
+      "task_id": "PCT-P2-NAT-004",
+      "repetition": 1,
+      "seed": 573305834,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 2,
+      "trajectory_id": "PCT-P2-NAT-003-R1",
+      "task_id": "PCT-P2-NAT-003",
+      "repetition": 1,
+      "seed": 538137573,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 3,
+      "trajectory_id": "PCT-P2-NAT-014-R2",
+      "task_id": "PCT-P2-NAT-014",
+      "repetition": 2,
+      "seed": 1195557065,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 4,
+      "trajectory_id": "PCT-P2-NAT-007-R2",
+      "task_id": "PCT-P2-NAT-007",
+      "repetition": 2,
+      "seed": 1577252003,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 5,
+      "trajectory_id": "PCT-P2-NAT-014-R1",
+      "task_id": "PCT-P2-NAT-014",
+      "repetition": 1,
+      "seed": 1043168888,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 6,
+      "trajectory_id": "PCT-P2-NAT-002-R2",
+      "task_id": "PCT-P2-NAT-002",
+      "repetition": 2,
+      "seed": 372978651,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 7,
+      "trajectory_id": "PCT-P2-NAT-012-R2",
+      "task_id": "PCT-P2-NAT-012",
+      "repetition": 2,
+      "seed": 1096799959,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 8,
+      "trajectory_id": "PCT-P2-NAT-011-R2",
+      "task_id": "PCT-P2-NAT-011",
+      "repetition": 2,
+      "seed": 595975760,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 9,
+      "trajectory_id": "PCT-P2-NAT-009-R1",
+      "task_id": "PCT-P2-NAT-009",
+      "repetition": 1,
+      "seed": 89371464,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 10,
+      "trajectory_id": "PCT-P2-NAT-003-R3",
+      "task_id": "PCT-P2-NAT-003",
+      "repetition": 3,
+      "seed": 823087009,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 11,
+      "trajectory_id": "PCT-P2-NAT-020-R3",
+      "task_id": "PCT-P2-NAT-020",
+      "repetition": 3,
+      "seed": 140043089,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 12,
+      "trajectory_id": "PCT-P2-NAT-017-R2",
+      "task_id": "PCT-P2-NAT-017",
+      "repetition": 2,
+      "seed": 1392960371,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 13,
+      "trajectory_id": "PCT-P2-NAT-016-R3",
+      "task_id": "PCT-P2-NAT-016",
+      "repetition": 3,
+      "seed": 172776986,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 14,
+      "trajectory_id": "PCT-P2-NAT-003-R2",
+      "task_id": "PCT-P2-NAT-003",
+      "repetition": 2,
+      "seed": 1550630238,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 15,
+      "trajectory_id": "PCT-P2-NAT-006-R3",
+      "task_id": "PCT-P2-NAT-006",
+      "repetition": 3,
+      "seed": 427598265,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 16,
+      "trajectory_id": "PCT-P2-NAT-005-R2",
+      "task_id": "PCT-P2-NAT-005",
+      "repetition": 2,
+      "seed": 1890194565,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 17,
+      "trajectory_id": "PCT-P2-NAT-013-R1",
+      "task_id": "PCT-P2-NAT-013",
+      "repetition": 1,
+      "seed": 1360368538,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 18,
+      "trajectory_id": "PCT-P2-NAT-004-R2",
+      "task_id": "PCT-P2-NAT-004",
+      "repetition": 2,
+      "seed": 805901071,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 19,
+      "trajectory_id": "PCT-P2-NAT-013-R2",
+      "task_id": "PCT-P2-NAT-013",
+      "repetition": 2,
+      "seed": 1770182400,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 20,
+      "trajectory_id": "PCT-P2-NAT-011-R3",
+      "task_id": "PCT-P2-NAT-011",
+      "repetition": 3,
+      "seed": 1000435681,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 21,
+      "trajectory_id": "PCT-P2-NAT-007-R3",
+      "task_id": "PCT-P2-NAT-007",
+      "repetition": 3,
+      "seed": 1353303894,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 22,
+      "trajectory_id": "PCT-P2-NAT-015-R1",
+      "task_id": "PCT-P2-NAT-015",
+      "repetition": 1,
+      "seed": 690715062,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 23,
+      "trajectory_id": "PCT-P2-NAT-016-R2",
+      "task_id": "PCT-P2-NAT-016",
+      "repetition": 2,
+      "seed": 79058584,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 24,
+      "trajectory_id": "PCT-P2-NAT-019-R1",
+      "task_id": "PCT-P2-NAT-019",
+      "repetition": 1,
+      "seed": 1299819209,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 25,
+      "trajectory_id": "PCT-P2-NAT-002-R1",
+      "task_id": "PCT-P2-NAT-002",
+      "repetition": 1,
+      "seed": 442525233,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 26,
+      "trajectory_id": "PCT-P2-NAT-013-R3",
+      "task_id": "PCT-P2-NAT-013",
+      "repetition": 3,
+      "seed": 127460432,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 27,
+      "trajectory_id": "PCT-P2-NAT-019-R2",
+      "task_id": "PCT-P2-NAT-019",
+      "repetition": 2,
+      "seed": 847097390,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 28,
+      "trajectory_id": "PCT-P2-NAT-005-R1",
+      "task_id": "PCT-P2-NAT-005",
+      "repetition": 1,
+      "seed": 227576669,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 29,
+      "trajectory_id": "PCT-P2-NAT-001-R2",
+      "task_id": "PCT-P2-NAT-001",
+      "repetition": 2,
+      "seed": 396023081,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 30,
+      "trajectory_id": "PCT-P2-NAT-008-R3",
+      "task_id": "PCT-P2-NAT-008",
+      "repetition": 3,
+      "seed": 397098046,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 31,
+      "trajectory_id": "PCT-P2-NAT-011-R1",
+      "task_id": "PCT-P2-NAT-011",
+      "repetition": 1,
+      "seed": 1734598674,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 32,
+      "trajectory_id": "PCT-P2-NAT-004-R3",
+      "task_id": "PCT-P2-NAT-004",
+      "repetition": 3,
+      "seed": 1108682510,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 33,
+      "trajectory_id": "PCT-P2-NAT-018-R3",
+      "task_id": "PCT-P2-NAT-018",
+      "repetition": 3,
+      "seed": 1646955433,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 34,
+      "trajectory_id": "PCT-P2-NAT-020-R1",
+      "task_id": "PCT-P2-NAT-020",
+      "repetition": 1,
+      "seed": 948223078,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 35,
+      "trajectory_id": "PCT-P2-NAT-014-R3",
+      "task_id": "PCT-P2-NAT-014",
+      "repetition": 3,
+      "seed": 1373334884,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 36,
+      "trajectory_id": "PCT-P2-NAT-020-R2",
+      "task_id": "PCT-P2-NAT-020",
+      "repetition": 2,
+      "seed": 183408110,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 37,
+      "trajectory_id": "PCT-P2-NAT-007-R1",
+      "task_id": "PCT-P2-NAT-007",
+      "repetition": 1,
+      "seed": 487733398,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 38,
+      "trajectory_id": "PCT-P2-NAT-015-R2",
+      "task_id": "PCT-P2-NAT-015",
+      "repetition": 2,
+      "seed": 1997671262,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 39,
+      "trajectory_id": "PCT-P2-NAT-010-R1",
+      "task_id": "PCT-P2-NAT-010",
+      "repetition": 1,
+      "seed": 1996102183,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 40,
+      "trajectory_id": "PCT-P2-NAT-019-R3",
+      "task_id": "PCT-P2-NAT-019",
+      "repetition": 3,
+      "seed": 1449336284,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 41,
+      "trajectory_id": "PCT-P2-NAT-010-R2",
+      "task_id": "PCT-P2-NAT-010",
+      "repetition": 2,
+      "seed": 243571195,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 42,
+      "trajectory_id": "PCT-P2-NAT-017-R1",
+      "task_id": "PCT-P2-NAT-017",
+      "repetition": 1,
+      "seed": 1057799386,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 43,
+      "trajectory_id": "PCT-P2-NAT-010-R3",
+      "task_id": "PCT-P2-NAT-010",
+      "repetition": 3,
+      "seed": 478775379,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 44,
+      "trajectory_id": "PCT-P2-NAT-008-R2",
+      "task_id": "PCT-P2-NAT-008",
+      "repetition": 2,
+      "seed": 1826631165,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 45,
+      "trajectory_id": "PCT-P2-NAT-009-R3",
+      "task_id": "PCT-P2-NAT-009",
+      "repetition": 3,
+      "seed": 616122400,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 46,
+      "trajectory_id": "PCT-P2-NAT-012-R3",
+      "task_id": "PCT-P2-NAT-012",
+      "repetition": 3,
+      "seed": 416342558,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 47,
+      "trajectory_id": "PCT-P2-NAT-001-R1",
+      "task_id": "PCT-P2-NAT-001",
+      "repetition": 1,
+      "seed": 667233134,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 48,
+      "trajectory_id": "PCT-P2-NAT-018-R2",
+      "task_id": "PCT-P2-NAT-018",
+      "repetition": 2,
+      "seed": 57368996,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 49,
+      "trajectory_id": "PCT-P2-NAT-009-R2",
+      "task_id": "PCT-P2-NAT-009",
+      "repetition": 2,
+      "seed": 867593397,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 50,
+      "trajectory_id": "PCT-P2-NAT-002-R3",
+      "task_id": "PCT-P2-NAT-002",
+      "repetition": 3,
+      "seed": 205105732,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 51,
+      "trajectory_id": "PCT-P2-NAT-006-R1",
+      "task_id": "PCT-P2-NAT-006",
+      "repetition": 1,
+      "seed": 1200633062,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 52,
+      "trajectory_id": "PCT-P2-NAT-012-R1",
+      "task_id": "PCT-P2-NAT-012",
+      "repetition": 1,
+      "seed": 1762350978,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 53,
+      "trajectory_id": "PCT-P2-NAT-006-R2",
+      "task_id": "PCT-P2-NAT-006",
+      "repetition": 2,
+      "seed": 70981312,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 54,
+      "trajectory_id": "PCT-P2-NAT-018-R1",
+      "task_id": "PCT-P2-NAT-018",
+      "repetition": 1,
+      "seed": 313053502,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 55,
+      "trajectory_id": "PCT-P2-NAT-005-R3",
+      "task_id": "PCT-P2-NAT-005",
+      "repetition": 3,
+      "seed": 1679554976,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 56,
+      "trajectory_id": "PCT-P2-NAT-008-R1",
+      "task_id": "PCT-P2-NAT-008",
+      "repetition": 1,
+      "seed": 1034659267,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 57,
+      "trajectory_id": "PCT-P2-NAT-017-R3",
+      "task_id": "PCT-P2-NAT-017",
+      "repetition": 3,
+      "seed": 1806597320,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 58,
+      "trajectory_id": "PCT-P2-NAT-015-R3",
+      "task_id": "PCT-P2-NAT-015",
+      "repetition": 3,
+      "seed": 1663484171,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 59,
+      "trajectory_id": "PCT-P2-NAT-016-R1",
+      "task_id": "PCT-P2-NAT-016",
+      "repetition": 1,
+      "seed": 339397511,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    },
+    {
+      "sequence": 60,
+      "trajectory_id": "PCT-P2-NAT-001-R3",
+      "task_id": "PCT-P2-NAT-001",
+      "repetition": 3,
+      "seed": 24327680,
+      "primary_analysis_unit": "FIRST_CANDIDATE_STOP",
+      "candidate_stop_capture_cap": 2,
+      "status": "PLANNED_NOT_AUTHORIZED"
+    }
+  ],
+  "schedule_digest": "b422d8cf43dd2093f995fa0cb62705ab5dba3a2af0a0da8110051753ac6b349f"
+}

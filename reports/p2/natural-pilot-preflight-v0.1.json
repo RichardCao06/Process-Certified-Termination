@@ -1,0 +1,98 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NATURAL_PILOT_PREFLIGHT",
+  "preflight_id": "PCT-P2-NATURAL-PILOT-PREFLIGHT-v0.1",
+  "status": "BLOCKED",
+  "created_at": "2026-08-26T05:00:00Z",
+  "decision_approval": {
+    "status": "PASS",
+    "approved": [
+      "PCT-P2-D13",
+      "PCT-P2-D14",
+      "PCT-P2-D15",
+      "PCT-P2-D16",
+      "PCT-P2-D17",
+      "PCT-P2-D18"
+    ],
+    "source_comment_id": 5420758863
+  },
+  "checks": [
+    {
+      "check_id": "DECISIONS",
+      "status": "PASS",
+      "detail": "D13-D18 option A recorded from owner PR comment."
+    },
+    {
+      "check_id": "TASK_CATALOG",
+      "status": "PASS",
+      "detail": "20 fixed public non-sensitive tasks: 10 highly verifiable and 10 semi-open."
+    },
+    {
+      "check_id": "RUN_SCHEDULE",
+      "status": "PASS",
+      "detail": "60 fixed trajectories, three repetitions per task, first Candidate Stop primary."
+    },
+    {
+      "check_id": "FIXED_BASE_CAPS",
+      "status": "PASS",
+      "detail": "30 minutes, 20 model requests, 50 tool calls, two Candidate Stops."
+    },
+    {
+      "check_id": "EXACT_WORKER_IDENTITY",
+      "status": "BLOCKED",
+      "blocker_id": "PCT-P2-PF-IDENTITY-01",
+      "detail": "Provider route, returned model identifier, profile/config/prompt/tool digests, and exact settings are absent."
+    },
+    {
+      "check_id": "PROFILE_DERIVED_CAPS",
+      "status": "BLOCKED",
+      "blocker_id": "PCT-P2-PF-BUDGET-01",
+      "detail": "Retry, context, output, token, and monetary caps require the exact profile."
+    },
+    {
+      "check_id": "REFERENCE_CUSTODY",
+      "status": "BLOCKED",
+      "blocker_id": "PCT-P2-PF-REFERENCE-01",
+      "detail": "Two independent blinded human raters and adjudication custody are not assigned."
+    },
+    {
+      "check_id": "SEMANTIC_AUDITOR_DISABLED",
+      "status": "PASS",
+      "detail": "No Semantic Auditor is configured or authorized."
+    },
+    {
+      "check_id": "SHADOW_AUTHORITY",
+      "status": "PASS",
+      "detail": "mode=SHADOW and applied_to_runtime=false."
+    },
+    {
+      "check_id": "NO_LIVE_CALLS",
+      "status": "PASS",
+      "detail": "No Worker model call or natural-task trajectory has been run."
+    }
+  ],
+  "blocker_ids": [
+    "PCT-P2-PF-IDENTITY-01",
+    "PCT-P2-PF-BUDGET-01",
+    "PCT-P2-PF-REFERENCE-01"
+  ],
+  "authorized_now": [
+    "append-only protocol and task artifact changes",
+    "offline deterministic validation",
+    "sanitized profile-manifest ingestion",
+    "Reference-role assignment"
+  ],
+  "not_authorized": [
+    "natural-task Worker calls",
+    "Reference opening",
+    "Semantic Auditor calls",
+    "private traces",
+    "online intervention",
+    "effectiveness claims"
+  ],
+  "live_worker_model_calls": 0,
+  "natural_task_runs": 0,
+  "reference_packets_opened": 0,
+  "semantic_auditor_calls": 0,
+  "preflight_digest": "fa6303c316dbe01a55b6e1606ca3df3e71006a0f2007ccb49b7387b866c50eab"
+}
