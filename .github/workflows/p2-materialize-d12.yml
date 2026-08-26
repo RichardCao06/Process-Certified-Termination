@@ -31,30 +31,24 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Repair transport, materialize D12 payload, and validate repository
+      - name: Repair transport and materialize D12 payload
+        run: |
+          python3 scripts/repair_p2_d12_base64.py
+          python3 scripts/materialize_p2_d12_bundle.py
+
+      - name: Validate exact frozen DSH checkout
         env:
           PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
           PCT_REQUIRE_DSH_CONFORMANCE: '1'
+        run: python3 scripts/validate_p2_dsh_conformance.py
+
+      - name: Validate clean PCT repository
         run: |
-          wc -c data/p2/bootstrap/*.b64
-          sha256sum data/p2/bootstrap/*.b64
-          python3 - <<'PY'
-          from pathlib import Path
-          import hashlib, json
-          value = Path('data/p2/bootstrap/p2-d12-payload-v0.1.part-00.b64').read_text()
-          print('PART00_CHUNK_SHA256=' + json.dumps([
-              hashlib.sha256(value[index:index + 1000].encode('ascii')).hexdigest()
-              for index in range(0, len(value), 1000)
-          ]))
-          PY
-          python3 scripts/repair_p2_d12_base64.py
-          sha256sum data/p2/bootstrap/*.b64
-          python3 scripts/materialize_p2_d12_bundle.py
+          rm -rf _vendor
           make validate
 
       - name: Commit clean materialized increment
         run: |
-          rm -rf _vendor
           git config user.name "PCT Research Agent"
           git config user.email "pct-research-agent@users.noreply.github.com"
           git add -A
