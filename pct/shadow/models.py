@@ -7,77 +7,28 @@ from typing import Any, Iterable, Mapping
 from .canonical import json_clone
 
 EVENT_TYPES = {
-    "GOAL_STATE",
-    "OBSERVATION",
-    "TOOL_CALL",
-    "TOOL_RESULT",
-    "STATE_DELTA",
-    "DECISION_CHECKPOINT",
-    "OBLIGATION_TRANSITION",
-    "CANDIDATE_STOP",
-    "HUMAN_STEERING",
-    "TURN_START",
-    "TURN_END",
-    "STEP_START",
-    "STEP_END",
-    "HUMAN_INPUT",
-    "MODEL_MESSAGE",
-    "GOAL_CHANGE",
+    "GOAL_STATE", "OBSERVATION", "TOOL_CALL", "TOOL_RESULT", "STATE_DELTA",
+    "DECISION_CHECKPOINT", "OBLIGATION_TRANSITION", "CANDIDATE_STOP",
+    "HUMAN_STEERING", "TURN_START", "TURN_END", "STEP_START", "STEP_END",
+    "HUMAN_INPUT", "MODEL_MESSAGE", "GOAL_CHANGE",
 }
 EVENT_SOURCES = {"HARNESS", "WORKER", "TOOL", "HUMAN", "SYSTEM", "AUDITOR"}
 EVIDENCE_SOURCE_CLASSES = {
-    "DETERMINISTIC_VALIDATOR",
-    "ENVIRONMENT_OBSERVATION",
-    "TOOL_RESULT",
-    "AUDIT_AGENT",
-    "WORKER_CLAIM",
-    "HUMAN_ACCEPTANCE",
+    "DETERMINISTIC_VALIDATOR", "ENVIRONMENT_OBSERVATION", "TOOL_RESULT",
+    "AUDIT_AGENT", "WORKER_CLAIM", "HUMAN_ACCEPTANCE",
 }
 EVIDENCE_RESULTS = {"PASS", "FAIL", "UNKNOWN"}
-OBLIGATION_KINDS = {
-    "OUTCOME",
-    "DELIVERABLE",
-    "INVARIANT",
-    "PROCESS",
-    "SEMANTIC",
-    "EVIDENCE",
-}
+OBLIGATION_KINDS = {"OUTCOME", "DELIVERABLE", "INVARIANT", "PROCESS", "SEMANTIC", "EVIDENCE"}
 OBLIGATION_SEVERITIES = {"HARD", "MAJOR", "MINOR"}
-OBLIGATION_STATES = {
-    "PENDING",
-    "ATTEMPTED",
-    "PROVISIONAL",
-    "VERIFIED",
-    "FAILED",
-    "UNKNOWN",
-}
+OBLIGATION_STATES = {"PENDING", "ATTEMPTED", "PROVISIONAL", "VERIFIED", "FAILED", "UNKNOWN"}
 STOP_SCOPES = {
-    "TURN_STOP",
-    "GOAL_COMPLETION_PROPOSAL",
-    "HUMAN_ESCALATION",
-    "NO_FURTHER_ACTION_PROPOSAL",
-    "BLOCKER_PROPOSAL",
-    "BUDGET_STOP",
-    "OTHER",
+    "TURN_STOP", "GOAL_COMPLETION_PROPOSAL", "HUMAN_ESCALATION",
+    "NO_FURTHER_ACTION_PROPOSAL", "BLOCKER_PROPOSAL", "BUDGET_STOP",
+    "OTHER", "UNKNOWN",
 }
-RECOVERY_AUTHORITIES = {
-    "SELF_SERVICE",
-    "HUMAN_ONLY",
-    "EXTERNAL_WAIT",
-    "IMPOSSIBLE",
-    "UNKNOWN",
-    "NOT_APPLICABLE",
-}
-RECOMMENDATIONS = {
-    "ACCEPT",
-    "CONTINUE",
-    "EVIDENCE_REQUIRED",
-    "HUMAN_REQUIRED",
-    "BLOCKED",
-    "NO_PROGRESS",
-    "UNDETERMINED",
-    "INCIDENT_ESCALATION",
-}
+RECOVERY_AUTHORITIES = {"SELF_SERVICE", "HUMAN_ONLY", "EXTERNAL_WAIT", "IMPOSSIBLE", "UNKNOWN", "NOT_APPLICABLE"}
+METADATA_STATUSES = {"COMPLETE", "MISSING", "LEGACY_EXPLICIT"}
+RECOMMENDATIONS = {"ACCEPT", "CONTINUE", "EVIDENCE_REQUIRED", "HUMAN_REQUIRED", "BLOCKED", "NO_PROGRESS", "UNDETERMINED", "INCIDENT_ESCALATION"}
 
 
 def _required_text(name: str, value: Any) -> str:
@@ -134,28 +85,19 @@ class PctEvent:
     @classmethod
     def from_dict(cls, value: Mapping[str, Any]) -> "PctEvent":
         return cls(
-            event_id=value["event_id"],
-            sequence=value["sequence"],
-            event_type=value["event_type"],
-            source=value["source"],
-            goal_id=value["goal_id"],
-            goal_revision=value["goal_revision"],
-            snapshot_id=value["snapshot_id"],
-            payload=json_clone(value.get("payload", {})),
-            created_at=value["created_at"],
-            source_event_id=value.get("source_event_id"),
+            event_id=value["event_id"], sequence=value["sequence"],
+            event_type=value["event_type"], source=value["source"],
+            goal_id=value["goal_id"], goal_revision=value["goal_revision"],
+            snapshot_id=value["snapshot_id"], payload=json_clone(value.get("payload", {})),
+            created_at=value["created_at"], source_event_id=value.get("source_event_id"),
         )
 
     def to_dict(self) -> dict[str, Any]:
         value = {
-            "event_id": self.event_id,
-            "sequence": self.sequence,
-            "event_type": self.event_type,
-            "source": self.source,
-            "goal_id": self.goal_id,
-            "goal_revision": self.goal_revision,
-            "snapshot_id": self.snapshot_id,
-            "payload": json_clone(self.payload),
+            "event_id": self.event_id, "sequence": self.sequence,
+            "event_type": self.event_type, "source": self.source,
+            "goal_id": self.goal_id, "goal_revision": self.goal_revision,
+            "snapshot_id": self.snapshot_id, "payload": json_clone(self.payload),
             "created_at": self.created_at,
         }
         if self.source_event_id is not None:
@@ -201,38 +143,24 @@ class EvidenceRecord:
     @classmethod
     def from_dict(cls, value: Mapping[str, Any]) -> "EvidenceRecord":
         return cls(
-            evidence_id=value["evidence_id"],
-            producer=value["producer"],
-            source_class=value["source_class"],
-            goal_id=value["goal_id"],
-            goal_revision=value["goal_revision"],
-            snapshot_id=value["snapshot_id"],
+            evidence_id=value["evidence_id"], producer=value["producer"],
+            source_class=value["source_class"], goal_id=value["goal_id"],
+            goal_revision=value["goal_revision"], snapshot_id=value["snapshot_id"],
             obligation_ids=_tuple_text("obligation_ids", value.get("obligation_ids")),
-            result=value["result"],
-            scope=_tuple_text("scope", value.get("scope", [])),
-            digest=value["digest"],
-            created_event_id=value["created_event_id"],
+            result=value["result"], scope=_tuple_text("scope", value.get("scope", [])),
+            digest=value["digest"], created_event_id=value["created_event_id"],
             authoritative=bool(value.get("authoritative", False)),
-            invalidated_by_event_ids=_tuple_text(
-                "invalidated_by_event_ids",
-                value.get("invalidated_by_event_ids", []),
-            ),
+            invalidated_by_event_ids=_tuple_text("invalidated_by_event_ids", value.get("invalidated_by_event_ids", [])),
         )
 
     def to_dict(self) -> dict[str, Any]:
         return {
-            "evidence_id": self.evidence_id,
-            "producer": self.producer,
-            "source_class": self.source_class,
-            "goal_id": self.goal_id,
-            "goal_revision": self.goal_revision,
-            "snapshot_id": self.snapshot_id,
-            "obligation_ids": list(self.obligation_ids),
-            "result": self.result,
-            "scope": list(self.scope),
-            "digest": self.digest,
-            "created_event_id": self.created_event_id,
-            "authoritative": self.authoritative,
+            "evidence_id": self.evidence_id, "producer": self.producer,
+            "source_class": self.source_class, "goal_id": self.goal_id,
+            "goal_revision": self.goal_revision, "snapshot_id": self.snapshot_id,
+            "obligation_ids": list(self.obligation_ids), "result": self.result,
+            "scope": list(self.scope), "digest": self.digest,
+            "created_event_id": self.created_event_id, "authoritative": self.authoritative,
             "invalidated_by_event_ids": list(self.invalidated_by_event_ids),
         }
 
@@ -258,20 +186,16 @@ class ObligationState:
     @classmethod
     def from_dict(cls, value: Mapping[str, Any]) -> "ObligationState":
         return cls(
-            obligation_id=value["obligation_id"],
-            kind=value["kind"],
-            severity=value["severity"],
-            state=value["state"],
+            obligation_id=value["obligation_id"], kind=value["kind"],
+            severity=value["severity"], state=value["state"],
             evidence_ids=_tuple_text("evidence_ids", value.get("evidence_ids", [])),
             last_transition_event_id=value.get("last_transition_event_id"),
         )
 
     def to_dict(self) -> dict[str, Any]:
         value: dict[str, Any] = {
-            "obligation_id": self.obligation_id,
-            "kind": self.kind,
-            "severity": self.severity,
-            "state": self.state,
+            "obligation_id": self.obligation_id, "kind": self.kind,
+            "severity": self.severity, "state": self.state,
             "evidence_ids": list(self.evidence_ids),
         }
         if self.last_transition_event_id is not None:
@@ -293,6 +217,9 @@ class CandidateStopSnapshot:
     last_sequence: int
     event_log_digest: str
     created_at: str
+    metadata_status: str = "LEGACY_EXPLICIT"
+    sidecar_id: str | None = None
+    sidecar_digest: str | None = None
 
     def __post_init__(self) -> None:
         _required_text("stop_id", self.stop_id)
@@ -303,6 +230,7 @@ class CandidateStopSnapshot:
             raise ValueError("goal_revision must be a positive integer")
         _required_text("snapshot_id", self.snapshot_id)
         _enum("recovery_authority", self.recovery_authority, RECOVERY_AUTHORITIES)
+        _enum("metadata_status", self.metadata_status, METADATA_STATUSES)
         ids = [item.obligation_id for item in self.obligation_states]
         if len(ids) != len(set(ids)):
             raise ValueError("obligation_states contains duplicate obligation IDs")
@@ -311,22 +239,33 @@ class CandidateStopSnapshot:
             raise ValueError("last_sequence must be a positive integer")
         _required_text("event_log_digest", self.event_log_digest)
         _required_text("created_at", self.created_at)
+        if self.metadata_status == "MISSING":
+            if self.stop_scope != "UNKNOWN" or self.recovery_authority != "UNKNOWN":
+                raise ValueError("missing metadata must preserve UNKNOWN scope and recovery authority")
+            if self.sidecar_id is not None or self.sidecar_digest is not None:
+                raise ValueError("missing metadata cannot claim a sidecar binding")
+        if self.metadata_status == "COMPLETE":
+            _required_text("sidecar_id", self.sidecar_id)
+            digest = _required_text("sidecar_digest", self.sidecar_digest)
+            if len(digest) != 64 or any(ch not in "0123456789abcdef" for ch in digest):
+                raise ValueError("sidecar_digest must be lowercase SHA-256")
 
     def to_dict(self) -> dict[str, Any]:
-        return {
-            "stop_id": self.stop_id,
-            "stop_event_id": self.stop_event_id,
-            "stop_scope": self.stop_scope,
-            "goal_id": self.goal_id,
-            "goal_revision": self.goal_revision,
-            "snapshot_id": self.snapshot_id,
+        value = {
+            "stop_id": self.stop_id, "stop_event_id": self.stop_event_id,
+            "stop_scope": self.stop_scope, "goal_id": self.goal_id,
+            "goal_revision": self.goal_revision, "snapshot_id": self.snapshot_id,
             "recovery_authority": self.recovery_authority,
             "obligation_states": [item.to_dict() for item in self.obligation_states],
-            "evidence_ids": list(self.evidence_ids),
-            "last_sequence": self.last_sequence,
-            "event_log_digest": self.event_log_digest,
-            "created_at": self.created_at,
+            "evidence_ids": list(self.evidence_ids), "last_sequence": self.last_sequence,
+            "event_log_digest": self.event_log_digest, "created_at": self.created_at,
+            "metadata_status": self.metadata_status,
         }
+        if self.sidecar_id is not None:
+            value["sidecar_id"] = self.sidecar_id
+        if self.sidecar_digest is not None:
+            value["sidecar_digest"] = self.sidecar_digest
+        return value
 
 
 @dataclass(frozen=True)
@@ -354,12 +293,9 @@ class Finding:
 
     def to_dict(self) -> dict[str, Any]:
         value: dict[str, Any] = {
-            "check_id": self.check_id,
-            "category": self.category,
-            "message": self.message,
-            "event_ids": list(self.event_ids),
-            "evidence_ids": list(self.evidence_ids),
-            "enforcement": self.enforcement,
+            "check_id": self.check_id, "category": self.category,
+            "message": self.message, "event_ids": list(self.event_ids),
+            "evidence_ids": list(self.evidence_ids), "enforcement": self.enforcement,
         }
         if self.suggested_failure_code is not None:
             value["suggested_failure_code"] = self.suggested_failure_code

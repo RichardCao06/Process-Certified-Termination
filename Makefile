@@ -1,6 +1,6 @@
-.PHONY: validate validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure validate-p2-foundation unit test materialize-calibration materialize-p1-closure
+.PHONY: validate validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure validate-p2-foundation validate-p2-active validate-p2-dsh-conformance synthetic-p2-regression unit test materialize-calibration materialize-p1-closure
 
-validate: validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure validate-p2-foundation unit
+validate: validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure validate-p2-foundation validate-p2-active validate-p2-dsh-conformance unit
 
 validate-p0:
 	python3 scripts/validate_p0.py
@@ -25,6 +25,15 @@ validate-closure:
 
 validate-p2-foundation:
 	python3 scripts/validate_p2_foundation.py
+
+validate-p2-active:
+	python3 scripts/validate_p2_active.py
+
+validate-p2-dsh-conformance:
+	python3 scripts/validate_p2_dsh_conformance.py
+
+synthetic-p2-regression:
+	python3 scripts/run_p2_synthetic_regression.py
 
 unit:
 	python3 -m unittest discover -s tests -v

@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_DSH_SYNTHETIC_DURABLE_ENVELOPE",
+  "upstream_commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+  "envelope": {
+    "type": "tool/result",
+    "seq": 4,
+    "time": 1787713200000,
+    "data": {
+      "turn": 1,
+      "step": 1,
+      "message": {
+        "id": "synthetic-tool-message",
+        "role": "user",
+        "source": {
+          "kind": "tool",
+          "callId": "call-1"
+        },
+        "content": [
+          {
+            "type": "tool-result",
+            "toolCallId": "call-1",
+            "content": [
+              {
+                "type": "text",
+                "text": "ok"
+              }
+            ],
+            "isError": false
+          }
+        ]
+      }
+    }
+  },
+  "expected_pct": {
+    "event_type": "TOOL_RESULT",
+    "reported_status": "PASS",
+    "authoritative": false
+  },
+  "synthetic_public_non_sensitive": true,
+  "live_model_calls": 0
+}

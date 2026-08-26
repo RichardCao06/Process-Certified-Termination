@@ -4,19 +4,94 @@
   "title": "PCT P2 Shadow Replay Bundle v0.1",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version","record_type","mode","applied_to_runtime","inputs","input_digest","event_log_digest","snapshot","snapshot_digest","verdict","verdict_digest","bundle_digest"],
+  "required": [
+    "schema_version",
+    "record_type",
+    "mode",
+    "applied_to_runtime",
+    "inputs",
+    "input_digest",
+    "event_log_digest",
+    "snapshot",
+    "snapshot_digest",
+    "candidate_stop_metadata",
+    "verdict",
+    "verdict_digest",
+    "bundle_digest"
+  ],
   "properties": {
-    "schema_version": {"const": "0.1"},
-    "record_type": {"const": "PCT_P2_SHADOW_REPLAY_BUNDLE"},
-    "mode": {"const": "SHADOW"},
-    "applied_to_runtime": {"const": false},
-    "inputs": {"type": "object"},
-    "input_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "event_log_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "snapshot": {"$ref": "pct-p2-candidate-stop-snapshot-v0.1.schema.json"},
-    "snapshot_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "verdict": {"$ref": "pct-p2-shadow-verdict-v0.1.schema.json"},
-    "verdict_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
-    "bundle_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+    "schema_version": {
+      "const": "0.1"
+    },
+    "record_type": {
+      "const": "PCT_P2_SHADOW_REPLAY_BUNDLE"
+    },
+    "mode": {
+      "const": "SHADOW"
+    },
+    "applied_to_runtime": {
+      "const": false
+    },
+    "inputs": {
+      "type": "object"
+    },
+    "input_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "event_log_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "snapshot": {
+      "$ref": "pct-p2-candidate-stop-snapshot-v0.1.schema.json"
+    },
+    "snapshot_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "candidate_stop_metadata": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata_status",
+        "sidecar_id",
+        "sidecar_digest"
+      ],
+      "properties": {
+        "metadata_status": {
+          "type": "string",
+          "enum": [
+            "COMPLETE",
+            "MISSING",
+            "LEGACY_EXPLICIT"
+          ]
+        },
+        "sidecar_id": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "sidecar_digest": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "verdict": {
+      "$ref": "pct-p2-shadow-verdict-v0.1.schema.json"
+    },
+    "verdict_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "bundle_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
   }
 }
