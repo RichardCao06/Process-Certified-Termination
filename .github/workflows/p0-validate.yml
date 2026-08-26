@@ -24,8 +24,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Validate P0, P1, active P2, and frozen DSH conformance
+      - name: Validate exact frozen DSH source and envelope contract
         env:
           PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
           PCT_REQUIRE_DSH_CONFORMANCE: '1'
-        run: make validate
+        run: python3 scripts/validate_p2_dsh_conformance.py
+      - name: Validate clean PCT repository
+        run: |
+          rm -rf _vendor
+          make validate
