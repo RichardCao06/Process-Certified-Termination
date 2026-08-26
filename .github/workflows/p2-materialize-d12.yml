@@ -31,11 +31,12 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Materialize D12 payload and validate repository
+      - name: Repair transport, materialize D12 payload, and validate repository
         env:
           PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
           PCT_REQUIRE_DSH_CONFORMANCE: '1'
         run: |
+          python3 scripts/repair_p2_d12_base64.py
           python3 scripts/materialize_p2_d12_bundle.py
           make validate
 
