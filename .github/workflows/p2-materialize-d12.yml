@@ -36,7 +36,10 @@ jobs:
           PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
           PCT_REQUIRE_DSH_CONFORMANCE: '1'
         run: |
+          wc -c data/p2/bootstrap/*.b64
+          sha256sum data/p2/bootstrap/*.b64
           python3 scripts/repair_p2_d12_base64.py
+          sha256sum data/p2/bootstrap/*.b64
           python3 scripts/materialize_p2_d12_bundle.py
           make validate
 
