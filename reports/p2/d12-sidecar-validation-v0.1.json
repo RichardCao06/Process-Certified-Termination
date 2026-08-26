@@ -3,6 +3,7 @@
   "record_type": "PCT_P2_D12_SIDECAR_VALIDATION",
   "status": "PASS",
   "created_at": "2026-08-26T03:45:00Z",
+  "remote_validation_recorded_at": "2026-08-26T04:10:36Z",
   "decision_id": "PCT-P2-D12",
   "selected_option": "A",
   "targeted_unit_tests": 16,
@@ -37,5 +38,18 @@
   "live_model_calls": 0,
   "natural_task_runs": 0,
   "applied_to_runtime": false,
-  "authoritative_repository_ci": "PENDING_REMOTE_COMMIT_AND_WORKFLOW"
+  "authoritative_repository_ci": {
+    "workflow": "Research artifact validation",
+    "validated_pr_head_sha": "07bdc00c1867154e64218438c024ce53302e5967",
+    "run_id": 32929206358,
+    "run_number": 177,
+    "job_id": 98058033685,
+    "conclusion": "success",
+    "exact_dsh_conformance": "PASS",
+    "repository_validation": "PASS",
+    "unit_tests": {
+      "ran": 71,
+      "failures": 0
+    }
+  }
 }
