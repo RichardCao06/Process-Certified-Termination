@@ -1,0 +1,38 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_DSH_CONFORMANCE_CONTRACT",
+  "repository": "deepseek-ai/deepseek-harness",
+  "commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+  "release_identity": "dsh@0.1.1-rc.2",
+  "git_blob_sha1": {
+    "package.json": "391c93d9389f1ab62af3032d8ba8b8d2d5f9309d",
+    "packages/core/session/src/known-event-types.ts": "098743dd8ae13b2b39a2c7927f15ce34306de917",
+    "packages/core/session/src/types.ts": "31ce28a01bc67d8525f36c5cca16501bd4238444",
+    "packages/core/agent-loop/src/agent.ts": "3ef1ec7aa462ee561485a7472f4347d31bbd88bb",
+    "packages/core/agent/src/runtime-types.ts": "7d713f8c77112f8e74150bc060ec677bb5107f90",
+    "packages/core/scope/src/scoped-events.generated.ts": "672914c5c30f1ef683994e5ed213888505aff332",
+    "packages/llm/llm/src/message.ts": "608b56475df8dfdef72e104f180cf4dd024eb0be"
+  },
+  "required_event_vocabulary": [
+    "turn/start",
+    "turn/end",
+    "step/start",
+    "step/end",
+    "user/message",
+    "assistant/message",
+    "tool/call",
+    "tool/result",
+    "goal/change"
+  ],
+  "required_live_events": [
+    "agent/turn-stopping",
+    "session/event",
+    "tools/result"
+  ],
+  "required_invariants": [
+    "agent/turn-stopping is awaited before turn/end commits",
+    "native turn-stopping payload has agent, turn, signal only",
+    "tool result is represented by ToolResultMessage content block with isError",
+    "PCT adapter never promotes a tool-reported success to authoritative evidence"
+  ]
+}

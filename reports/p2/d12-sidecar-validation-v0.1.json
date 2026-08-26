@@ -1,0 +1,41 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_D12_SIDECAR_VALIDATION",
+  "status": "PASS",
+  "created_at": "2026-08-26T03:45:00Z",
+  "decision_id": "PCT-P2-D12",
+  "selected_option": "A",
+  "targeted_unit_tests": 16,
+  "targeted_unit_test_failures": 0,
+  "synthetic_regression": {
+    "total": 30,
+    "passed": 30,
+    "failed": 0
+  },
+  "accepted_bundle_metrics": {
+    "total_candidate_stops": 20,
+    "explicit_sidecar_complete": 18,
+    "legacy_explicit": 1,
+    "missing_metadata": 1,
+    "explicit_sidecar_completeness_rate": 0.9,
+    "metadata_available_rate": 0.95,
+    "deterministic_decision_covered": 17,
+    "deterministic_decision_coverage_rate": 0.85,
+    "deterministic_replay_equal": 20,
+    "deterministic_replay_equality_rate": 1.0,
+    "applied_to_runtime_count": 0
+  },
+  "validated_behaviors": [
+    "explicit sidecar digest binding",
+    "identity mismatch rejection",
+    "missing metadata UNKNOWN/UNDETERMINED",
+    "assistant prose does not fill metadata",
+    "actual frozen DSH ToolResultMessage parsing",
+    "zero runtime application",
+    "deterministic replay equality"
+  ],
+  "live_model_calls": 0,
+  "natural_task_runs": 0,
+  "applied_to_runtime": false,
+  "authoritative_repository_ci": "PENDING_REMOTE_COMMIT_AND_WORKFLOW"
+}

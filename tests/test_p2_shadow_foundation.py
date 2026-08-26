@@ -13,6 +13,7 @@ from pct.shadow.replay import run_replay, verify_replay
 ROOT = Path(__file__).resolve().parents[1]
 CLEAN = ROOT / "data/p2/fixtures/replay-clean-success-v0.1.json"
 STALE = ROOT / "data/p2/fixtures/replay-stale-evidence-v0.1.json"
+POLICY = ROOT / "governance/p2-shadow-policy-v0.1.json"
 
 
 def load(path: Path) -> dict:
@@ -102,16 +103,7 @@ class P2ShadowFoundationTests(unittest.TestCase):
 
     def test_frozen_policy_can_emit_labels_but_never_apply_them(self) -> None:
         inputs = load(STALE)
-        inputs["policy"] = {
-            "policy_id": "TEST-POLICY",
-            "version": "test",
-            "status": "FROZEN",
-            "approved_decision_ids": ["PCT-P2-D01", "PCT-P2-D03"],
-            "hard_check_ids": ["P2.CHK.VERIFIED_WITHOUT_VALID_EVIDENCE", "P2.CHK.STALE_EVIDENCE_REFERENCED"],
-            "primary_label_layers": ["accept_decision", "process_verdict", "stop_scope", "recovery_authority"],
-            "human_review_layers": ["outcome_verdict"],
-            "online_intervention_authorized": False,
-        }
+        inputs["policy"] = load(POLICY)
         verdict = run_replay(inputs)["verdict"]
         self.assertEqual("EMITTED", verdict["verdict_status"])
         self.assertTrue(verdict["labels_emitted"])
