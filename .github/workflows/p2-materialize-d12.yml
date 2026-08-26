@@ -1,0 +1,50 @@
+name: P2 D12 one-shot materialization
+
+on:
+  push:
+    branches:
+      - agent/p2-d12-materialization-20260826
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout PCT repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout frozen DeepSeek Harness baseline
+        uses: actions/checkout@v4
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: b150a551b8d465e31e418e1b2eaf5e79bbb7d28e
+          path: _vendor/deepseek-harness
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Materialize D12 payload and validate repository
+        env:
+          PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
+          PCT_REQUIRE_DSH_CONFORMANCE: '1'
+        run: |
+          python3 scripts/materialize_p2_d12_bundle.py
+          make validate
+
+      - name: Commit clean materialized increment
+        run: |
+          rm -rf _vendor
+          git config user.name "PCT Research Agent"
+          git config user.email "pct-research-agent@users.noreply.github.com"
+          git add -A
+          git status --short
+          git commit -m "p2: materialize D12 sidecar and open D13-D18 gate"
+          git push origin HEAD:agent/p2-d12-materialization-20260826
