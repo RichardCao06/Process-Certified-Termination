@@ -10,11 +10,13 @@ import base64
 import hashlib
 import json
 from pathlib import Path
-import shutil
 import tarfile
 
 ROOT = Path(__file__).resolve().parents[1]
-PAYLOAD_B64 = ROOT / "data/p2/bootstrap/p2-d12-payload-v0.1.tar.gz.b64"
+PAYLOAD_PARTS = [
+    ROOT / f"data/p2/bootstrap/p2-d12-payload-v0.1.part-{index:02d}.b64"
+    for index in range(4)
+]
 EXPECTED_ARCHIVE_SHA256 = "08e9c5923f3a6499689040d7cfceb661991c6cea5e230a61af39e5687361ad78"
 EXPECTED_FILES = {
   ".github/workflows/p0-validate.yml": "704348e69152ef94bfb30d018ce2ed0a3a030d67ff91ff1eaea1adc844b12019",
@@ -75,7 +77,8 @@ def safe_member(name: str) -> Path:
 
 
 def main() -> int:
-    raw = base64.b64decode(PAYLOAD_B64.read_text(encoding="ascii"), validate=True)
+    encoded = "".join(path.read_text(encoding="ascii") for path in PAYLOAD_PARTS)
+    raw = base64.b64decode(encoded, validate=True)
     if hashlib.sha256(raw).hexdigest() != EXPECTED_ARCHIVE_SHA256:
         raise ValueError("bootstrap archive SHA-256 mismatch")
     archive_path = ROOT / ".p2-d12-payload.tar.gz"
@@ -100,7 +103,10 @@ def main() -> int:
     for relative in (
         ".github/workflows/p2-materialize-d12.yml",
         "scripts/materialize_p2_d12_bundle.py",
-        "data/p2/bootstrap/p2-d12-payload-v0.1.tar.gz.b64",
+        "data/p2/bootstrap/p2-d12-payload-v0.1.part-00.b64",
+        "data/p2/bootstrap/p2-d12-payload-v0.1.part-01.b64",
+        "data/p2/bootstrap/p2-d12-payload-v0.1.part-02.b64",
+        "data/p2/bootstrap/p2-d12-payload-v0.1.part-03.b64",
     ):
         (ROOT / relative).unlink(missing_ok=True)
     bootstrap_dir = ROOT / "data/p2/bootstrap"
