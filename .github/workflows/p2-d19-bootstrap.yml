@@ -48,7 +48,7 @@ jobs:
         run: |
           set -euo pipefail
           payload="$RUNNER_TEMP/pct-d19-overlay.tar.gz"
-          test "$(find .github/p2-d19-bootstrap -maxdepth 1 -name 'payload-*.b64' -type f | wc -l | tr -d ' ')" = "7"
+          test "$(find .github/p2-d19-bootstrap -maxdepth 1 -name 'payload-*.b64' -type f | wc -l | tr -d ' ')" = "8"
           cat .github/p2-d19-bootstrap/payload-*.b64 \
             | tr -d '\n\r ' \
             | base64 --decode > "$payload"
@@ -90,7 +90,7 @@ jobs:
             sha="$(git rev-parse HEAD)"
           fi
           echo "materialized_sha=$sha" >> "$GITHUB_OUTPUT"
-          python3 -c 'import json,sys; print(json.dumps({"state":"success","context":"PCT D19 materialization validation","description":"D19 overlay and full repository validation passed"}))' > "$RUNNER_TEMP/status.json"
+          python3 -c 'import json; print(json.dumps({"state":"success","context":"PCT D19 materialization validation","description":"D19 overlay and full repository validation passed"}))' > "$RUNNER_TEMP/status.json"
           curl --fail-with-body --silent --show-error \
             -X POST \
             -H "Accept: application/vnd.github+json" \
