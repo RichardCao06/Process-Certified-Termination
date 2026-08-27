@@ -43,32 +43,19 @@ jobs:
           git merge-base --is-ancestor "$PCT_D19_BASE_SHA" HEAD
           test -z "$(git status --porcelain)"
 
-      - name: Materialize the human-approved D19 implementation
+      - name: Reassemble and verify the approved D19 payload
         shell: bash
         run: |
           set -euo pipefail
           payload="$RUNNER_TEMP/pct-d19-overlay.tar.gz"
-          base64 --decode > "$payload" <<'PCT_D19_PAYLOAD'
-          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
-          PCT_D19_PAYLOAD
+          test "$(find .github/p2-d19-bootstrap -maxdepth 1 -name 'payload-*.b64' -type f | wc -l | tr -d ' ')" = "7"
+          cat .github/p2-d19-bootstrap/payload-*.b64 \
+            | tr -d '\n\r ' \
+            | base64 --decode > "$payload"
           echo "$PCT_D19_PAYLOAD_SHA256  $payload" | sha256sum --check --strict
+          tar -tzf "$payload" >/dev/null
           tar -xzf "$payload" -C "$GITHUB_WORKSPACE"
+          rm -rf .github/p2-d19-bootstrap
           rm -f .github/workflows/p2-d19-bootstrap.yml
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           find . -type f -name '*.pyc' -delete
@@ -103,13 +90,14 @@ jobs:
             sha="$(git rev-parse HEAD)"
           fi
           echo "materialized_sha=$sha" >> "$GITHUB_OUTPUT"
+          python3 -c 'import json,sys; print(json.dumps({"state":"success","context":"PCT D19 materialization validation","description":"D19 overlay and full repository validation passed"}))' > "$RUNNER_TEMP/status.json"
           curl --fail-with-body --silent --show-error \
             -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GH_TOKEN" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/statuses/$sha" \
-            -d '{"state":"success","context":"PCT D19 materialization validation","description":"D19 overlay and full repository validation passed"}' \
+            --data-binary @"$RUNNER_TEMP/status.json" \
             >/dev/null
 
   guarded-engineering-smoke:
@@ -122,7 +110,7 @@ jobs:
       contents: write
       statuses: write
     steps:
-      - name: Checkout the materialized D19 branch
+      - name: Checkout the materialized D19 commit
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           ref: ${{ needs.materialize-and-validate.outputs.materialized_sha }}
