@@ -1,0 +1,256 @@
+name: P2 D19 bootstrap, validation, and guarded smoke
+
+on:
+  push:
+    branches:
+      - research/p2-shadow-foundation-v0.1
+    paths:
+      - '.github/workflows/p2-d19-bootstrap.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  statuses: write
+
+env:
+  PCT_D19_BRANCH: research/p2-shadow-foundation-v0.1
+  PCT_D19_BASE_SHA: 56f503f5747128a16ccefbc68bf00ebef5afbc29
+  PCT_D19_PAYLOAD_SHA256: 6f39a79478f4f9908aea1d34846b10e81694236bf68128a2c7ad91af7d6bca43
+
+concurrency:
+  group: pct-p2-d19-bootstrap-and-smoke
+  cancel-in-progress: false
+
+jobs:
+  materialize-and-validate:
+    if: github.repository == 'RichardCao06/Process-Certified-Termination'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      materialized_sha: ${{ steps.commit.outputs.materialized_sha }}
+    steps:
+      - name: Checkout the frozen P2 branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PCT_D19_BRANCH }}
+          fetch-depth: 0
+
+      - name: Verify branch ancestry and clean checkout
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "$PCT_D19_BRANCH"
+          git merge-base --is-ancestor "$PCT_D19_BASE_SHA" HEAD
+          test -z "$(git status --porcelain)"
+
+      - name: Materialize the human-approved D19 implementation
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload="$RUNNER_TEMP/pct-d19-overlay.tar.gz"
+          base64 --decode > "$payload" <<'PCT_D19_PAYLOAD'
+          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
+          PCT_D19_PAYLOAD
+          echo "$PCT_D19_PAYLOAD_SHA256  $payload" | sha256sum --check --strict
+          tar -xzf "$payload" -C "$GITHUB_WORKSPACE"
+          rm -f .github/workflows/p2-d19-bootstrap.yml
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          find . -type f -name '*.pyc' -delete
+
+      - name: Validate D19 before any model or secret access
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_p2_d19.py
+          python3 -m unittest tests.test_p2_d19 -v
+          python3 -m py_compile \
+            scripts/run_p2_engineering_smoke.py \
+            scripts/validate_p2_d19.py \
+            scripts/validate_p2_engineering_smoke.py
+          make validate
+
+      - name: Commit the validated D19 implementation
+        id: commit
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git config user.name "PCT D19 Bootstrap Bot"
+          git config user.email "pct-d19-bootstrap@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            sha="$(git rev-parse HEAD)"
+          else
+            git commit -m "p2: materialize approved D19 guarded smoke"
+            git push origin "HEAD:$PCT_D19_BRANCH"
+            sha="$(git rev-parse HEAD)"
+          fi
+          echo "materialized_sha=$sha" >> "$GITHUB_OUTPUT"
+          curl --fail-with-body --silent --show-error \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/statuses/$sha" \
+            -d '{"state":"success","context":"PCT D19 materialization validation","description":"D19 overlay and full repository validation passed"}' \
+            >/dev/null
+
+  guarded-engineering-smoke:
+    needs: materialize-and-validate
+    if: needs.materialize-and-validate.result == 'success'
+    environment: p2-natural-pilot
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      statuses: write
+    steps:
+      - name: Checkout the materialized D19 branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ needs.materialize-and-validate.outputs.materialized_sha }}
+          fetch-depth: 0
+
+      - name: Require the approved Environment credential without displaying it
+        shell: bash
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          set +x
+          test -n "${DEEPSEEK_API_KEY:-}"
+          echo "Approved DeepSeek credential is available; value is not displayed."
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+
+      - name: Validate repository before model access
+        run: make validate
+
+      - name: Checkout the exact frozen DeepSeek Harness
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: b150a551b8d465e31e418e1b2eaf5e79bbb7d28e
+          path: _vendor/deepseek-harness
+          fetch-depth: 1
+
+      - name: Validate exact frozen DSH source
+        env:
+          PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
+          PCT_REQUIRE_DSH_CONFORMANCE: '1'
+        run: python3 scripts/validate_p2_dsh_conformance.py
+
+      - name: Set up exact Node runtime
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.19.0'
+
+      - name: Install exact frozen DSH dependencies
+        working-directory: _vendor/deepseek-harness
+        run: |
+          set -euo pipefail
+          corepack enable
+          corepack prepare pnpm@11.7.0 --activate
+          pnpm install --frozen-lockfile
+
+      - name: Run at most two engineering-only trajectories
+        id: smoke
+        shell: bash
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          set +e
+          python3 scripts/run_p2_engineering_smoke.py --dsh-source _vendor/deepseek-harness
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Remove vendored runtime before scans
+        if: always()
+        run: rm -rf _vendor
+
+      - name: Validate and preserve only sanitized evidence
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_p2_engineering_smoke.py
+          make validate
+
+      - name: Upload sanitized evidence fallback
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pct-p2-d19-sanitized-evidence-${{ github.run_id }}
+          if-no-files-found: warn
+          retention-days: 30
+          path: |
+            reports/p2/deepseek-provider-introspection-v0.2.json
+            reports/p2/engineering-smoke-run-v0.2.json
+            reports/p2/engineering-smoke-summary-v0.2.md
+            governance/p2-pre-smoke-binding-verification-v0.1.json
+            docs/p2/p2-human-decision-pack-d20-v0.1.md
+
+      - name: Commit sanitized append-only evidence and set final status
+        if: always()
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SMOKE_EXIT_CODE: ${{ steps.smoke.outputs.exit_code }}
+        run: |
+          set -euo pipefail
+          git config user.name "PCT D19 Evidence Bot"
+          git config user.email "pct-d19-evidence@users.noreply.github.com"
+          git checkout -B "$PCT_D19_BRANCH" "${{ needs.materialize-and-validate.outputs.materialized_sha }}"
+          git add -- \
+            reports/p2/deepseek-provider-introspection-v0.2.json \
+            reports/p2/engineering-smoke-run-v0.2.json \
+            reports/p2/engineering-smoke-summary-v0.2.md \
+            governance/p2-pre-smoke-binding-verification-v0.1.json \
+            docs/p2/p2-human-decision-pack-d20-v0.1.md
+          if ! git diff --cached --quiet; then
+            git commit -m "p2: preserve D19 engineering smoke evidence"
+            git push origin "HEAD:$PCT_D19_BRANCH"
+          fi
+          sha="$(git rev-parse HEAD)"
+          if [ "${SMOKE_EXIT_CODE:-1}" = "0" ]; then
+            state=success
+            description="D19 guarded engineering smoke passed"
+          else
+            state=failure
+            description="D19 guarded engineering smoke failed; sanitized evidence preserved"
+          fi
+          python3 -c 'import json,sys; print(json.dumps({"state":sys.argv[1],"context":"PCT D19 guarded engineering smoke","description":sys.argv[2]}))' \
+            "$state" "$description" > "$RUNNER_TEMP/status.json"
+          curl --fail-with-body --silent --show-error \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer $GH_TOKEN" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "$GITHUB_API_URL/repos/$GITHUB_REPOSITORY/statuses/$sha" \
+            --data-binary @"$RUNNER_TEMP/status.json" \
+            >/dev/null
+
+      - name: Return the smoke result after evidence persistence
+        if: always()
+        shell: bash
+        run: exit "${{ steps.smoke.outputs.exit_code || '1' }}"
