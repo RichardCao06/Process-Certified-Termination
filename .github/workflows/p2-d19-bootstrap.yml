@@ -55,8 +55,6 @@ jobs:
           echo "$PCT_D19_PAYLOAD_SHA256  $payload" | sha256sum --check --strict
           tar -tzf "$payload" >/dev/null
           tar -xzf "$payload" -C "$GITHUB_WORKSPACE"
-          rm -rf .github/p2-d19-bootstrap
-          rm -f .github/workflows/p2-d19-bootstrap.yml
           find . -type d -name __pycache__ -prune -exec rm -rf {} +
           find . -type f -name '*.pyc' -delete
 
@@ -72,7 +70,7 @@ jobs:
             scripts/validate_p2_engineering_smoke.py
           make validate
 
-      - name: Commit the validated D19 implementation
+      - name: Commit the validated non-workflow D19 implementation
         id: commit
         shell: bash
         env:
@@ -82,6 +80,11 @@ jobs:
           git config user.name "PCT D19 Bootstrap Bot"
           git config user.email "pct-d19-bootstrap@users.noreply.github.com"
           git add -A
+          if git diff --cached --name-only | grep -q '^\.github/workflows/'; then
+            echo "Unexpected workflow diff remains after connector-side workflow materialization." >&2
+            git diff --cached --name-only >&2
+            exit 1
+          fi
           if git diff --cached --quiet; then
             sha="$(git rev-parse HEAD)"
           else
