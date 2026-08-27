@@ -2,7 +2,7 @@
   "schema_version": "0.2",
   "record_type": "PCT_P2_ENGINEERING_SMOKE_REPORT",
   "report_id": "PCT-P2-D19-ENGINEERING-SMOKE-v0.2",
-  "started_at": "2026-08-27T03:39:49.324775+00:00",
+  "started_at": "2026-08-27T04:01:29.710082+00:00",
   "status": "FAIL",
   "profile_binding": {
     "status": "PASS",
@@ -14,14 +14,14 @@
       "runtime_config_sha256": true
     },
     "report_path": "reports/p2/deepseek-provider-introspection-v0.2.json",
-    "report_sha256": "55533c46114cf71eb6a2cfc6099d541f1455a7a2796a2c598aa42f318d0975f9",
+    "report_sha256": "ffe2c7e16ea69984132adbb0bb53c6f854d760b82cdfe52a4053c532c89a3070",
     "returned_model_identifier": "deepseek-v4-pro"
   },
   "execution_context": {
-    "github_run_id": "33036996278",
-    "github_run_attempt": "1",
-    "github_event_name": "push",
-    "source_head_sha": "152fba10180ebbbe1b94591a466975dcd94d7bd4"
+    "github_run_id": "33037042938",
+    "github_run_attempt": "2",
+    "github_event_name": "pull_request",
+    "source_head_sha": "46d005311cd63d2e84277da65e9543d780e8eb7d"
   },
   "runs": [
     {
@@ -30,7 +30,7 @@
       "excluded_from_primary_schedule": true,
       "driver": {
         "exit_code": 1,
-        "elapsed_seconds": 0.165,
+        "elapsed_seconds": 0.131,
         "event_type_counts": {},
         "request_header_tool_sets": [],
         "stderr_tail_hash": "6b0e83426258e6ebb39224f92738c07a494b2572da43caac7abc28c463540ca1",
@@ -83,7 +83,7 @@
       "excluded_from_primary_schedule": true,
       "driver": {
         "exit_code": 1,
-        "elapsed_seconds": 0.155,
+        "elapsed_seconds": 0.131,
         "event_type_counts": {},
         "request_header_tool_sets": [],
         "stderr_tail_hash": "6b0e83426258e6ebb39224f92738c07a494b2572da43caac7abc28c463540ca1",
@@ -140,6 +140,6 @@
     "online_intervention": false,
     "raw_model_or_tool_content_persisted": false
   },
-  "completed_at": "2026-08-27T03:39:50.656538+00:00",
-  "report_digest": "e616bc3826360ef756262934bc267362b263503dcab4f9fde9dca2adb1d8eae8"
+  "completed_at": "2026-08-27T04:01:31.359937+00:00",
+  "report_digest": "575a77923bb28d388347fbb21933c46ca071ba98c275a1694232ffb40f5e317b"
 }

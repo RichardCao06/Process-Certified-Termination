@@ -2,7 +2,7 @@
   "schema_version": "0.1",
   "record_type": "PCT_P2_PRE_SMOKE_BINDING_VERIFICATION",
   "verification_id": "PCT-P2-D19-PRE-SMOKE-BINDING-v0.1",
-  "created_at": "2026-08-27T03:39:50.657065+00:00",
+  "created_at": "2026-08-27T04:01:31.386976+00:00",
   "status": "PASS_POST_RESULT_PR_CI_PENDING",
   "fresh_binding": {
     "status": "PASS",
@@ -14,7 +14,7 @@
       "runtime_config_sha256": true
     },
     "report_path": "reports/p2/deepseek-provider-introspection-v0.2.json",
-    "report_sha256": "55533c46114cf71eb6a2cfc6099d541f1455a7a2796a2c598aa42f318d0975f9",
+    "report_sha256": "ffe2c7e16ea69984132adbb0bb53c6f854d760b82cdfe52a4053c532c89a3070",
     "returned_model_identifier": "deepseek-v4-pro"
   },
   "engineering_smoke_report_status": "FAIL",
@@ -30,5 +30,5 @@
     "jobs": 0
   },
   "remaining_closure_requirement": "The protected D19 workflow must complete post-result full validation and persist the sanitized result commit; any separately required PR checks must also be approved before D20 authorization.",
-  "verification_digest": "bfc9fea38b76e49a425e647b16f872d4dd7f7d2b6432bf916fd9e34c44cb3135"
+  "verification_digest": "12f120943952508688f4c7bad2be6ca2fee9e8460f67923799f412b7915a4454"
 }

@@ -3,7 +3,7 @@
   "record_type": "PCT_P2_DEEPSEEK_PROVIDER_INTROSPECTION",
   "report_id": "PCT-P2-DEEPSEEK-PROVIDER-INTROSPECTION-v0.2",
   "status": "PASS",
-  "observed_at": "2026-08-27T03:39:49.648434+00:00",
+  "observed_at": "2026-08-27T04:01:30.298152+00:00",
   "supersedes_for_active_binding": "reports/p2/deepseek-provider-introspection-v0.1.json",
   "preserves_history": true,
   "request": {
@@ -60,5 +60,5 @@
     "applied_to_runtime": false,
     "online_intervention": false
   },
-  "report_digest": "f7a9804d219c656b11b310513cbfe5f61e751477969418b0d0a320ed188cd25c"
+  "report_digest": "8fd9304706bee2ad7bfb54ff1f81fe2aec4fe18442a7e1a20259994018129df8"
 }
