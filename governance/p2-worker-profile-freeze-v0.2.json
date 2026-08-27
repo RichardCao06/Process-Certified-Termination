@@ -1,0 +1,54 @@
+{
+  "schema_version": "0.2",
+  "record_type": "PCT_P2_WORKER_PROFILE_FREEZE",
+  "profile_freeze_id": "PCT-P2-WORKER-PROFILE-FREEZE-v0.2",
+  "status": "FROZEN_FOR_D19_ENGINEERING_SMOKE_ONLY_PENDING_ROUTINE_FRESH_BINDING_CHECK",
+  "created_at": "2026-08-26T10:45:00Z",
+  "supersedes_for_active_smoke": "governance/p2-worker-profile-freeze-v0.1.json",
+  "preserves_history": true,
+  "decision_basis": [
+    "PCT-P2-D13:A",
+    "PCT-P2-D19:A"
+  ],
+  "frozen_harness": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+    "release_identity": "dsh@0.1.1-rc.2"
+  },
+  "exact_identity": {
+    "provider_route": "deepseek-official",
+    "provider_base_url": "https://api.deepseek.com",
+    "returned_model_identifier": "deepseek-v4-pro",
+    "model_revision_or_snapshot": "NOT_EXPOSED_BY_PROVIDER",
+    "thinking": "enabled",
+    "reasoning_effort": "high",
+    "sampling": "PROVIDER_DEFAULT"
+  },
+  "artifact_bindings": {
+    "operational_profile_path": "config/p2/deepseek-v4-pro-operational-profile-v0.2.json",
+    "operational_profile_sha256": "66e4ff6090be7bc5132a80b2722f4571c1d18ed36710fc64ab6f1768ea10b5ec",
+    "system_prompt_path": "config/p2/natural-pilot-system-prompt-v0.1.txt",
+    "system_prompt_sha256": "acdb5a6380a899adba9806aa0881c37828a40905977929d179d45eb8707a1f92",
+    "intended_capability_catalog_path": "config/p2/natural-pilot-tool-catalog-v0.1.json",
+    "intended_capability_catalog_sha256": "896b1d9f3675e9e78de940f95eb28ae04ee58f7c7db440a69f8abec3442142b5",
+    "runtime_tool_catalog_path": "config/p2/d19-runtime-tool-catalog-v0.1.json",
+    "runtime_tool_catalog_sha256": "2d0d2c42a0a19bb7c19270caccadc1dd97c07341123e31424a26f3bcf071db32",
+    "engineering_runtime_config_path": "config/p2/dsh-engineering-smoke.cordis.yml",
+    "engineering_runtime_config_sha256": "67081984fce88ecf4473b74e20a0338113497c5ba81bb7465aad2b91f0a20d16",
+    "raw_provider_report_path": "reports/p2/deepseek-provider-introspection-v0.1.json",
+    "raw_provider_report_sha256": "31448f860cd20110403c0b73abac9337580c724a5e4cfca7a75ce5390c88a30f",
+    "raw_provider_report_profile_candidate_sha256": "d577631d17276130561dabe86958d94d98dd857304648e036215f7e273bf37ef",
+    "candidate_profile_sha256": "d577631d17276130561dabe86958d94d98dd857304648e036215f7e273bf37ef"
+  },
+  "raw_provider_report_binding_status": "MATCHED_CANDIDATE_PROFILE_FRESH_PRE_SMOKE_REBIND_STILL_REQUIRED",
+  "operational_caps_path": "governance/p2-operational-caps-v0.1.json",
+  "credential_reference": {
+    "environment": "p2-natural-pilot",
+    "secret_name": "DEEPSEEK_API_KEY",
+    "secret_value_recorded": false,
+    "secret_value_available_to_worker_process": false
+  },
+  "substitute_model_allowed": false,
+  "formal_60_trajectory_profile_authorized": false,
+  "profile_freeze_digest": "bee2b15ca5119b6edda02f9b6950e9a77043e60e2429cc158fa0459c99b11c14"
+}

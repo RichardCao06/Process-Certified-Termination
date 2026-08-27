@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_HUMAN_APPROVAL",
+  "approval_id": "PCT-P2-HUMAN-APPROVAL-D19-v0.1",
+  "status": "COMPLETE",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "approved_options": {
+    "PCT-P2-D19": "A"
+  },
+  "approval_source": {
+    "repository": "RichardCao06/Process-Certified-Termination",
+    "pull_request": 3,
+    "comment_id": 5423290038,
+    "created_at": "2026-08-26T09:26:28Z",
+    "submitted_by": "RichardCao06"
+  },
+  "approved_operational_values": {
+    "retry_scope": "INFRASTRUCTURE_ONLY",
+    "maximum_retries_after_original": 2,
+    "delay_seconds": [
+      2,
+      8
+    ],
+    "maximum_jitter_ratio": 0.2,
+    "jitter_ratio_applied": 0.0,
+    "quality_based_retry_allowed": false,
+    "operational_context_window_tokens": 128000,
+    "operational_max_output_tokens": 16000,
+    "per_trajectory_cumulative_token_cap": 200000,
+    "per_trajectory_monetary_cap": 30,
+    "currency": "CNY",
+    "engineering_smoke_trajectory_cap": 2,
+    "engineering_smoke_outside_primary_schedule": true
+  },
+  "does_not_authorize": [
+    "frozen 20-task/60-trajectory primary pilot",
+    "Semantic Audit Agent",
+    "Reference opening before Shadow freeze",
+    "private traces",
+    "online blocking, Steering, Resume, or Goal mutation",
+    "production deployment",
+    "accuracy, safety, benchmark-gain, or effectiveness claims"
+  ],
+  "append_only": true,
+  "approval_digest": "62b614af28bb4e17a10f99a33479091265aa77d53a496329caec92be5adab943"
+}

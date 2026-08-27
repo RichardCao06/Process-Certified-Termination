@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.2",
+  "record_type": "PCT_P2_NATURAL_PILOT_PREFLIGHT",
+  "preflight_id": "PCT-P2-NATURAL-PILOT-PREFLIGHT-v0.2",
+  "status": "READY_FOR_D19_ENGINEERING_SMOKE_ONLY_PRIMARY_PILOT_NOT_AUTHORIZED",
+  "created_at": "2026-08-26T10:45:00Z",
+  "supersedes_for_active_preflight": "reports/p2/natural-pilot-preflight-v0.1.json",
+  "preserves_history": true,
+  "decision_approval": {
+    "status": "PASS",
+    "approved": [
+      "PCT-P2-D13",
+      "PCT-P2-D14",
+      "PCT-P2-D15",
+      "PCT-P2-D16",
+      "PCT-P2-D17",
+      "PCT-P2-D18",
+      "PCT-P2-D19"
+    ],
+    "d19_comment_id": 5423290038
+  },
+  "resolved_or_downgraded_prior_blockers": {
+    "PCT-P2-PF-IDENTITY-01": "Provider listing found deepseek-v4-pro and the historical profile hash matches; a fresh provider/profile binding remains mandatory immediately before smoke.",
+    "PCT-P2-PF-BUDGET-01": "Resolved by D19 operational caps.",
+    "PCT-P2-PF-REFERENCE-01": "Downgraded under D17 to developmental single-rater evidence; Reference remains unopened."
+  },
+  "engineering_smoke": {
+    "authorized": true,
+    "maximum_trajectories": 2,
+    "fixture_catalog": "data/p2/engineering-smoke/fixture-catalog-v0.1.json",
+    "outside_primary_schedule": true,
+    "included_in_primary_denominator": false,
+    "pre_run_requirements": [
+      "fresh pre-smoke provider/profile binding check",
+      "full repository validation before model access",
+      "exact DSH conformance",
+      "protected Environment approval",
+      "exact runtime tool catalog",
+      "Worker secret isolation"
+    ]
+  },
+  "primary_natural_pilot": {
+    "authorized": false,
+    "planned_trajectories": 60,
+    "runs_started": 0
+  },
+  "research_boundaries": {
+    "semantic_auditor_calls_authorized": false,
+    "reference_opening_authorized": false,
+    "applied_to_runtime": false,
+    "online_intervention_authorized": false,
+    "effectiveness_claim_allowed": false
+  },
+  "preflight_digest": "282a01a1f79df000194bd3ac66a74e4a791fc8e041890e0bee64d5302c1b7e22"
+}
