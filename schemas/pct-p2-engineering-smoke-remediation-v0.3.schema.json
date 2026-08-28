@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/pct-p2-engineering-smoke-remediation-v0.3.schema.json",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_type",
+    "report_id",
+    "status",
+    "remediation",
+    "profile_binding",
+    "runs",
+    "research_boundaries",
+    "report_digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.2"
+    },
+    "record_type": {
+      "const": "PCT_P2_ENGINEERING_SMOKE_REPORT"
+    },
+    "report_id": {
+      "const": "PCT-P2-D20-ENGINEERING-SMOKE-REMEDIATION-v0.3"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED_PREFLIGHT",
+        "BLOCKED_SECRET",
+        "ERROR_PRESERVED"
+      ]
+    },
+    "runs": {
+      "type": "array",
+      "maxItems": 2
+    },
+    "report_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

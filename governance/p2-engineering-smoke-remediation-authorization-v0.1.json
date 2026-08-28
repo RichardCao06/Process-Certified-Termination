@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_ENGINEERING_SMOKE_REMEDIATION_AUTHORIZATION",
+  "authorization_id": "PCT-P2-D20-REMEDIATION-AUTHORIZATION-v0.1",
+  "status": "AUTHORIZED_NOT_RUN",
+  "decision_id": "PCT-P2-D20",
+  "selected_option": "A",
+  "approval_record": "governance/p2-human-approval-d20-v0.1.json",
+  "first_failure": {
+    "report_path": "reports/p2/engineering-smoke-run-v0.2.json",
+    "report_digest": "53f3779c64fe225790cc2c7117241b1d04c2d922d1a87c2477590af40278cef8",
+    "status": "FAIL",
+    "preserve_immutable": true
+  },
+  "rerun_scope": {
+    "fixture_ids": [
+      "PCT-P2-SMOKE-ENG-001",
+      "PCT-P2-SMOKE-ENG-002"
+    ],
+    "maximum_trajectories": 2,
+    "primary_schedule_runs": 0,
+    "same_model": "deepseek-v4-pro",
+    "same_harness_commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+    "same_system_prompt": "config/p2/natural-pilot-system-prompt-v0.1.txt",
+    "same_runtime_tool_catalog": "config/p2/d19-runtime-tool-catalog-v0.1.json",
+    "same_fixture_catalog": "data/p2/engineering-smoke/fixture-catalog-v0.1.json"
+  },
+  "permitted_engineering_changes": [
+    "bind TSX_TSCONFIG_PATH to the frozen DSH repository tsconfig for source-mode execution",
+    "bind DSH_AGENTS_HOME to an isolated per-fixture workspace path",
+    "add sanitized deterministic startup-failure classification without raw stderr persistence",
+    "make evidence persistence append-only and resilient to non-fast-forward branch movement"
+  ],
+  "forbidden_changes": [
+    "formal task catalog",
+    "Worker model",
+    "system prompt",
+    "primary metrics",
+    "analysis denominator",
+    "Reference rules",
+    "primary-pilot execution authority"
+  ],
+  "append_only": true,
+  "authorization_digest": "36b177963236f4eecc5787cd147f64a5008e3eee23849c57cfec9c27706c83cb"
+}
