@@ -1,0 +1,253 @@
+name: P2 no-model Cordis config anchor diagnostic
+
+on:
+  push:
+    branches: [research/p2-shadow-foundation-v0.1]
+    paths:
+      - '.github/workflows/p2-cordis-config-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pct-p2-cordis-config-diagnostic
+  cancel-in-progress: false
+
+jobs:
+  diagnose-cordis-config-loading:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact P2 commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact frozen DeepSeek Harness
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: b150a551b8d465e31e418e1b2eaf5e79bbb7d28e
+          path: _vendor/deepseek-harness
+          fetch-depth: 1
+
+      - name: Validate exact frozen DSH source
+        env:
+          PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
+          PCT_REQUIRE_DSH_CONFORMANCE: '1'
+        run: python3 scripts/validate_p2_dsh_conformance.py
+
+      - name: Set up exact Node runtime
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.19.0'
+
+      - name: Install exact frozen DSH dependencies
+        working-directory: _vendor/deepseek-harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          corepack enable
+          corepack prepare pnpm@11.7.0 --activate
+          pnpm install --frozen-lockfile
+
+      - name: Compare base, external-overlay, and in-tree-overlay boot paths without a model turn
+        working-directory: _vendor/deepseek-harness
+        shell: bash
+        env:
+          PCT_REPO_ROOT: ${{ github.workspace }}
+          PCT_SOURCE_HEAD_SHA: ${{ github.sha }}
+        run: |
+          set -euo pipefail
+          diagnostic_dir="$PWD/.pct-diagnostic"
+          mkdir -p "$diagnostic_dir"
+
+          cat > "$diagnostic_dir/boot-only.ts" <<'TS'
+          import { createHash } from 'node:crypto'
+          import type { Context } from '@deepseek-ai/cordis'
+          import { boot, installFailLoud, resolveConfigPath } from '@deepseek-ai/dsh-app-boot'
+
+          const NAME = 'pct-p2-cordis-boot-diagnostic'
+          const [scenario, configPath] = process.argv.slice(2)
+          if (!scenario || !configPath) throw new Error(`${NAME}: expected <scenario> <config-path>`)
+
+          const scrub = (value: string): string => {
+            const replacements: Array<[string | undefined, string]> = [
+              [process.env.PCT_REPO_ROOT, '<PCT_REPO>'],
+              [process.cwd(), '<DSH_REPO>'],
+              [process.env.DSH_HOME, '<DSH_HOME>'],
+            ]
+            let output = value
+            for (const [needle, replacement] of replacements) {
+              if (needle) output = output.split(needle).join(replacement)
+            }
+            return output
+              .replace(/sk-[A-Za-z0-9_-]{16,}/g, '<REDACTED_TOKEN>')
+              .replace(/Bearer\s+[^\s]+/gi, 'Bearer <REDACTED>')
+          }
+
+          const errorChain = (error: unknown): Array<Record<string, unknown>> => {
+            const chain: Array<Record<string, unknown>> = []
+            let current: unknown = error
+            for (let depth = 0; depth < 8 && current !== undefined; depth++) {
+              if (current instanceof Error) {
+                const rawStack = current.stack ?? ''
+                const stack = scrub(rawStack)
+                chain.push({
+                  name: current.name,
+                  message: scrub(current.message).slice(0, 4000),
+                  stack_excerpt: stack.split('\n').slice(0, 14),
+                  stack_sha256: createHash('sha256').update(stack).digest('hex'),
+                  code: typeof (current as Error & { code?: unknown }).code === 'string'
+                    ? (current as Error & { code?: string }).code
+                    : null,
+                })
+                current = (current as Error & { cause?: unknown }).cause
+              } else {
+                const text = scrub(String(current))
+                chain.push({
+                  name: typeof current,
+                  message: text.slice(0, 4000),
+                  stack_excerpt: [],
+                  stack_sha256: createHash('sha256').update(text).digest('hex'),
+                  code: null,
+                })
+                current = undefined
+              }
+            }
+            return chain
+          }
+
+          const result: Record<string, unknown> = {
+            scenario,
+            config_path_class: scenario === 'external-overlay' ? 'PCT_REPOSITORY'
+              : scenario === 'in-tree-overlay' ? 'FROZEN_DSH_REPOSITORY_COPY'
+              : 'FROZEN_DSH_BASELINE',
+            status: 'FAIL',
+            model_turn_executed: false,
+            provider_request_executed: false,
+            real_credential_available: false,
+          }
+
+          const uninstallFailLoud = installFailLoud(NAME)
+          let ctx: Context | undefined
+          try {
+            ctx = await boot(NAME, resolveConfigPath(configPath, undefined))
+            await ctx.loader.await()
+            const entries = [...ctx.loader.entries()].map(entry => ({
+              id: entry.options.id ?? null,
+              name: entry.options.name ?? null,
+              disabled: entry.disabled,
+              mounted: entry.fiber !== undefined,
+            }))
+            result.status = 'PASS'
+            result.loader_entry_count = entries.length
+            result.loader_entries = entries
+          } catch (error: unknown) {
+            result.error_chain = errorChain(error)
+          } finally {
+            await ctx?.fiber.dispose()
+            uninstallFailLoud()
+          }
+
+          process.stdout.write(`${JSON.stringify(result)}\n`)
+          TS
+
+          external_overlay="$PCT_REPO_ROOT/config/p2/dsh-engineering-smoke.cordis.yml"
+          internal_overlay="$diagnostic_dir/dsh-engineering-smoke.cordis.yml"
+          base_config="$PWD/examples/headless-agent/cordis.yml"
+          cp "$external_overlay" "$internal_overlay"
+          cmp "$external_overlay" "$internal_overlay"
+
+          loader="$PWD/node_modules/tsx/dist/esm/index.mjs"
+          test -f "$loader"
+          test -f "$PWD/tsconfig.json"
+          test -f "$base_config"
+
+          export TSX_TSCONFIG_PATH="$PWD/tsconfig.json"
+          export PCT_DSH_BASE_CONFIG="$base_config"
+          export DEEPSEEK_API_KEY='PCT_DIAGNOSTIC_DUMMY_CREDENTIAL'
+          export DEEPSEEK_BASE_URL='http://127.0.0.1:9'
+          export DSH_SNAPSHOT='record'
+          export DSH_TELEMETRY_DISABLED='1'
+
+          for scenario in base external-overlay in-tree-overlay; do
+            case "$scenario" in
+              base) config="$base_config" ;;
+              external-overlay) config="$external_overlay" ;;
+              in-tree-overlay) config="$internal_overlay" ;;
+            esac
+            export DSH_HOME="$RUNNER_TEMP/pct-dsh-home-$scenario"
+            export DSH_AGENTS_HOME="$RUNNER_TEMP/pct-dsh-agents-$scenario"
+            mkdir -p "$DSH_HOME" "$DSH_AGENTS_HOME"
+            node --import "$loader" "$diagnostic_dir/boot-only.ts" "$scenario" "$config" \
+              > "$RUNNER_TEMP/$scenario.json"
+          done
+
+          mkdir -p "$PCT_REPO_ROOT/reports/p2"
+          python3 - <<'PY'
+          import hashlib
+          import json
+          import os
+          from pathlib import Path
+
+          root = Path(os.environ['PCT_REPO_ROOT'])
+          temp = Path(os.environ['RUNNER_TEMP'])
+          scenarios = [json.loads((temp / f'{name}.json').read_text()) for name in (
+              'base', 'external-overlay', 'in-tree-overlay'
+          )]
+          by_name = {item['scenario']: item for item in scenarios}
+          base_status = by_name['base']['status']
+          external_status = by_name['external-overlay']['status']
+          internal_status = by_name['in-tree-overlay']['status']
+          if base_status == 'PASS' and external_status == 'FAIL' and internal_status == 'PASS':
+              classification = 'CONFIG_RESOLUTION_ANCHOR_CONFIRMED'
+          elif base_status == 'PASS' and external_status == 'FAIL' and internal_status == 'FAIL':
+              classification = 'OVERLAY_CONTENT_OR_PATCH_SEMANTICS_FAILURE'
+          elif base_status == 'PASS' and external_status == 'PASS':
+              classification = 'BOOT_PATH_NOT_REPRODUCED'
+          elif base_status == 'FAIL':
+              classification = 'FROZEN_DSH_BASE_BOOT_FAILURE'
+          else:
+              classification = 'MIXED_OR_UNEXPECTED_RESULT'
+
+          overlay = root / 'config/p2/dsh-engineering-smoke.cordis.yml'
+          report = {
+              'schema_version': '0.1',
+              'record_type': 'PCT_P2_NO_MODEL_CORDIS_BOOT_DIAGNOSTIC',
+              'diagnostic_id': 'PCT-P2-I04-CORDIS-BOOT-DIAGNOSTIC-v0.1',
+              'source_head_sha': os.environ['PCT_SOURCE_HEAD_SHA'],
+              'frozen_dsh_commit': 'b150a551b8d465e31e418e1b2eaf5e79bbb7d28e',
+              'overlay_path': 'config/p2/dsh-engineering-smoke.cordis.yml',
+              'overlay_sha256': hashlib.sha256(overlay.read_bytes()).hexdigest(),
+              'classification': classification,
+              'scenarios': scenarios,
+              'safety_boundary': {
+                  'deepseek_environment_secret_used': False,
+                  'real_provider_credential_available': False,
+                  'provider_base_url': 'http://127.0.0.1:9',
+                  'model_turns_executed': 0,
+                  'provider_requests_executed': 0,
+                  'engineering_fixture_runs': 0,
+                  'primary_schedule_runs': 0,
+                  'reference_packets_opened': 0,
+                  'semantic_auditor_calls': 0,
+                  'runtime_application': False,
+              },
+          }
+          material = json.dumps(report, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode()
+          report['report_digest'] = hashlib.sha256(material).hexdigest()
+          output = root / 'reports/p2/cordis-config-boot-diagnostic-v0.1.json'
+          output.write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
+          print(json.dumps(report, ensure_ascii=False, indent=2))
+          PY
+
+      - name: Upload sanitized no-model diagnostic
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pct-p2-cordis-config-diagnostic-${{ github.run_id }}
+          if-no-files-found: error
+          retention-days: 30
+          path: reports/p2/cordis-config-boot-diagnostic-v0.1.json
