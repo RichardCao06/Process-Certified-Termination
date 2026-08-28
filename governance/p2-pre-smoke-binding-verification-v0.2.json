@@ -1,0 +1,27 @@
+{
+  "schema_version": "0.2",
+  "record_type": "PCT_P2_PRE_SMOKE_BINDING_VERIFICATION",
+  "verification_id": "PCT-P2-D20-PRE-SMOKE-BINDING-v0.2",
+  "created_at": "2026-08-28T01:35:05.475558+00:00",
+  "status": "PASS_POST_RESULT_PR_CI_PENDING",
+  "fresh_binding": {
+    "status": "PASS",
+    "comparisons": {
+      "operational_profile_sha256": true,
+      "system_prompt_sha256": true,
+      "intended_capability_catalog_sha256": true,
+      "runtime_tool_catalog_sha256": true,
+      "runtime_config_sha256": true
+    },
+    "report_path": "reports/p2/deepseek-provider-introspection-v0.3.json",
+    "report_sha256": "5a76b6f531c0c1cef62f00ef2b54cbb49a77aff12b4b60d07950bb0719dacc9a",
+    "returned_model_identifier": "deepseek-v4-pro"
+  },
+  "engineering_smoke_remediation_report_status": "FAIL",
+  "first_failure_preserved": {
+    "path": "reports/p2/engineering-smoke-run-v0.2.json",
+    "report_digest": "53f3779c64fe225790cc2c7117241b1d04c2d922d1a87c2477590af40278cef8"
+  },
+  "remaining_closure_requirement": "Persist v0.3 append-only evidence and pass full repository validation before D21.",
+  "verification_digest": "ce07e98c2514a8c51e6dfc6fcc2fae2877bcef505a362d1148b19aefd706c637"
+}
