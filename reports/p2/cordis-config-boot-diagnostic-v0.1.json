@@ -1,0 +1,344 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NO_MODEL_CORDIS_BOOT_DIAGNOSTIC",
+  "diagnostic_id": "PCT-P2-I04-CORDIS-BOOT-DIAGNOSTIC-v0.1",
+  "source_head_sha": "35d999ca14c246c4803fe3d34c533c8e6f8ee3c5",
+  "frozen_dsh_commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+  "overlay_path": "config/p2/dsh-engineering-smoke.cordis.yml",
+  "overlay_sha256": "67081984fce88ecf4473b74e20a0338113497c5ba81bb7465aad2b91f0a20d16",
+  "classification": "OVERLAY_CONTENT_OR_PATCH_SEMANTICS_FAILURE",
+  "scenarios": [
+    {
+      "scenario": "base",
+      "config_path_class": "FROZEN_DSH_BASELINE",
+      "status": "PASS",
+      "model_turn_executed": false,
+      "provider_request_executed": false,
+      "real_credential_available": false,
+      "loader_entry_count": 26,
+      "loader_entries": [
+        {
+          "id": "include",
+          "name": "cordis:include",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "settings",
+          "name": "@deepseek-ai/dsh-settings-file",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "credentials",
+          "name": "@deepseek-ai/dsh-credentials-local",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "llm-deepseek",
+          "name": "@deepseek-ai/dsh-llm-deepseek",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "subprocess",
+          "name": "@deepseek-ai/dsh-subprocess-local",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "bash",
+          "name": "@deepseek-ai/dsh-bash-local",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "agent-spine",
+          "name": "@deepseek-ai/dsh-agent-spine-demo",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "persistence",
+          "name": "@deepseek-ai/dsh-session-persistence-jsonl",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "checkpoint-policy",
+          "name": "@deepseek-ai/dsh-session-checkpoint-policy",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "token-meter",
+          "name": "@deepseek-ai/dsh-token-meter",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "compaction-basic",
+          "name": "@deepseek-ai/dsh-compaction-basic",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "session-projection",
+          "name": "@deepseek-ai/dsh-session-projection",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "subagent",
+          "name": "@deepseek-ai/dsh-subagent",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "subagent-spawn-in-process",
+          "name": "@deepseek-ai/dsh-subagent-spawn-in-process",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "subagent-fork-in-process",
+          "name": "@deepseek-ai/dsh-subagent-fork-in-process",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-subagent-control",
+          "name": "@deepseek-ai/dsh-tool-subagent-control",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-subagent-report",
+          "name": "@deepseek-ai/dsh-tool-subagent-report",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-subagent",
+          "name": "@deepseek-ai/dsh-tool-subagent",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-subagent-fork",
+          "name": "@deepseek-ai/dsh-tool-subagent",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "workflow-worker-thread",
+          "name": "@deepseek-ai/dsh-workflow-worker-thread",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-workflow",
+          "name": "@deepseek-ai/dsh-tool-workflow",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-ralph",
+          "name": "@deepseek-ai/dsh-tool-ralph",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-todo",
+          "name": "@deepseek-ai/dsh-tool-todo",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "fs-local",
+          "name": "@deepseek-ai/dsh-fs-local",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "fs-observation-policy",
+          "name": "@deepseek-ai/dsh-fs-observation-policy",
+          "disabled": false,
+          "mounted": true
+        },
+        {
+          "id": "tool-fs",
+          "name": "@deepseek-ai/dsh-tool-fs",
+          "disabled": false,
+          "mounted": true
+        }
+      ]
+    },
+    {
+      "scenario": "external-overlay",
+      "config_path_class": "PCT_REPOSITORY",
+      "status": "FAIL",
+      "model_turn_executed": false,
+      "provider_request_executed": false,
+      "real_credential_available": false,
+      "error_chain": [
+        {
+          "name": "Error",
+          "message": "pct-p2-cordis-boot-diagnostic: plugin tree failed to load: failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported\nError: extension \"\" not supported\n    at new Include (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:200:13)\n    at Fiber.execute (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:253:30)\n    at <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:366:45)\n    at file://<PCT_REPO>/config/p2/#base\n    at file://<PCT_REPO>/config/p2/#include",
+          "stack_excerpt": [
+            "Error: pct-p2-cordis-boot-diagnostic: plugin tree failed to load: failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+            "Error: extension \"\" not supported",
+            "    at new Include (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:200:13)",
+            "    at Fiber.execute (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:253:30)",
+            "    at <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:366:45)",
+            "    at file://<PCT_REPO>/config/p2/#base",
+            "    at file://<PCT_REPO>/config/p2/#include",
+            "    at boot (<PCT_REPO>/_vendor/deepseek-harness/packages/boot/app-boot/src/index.ts:800:11)",
+            "    at async <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/boot-only.ts:70:9)"
+          ],
+          "stack_sha256": "5b78813fef0f6a84fc43788d70b6498ff3a550ca8ce935cf1ea15487c562143d",
+          "code": null
+        },
+        {
+          "name": "Error",
+          "message": "failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+          "stack_excerpt": [
+            "Error: failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+            "    at updateError (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:26:10)",
+            "    at Entry._init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:287:13)",
+            "    at async Entry.init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:261:7)",
+            "    at async Entry.update (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:172:41)",
+            "    at async EntryGroup.create (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/group.ts:30:7)",
+            "    at async Proxy.create (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/tree.ts:99:16)",
+            "    at async mountRootInclude (<PCT_REPO>/_vendor/deepseek-harness/packages/boot/app-boot/src/index.ts:523:21)",
+            "    at async boot (<PCT_REPO>/_vendor/deepseek-harness/packages/boot/app-boot/src/index.ts:774:5)",
+            "    at async <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/boot-only.ts:70:9)"
+          ],
+          "stack_sha256": "bc4aa918ba3ccddea92cc9690d3fcede6a74ee79828e9e539a8c484b0ec0a6a6",
+          "code": null
+        },
+        {
+          "name": "Error",
+          "message": "failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+          "stack_excerpt": [
+            "Error: failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+            "    at updateError (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:26:10)",
+            "    at Entry._init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:287:13)",
+            "    at async Entry.init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:261:7)",
+            "    at async Entry.update (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:172:41)",
+            "    at async EntryGroup.create (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/group.ts:30:7)",
+            "    at async Promise.allSettled (index 0)",
+            "    at async EntryGroup.update (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/group.ts:71:24)",
+            "    at async Include._apply (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:317:5)"
+          ],
+          "stack_sha256": "7a89634d5d91c2c5a30a5bf713973a94afe2d13bb444f5f4748e47ef129e12b5",
+          "code": null
+        },
+        {
+          "name": "Error",
+          "message": "extension \"\" not supported",
+          "stack_excerpt": [
+            "Error: extension \"\" not supported",
+            "    at new Include (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:200:13)",
+            "    at Fiber.execute (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:253:30)",
+            "    at <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:366:45)",
+            "    at file://<PCT_REPO>/config/p2/#base",
+            "    at file://<PCT_REPO>/config/p2/#include"
+          ],
+          "stack_sha256": "5075457f79e35f3de193a1eee7a3e95c11a0bc25415b775f0800f83c7ba675b8",
+          "code": null
+        }
+      ]
+    },
+    {
+      "scenario": "in-tree-overlay",
+      "config_path_class": "FROZEN_DSH_REPOSITORY_COPY",
+      "status": "FAIL",
+      "model_turn_executed": false,
+      "provider_request_executed": false,
+      "real_credential_available": false,
+      "error_chain": [
+        {
+          "name": "Error",
+          "message": "pct-p2-cordis-boot-diagnostic: plugin tree failed to load: failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported\nError: extension \"\" not supported\n    at new Include (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:200:13)\n    at Fiber.execute (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:253:30)\n    at <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:366:45)\n    at file://<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/#base\n    at file://<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/#include",
+          "stack_excerpt": [
+            "Error: pct-p2-cordis-boot-diagnostic: plugin tree failed to load: failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+            "Error: extension \"\" not supported",
+            "    at new Include (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:200:13)",
+            "    at Fiber.execute (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:253:30)",
+            "    at <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:366:45)",
+            "    at file://<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/#base",
+            "    at file://<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/#include",
+            "    at boot (<PCT_REPO>/_vendor/deepseek-harness/packages/boot/app-boot/src/index.ts:800:11)",
+            "    at async <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/boot-only.ts:70:9)"
+          ],
+          "stack_sha256": "b7b820672eee5a86df8ec622d7df53527c0a455a3eea929e2f0316873d1f15cd",
+          "code": null
+        },
+        {
+          "name": "Error",
+          "message": "failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+          "stack_excerpt": [
+            "Error: failed to apply loader entry include (cordis:include): failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+            "    at updateError (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:26:10)",
+            "    at Entry._init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:287:13)",
+            "    at async Entry.init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:261:7)",
+            "    at async Entry.update (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:172:41)",
+            "    at async EntryGroup.create (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/group.ts:30:7)",
+            "    at async Proxy.create (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/tree.ts:99:16)",
+            "    at async mountRootInclude (<PCT_REPO>/_vendor/deepseek-harness/packages/boot/app-boot/src/index.ts:523:21)",
+            "    at async boot (<PCT_REPO>/_vendor/deepseek-harness/packages/boot/app-boot/src/index.ts:774:5)",
+            "    at async <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/boot-only.ts:70:9)"
+          ],
+          "stack_sha256": "bc4aa918ba3ccddea92cc9690d3fcede6a74ee79828e9e539a8c484b0ec0a6a6",
+          "code": null
+        },
+        {
+          "name": "Error",
+          "message": "failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+          "stack_excerpt": [
+            "Error: failed to apply loader entry base (@deepseek-ai/cordis-plugin-include): extension \"\" not supported",
+            "    at updateError (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:26:10)",
+            "    at Entry._init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:287:13)",
+            "    at async Entry.init (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:261:7)",
+            "    at async Entry.update (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/entry.ts:172:41)",
+            "    at async EntryGroup.create (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/group.ts:30:7)",
+            "    at async Promise.allSettled (index 0)",
+            "    at async EntryGroup.update (<PCT_REPO>/_vendor/deepseek-harness/vendor/loader/src/config/group.ts:71:24)",
+            "    at async Include._apply (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:317:5)"
+          ],
+          "stack_sha256": "7a89634d5d91c2c5a30a5bf713973a94afe2d13bb444f5f4748e47ef129e12b5",
+          "code": null
+        },
+        {
+          "name": "Error",
+          "message": "extension \"\" not supported",
+          "stack_excerpt": [
+            "Error: extension \"\" not supported",
+            "    at new Include (<PCT_REPO>/_vendor/deepseek-harness/vendor/include/src/index.ts:200:13)",
+            "    at Fiber.execute (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:253:30)",
+            "    at <anonymous> (<PCT_REPO>/_vendor/deepseek-harness/vendor/cordis/src/fiber.ts:366:45)",
+            "    at file://<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/#base",
+            "    at file://<PCT_REPO>/_vendor/deepseek-harness/.pct-diagnostic/#include"
+          ],
+          "stack_sha256": "ff65a7ee442bdfe453f0d1fdc7fe7249581a95ac264212883b9999742c82d650",
+          "code": null
+        }
+      ]
+    }
+  ],
+  "safety_boundary": {
+    "deepseek_environment_secret_used": false,
+    "real_provider_credential_available": false,
+    "provider_base_url": "http://127.0.0.1:9",
+    "model_turns_executed": 0,
+    "provider_requests_executed": 0,
+    "engineering_fixture_runs": 0,
+    "primary_schedule_runs": 0,
+    "reference_packets_opened": 0,
+    "semantic_auditor_calls": 0,
+    "runtime_application": false
+  },
+  "report_digest": "1997cc79cd4e28ac3cd12ba9e75ea7efef472d33a802bd5ece6520cf5ff2240b"
+}

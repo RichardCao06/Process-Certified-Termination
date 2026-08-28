@@ -1,0 +1,87 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_INCIDENT_RECORD",
+  "incident_id": "PCT-P2-I04",
+  "title": "D19/D20 root-include composition is incompatible with the frozen DSH Include contract",
+  "status": "DIAGNOSED_NO_MODEL_REPAIR_CANDIDATE_VALIDATED_D21_PENDING",
+  "opened_at": "2026-08-28T01:35:05Z",
+  "diagnosed_at": "2026-08-28T03:46:17Z",
+  "affected_scope": [
+    "D19 engineering smoke launch configuration",
+    "D20 same-fixture remediation launch configuration"
+  ],
+  "unaffected_scope": [
+    "P0 and P1 frozen artifacts",
+    "P2 deterministic Shadow foundation",
+    "20-task/60-trajectory primary schedule, which remains unrun",
+    "Reference lane, Semantic Auditor, and online intervention, which remain closed"
+  ],
+  "preserved_evidence": {
+    "d19_first_failure": {
+      "path": "reports/p2/engineering-smoke-run-v0.2.json",
+      "report_digest": "53f3779c64fe225790cc2c7117241b1d04c2d922d1a87c2477590af40278cef8"
+    },
+    "d20_remediation_failure": {
+      "path": "reports/p2/engineering-smoke-remediation-run-v0.3.json",
+      "report_digest": "e7481fbf90d2d78b4a8d318dc273b8a26399623759eccf16d3bd0b3d3e5e8e93"
+    },
+    "no_model_diagnostic": {
+      "path": "reports/p2/cordis-config-boot-diagnostic-v0.1.json",
+      "report_digest": "1997cc79cd4e28ac3cd12ba9e75ea7efef472d33a802bd5ece6520cf5ff2240b",
+      "file_sha256": "1609a6195f0599522bd42cbf850894c13795b0d875c894e286787ef94d573487",
+      "github_run_id": 33134045133,
+      "artifact_id": 9671340385,
+      "artifact_zip_sha256": "94937a263b3bb6556efcf73bc3106db2b21217458e3bca3cdf48e60ee7ccb9eb"
+    },
+    "official_patch_no_model_validation": {
+      "path": "reports/p2/official-patch-no-model-validation-v0.1.json",
+      "report_digest": "d363f4f2f7bc776f800135531ea9136176eaafbb4cac4c4323238f0cd5004a2a",
+      "file_sha256": "fe8e0e24c1ad702428ec75e19771668057a839492882429bc1d47102041e3613",
+      "github_run_id": 33134727974,
+      "artifact_id": 9671591759,
+      "artifact_zip_sha256": "b3bb7a161a1e92b80b00cb130e043a5c049a17ae5c181b6cf93536513abbb5c6"
+    }
+  },
+  "root_cause": {
+    "classification": "ROOT_INCLUDE_OWN_PATH_JS_EXPRESSION_NOT_EVALUATED",
+    "facts": [
+      "The frozen base config boots successfully without a model turn.",
+      "The D19/D20 overlay fails both outside and inside the frozen DSH repository.",
+      "The exact error is extension \"\" not supported at the frozen Include constructor.",
+      "The failed overlay places !!js process.env.PCT_DSH_BASE_CONFIG in the Include plugin own path field.",
+      "The frozen Include contract treats its own path field as literal carrier configuration, not lazy tree data."
+    ],
+    "ruled_out": [
+      "repository-location anchor as the sole cause",
+      "DeepSeek credential failure",
+      "provider response or model behavior",
+      "task-fixture content",
+      "Candidate-Stop semantics"
+    ]
+  },
+  "validated_repair_candidate": {
+    "base_config_path": "examples/headless-agent/cordis.yml",
+    "patch_path": "config/p2/dsh-engineering-smoke.patch-v0.2.yml",
+    "patch_git_blob_sha": "a5334a2d5ae57f67ef3f0df2d7a6eddb466169b9",
+    "contract": "loadOptionalPatches + boot over the frozen base config",
+    "no_model_validation_status": "PASS",
+    "model_facing_tools": [
+      "edit",
+      "read",
+      "write"
+    ],
+    "forbidden_capabilities_disabled": true
+  },
+  "safety_boundary": {
+    "deepseek_environment_secret_used_in_diagnostic": false,
+    "provider_requests_executed_in_diagnostic": 0,
+    "model_turns_executed_in_diagnostic": 0,
+    "primary_schedule_runs": 0,
+    "reference_packets_opened": 0,
+    "semantic_auditor_calls": 0,
+    "runtime_application": false
+  },
+  "next_gate": "PCT-P2-D21",
+  "append_only": true,
+  "incident_digest": "d9ac09c47d9dd44808689aa390ee0236bfb35fad83930daa5c9fd36c0128bc45"
+}

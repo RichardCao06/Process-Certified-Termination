@@ -1,0 +1,30 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NO_MODEL_DIAGNOSTIC_FREEZE",
+  "freeze_id": "PCT-P2-I04-DIAGNOSTIC-FREEZE-v0.1",
+  "frozen_at": "2026-08-28T03:46:17Z",
+  "repository": "RichardCao06/Process-Certified-Termination",
+  "source_commit": "35d999ca14c246c4803fe3d34c533c8e6f8ee3c5",
+  "frozen_dsh_commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+  "report_path": "reports/p2/cordis-config-boot-diagnostic-v0.1.json",
+  "report_file_sha256": "1609a6195f0599522bd42cbf850894c13795b0d875c894e286787ef94d573487",
+  "report_digest": "1997cc79cd4e28ac3cd12ba9e75ea7efef472d33a802bd5ece6520cf5ff2240b",
+  "workflow_run_id": 33134045133,
+  "artifact_id": 9671340385,
+  "artifact_zip_sha256": "94937a263b3bb6556efcf73bc3106db2b21217458e3bca3cdf48e60ee7ccb9eb",
+  "classification": "OVERLAY_CONTENT_OR_PATCH_SEMANTICS_FAILURE",
+  "safety_boundary": {
+    "deepseek_environment_secret_used": false,
+    "real_provider_credential_available": false,
+    "provider_base_url": "http://127.0.0.1:9",
+    "model_turns_executed": 0,
+    "provider_requests_executed": 0,
+    "engineering_fixture_runs": 0,
+    "primary_schedule_runs": 0,
+    "reference_packets_opened": 0,
+    "semantic_auditor_calls": 0,
+    "runtime_application": false
+  },
+  "append_only": true,
+  "freeze_digest": "dbd6543838aba89a48de5e98340997c8c98a66065319dd8cd582224ea897e956"
+}
