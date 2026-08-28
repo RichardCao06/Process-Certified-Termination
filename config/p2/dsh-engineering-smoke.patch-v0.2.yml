@@ -39,7 +39,6 @@
         cwd: !!js process.cwd()
     tools:
       mode: native
-    toolOrder: [read, write, edit]
     skills:
       enabled: false
     toolBash: false

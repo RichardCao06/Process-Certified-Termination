@@ -55,13 +55,14 @@ jobs:
           pnpm install --frozen-lockfile
 
       - name: Boot frozen base with the official patch-list contract and inspect tools
+        id: validate
         working-directory: _vendor/deepseek-harness
         shell: bash
         env:
           PCT_REPO_ROOT: ${{ github.workspace }}
           PCT_SOURCE_HEAD_SHA: ${{ github.sha }}
         run: |
-          set -euo pipefail
+          set +e
           diagnostic_dir="$PWD/.pct-official-patch-validation"
           mkdir -p "$diagnostic_dir"
 
@@ -105,11 +106,73 @@ jobs:
             'tool-todo',
           ]
 
+          const scrub = (value: string): string => value
+            .split(process.env.PCT_REPO_ROOT ?? '').join('<PCT_REPO>')
+            .split(process.cwd()).join('<DSH_REPO>')
+            .split(process.env.DSH_HOME ?? '').join('<DSH_HOME>')
+            .replace(/sk-[A-Za-z0-9_-]{16,}/g, '<REDACTED_TOKEN>')
+            .replace(/Bearer\s+[^\s]+/gi, 'Bearer <REDACTED>')
+
+          const errorChain = (error: unknown): Array<Record<string, unknown>> => {
+            const chain: Array<Record<string, unknown>> = []
+            let current: unknown = error
+            for (let depth = 0; depth < 8 && current !== undefined; depth++) {
+              if (current instanceof Error) {
+                const stack = scrub(current.stack ?? '')
+                chain.push({
+                  name: current.name,
+                  message: scrub(current.message).slice(0, 4000),
+                  stack_excerpt: stack.split('\n').slice(0, 12),
+                  stack_sha256: createHash('sha256').update(stack).digest('hex'),
+                  code: typeof (current as Error & { code?: unknown }).code === 'string'
+                    ? (current as Error & { code?: string }).code
+                    : null,
+                })
+                current = (current as Error & { cause?: unknown }).cause
+              } else {
+                const text = scrub(String(current))
+                chain.push({
+                  name: typeof current,
+                  message: text.slice(0, 4000),
+                  stack_excerpt: [],
+                  stack_sha256: createHash('sha256').update(text).digest('hex'),
+                  code: null,
+                })
+                current = undefined
+              }
+            }
+            return chain
+          }
+
+          const report: Record<string, unknown> = {
+            schema_version: '0.1',
+            record_type: 'PCT_P2_NO_MODEL_OFFICIAL_PATCH_VALIDATION',
+            validation_id: 'PCT-P2-I04-OFFICIAL-PATCH-VALIDATION-v0.1',
+            source_head_sha: process.env.PCT_SOURCE_HEAD_SHA,
+            frozen_dsh_commit: 'b150a551b8d465e31e418e1b2eaf5e79bbb7d28e',
+            base_config_path: 'examples/headless-agent/cordis.yml',
+            patch_path: 'config/p2/dsh-engineering-smoke.patch-v0.2.yml',
+            status: 'FAIL',
+            safety_boundary: {
+              deepseek_environment_secret_used: false,
+              real_provider_credential_available: false,
+              provider_base_url: 'http://127.0.0.1:9',
+              model_turns_executed: 0,
+              provider_requests_executed: 0,
+              engineering_fixture_runs: 0,
+              primary_schedule_runs: 0,
+              reference_packets_opened: 0,
+              semantic_auditor_calls: 0,
+              runtime_application: false,
+            },
+          }
+
           const uninstallFailLoud = installFailLoud(NAME)
           let ctx: Context | undefined
           try {
             const patches = loadOptionalPatches(NAME, patchPath)
             if (!patches || patches.length === 0) throw new Error(`${NAME}: patch list is absent or empty`)
+            report.patch_count = patches.length
             ctx = await boot(NAME, resolveConfigPath(baseConfigPath, undefined), patches)
             await ctx.loader.await()
 
@@ -130,10 +193,8 @@ jobs:
             const spine = byId.get('agent-spine')
             const spineConfig = (spine?.fiber?.config ?? {}) as Record<string, unknown>
             const skills = (spineConfig.skills ?? {}) as Record<string, unknown>
-            const toolOrder = Array.isArray(spineConfig.toolOrder) ? spineConfig.toolOrder : []
             const hardeningChecks = {
               tools_mode_native: (spineConfig.tools as Record<string, unknown> | undefined)?.mode === 'native',
-              tool_order_exact: JSON.stringify(toolOrder) === JSON.stringify(['read', 'write', 'edit']),
               skills_disabled: skills.enabled === false,
               bundle_bash_disabled: spineConfig.toolBash === false,
               bundle_jobs_disabled: spineConfig.toolJobs === false,
@@ -156,15 +217,7 @@ jobs:
             }
             const adapterPass = Object.values(adapterChecks).every(Boolean)
 
-            const report: Record<string, unknown> = {
-              schema_version: '0.1',
-              record_type: 'PCT_P2_NO_MODEL_OFFICIAL_PATCH_VALIDATION',
-              validation_id: 'PCT-P2-I04-OFFICIAL-PATCH-VALIDATION-v0.1',
-              source_head_sha: process.env.PCT_SOURCE_HEAD_SHA,
-              frozen_dsh_commit: 'b150a551b8d465e31e418e1b2eaf5e79bbb7d28e',
-              base_config_path: 'examples/headless-agent/cordis.yml',
-              patch_path: 'config/p2/dsh-engineering-smoke.patch-v0.2.yml',
-              patch_count: patches.length,
+            Object.assign(report, {
               status: missingMounted.length === 0
                 && invalidDisabled.length === 0
                 && exactToolBoundary
@@ -180,27 +233,18 @@ jobs:
               hardening_checks: hardeningChecks,
               adapter_checks: adapterChecks,
               loader_entry_count: entries.length,
-              safety_boundary: {
-                deepseek_environment_secret_used: false,
-                real_provider_credential_available: false,
-                provider_base_url: 'http://127.0.0.1:9',
-                model_turns_executed: 0,
-                provider_requests_executed: 0,
-                engineering_fixture_runs: 0,
-                primary_schedule_runs: 0,
-                reference_packets_opened: 0,
-                semantic_auditor_calls: 0,
-                runtime_application: false,
-              },
-            }
-            const canonical = JSON.stringify(report, Object.keys(report).sort())
-            report.report_digest = createHash('sha256').update(canonical).digest('hex')
-            process.stdout.write(`${JSON.stringify(report)}\n`)
-            if (report.status !== 'PASS') process.exitCode = 1
+            })
+          } catch (error: unknown) {
+            report.error_chain = errorChain(error)
           } finally {
             await ctx?.fiber.dispose()
             uninstallFailLoud()
           }
+
+          const canonical = JSON.stringify(report, Object.keys(report).sort())
+          report.report_digest = createHash('sha256').update(canonical).digest('hex')
+          process.stdout.write(`${JSON.stringify(report)}\n`)
+          if (report.status !== 'PASS') process.exitCode = 1
           TS
 
           loader="$PWD/node_modules/tsx/dist/esm/index.mjs"
@@ -222,6 +266,7 @@ jobs:
 
           node --import "$loader" "$diagnostic_dir/validate.ts" "$base_config" "$patch_file" \
             > "$RUNNER_TEMP/official-patch-result.json"
+          code=$?
 
           mkdir -p "$PCT_REPO_ROOT/reports/p2"
           python3 - <<'PY'
@@ -234,11 +279,12 @@ jobs:
           output = Path(os.environ['PCT_REPO_ROOT']) / 'reports/p2/official-patch-no-model-validation-v0.1.json'
           output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
           print(json.dumps(payload, ensure_ascii=False, indent=2))
-          if payload.get('status') != 'PASS':
-              raise SystemExit(1)
           PY
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          exit "$code"
 
       - name: Upload sanitized no-model validation
+        if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: pct-p2-official-patch-validation-${{ github.run_id }}
