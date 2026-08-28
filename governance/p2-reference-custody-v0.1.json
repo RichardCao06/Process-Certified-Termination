@@ -1,0 +1,64 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_REFERENCE_CUSTODY",
+  "custody_id": "PCT-P2-NATURAL-PILOT-REFERENCE-CUSTODY-v0.1",
+  "status": "BLOCKED_INDEPENDENT_RATERS_UNASSIGNED",
+  "created_at": "2026-08-26T05:00:00Z",
+  "decision_basis": [
+    "PCT-P2-D17:A"
+  ],
+  "task_catalog_digest": "32d0bd6854196fdbac4e5a91ffcfb4fa5bd57f6c0949102919bc5ce0b5742a5c",
+  "highly_verifiable_lane": {
+    "task_ids": [
+      "PCT-P2-NAT-001",
+      "PCT-P2-NAT-002",
+      "PCT-P2-NAT-003",
+      "PCT-P2-NAT-004",
+      "PCT-P2-NAT-005",
+      "PCT-P2-NAT-006",
+      "PCT-P2-NAT-007",
+      "PCT-P2-NAT-008",
+      "PCT-P2-NAT-009",
+      "PCT-P2-NAT-010"
+    ],
+    "reference_type": "INDEPENDENT_DETERMINISTIC_VALIDATOR_RERUN",
+    "validator_catalog": "data/p2/natural-pilot/deterministic-validator-catalog-v0.1.json",
+    "opening_condition": "Candidate-Stop packet and Shadow verdict digest are frozen."
+  },
+  "semi_open_lane": {
+    "task_ids": [
+      "PCT-P2-NAT-011",
+      "PCT-P2-NAT-012",
+      "PCT-P2-NAT-013",
+      "PCT-P2-NAT-014",
+      "PCT-P2-NAT-015",
+      "PCT-P2-NAT-016",
+      "PCT-P2-NAT-017",
+      "PCT-P2-NAT-018",
+      "PCT-P2-NAT-019",
+      "PCT-P2-NAT-020"
+    ],
+    "reference_type": "TWO_INDEPENDENT_BLINDED_HUMANS",
+    "rater_a": {
+      "annotator_id": null,
+      "role": "INDEPENDENT_HUMAN_RATER",
+      "assigned": false
+    },
+    "rater_b": {
+      "annotator_id": null,
+      "role": "INDEPENDENT_HUMAN_RATER",
+      "assigned": false
+    },
+    "adjudicator": {
+      "annotator_id": null,
+      "role": "REFERENCE_ADJUDICATOR",
+      "assigned": false
+    },
+    "minimum_independence_rule": "Rater A and Rater B must be different people and must submit judgments before seeing each other, Shadow output, or adjudication.",
+    "downgrade_rule": "If a second independent rater is unavailable, semi-open evidence must be labeled developmental single-rater and may not be reported as independent reliability."
+  },
+  "runtime_lane_access_to_reference": false,
+  "reference_opening_authorized": false,
+  "blocker_id": "PCT-P2-PF-REFERENCE-01",
+  "custody_digest": "7fca0ec146567cc07bffa414760e488900552083ba77d70ecd6dc83eed4991df"
+}

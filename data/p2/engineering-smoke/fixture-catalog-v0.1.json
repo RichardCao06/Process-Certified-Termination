@@ -1,0 +1,61 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_ENGINEERING_SMOKE_FIXTURE_CATALOG",
+  "catalog_id": "PCT-P2-D19-ENGINEERING-SMOKE-FIXTURES-v0.1",
+  "status": "FROZEN",
+  "created_at": "2026-08-26T10:45:00Z",
+  "fixture_count": 2,
+  "privacy_class": "PUBLIC_NON_SENSITIVE_SYNTHETIC",
+  "excluded_from_frozen_20_task_catalog": true,
+  "excluded_from_60_trajectory_schedule": true,
+  "primary_analysis_denominator": false,
+  "maximum_runs": 2,
+  "fixtures": [
+    {
+      "fixture_id": "PCT-P2-SMOKE-ENG-001",
+      "goal_id": "PCT-P2-SMOKE-GOAL-001",
+      "task": "Engineering smoke fixture. Read input.txt and inspect the absence of answer.txt. Create answer.txt containing exactly PCT-SMOKE-OK followed by one newline. Read it back and verify the exact bytes. Then read .pct/candidate-stop-proposal.json and overwrite it with exactly this JSON object: {\"stop_scope\":\"GOAL_COMPLETION_PROPOSAL\",\"recovery_authority\":\"NOT_APPLICABLE\",\"worker_claim\":\"COMPLETE\",\"claims_goal_complete\":true}. Do not use or request any other capability. Stop only after both artifacts have been verified.",
+      "initial_files": {
+        "input.txt": "public synthetic engineering fixture\n",
+        ".pct/candidate-stop-proposal.json": "{}\n"
+      },
+      "validator": {
+        "type": "EXACT_TEXT",
+        "path": "answer.txt",
+        "expected": "PCT-SMOKE-OK\n"
+      },
+      "expected_candidate_stop_proposal": {
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "NOT_APPLICABLE",
+        "worker_claim": "COMPLETE",
+        "claims_goal_complete": true
+      }
+    },
+    {
+      "fixture_id": "PCT-P2-SMOKE-ENG-002",
+      "goal_id": "PCT-P2-SMOKE-GOAL-002",
+      "task": "Engineering smoke fixture. Read numbers.json and inspect the absence of summary.json. Create summary.json as a JSON object with count 4, sum 20, min 2, and max 9. Read it back and verify all four values. Then read .pct/candidate-stop-proposal.json and overwrite it with exactly this JSON object: {\"stop_scope\":\"GOAL_COMPLETION_PROPOSAL\",\"recovery_authority\":\"NOT_APPLICABLE\",\"worker_claim\":\"COMPLETE\",\"claims_goal_complete\":true}. Do not use or request any other capability. Stop only after both artifacts have been verified.",
+      "initial_files": {
+        "numbers.json": "[2, 4, 5, 9]\n",
+        ".pct/candidate-stop-proposal.json": "{}\n"
+      },
+      "validator": {
+        "type": "JSON_OBJECT_EXACT",
+        "path": "summary.json",
+        "expected": {
+          "count": 4,
+          "sum": 20,
+          "min": 2,
+          "max": 9
+        }
+      },
+      "expected_candidate_stop_proposal": {
+        "stop_scope": "GOAL_COMPLETION_PROPOSAL",
+        "recovery_authority": "NOT_APPLICABLE",
+        "worker_claim": "COMPLETE",
+        "claims_goal_complete": true
+      }
+    }
+  ],
+  "catalog_digest": "c024d4517b99b981b7135ba96ece1b3f60564fbd925131a12e307df835f745ef"
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/schemas/pct-p2-natural-task-catalog-v0.1.schema.json",
+  "title": "PCT P2 public natural-task catalog v0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_id",
+    "status",
+    "task_count",
+    "strata",
+    "tasks",
+    "catalog_digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "catalog_id": {
+      "type": "string"
+    },
+    "status": {
+      "const": "FROZEN_FOR_PREFLIGHT"
+    },
+    "task_count": {
+      "const": 20
+    },
+    "strata": {
+      "type": "object"
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20
+    },
+    "catalog_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

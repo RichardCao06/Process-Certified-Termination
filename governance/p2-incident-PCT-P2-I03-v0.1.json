@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_INCIDENT_RECORD",
+  "incident_id": "PCT-P2-I03",
+  "title": "D19 engineering-smoke source-mode launch omission and evidence-persistence race",
+  "status": "OPEN_REMEDIATION_AUTHORIZED",
+  "first_observed_run_id": 33036996278,
+  "affected_scope": "D19 engineering-only two-fixture smoke; primary 60-run pilot not started",
+  "observations": [
+    {
+      "code": "SOURCE_MODE_RESOLUTION_BINDING_OMITTED",
+      "confidence": "HIGH_PENDING_CONTROLLED_RERUN_CONFIRMATION",
+      "evidence": [
+        "both fixture subprocesses exited before any SessionEvent or provider request",
+        "the D19 child environment omitted TSX_TSCONFIG_PATH and DSH_AGENTS_HOME",
+        "the frozen DSH source-mode loader helper requires TSX_TSCONFIG_PATH for workspace path resolution"
+      ]
+    },
+    {
+      "code": "EVIDENCE_PUSH_NON_FAST_FORWARD",
+      "confidence": "CONFIRMED",
+      "evidence": [
+        "sanitized evidence commit was created locally",
+        "push was rejected because the remote branch advanced concurrently",
+        "the artifact fallback preserved the evidence"
+      ]
+    }
+  ],
+  "research_impact": {
+    "model_generation_requests": 0,
+    "primary_natural_task_runs": 0,
+    "reference_packets_opened": 0,
+    "semantic_auditor_calls": 0,
+    "runtime_interventions": 0,
+    "effectiveness_claim_impact": "NONE_BECAUSE_NO_EFFECTIVENESS_EVIDENCE_WAS_PRODUCED"
+  },
+  "approved_response": "PCT-P2-D20-A",
+  "preservation_rule": "The first failure and its hashes remain immutable; remediation writes new v0.3 evidence.",
+  "append_only": true,
+  "persistence_reconciliation": {
+    "earliest_failure_commit": "0deadc1463706175e7e462e67097c4bb6f7ba6b5",
+    "earliest_failure_report_digest": "53f3779c64fe225790cc2c7117241b1d04c2d922d1a87c2477590af40278cef8",
+    "later_repeat_run_id": 33040663764,
+    "later_repeat_report_digest": "5e59f4e2e74f325b15b019686a397b2bf04085097e8366adcb23d890b0c0dad5",
+    "later_repeat_preserved_path": "reports/p2/engineering-smoke-repeat-run-33040663764-v0.2.json",
+    "active_v0_2_restored_to_earliest_failure": true,
+    "d19_workflow_contract_restored_commit": "0f3a94ea83265785a726db6ff2560e3c1df5d969",
+    "history_rewritten": false
+  },
+  "incident_digest": "d7db6c9c18b77a5f90c8dcfa988b321111d21a9b09f73c9cdc12613e32042395"
+}

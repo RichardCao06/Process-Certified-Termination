@@ -1,0 +1,18 @@
+{
+  "schema_version": "0.1",
+  "events": [
+    {"event_id":"E1","sequence":1,"event_type":"GOAL_STATE","source":"SYSTEM","goal_id":"goal-stale","goal_revision":1,"snapshot_id":"S1","payload":{"obligation_ids":["O1"]},"created_at":"2026-08-25T09:20:00Z"},
+    {"event_id":"E2","sequence":2,"event_type":"TOOL_RESULT","source":"TOOL","goal_id":"goal-stale","goal_revision":1,"snapshot_id":"S1","payload":{"evidence_id":"EV1","result":"PASS","authoritative":true},"created_at":"2026-08-25T09:20:01Z"},
+    {"event_id":"E3","sequence":3,"event_type":"STATE_DELTA","source":"TOOL","goal_id":"goal-stale","goal_revision":1,"snapshot_id":"S2","payload":{"changed_scope":["artifact"],"invalidates_evidence_ids":["EV1"]},"created_at":"2026-08-25T09:20:02Z"},
+    {"event_id":"E4","sequence":4,"event_type":"OBLIGATION_TRANSITION","source":"WORKER","goal_id":"goal-stale","goal_revision":1,"snapshot_id":"S2","payload":{"obligation_id":"O1","to_state":"VERIFIED","evidence_ids":["EV1"]},"created_at":"2026-08-25T09:20:03Z"},
+    {"event_id":"E5","sequence":5,"event_type":"CANDIDATE_STOP","source":"HARNESS","goal_id":"goal-stale","goal_revision":1,"snapshot_id":"S2","payload":{"stop_scope":"GOAL_COMPLETION_PROPOSAL","recovery_authority":"SELF_SERVICE","claims_goal_complete":true},"created_at":"2026-08-25T09:20:04Z"}
+  ],
+  "evidence_records": [
+    {"evidence_id":"EV1","producer":"fixture-validator","source_class":"DETERMINISTIC_VALIDATOR","goal_id":"goal-stale","goal_revision":1,"snapshot_id":"S1","obligation_ids":["O1"],"result":"PASS","scope":["artifact"],"digest":"79ad8e790f567d3cf55ad98dc65a7546da4a08aeb196bb688b625bb14362aac9","created_event_id":"E2","authoritative":true,"invalidated_by_event_ids":["E3"]}
+  ],
+  "obligations": [
+    {"obligation_id":"O1","kind":"DELIVERABLE","severity":"HARD","state":"VERIFIED","evidence_ids":["EV1"],"last_transition_event_id":"E4"}
+  ],
+  "candidate_stop": {"stop_id":"STOP1","stop_event_id":"E5","stop_scope":"GOAL_COMPLETION_PROPOSAL","goal_id":"goal-stale","goal_revision":1,"snapshot_id":"S2","recovery_authority":"SELF_SERVICE"},
+  "policy": null
+}

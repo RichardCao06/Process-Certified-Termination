@@ -1,0 +1,390 @@
+{
+  "register_id": "PCT-P2-DECISION-REGISTER-v0.2",
+  "project_id": "PCT",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "D01_D12_APPROVED_D13_D18_PENDING",
+  "supersedes_for_active_state": "governance/p2-decision-register-v0.1.json",
+  "historical_pending_register_preserved": true,
+  "decisions": [
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D01",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "P2 Shadow label scope",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Use the final P1 layered Reliability Matrix: primary, human-review, exploratory, and excluded layers.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5408903464,
+        "created_at": "2026-08-25T10:11:51Z",
+        "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+      },
+      "effective_at": "2026-08-25T10:11:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D02",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Runtime trace retention and privacy",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Use synthetic or explicitly public non-sensitive data; quarantine prohibited content; raw retention at most 30 days.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5408903464,
+        "created_at": "2026-08-25T10:11:51Z",
+        "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+      },
+      "effective_at": "2026-08-25T10:11:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D03",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Deterministic hard-check scope",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Only exact checks with approved P0 provenance may be hard; all remaining checks are descriptive.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5408903464,
+        "created_at": "2026-08-25T10:11:51Z",
+        "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+      },
+      "effective_at": "2026-08-25T10:11:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D04",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Semantic Audit Agent timing",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Keep P2.0-P2.2 deterministic-only; require a later exact-model gate before semantic auditing.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5408903464,
+        "created_at": "2026-08-25T10:11:51Z",
+        "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+      },
+      "effective_at": "2026-08-25T10:11:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D05",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Reference evaluator isolation",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Freeze Shadow output before opening copied-snapshot reference evaluation in a separate offline lane.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5408903464,
+        "created_at": "2026-08-25T10:11:51Z",
+        "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+      },
+      "effective_at": "2026-08-25T10:11:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D06",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Initial sample and budget",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Run 20 normal/boundary plus 10 malformed/leakage synthetic fixtures with zero live model calls.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5408903464,
+        "created_at": "2026-08-25T10:11:51Z",
+        "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+      },
+      "effective_at": "2026-08-25T10:11:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D07",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Gate before online protocol proposal",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Require the conservative precondition before an online-controller protocol may even be proposed.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5408903464,
+        "created_at": "2026-08-25T10:11:51Z",
+        "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+      },
+      "effective_at": "2026-08-25T10:11:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D08",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Frozen DeepSeek Harness baseline",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Freeze deepseek-ai/deepseek-harness at b150a551b8d465e31e418e1b2eaf5e79bbb7d28e; do not modify completion authority.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5419218825,
+        "created_at": "2026-08-26T01:13:27Z",
+        "body": "PCT-P2-D08: A through PCT-P2-D11: A"
+      },
+      "effective_at": "2026-08-26T01:13:27Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D09",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Real Harness conformance smoke",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Allow source/envelope conformance with synthetic/public data and zero Worker model calls.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5419218825,
+        "created_at": "2026-08-26T01:13:27Z",
+        "body": "PCT-P2-D08: A through PCT-P2-D11: A"
+      },
+      "effective_at": "2026-08-26T01:13:27Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D10",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Natural-task Shadow pilot timing",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Defer natural-task measurement until an exact Worker/task/budget/reference protocol is approved.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5419218825,
+        "created_at": "2026-08-26T01:13:27Z",
+        "body": "PCT-P2-D08: A through PCT-P2-D11: A"
+      },
+      "effective_at": "2026-08-26T01:13:27Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D11",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Semantic auditor after conformance",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Continue without a semantic model until deterministic observability gaps are measured.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5419218825,
+        "created_at": "2026-08-26T01:13:27Z",
+        "body": "PCT-P2-D08: A through PCT-P2-D11: A"
+      },
+      "effective_at": "2026-08-26T01:13:27Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D12",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Candidate-Stop metadata source",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Use an explicit read-only PCT sidecar; never infer stop semantics from assistant prose; missing metadata remains UNKNOWN/UNDETERMINED.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5419844078,
+        "created_at": "2026-08-26T02:43:51Z",
+        "body": "PCT-P2-D12: A"
+      },
+      "effective_at": "2026-08-26T02:43:51Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "online intervention",
+        "Worker steering or blocking",
+        "Goal mutation",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "decision_id": "PCT-P2-D13",
+      "status": "PENDING_HUMAN",
+      "decision_pack": "docs/p2/p2-human-decision-pack-d13-d18-v0.1.md"
+    },
+    {
+      "decision_id": "PCT-P2-D14",
+      "status": "PENDING_HUMAN",
+      "decision_pack": "docs/p2/p2-human-decision-pack-d13-d18-v0.1.md"
+    },
+    {
+      "decision_id": "PCT-P2-D15",
+      "status": "PENDING_HUMAN",
+      "decision_pack": "docs/p2/p2-human-decision-pack-d13-d18-v0.1.md"
+    },
+    {
+      "decision_id": "PCT-P2-D16",
+      "status": "PENDING_HUMAN",
+      "decision_pack": "docs/p2/p2-human-decision-pack-d13-d18-v0.1.md"
+    },
+    {
+      "decision_id": "PCT-P2-D17",
+      "status": "PENDING_HUMAN",
+      "decision_pack": "docs/p2/p2-human-decision-pack-d13-d18-v0.1.md"
+    },
+    {
+      "decision_id": "PCT-P2-D18",
+      "status": "PENDING_HUMAN",
+      "decision_pack": "docs/p2/p2-human-decision-pack-d13-d18-v0.1.md"
+    }
+  ],
+  "recording_form": "CONSOLIDATED_APPEND_ONLY_ACTIVE_REGISTER"
+}

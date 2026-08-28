@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NO_MODEL_OFFICIAL_PATCH_VALIDATION",
+  "validation_id": "PCT-P2-I04-OFFICIAL-PATCH-VALIDATION-v0.1",
+  "source_head_sha": "777245f420cfde0c2ae58fb47ed254fdca554c23",
+  "frozen_dsh_commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+  "base_config_path": "examples/headless-agent/cordis.yml",
+  "patch_path": "config/p2/dsh-engineering-smoke.patch-v0.2.yml",
+  "status": "PASS",
+  "safety_boundary": {
+    "deepseek_environment_secret_used": false,
+    "real_provider_credential_available": false,
+    "provider_base_url": "http://127.0.0.1:9",
+    "model_turns_executed": 0,
+    "provider_requests_executed": 0,
+    "engineering_fixture_runs": 0,
+    "primary_schedule_runs": 0,
+    "reference_packets_opened": 0,
+    "semantic_auditor_calls": 0,
+    "runtime_application": false
+  },
+  "patch_count": 16,
+  "model_facing_tool_names": [
+    "edit",
+    "read",
+    "write"
+  ],
+  "expected_model_facing_tool_names": [
+    "edit",
+    "read",
+    "write"
+  ],
+  "exact_tool_boundary": true,
+  "required_mounted_ids": [
+    "llm-deepseek",
+    "agent-spine",
+    "persistence",
+    "fs-local",
+    "fs-observation-policy",
+    "tool-fs"
+  ],
+  "missing_or_unmounted_required_ids": [],
+  "required_disabled_ids": [
+    "subprocess",
+    "bash",
+    "subagent",
+    "subagent-spawn-in-process",
+    "subagent-fork-in-process",
+    "tool-subagent-control",
+    "tool-subagent-report",
+    "tool-subagent",
+    "tool-subagent-fork",
+    "workflow-worker-thread",
+    "tool-workflow",
+    "tool-ralph",
+    "tool-todo"
+  ],
+  "missing_or_mounted_disabled_ids": [],
+  "hardening_checks": {
+    "tools_mode_native": true,
+    "skills_disabled": true,
+    "bundle_bash_disabled": true,
+    "bundle_jobs_disabled": true,
+    "goal_tools_disabled": true
+  },
+  "adapter_checks": {
+    "model_catalog_exact": true,
+    "thinking_enabled": true,
+    "reasoning_effort_high": true,
+    "max_tokens_16000": true,
+    "context_window_128000": true,
+    "adapter_retries_zero": true
+  },
+  "loader_entry_count": 26,
+  "report_digest": "d363f4f2f7bc776f800135531ea9136176eaafbb4cac4c4323238f0cd5004a2a"
+}

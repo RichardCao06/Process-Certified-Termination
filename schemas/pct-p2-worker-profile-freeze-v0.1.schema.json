@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/schemas/pct-p2-worker-profile-freeze-v0.1.schema.json",
+  "title": "PCT P2 Worker profile freeze v0.1",
+  "type": "object",
+  "required": [
+    "profile_freeze_id",
+    "status",
+    "intended_profile_display_name",
+    "exact_identity",
+    "substitute_model_allowed",
+    "profile_freeze_digest"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "BLOCKED_EXACT_IDENTITY_PENDING",
+        "FROZEN"
+      ]
+    },
+    "substitute_model_allowed": {
+      "const": false
+    },
+    "profile_freeze_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

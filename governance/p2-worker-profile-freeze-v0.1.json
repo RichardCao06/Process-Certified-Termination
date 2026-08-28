@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_WORKER_PROFILE_FREEZE",
+  "profile_freeze_id": "PCT-P2-WORKER-PROFILE-FREEZE-v0.1",
+  "status": "BLOCKED_EXACT_IDENTITY_PENDING",
+  "created_at": "2026-08-26T05:00:00Z",
+  "decision_basis": [
+    "PCT-P2-D13:A"
+  ],
+  "intended_profile_display_name": "DeepSeek V4-Pro",
+  "display_name_is_exact_identity": false,
+  "substitute_model_allowed": false,
+  "frozen_harness": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+    "release_identity": "dsh@0.1.1-rc.2"
+  },
+  "exact_identity": {
+    "provider_route": null,
+    "provider_account_or_tenant_scope": null,
+    "returned_model_identifier": null,
+    "model_revision_or_snapshot": null,
+    "profile_or_config_digest_sha256": null,
+    "system_prompt_digest_sha256": null,
+    "tool_catalog_digest_sha256": null,
+    "reasoning_settings": null,
+    "sampling_settings": null,
+    "retry_policy": null,
+    "context_window_tokens": null,
+    "max_output_tokens": null,
+    "per_trajectory_token_cap": null,
+    "per_trajectory_monetary_cap": null,
+    "currency": null
+  },
+  "acceptable_resolution_evidence": [
+    "A sanitized exported profile manifest containing the exact non-secret identity and configuration fields.",
+    "A read-only provider/profile introspection record that performs no task generation and discloses no secret."
+  ],
+  "repository_configuration_found": false,
+  "live_worker_model_calls_performed": 0,
+  "live_worker_model_calls_authorized": false,
+  "blocker_id": "PCT-P2-PF-IDENTITY-01",
+  "profile_freeze_digest": "675cf44c760ed3f9b861571dc006bec55a33826c795c17551663328cf6037adb"
+}

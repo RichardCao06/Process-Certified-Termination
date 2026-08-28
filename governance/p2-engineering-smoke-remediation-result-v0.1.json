@@ -1,0 +1,19 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_ENGINEERING_SMOKE_REMEDIATION_RESULT",
+  "result_id": "PCT-P2-D20-REMEDIATION-RESULT-v0.1",
+  "decision_id": "PCT-P2-D20",
+  "status": "FAIL",
+  "report_path": "reports/p2/engineering-smoke-remediation-run-v0.3.json",
+  "report_digest": "e7481fbf90d2d78b4a8d318dc273b8a26399623759eccf16d3bd0b3d3e5e8e93",
+  "trajectory_count": 2,
+  "passed_trajectory_count": 0,
+  "fixture_ids": [
+    "PCT-P2-SMOKE-ENG-001",
+    "PCT-P2-SMOKE-ENG-002"
+  ],
+  "primary_schedule_runs": 0,
+  "next_human_gate": "PCT-P2-D21",
+  "append_only": true,
+  "result_digest": "47d02c4fde40d3a1092491f23b7e3670f07491e7f1057108881ddfabf4f4dc13"
+}

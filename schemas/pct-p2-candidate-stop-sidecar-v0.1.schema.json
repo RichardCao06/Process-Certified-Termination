@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pct.local/schemas/pct-p2-candidate-stop-sidecar-v0.1.schema.json",
+  "title": "PCT P2 Explicit Read-Only Candidate-Stop Sidecar v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "sidecar_id",
+    "source",
+    "session_id",
+    "turn",
+    "goal_id",
+    "goal_revision",
+    "snapshot_id",
+    "stop_scope",
+    "recovery_authority",
+    "worker_claim",
+    "claims_goal_complete",
+    "created_at",
+    "sidecar_digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "sidecar_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "string",
+      "enum": [
+        "TASK_ADAPTER",
+        "HARNESS_ADAPTER",
+        "TEST_FIXTURE"
+      ]
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "turn": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "goal_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "goal_revision": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "snapshot_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "stop_scope": {
+      "type": "string",
+      "enum": [
+        "TURN_STOP",
+        "GOAL_COMPLETION_PROPOSAL",
+        "HUMAN_ESCALATION",
+        "NO_FURTHER_ACTION_PROPOSAL",
+        "BLOCKER_PROPOSAL",
+        "BUDGET_STOP",
+        "OTHER"
+      ]
+    },
+    "recovery_authority": {
+      "type": "string",
+      "enum": [
+        "SELF_SERVICE",
+        "HUMAN_ONLY",
+        "EXTERNAL_WAIT",
+        "IMPOSSIBLE",
+        "UNKNOWN",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "worker_claim": {
+      "type": "string",
+      "enum": [
+        "COMPLETE",
+        "TURN_COMPLETE",
+        "HUMAN_REQUIRED",
+        "BLOCKED",
+        "BUDGET_EXHAUSTED",
+        "NO_FURTHER_ACTION",
+        "OTHER",
+        "UNKNOWN"
+      ]
+    },
+    "claims_goal_complete": {
+      "type": "boolean"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "sidecar_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "claims_goal_complete": {
+            "const": true
+          }
+        },
+        "required": [
+          "claims_goal_complete"
+        ]
+      },
+      "then": {
+        "properties": {
+          "stop_scope": {
+            "const": "GOAL_COMPLETION_PROPOSAL"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "stop_scope": {
+            "const": "GOAL_COMPLETION_PROPOSAL"
+          }
+        },
+        "required": [
+          "stop_scope"
+        ]
+      },
+      "then": {
+        "properties": {
+          "claims_goal_complete": {
+            "const": true
+          }
+        }
+      }
+    }
+  ]
+}

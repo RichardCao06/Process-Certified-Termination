@@ -1,0 +1,240 @@
+{
+  "register_id": "PCT-P2-DECISION-REGISTER-v0.3",
+  "project_id": "PCT",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "D01_D18_APPROVED_PROTOCOL_PREFLIGHT_BLOCKED",
+  "supersedes_for_active_state": "governance/p2-decision-register-v0.2.json",
+  "historical_registers_preserved": [
+    "governance/p2-decision-register-v0.1.json",
+    "governance/p2-decision-register-v0.2.json"
+  ],
+  "inherited_approved_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07",
+    "PCT-P2-D08",
+    "PCT-P2-D09",
+    "PCT-P2-D10",
+    "PCT-P2-D11",
+    "PCT-P2-D12"
+  ],
+  "new_decisions": [
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D13",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Worker identity and model freeze",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Use one exact designated Worker configuration; freeze provider route, returned model identifier, profile/config, prompt, tool, reasoning, sampling, and retry digests before the first run. No substitute model may be chosen implicitly.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5420758863,
+        "created_at": "2026-08-26T04:51:11Z",
+        "body": "PCT-P2-D13: A through PCT-P2-D18: A"
+      },
+      "effective_at": "2026-08-26T04:51:11Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "Worker calls before passing preflight",
+        "semantic model auditing",
+        "private trace collection",
+        "Reference opening before Shadow freeze",
+        "online intervention or Worker steering",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D14",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Public task composition",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Freeze 20 public non-sensitive tasks: 10 highly verifiable and 10 semi-open, with task text, source/license, Goal Contract, obligations, allowed tools, validators where applicable, and a catalog digest.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5420758863,
+        "created_at": "2026-08-26T04:51:11Z",
+        "body": "PCT-P2-D13: A through PCT-P2-D18: A"
+      },
+      "effective_at": "2026-08-26T04:51:11Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "Worker calls before passing preflight",
+        "semantic model auditing",
+        "private trace collection",
+        "Reference opening before Shadow freeze",
+        "online intervention or Worker steering",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D15",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Pilot sample and analysis unit",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Use 20 tasks x 3 independent repetitions = 60 trajectories; the first Candidate Stop is primary and at most two stops are captured per trajectory.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5420758863,
+        "created_at": "2026-08-26T04:51:11Z",
+        "body": "PCT-P2-D13: A through PCT-P2-D18: A"
+      },
+      "effective_at": "2026-08-26T04:51:11Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "Worker calls before passing preflight",
+        "semantic model auditing",
+        "private trace collection",
+        "Reference opening before Shadow freeze",
+        "online intervention or Worker steering",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D16",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Per-trajectory resource budget",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Use fixed conservative caps: 30 minutes, 20 model requests, 50 tool calls, and two Candidate Stops; profile-derived token, context, output, monetary, and retry caps must be frozen before execution.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5420758863,
+        "created_at": "2026-08-26T04:51:11Z",
+        "body": "PCT-P2-D13: A through PCT-P2-D18: A"
+      },
+      "effective_at": "2026-08-26T04:51:11Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "Worker calls before passing preflight",
+        "semantic model auditing",
+        "private trace collection",
+        "Reference opening before Shadow freeze",
+        "online intervention or Worker steering",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D17",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Offline Reference lane",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Use deterministic validators for highly verifiable tasks and two independent blinded human judgments plus recorded adjudication for semi-open tasks, only after Shadow output is frozen.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5420758863,
+        "created_at": "2026-08-26T04:51:11Z",
+        "body": "PCT-P2-D13: A through PCT-P2-D18: A"
+      },
+      "effective_at": "2026-08-26T04:51:11Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "Worker calls before passing preflight",
+        "semantic model auditing",
+        "private trace collection",
+        "Reference opening before Shadow freeze",
+        "online intervention or Worker steering",
+        "effectiveness claims"
+      ]
+    },
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D18",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Semantic Audit Agent timing",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Keep the first natural pilot deterministic-only; measure deterministic gaps before any later exact-model Semantic Auditor gate.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5420758863,
+        "created_at": "2026-08-26T04:51:11Z",
+        "body": "PCT-P2-D13: A through PCT-P2-D18: A"
+      },
+      "effective_at": "2026-08-26T04:51:11Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "Worker calls before passing preflight",
+        "semantic model auditing",
+        "private trace collection",
+        "Reference opening before Shadow freeze",
+        "online intervention or Worker steering",
+        "effectiveness claims"
+      ]
+    }
+  ],
+  "approved_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07",
+    "PCT-P2-D08",
+    "PCT-P2-D09",
+    "PCT-P2-D10",
+    "PCT-P2-D11",
+    "PCT-P2-D12",
+    "PCT-P2-D13",
+    "PCT-P2-D14",
+    "PCT-P2-D15",
+    "PCT-P2-D16",
+    "PCT-P2-D17",
+    "PCT-P2-D18"
+  ],
+  "open_normative_gate_ids": [],
+  "operational_preflight_blockers": [
+    "PCT-P2-PF-IDENTITY-01",
+    "PCT-P2-PF-BUDGET-01",
+    "PCT-P2-PF-REFERENCE-01"
+  ]
+}
