@@ -2,7 +2,7 @@
   "schema_version": "0.2",
   "record_type": "PCT_P2_ENGINEERING_SMOKE_REPORT",
   "report_id": "PCT-P2-D19-ENGINEERING-SMOKE-v0.2",
-  "started_at": "2026-08-27T04:03:34.556953+00:00",
+  "started_at": "2026-08-27T04:51:41.519565+00:00",
   "status": "FAIL",
   "profile_binding": {
     "status": "PASS",
@@ -14,14 +14,14 @@
       "runtime_config_sha256": true
     },
     "report_path": "reports/p2/deepseek-provider-introspection-v0.2.json",
-    "report_sha256": "7d74738ce95d3881b7cc89f09c1ffcfd5b540a96e6787156561979dddfa92380",
+    "report_sha256": "6c80c9c630fd972fbb3b46fdc599808d3d21def764d25dfe8b22f2b4b5668fd0",
     "returned_model_identifier": "deepseek-v4-pro"
   },
   "execution_context": {
-    "github_run_id": "33038134903",
-    "github_run_attempt": "2",
+    "github_run_id": "33040663764",
+    "github_run_attempt": "1",
     "github_event_name": "pull_request",
-    "source_head_sha": "7c9fa99f08a1d5a4400ad6c4b03da862889e7150"
+    "source_head_sha": "d89137db8f5dc91644d9fe15374163e10a08dda3"
   },
   "runs": [
     {
@@ -83,7 +83,7 @@
       "excluded_from_primary_schedule": true,
       "driver": {
         "exit_code": 1,
-        "elapsed_seconds": 0.155,
+        "elapsed_seconds": 0.145,
         "event_type_counts": {},
         "request_header_tool_sets": [],
         "stderr_tail_hash": "6b0e83426258e6ebb39224f92738c07a494b2572da43caac7abc28c463540ca1",
@@ -140,6 +140,6 @@
     "online_intervention": false,
     "raw_model_or_tool_content_persisted": false
   },
-  "completed_at": "2026-08-27T04:03:36.094749+00:00",
-  "report_digest": "53f3779c64fe225790cc2c7117241b1d04c2d922d1a87c2477590af40278cef8"
+  "completed_at": "2026-08-27T04:51:42.950453+00:00",
+  "report_digest": "5e59f4e2e74f325b15b019686a397b2bf04085097e8366adcb23d890b0c0dad5"
 }
