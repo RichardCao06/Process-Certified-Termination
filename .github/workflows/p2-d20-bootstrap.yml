@@ -1,0 +1,325 @@
+name: P2 D20 remediation materialization and guarded rerun
+
+on:
+  push:
+    branches: [research/p2-shadow-foundation-v0.1]
+    paths: ['.github/workflows/p2-d20-bootstrap.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  statuses: write
+
+concurrency:
+  group: pct-p2-d20-remediation
+  cancel-in-progress: false
+
+env:
+  PCT_P2_BRANCH: research/p2-shadow-foundation-v0.1
+  PCT_D20_BASE_ANCESTOR: 0deadc1463706175e7e462e67097c4bb6f7ba6b5
+  PCT_D20_PAYLOAD_SHA256: e719f7b8f5bac679880fb211084c7b47834e34280d043f2df37de31ad33ff31a
+
+jobs:
+  materialize-and-validate:
+    if: github.repository == 'RichardCao06/Process-Certified-Termination'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    outputs:
+      materialized_sha: ${{ steps.commit.outputs.materialized_sha }}
+    steps:
+      - name: Checkout P2 branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ env.PCT_P2_BRANCH }}
+          fetch-depth: 0
+
+      - name: Verify branch and D20 approval
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "$PCT_P2_BRANCH"
+          git merge-base --is-ancestor "$PCT_D20_BASE_ANCESTOR" HEAD
+          test -z "$(git status --porcelain)"
+          python3 - <<'PY'
+          import json, os, urllib.request
+          request = urllib.request.Request(
+              'https://api.github.com/repos/RichardCao06/Process-Certified-Termination/issues/comments/5434319705',
+              headers={
+                  'Accept': 'application/vnd.github+json',
+                  'Authorization': f"Bearer {os.environ['GH_TOKEN']}",
+                  'X-GitHub-Api-Version': '2022-11-28',
+              },
+          )
+          with urllib.request.urlopen(request, timeout=30) as response:
+              value = json.load(response)
+          assert value['user']['login'] == 'RichardCao06'
+          assert value['body'].strip() == 'PCT-P2-D20: A'
+          print('Verified PCT-P2-D20: A, comment 5434319705.')
+          PY
+
+      - name: Materialize verified D20 overlay
+        shell: bash
+        run: |
+          set -euo pipefail
+          payload="$RUNNER_TEMP/pct-p2-d20-overlay.tar.gz"
+          cat > "$RUNNER_TEMP/pct-p2-d20-overlay.b64" <<'PCT_D20_PAYLOAD'
+          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
+          b[... ELLIPSIZATION ...]
+          PCT_D20_PAYLOAD
+          tr -d '\n\r ' < "$RUNNER_TEMP/pct-p2-d20-overlay.b64" | base64 --decode > "$payload"
+          echo "$PCT_D20_PAYLOAD_SHA256  $payload" | sha256sum --check --strict
+          tar -tzf "$payload" >/dev/null
+          tar -xzf "$payload" -C "$GITHUB_WORKSPACE"
+          find . -type d -name __pycache__ -prune -exec rm -rf {} +
+          find . -type f -name '*.pyc' -delete
+
+      - name: Validate before any secret or model access
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 scripts/validate_p2_d20.py
+          python3 -m unittest tests.test_p2_d20 -v
+          python3 -m py_compile scripts/run_p2_engineering_smoke_remediation.py scripts/validate_p2_d20.py
+          make validate
+
+      - name: Commit D20 implementation
+        id: commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "PCT D20 Remediation Bot"
+          git config user.email "pct-d20-remediation@users.noreply.github.com"
+          git add -- Makefile docs/p2/incident-record-PCT-P2-I03.md docs/p2/p2-d20-engineering-smoke-remediation-protocol-v0.1.md governance/p2-decision-register-v0.5.json governance/p2-engineering-smoke-remediation-authorization-v0.1.json governance/p2-human-approval-d20-v0.1.json governance/p2-incident-PCT-P2-I03-v0.1.json governance/p2-status-v0.5.json schemas/pct-p2-engineering-smoke-remediation-v0.3.schema.json scripts/run_p2_engineering_smoke_remediation.py scripts/validate_p2_d20.py tests/test_p2_d20.py
+          if git diff --cached --quiet; then
+            sha="$(git rev-parse HEAD)"
+          else
+            git commit -m "p2: materialize approved D20 engineering remediation"
+            git push origin "HEAD:$PCT_P2_BRANCH"
+            sha="$(git rev-parse HEAD)"
+          fi
+          echo "materialized_sha=$sha" >> "$GITHUB_OUTPUT"
+
+  guarded-remediation-rerun:
+    needs: materialize-and-validate
+    if: needs.materialize-and-validate.result == 'success'
+    environment: p2-natural-pilot
+    runs-on: ubuntu-24.04
+    timeout-minutes: 90
+    permissions:
+      contents: write
+      statuses: write
+    steps:
+      - name: Checkout D20 commit
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ needs.materialize-and-validate.outputs.materialized_sha }}
+          fetch-depth: 0
+
+      - name: Require protected DeepSeek credential
+        shell: bash
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          set +x
+          test -n "${DEEPSEEK_API_KEY:-}"
+          echo "Protected credential is present; value is not displayed."
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+
+      - name: Validate repository before model access
+        run: make validate
+
+      - name: Checkout exact frozen DSH
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: b150a551b8d465e31e418e1b2eaf5e79bbb7d28e
+          path: _vendor/deepseek-harness
+          fetch-depth: 1
+
+      - name: Validate DSH source
+        env:
+          PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
+          PCT_REQUIRE_DSH_CONFORMANCE: '1'
+        run: python3 scripts/validate_p2_dsh_conformance.py
+
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.19.0'
+
+      - name: Install exact DSH dependencies
+        working-directory: _vendor/deepseek-harness
+        run: |
+          set -euo pipefail
+          corepack enable
+          corepack prepare pnpm@11.7.0 --activate
+          pnpm install --frozen-lockfile
+
+      - name: Verify TypeScript source-mode resolution without model access
+        working-directory: _vendor/deepseek-harness
+        env:
+          TSX_TSCONFIG_PATH: ${{ github.workspace }}/_vendor/deepseek-harness/tsconfig.json
+        run: |
+          set -euo pipefail
+          loader="$PWD/node_modules/tsx/dist/esm/index.mjs"
+          test -f "$loader"
+          test -f "$TSX_TSCONFIG_PATH"
+          node --import "$loader" --input-type=module -e "await import('@deepseek-ai/dsh-app-boot'); await import('@deepseek-ai/cordis'); console.log('DSH source-mode resolution PASS')"
+
+      - name: Rerun only the same two engineering fixtures
+        id: smoke
+        shell: bash
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          set +e
+          python3 scripts/run_p2_engineering_smoke_remediation.py --dsh-source _vendor/deepseek-harness
+          code=$?
+          echo "exit_code=$code" >> "$GITHUB_OUTPUT"
+          set -e
+
+      - name: Remove vendored runtime
+        if: always()
+        run: rm -rf _vendor
+
+      - name: Validate append-only evidence
+        if: always()
+        run: |
+          python3 scripts/validate_p2_d20.py
+          make validate
+
+      - name: Upload sanitized evidence fallback
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pct-p2-d20-remediation-evidence-${{ github.run_id }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            reports/p2/deepseek-provider-introspection-v0.3.json
+            reports/p2/engineering-smoke-remediation-run-v0.3.json
+            reports/p2/engineering-smoke-remediation-summary-v0.3.md
+            governance/p2-pre-smoke-binding-verification-v0.2.json
+            governance/p2-engineering-smoke-remediation-result-v0.1.json
+            governance/p2-status-v0.6.json
+            docs/p2/p2-human-decision-pack-d21-v0.1.md
+
+      - name: Persist evidence from latest remote branch
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          evidence="$RUNNER_TEMP/pct-d20-evidence"
+          paths=(reports/p2/deepseek-provider-introspection-v0.3.json reports/p2/engineering-smoke-remediation-run-v0.3.json reports/p2/engineering-smoke-remediation-summary-v0.3.md governance/p2-pre-smoke-binding-verification-v0.2.json governance/p2-engineering-smoke-remediation-result-v0.1.json governance/p2-status-v0.6.json docs/p2/p2-human-decision-pack-d21-v0.1.md)
+          mkdir -p "$evidence"
+          for path in "${paths[@]}"; do test -f "$path"; mkdir -p "$evidence/$(dirname "$path")"; cp "$path" "$evidence/$path"; done
+          git config user.name "PCT D20 Evidence Bot"
+          git config user.email "pct-d20-evidence@users.noreply.github.com"
+          persisted=0
+          for attempt in 1 2 3; do
+            git fetch origin "$PCT_P2_BRANCH"
+            git checkout -B "$PCT_P2_BRANCH" "origin/$PCT_P2_BRANCH"
+            for path in "${paths[@]}"; do mkdir -p "$(dirname "$path")"; cp "$evidence/$path" "$path"; done
+            python3 scripts/validate_p2_d20.py
+            make validate
+            git add -- "${paths[@]}"
+            if ! git diff --cached --quiet; then git commit -m "p2: preserve D20 engineering remediation evidence"; fi
+            if git push origin "HEAD:$PCT_P2_BRANCH"; then persisted=1; break; fi
+            sleep $((attempt * 2))
+          done
+          test "$persisted" = 1
+
+      - name: Return remediation result after persistence
+        if: always()
+        run: exit "${{ steps.smoke.outputs.exit_code || '1' }}"
