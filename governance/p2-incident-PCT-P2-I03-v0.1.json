@@ -37,7 +37,6 @@
   "approved_response": "PCT-P2-D20-A",
   "preservation_rule": "The first failure and its hashes remain immutable; remediation writes new v0.3 evidence.",
   "append_only": true,
-  "incident_digest": "464640d4fcdc8b0c7b0ce062b1fe47d8fb49ca26d242f5fb7d58e30838463581",
   "persistence_reconciliation": {
     "earliest_failure_commit": "0deadc1463706175e7e462e67097c4bb6f7ba6b5",
     "earliest_failure_report_digest": "53f3779c64fe225790cc2c7117241b1d04c2d922d1a87c2477590af40278cef8",
@@ -45,6 +44,8 @@
     "later_repeat_report_digest": "5e59f4e2e74f325b15b019686a397b2bf04085097e8366adcb23d890b0c0dad5",
     "later_repeat_preserved_path": "reports/p2/engineering-smoke-repeat-run-33040663764-v0.2.json",
     "active_v0_2_restored_to_earliest_failure": true,
+    "d19_workflow_contract_restored_commit": "0f3a94ea83265785a726db6ff2560e3c1df5d969",
     "history_rewritten": false
-  }
+  },
+  "incident_digest": "d7db6c9c18b77a5f90c8dcfa988b321111d21a9b09f73c9cdc12613e32042395"
 }
