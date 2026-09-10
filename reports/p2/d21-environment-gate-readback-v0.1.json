@@ -1,0 +1,19 @@
+{
+  "record_type": "PCT_P2_D21_ENVIRONMENT_GATE_READBACK",
+  "work_order": "PCT-P2-001",
+  "observed_at": "2026-09-10T03:22:24.430685+00:00",
+  "repository": "RichardCao06/Process-Certified-Termination",
+  "environment": "p2-natural-pilot",
+  "required_reviewers": [
+    {
+      "login": "RichardCao06",
+      "id": 50325142,
+      "type": "User"
+    }
+  ],
+  "prevent_self_review": false,
+  "status": "CONFIGURED_REQUIRED_HUMAN_REVIEW",
+  "deployment_approved_by_this_record": false,
+  "secrets_read": false,
+  "report_digest": "d1ded336785490841c405145386f9bc644d1982e8a8704f2762adacb20ddb468"
+}

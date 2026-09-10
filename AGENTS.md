@@ -8,7 +8,7 @@ This is an independent research project. It is not a GoalEvo subproject and does
 
 **P0 is approved. P1 is closed with limitations. P2 deterministic Shadow protocol preflight is active under Work Order `PCT-P2-001`.**
 
-`PCT-P2-D01` through `PCT-P2-D18` option A are approved. The first natural-task protocol is materialized but BLOCKED pending exact Worker identity/profile-derived caps and independent Reference custody. P2 is not an online controller.
+`PCT-P2-D01` through `PCT-P2-D21` option A are approved. D21 authorizes one protected attempt of the original two engineering fixtures using the frozen official DSH patch. The active snapshot is `governance/p2-status-v0.8.json`; the 20-task/60-trajectory primary pilot remains unauthorized. P2 is not an online controller.
 
 ## Current Agent autonomy
 
@@ -19,6 +19,7 @@ Agents may autonomously:
 - run offline deterministic validators and protocol consistency checks;
 - ingest a sanitized exact profile manifest and record non-secret hashes;
 - preserve failures, incidents, rejected options, hashes, and migration history.
+- implement and execute D21-A under `governance/p2-human-approval-d21-v0.1.json`, after the credential-free driver check and human GitHub Environment review; consume the one-time authorization before model access and preserve v0.4 evidence.
 
 Agents must not autonomously:
 
@@ -49,13 +50,7 @@ applied_to_runtime = false
 
 The task catalog, run schedule, first-Candidate-Stop primary unit, fixed base caps, failure policy, Reference ordering, and deterministic-only Auditor scope are frozen before any result. Task substitutions, adaptive repetitions, silent reruns, denominator changes, and post-result budget extensions are prohibited.
 
-The active blockers are:
-
-```text
-PCT-P2-PF-IDENTITY-01
-PCT-P2-PF-BUDGET-01
-PCT-P2-PF-REFERENCE-01
-```
+The original identity, budget, and Reference blockers remain in historical snapshots. Engineering-only Worker identity and caps are frozen; the D17 developmental single-rater downgrade is recorded in `governance/p2-reference-custody-v0.2.json`. Neither those records nor D21 authorize the primary pilot. Check `scripts/validate_p2_d21_execution.py` for the separate D21 execution scope. Any further attempt after consumption requires a new human Decision Record.
 
 ## Annotation and reference separation
 
@@ -68,7 +63,7 @@ PCT-P2-PF-REFERENCE-01
 
 - Link substantive work to `PCT-P2-001`.
 - Normative changes require a Decision Record or Amendment.
-- Active P2 decisions live in `governance/p2-decision-register-v0.3.json`; preserve v0.1 and v0.2.
+- Active P2 decisions live in `governance/p2-decision-register-v0.7.json`; preserve all earlier versions.
 - Do not force-push or overwrite historical status snapshots.
 - Complete unaffected reversible work when one sub-scope is blocked.
 - Bind completion claims to a remote commit SHA and successful CI run.

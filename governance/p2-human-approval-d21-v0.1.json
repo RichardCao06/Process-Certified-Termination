@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_HUMAN_APPROVAL",
+  "approval_id": "PCT-P2-HUMAN-APPROVAL-D21-v0.1",
+  "status": "COMPLETE",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "approved_options": {
+    "PCT-P2-D21": "A"
+  },
+  "approval_source": {
+    "type": "EXPLICIT_USER_MESSAGE_IN_CURRENT_TASK",
+    "verbatim_user_message": "批准",
+    "recorded_at": "2026-09-10T03:16:17Z",
+    "recorded_by": "CODEX_AGENT",
+    "decision_pack": "docs/p2/p2-human-decision-pack-d21-v0.2.md",
+    "interpretation": "Approves the proposed D21-A same-fixture rerun and RichardCao06 as GitHub Environment required reviewer. This is a conversation approval, not a fabricated PR comment or an Environment deployment review."
+  },
+  "execution_scope": {
+    "fixture_ids": [
+      "PCT-P2-SMOKE-ENG-001",
+      "PCT-P2-SMOKE-ENG-002"
+    ],
+    "attempts_per_fixture": 1,
+    "per_trajectory_cny_cap": 30,
+    "aggregate_cny_cap": 60,
+    "worker_model": "deepseek-v4-pro",
+    "frozen_dsh_commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+    "official_patch": "config/p2/dsh-engineering-smoke.patch-v0.2.yml",
+    "caps": "governance/p2-operational-caps-v0.1.json",
+    "quality_retry_allowed": false,
+    "original_prompt_and_fixtures_unchanged": true,
+    "result_version": "0.4"
+  },
+  "environment_gate": {
+    "name": "p2-natural-pilot",
+    "required_reviewer": "RichardCao06",
+    "prevent_self_review": false,
+    "reason": "Single Research Owner; the Environment review remains an explicit GitHub human action before the protected job starts."
+  },
+  "does_not_authorize": [
+    "20-task/60-trajectory primary pilot",
+    "additional engineering attempts after this authorization is consumed",
+    "Worker substitution",
+    "Semantic Audit Agent",
+    "Reference opening",
+    "private traces",
+    "online intervention or Goal mutation",
+    "effectiveness claims"
+  ],
+  "append_only": true,
+  "approval_digest": "d6142dee42b832037bb41ed4796784e50141517de94a57758994d7ce6b5906fb"
+}
