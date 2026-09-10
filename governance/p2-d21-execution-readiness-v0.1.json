@@ -1,0 +1,37 @@
+{
+  "record_type": "PCT_P2_D21_EXECUTION_READINESS",
+  "work_order": "PCT-P2-001",
+  "observed_at": "2026-09-10T03:25:48.406300+00:00",
+  "status": "ENGINEERING_READY_WAITING_HUMAN_ENVIRONMENT_REVIEW",
+  "source_commit": "13dddc89d7562aad755401d2c8037bb3db5d98b2",
+  "no_model_report": "reports/p2/d21-driver-no-model-validation-v0.1.json",
+  "no_model_report_sha256": "b1bdcf39ea521bc11b41ec293d40f40e586727f154199652c1ead819b720c807",
+  "actions_artifact_id": 10135212816,
+  "actions_artifact_digest": "sha256:e8e4e26dbd3e5a6591a5eed8f01f93b7a448230cce8d8b9f2f7cdc008921d56d",
+  "no_model_job": {
+    "run_id": 34433128526,
+    "job_id": 102732627178,
+    "conclusion": "success"
+  },
+  "repository_ci": {
+    "run_id": 34433159338,
+    "conclusion": "success",
+    "tests_passed": 105
+  },
+  "pull_request_driver_ci": {
+    "run_id": 34433159366,
+    "conclusion": "success"
+  },
+  "protected_run": {
+    "run_id": 34433128526,
+    "status": "waiting",
+    "required_reviewer": "RichardCao06",
+    "environment": "p2-natural-pilot",
+    "url": "https://github.com/RichardCao06/Process-Certified-Termination/actions/runs/34433128526"
+  },
+  "d21_model_turns_observed": 0,
+  "primary_schedule_runs": 0,
+  "scope": "Readiness only. No D21 execution outcome or PCT effectiveness evidence is claimed.",
+  "append_only": true,
+  "readiness_digest": "563b16529e320c7baeae91fbd46a68fce7036780522fcba7bdb4d0b99ff5e757"
+}

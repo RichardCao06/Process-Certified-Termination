@@ -1,7 +1,7 @@
 # Process-Certified Termination
 
 > **Phase status:** P0 approved; P1 closed with limitations; P2 deterministic Shadow protocol preflight active  
-> **Current state:** D01-D21 option A approved; one protected two-fixture engineering rerun is being prepared; the primary natural-task pilot remains unauthorized.
+> **Current state:** D01-D21 option A approved; the two-fixture engineering rerun passed no-model validation and awaits human Environment review; the primary natural-task pilot remains unauthorized.
 
 This independent research project studies whether an evidence-grounded process-certification layer can improve an LLM Agent Harness's termination decision.
 
@@ -36,6 +36,8 @@ applied_to_runtime = false
 The primary protocol is not authorized to run yet. The engineering-only profile and caps have been frozen; semi-open Reference custody records the approved developmental single-rater downgrade. These updates do not establish independent inter-rater reliability.
 
 D19 and D20 failed during configuration before a model request. Their evidence is preserved. The official DSH patch passed a credential-free boot check. D21-A now permits exactly one attempt of the original two engineering fixtures, each capped at 30 CNY, behind the human GitHub Environment gate. The new driver must pass its own no-model check before access to the credential. Results will be appended as v0.4 regardless of success or failure; no quality rerun follows automatically.
+
+The actual D21 driver and all 105 repository tests passed remote validation at `13dddc89d7562aad755401d2c8037bb3db5d98b2`. [Readiness evidence](governance/p2-d21-execution-readiness-v0.1.json) binds the report, artifact, commit, and CI runs. [The protected engineering job](https://github.com/RichardCao06/Process-Certified-Termination/actions/runs/34433128526) awaits `RichardCao06` Environment review; no D21 model turn has occurred in this readiness snapshot.
 
 No primary natural-task trajectory, Reference opening, private trace, Semantic Auditor call, Steering, blocking, Goal mutation, online intervention, production deployment, or effectiveness claim is authorized.
 
