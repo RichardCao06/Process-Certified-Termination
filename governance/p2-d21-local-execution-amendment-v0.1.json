@@ -1,0 +1,40 @@
+{
+  "record_type": "PCT_P2_DECISION_AMENDMENT",
+  "amendment_id": "PCT-P2-D21-A01",
+  "work_order": "PCT-P2-001",
+  "decision": "PCT-P2-D21:A",
+  "status": "APPROVED_BY_EXPLICIT_USER_REQUEST",
+  "recorded_at": "2026-09-10T05:23:42.903876+00:00",
+  "approval_source": {
+    "type": "CURRENT_TASK_USER_MESSAGE",
+    "verbatim_user_message": "能不能改成在本地调用模型运行",
+    "interpretation": "Execute the already approved D21 attempt locally, replacing the GitHub Environment review step; retain the original model, fixtures, caps and one-attempt scope."
+  },
+  "execution_backend": "LOCAL_MACOS",
+  "new_attempt_authorized": false,
+  "github_environment_review_required": false,
+  "fixture_ids": [
+    "PCT-P2-SMOKE-ENG-001",
+    "PCT-P2-SMOKE-ENG-002"
+  ],
+  "scope_inherited_from": "governance/p2-human-approval-d21-v0.1.json",
+  "caps_unchanged": "governance/p2-operational-caps-v0.1.json",
+  "local_credentials": "Parent-process environment, private user-specified file, or hidden terminal input; never export GitHub secrets.",
+  "local_isolation": "macOS Seatbelt: temporary fixture write scope, public runtime reads, proxy port only",
+  "same_atomic_authorization_tag": "pct-p2-d21-authorization-consumed",
+  "cloud_migration": {
+    "original_run_id": 34433128526,
+    "observed_status": "completed",
+    "observed_conclusion": "cancelled",
+    "generation_workflow": "p2-d21-smoke.yml",
+    "workflow_state": "disabled_manually",
+    "shared_authorization_tag_exists_at_migration": false,
+    "model_requests_before_migration": 0
+  },
+  "primary_schedule_runs_authorized": 0,
+  "semantic_auditor_authorized": false,
+  "reference_opening_authorized": false,
+  "online_intervention_authorized": false,
+  "append_only": true,
+  "amendment_digest": "30b17d16f2e713288ba13a125b80b3a9de120b205e4732ef8b4f33d4cb0feb60"
+}

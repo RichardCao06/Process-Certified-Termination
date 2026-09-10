@@ -6,6 +6,7 @@ validate: validate-p0 validate-p1 validate-calibration validate-development-pilo
 validate-p2-d21:
 	python3 scripts/validate_p2_d21_preflight.py
 	python3 scripts/validate_p2_d21_execution.py
+	python3 -c 'from scripts.run_p2_d21_local import validate; errors = validate(); print(errors or "D21 local amendment and freeze PASS"); raise SystemExit(bool(errors))'
 
 validate-p0:
 	python3 scripts/validate_p0.py

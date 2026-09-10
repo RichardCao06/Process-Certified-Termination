@@ -1,0 +1,47 @@
+name: D21 local backend validation (no model)
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  local-no-model:
+    runs-on: macos-14
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - run: make validate
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: b150a551b8d465e31e418e1b2eaf5e79bbb7d28e
+          path: .pct-local/deepseek-harness
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.19.0'
+      - name: Install exact frozen dependencies
+        working-directory: .pct-local/deepseek-harness
+        run: |
+          corepack enable
+          corepack prepare pnpm@11.7.0 --activate
+          pnpm install --frozen-lockfile
+      - name: Verify source and confined local driver without credentials
+        env:
+          PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/.pct-local/deepseek-harness
+          PCT_REQUIRE_DSH_CONFORMANCE: '1'
+        run: |
+          python3 scripts/validate_p2_dsh_conformance.py
+          python3 scripts/run_p2_d21_local.py --no-model --dsh-source .pct-local/deepseek-harness --node "$(command -v node)" --output-dir .pct-local/ci-evidence
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: pct-d21-local-no-model-${{ github.run_id }}
+          path: .pct-local/ci-evidence/**/*.json
+          if-no-files-found: warn
