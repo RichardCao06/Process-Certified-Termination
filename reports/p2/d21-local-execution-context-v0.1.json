@@ -1,0 +1,7 @@
+{
+  "execution_backend": "LOCAL_MACOS",
+  "source_head_sha": "de4738e26845da5427d686c6c5ec4c4c8e2bd08d",
+  "platform": "macOS-15.2-arm64-arm-64bit",
+  "node_version": "22.19.0",
+  "real_credentials_used": false
+}

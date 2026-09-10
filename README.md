@@ -39,6 +39,8 @@ D19 and D20 failed during configuration before a model request. Their evidence i
 
 The former cloud route passed all 105 tests and actual driver boot at `13dddc89d7562aad755401d2c8037bb3db5d98b2`; [that readiness snapshot](governance/p2-d21-execution-readiness-v0.1.json) is preserved. Its waiting model job was cancelled and its generation workflow disabled before any model request. Use `./scripts/run-p2-local.sh` for local execution or add `--no-model` for credential-free validation. The API key is entered invisibly in the terminal; it is not saved or passed to the Worker subprocess.
 
+[Local readiness evidence](governance/p2-d21-local-readiness-v0.1.json) binds `de4738e26845da5427d686c6c5ec4c4c8e2bd08d` to 113 passing repository tests, successful macOS no-model CI, and actual local filesystem/network confinement and Harness boot checks. The local API key remains the only missing execution input in this snapshot; no D21 model request has occurred.
+
 No primary natural-task trajectory, Reference opening, private trace, Semantic Auditor call, Steering, blocking, Goal mutation, online intervention, production deployment, or effectiveness claim is authorized.
 
 ## Current protocol documents

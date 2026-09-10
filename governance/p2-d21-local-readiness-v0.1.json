@@ -1,0 +1,35 @@
+{
+  "record_type": "PCT_P2_D21_LOCAL_READINESS",
+  "work_order": "PCT-P2-001",
+  "amendment": "PCT-P2-D21-A01",
+  "observed_at": "2026-09-10T05:30:51.812252+00:00",
+  "status": "LOCAL_RUNNER_READY_CREDENTIAL_PENDING",
+  "source_commit": "de4738e26845da5427d686c6c5ec4c4c8e2bd08d",
+  "local_implementation_freeze_sha256": "d62af90055a9c558ff0c8f9397a0df5a4689803ce3d9c14c6b7ce21f2c34a94a",
+  "local_evidence_file_sha256": {
+    "reports/p2/d21-local-driver-no-model-validation-v0.1.json": "fef36d022339d1c612a3d5d303588963a2e0c9d3beea51e7af66afe289699d75",
+    "reports/p2/d21-local-boundary-validation-v0.1.json": "c4d9dcfd529455fbbca7bb972caf7c0bc4b1530c48148a2c421c14040b02bbda",
+    "reports/p2/d21-local-execution-context-v0.1.json": "f30417f55ec41ad511860809fb28a4c241c9a74fcb69f66e289ae0d59d697d6b"
+  },
+  "repository_ci": {
+    "run_id": 34441165732,
+    "conclusion": "success",
+    "tests_passed": 113
+  },
+  "macos_no_model_ci": {
+    "run_id": 34441165773,
+    "conclusion": "success"
+  },
+  "cloud_generation": {
+    "original_run_id": 34433128526,
+    "conclusion": "cancelled",
+    "workflow_disabled": true
+  },
+  "credential_available": false,
+  "shared_attempt_consumed": false,
+  "worker_model_requests": 0,
+  "primary_schedule_runs": 0,
+  "online_intervention": false,
+  "append_only": true,
+  "readiness_digest": "9c03e4a79473af023fecde72ccbca62f7fe5c814190ed1dab55051007c100535"
+}
