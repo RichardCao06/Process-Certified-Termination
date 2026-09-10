@@ -1,0 +1,49 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_INCIDENT_RECORD",
+  "incident_id": "PCT-P2-I02",
+  "title": "D19 v0.2 delivery-validator false assumptions blocked local application before commit",
+  "status": "RESOLVED_BY_REPLACEMENT_PACKAGE_BEFORE_COMMIT",
+  "detected_at": "2026-08-26T10:45:00Z",
+  "affected_head_sha": "56f503f5747128a16ccefbc68bf00ebef5afbc29",
+  "facts": {
+    "raw_provider_report_path": "reports/p2/deepseek-provider-introspection-v0.1.json",
+    "raw_provider_report_sha256": "31448f860cd20110403c0b73abac9337580c724a5e4cfca7a75ce5390c88a30f",
+    "raw_report_profile_sha256": "d577631d17276130561dabe86958d94d98dd857304648e036215f7e273bf37ef",
+    "actual_candidate_profile_path": "config/p2/deepseek-v4-pro-profile-candidate-v0.1.json",
+    "actual_candidate_profile_git_blob_sha1": "8a1d308688247d42f2867698c0ef5073cb5001b3",
+    "actual_candidate_profile_sha256": "d577631d17276130561dabe86958d94d98dd857304648e036215f7e273bf37ef",
+    "profile_hashes_match": true,
+    "original_v0_2_validator_incorrectly_required_a_mismatch": true,
+    "original_v0_2_secret_scan_scope": "ALL_LOCAL_FILES_INCLUDING_GIT_IGNORED_FILES",
+    "original_v0_2_secret_regex": "UNBOUNDED_SK_PREFIX_PATTERN",
+    "original_v0_2_regex_could_match_non_secret_substrings_such_as_risk_hyphen_terms": true,
+    "failed_local_application_created_commit": false,
+    "failed_local_application_started_model_calls": false,
+    "research_artifact_validation_run_id": 32946228591,
+    "research_artifact_validation_run_number": 184,
+    "workflow_conclusion": "action_required",
+    "workflow_job_count": 0
+  },
+  "impact": {
+    "raw_model_listing_observation_preserved": true,
+    "raw_report_binds_the_candidate_profile_bytes": true,
+    "repository_secret_exposure_established_by_the_error": false,
+    "local_ignored_file_secret_exposure_determined_by_the_error": false,
+    "natural_task_results_affected": false,
+    "natural_task_runs_at_detection": 0,
+    "engineering_smoke_runs_at_detection": 0
+  },
+  "required_resolution": [
+    "Discard the uncommitted v0.2 patch application and use replacement package v0.2.1.",
+    "Validate that the historical provider report profile hash equals the frozen candidate profile hash.",
+    "Scan Git-tracked files only for repository secret leakage.",
+    "Use a left-boundary-aware secret pattern so ordinary risk-hyphen text is not a credential match.",
+    "Retain the fresh read-only GET /models step as a routine pre-smoke binding check, not as remediation for a nonexistent historical mismatch.",
+    "Retain action_required as historical workflow evidence; do not relabel it success."
+  ],
+  "worker_calls_detected": false,
+  "reference_opening_detected": false,
+  "incident_digest": "42186b4531e607a45efca017c0f921f3964850433b0b1981d4ac877a2204bd24",
+  "repository_secret_exposure_detected": false
+}

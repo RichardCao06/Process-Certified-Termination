@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_WORKER_PROFILE_CANDIDATE",
+  "profile_id": "PCT-P2-DEEPSEEK-V4-PRO-CANDIDATE-v0.1",
+  "status": "AWAITING_READ_ONLY_PROVIDER_INTROSPECTION_AND_CAPS_GATE",
+  "created_at": "2026-08-26T06:00:00Z",
+  "source_pr": 3,
+  "source_comment_id": 5422046471,
+  "display_name": "DeepSeek V4-Pro",
+  "provider": "DeepSeek official API platform",
+  "provider_protocol": "OpenAI-compatible Chat Completions",
+  "base_url": "https://api.deepseek.com",
+  "account_scope_research_id": "P2-DS-ACCOUNT-01",
+  "requested_model_identifier": "deepseek-v4-pro",
+  "human_reported_returned_model_identifier": "deepseek-v4-pro",
+  "human_reported_identity_is_provider_evidence": false,
+  "model_revision_or_snapshot": "NOT_EXPOSED_BY_PROVIDER",
+  "thinking": {
+    "type": "enabled"
+  },
+  "reasoning_effort": "high",
+  "sampling": {
+    "mode": "PROVIDER_DEFAULT",
+    "explicit_temperature": null,
+    "explicit_top_p": null,
+    "note": "Thinking mode does not use temperature/top_p as operative controls."
+  },
+  "provider_documented_capabilities": {
+    "context_window_tokens": 1000000,
+    "max_output_tokens": 384000,
+    "capability_values_are_operational_caps": false,
+    "source_urls": [
+      "https://api-docs.deepseek.com/api/list-models/",
+      "https://api-docs.deepseek.com/api/create-chat-completion/",
+      "https://api-docs.deepseek.com/quick_start/agent_integrations/pi_mono/",
+      "https://api-docs.deepseek.com/guides/thinking_mode/"
+    ]
+  },
+  "resource_policy_human_input": {
+    "per_trajectory_monetary_cap": 30,
+    "currency": "CNY",
+    "retry_policy": null,
+    "operational_context_window_tokens": null,
+    "operational_max_output_tokens": null,
+    "per_trajectory_token_cap": null
+  },
+  "frozen_artifact_digests": {
+    "system_prompt_sha256": "acdb5a6380a899adba9806aa0881c37828a40905977929d179d45eb8707a1f92",
+    "tool_catalog_sha256": "896b1d9f3675e9e78de940f95eb28ae04ee58f7c7db440a69f8abec3442142b5"
+  },
+  "credential_reference": {
+    "storage": "GITHUB_ACTIONS_ENVIRONMENT_SECRET",
+    "environment": "p2-natural-pilot",
+    "secret_name": "DEEPSEEK_API_KEY",
+    "research_alias": "P2-DEEPSEEK-KEY-01",
+    "secret_value_in_repository": false,
+    "secret_value_in_logs": false,
+    "secret_value_in_hashes": false
+  },
+  "allowed_identity_resolution": {
+    "endpoint_method": "GET",
+    "endpoint_path": "/models",
+    "task_generation": false,
+    "chat_completion_calls": 0
+  },
+  "substitute_model_allowed": false,
+  "profile_candidate_digest": "2d659ef6be9bfa0a0a9db394cb6035e9b6b73a8fe19adcb9330c0848d613f1e9"
+}

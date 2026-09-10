@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NATURAL_TASK_SHADOW_PILOT_PROTOCOL",
+  "protocol_id": "PCT-P2-NATURAL-SHADOW-PILOT-v0.1",
+  "status": "MATERIALIZED_FOR_PREFLIGHT_NOT_RUN_AUTHORIZED",
+  "created_at": "2026-08-26T05:00:00Z",
+  "work_order": "PCT-P2-001",
+  "decision_basis": [
+    "PCT-P2-D13",
+    "PCT-P2-D14",
+    "PCT-P2-D15",
+    "PCT-P2-D16",
+    "PCT-P2-D17",
+    "PCT-P2-D18"
+  ],
+  "task_catalog": {
+    "path": "data/p2/natural-pilot/public-task-catalog-v0.1.json",
+    "sha256": "32d0bd6854196fdbac4e5a91ffcfb4fa5bd57f6c0949102919bc5ce0b5742a5c"
+  },
+  "validator_catalog": {
+    "path": "data/p2/natural-pilot/deterministic-validator-catalog-v0.1.json",
+    "sha256": "72ee991928ec56ad727d50f129c63d7722ee96532074175f78b4d42245f68358"
+  },
+  "run_schedule": {
+    "path": "data/p2/natural-pilot/run-schedule-v0.1.json",
+    "sha256": "b422d8cf43dd2093f995fa0cb62705ab5dba3a2af0a0da8110051753ac6b349f"
+  },
+  "worker_profile_freeze": "governance/p2-worker-profile-freeze-v0.1.json",
+  "reference_custody": "governance/p2-reference-custody-v0.1.json",
+  "design": {
+    "task_count": 20,
+    "strata": {
+      "HIGHLY_VERIFIABLE": 10,
+      "SEMI_OPEN": 10
+    },
+    "repetitions_per_task": 3,
+    "planned_trajectories": 60,
+    "primary_analysis_unit": "FIRST_CANDIDATE_STOP_PER_TRAJECTORY",
+    "secondary_candidate_stop": "EXPLORATORY_ONLY",
+    "candidate_stop_capture_cap": 2
+  },
+  "fixed_resource_caps": {
+    "wall_clock_seconds": 1800,
+    "model_request_cap": 20,
+    "tool_call_cap": 50,
+    "candidate_stop_cap": 2,
+    "retry_policy": null,
+    "context_window_tokens": null,
+    "max_output_tokens": null,
+    "per_trajectory_token_cap": null,
+    "per_trajectory_monetary_cap": null,
+    "profile_derived_fields_status": "BLOCKED_PENDING_EXACT_PROFILE"
+  },
+  "failure_and_exclusion_policy": {
+    "infrastructure_failure_separate_from_method_failure": true,
+    "failed_run_silently_deleted": false,
+    "automatic_task_level_rerun": false,
+    "replacement_run_requires_append_only_amendment": true,
+    "primary_denominator_fixed_before_results": true,
+    "later_candidate_stops_may_not_inflate_primary_denominator": true
+  },
+  "reference_ordering": [
+    "Worker trajectory completes or stops.",
+    "Candidate-Stop packet and deterministic Shadow verdict are frozen and hashed.",
+    "A copy is transferred to the isolated Reference lane.",
+    "Reference evaluation occurs without changing runtime or Shadow output.",
+    "Comparison metrics are computed from frozen artifacts."
+  ],
+  "primary_engineering_and_developmental_metrics": {
+    "explicit_sidecar_completeness_rate": "complete explicit sidecars / primary Candidate Stops",
+    "metadata_available_rate": "primary Candidate Stops with explicit or separately reported legacy metadata / primary Candidate Stops",
+    "deterministic_decision_coverage_rate": "primary Candidate Stops with non-UNDETERMINED deterministic recommendation / primary Candidate Stops",
+    "deterministic_replay_equality_rate": "replays identical to frozen Shadow output / replayed primary Candidate Stops",
+    "false_accept_rate": "Shadow ACCEPT where isolated Reference says Goal not acceptably complete / Reference-evaluable primary units",
+    "false_continue_rate": "Shadow non-accept continuation where isolated Reference says Goal acceptably complete / Reference-evaluable primary units",
+    "abstention_rate": "UNDETERMINED recommendations / primary Candidate Stops",
+    "latency_and_cost": "descriptive wall-clock, requests, tools, tokens, and monetary cost under frozen caps"
+  },
+  "semantic_auditor": {
+    "enabled": false,
+    "model_calls_authorized": false
+  },
+  "mode": "SHADOW",
+  "applied_to_runtime": false,
+  "online_intervention_authorized": false,
+  "worker_behavior_change_authorized": false,
+  "private_runtime_trace_collection_authorized": false,
+  "effectiveness_claim_allowed": false,
+  "protocol_digest": "5c3c66113a0adfb2aa15f3b842080e06d06867e548d77beed1ce8b21cc144b16"
+}

@@ -1,0 +1,42 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_D19_RUNTIME_TOOL_CATALOG",
+  "catalog_id": "PCT-P2-D19-RUNTIME-TOOL-CATALOG-v0.1",
+  "status": "FROZEN_ENGINEERING_SMOKE_ONLY",
+  "created_at": "2026-08-26T10:45:00Z",
+  "model_facing_tool_names": [
+    "edit",
+    "read",
+    "write"
+  ],
+  "required_exact_match_at_wire_boundary": true,
+  "required_exact_match_in_request_header_events": true,
+  "explicitly_excluded_tool_names": [
+    "bash",
+    "glob",
+    "grep",
+    "interrupt_agent",
+    "job_kill",
+    "job_list",
+    "job_output",
+    "list_agents",
+    "ralph",
+    "read_image",
+    "send_message",
+    "subagent",
+    "subagent_fork",
+    "todo_write",
+    "workflow"
+  ],
+  "candidate_stop_proposal": {
+    "mechanism": "WORKSPACE_FILE_WRITTEN_THROUGH_FROZEN_FS_TOOL",
+    "path": ".pct/candidate-stop-proposal.json",
+    "binding_owner": "PCT_READ_ONLY_TASK_ADAPTER",
+    "inferred_from_assistant_prose": false,
+    "model_facing_custom_tool_registered": false
+  },
+  "network_access_for_model_tools": false,
+  "runtime_secret_access_for_worker": false,
+  "online_intervention_authorized": false,
+  "catalog_digest": "2d4b46d6a4ccf3369623f76a83e62b49d26febe40ccd885e600c95aa9b8df1b7"
+}

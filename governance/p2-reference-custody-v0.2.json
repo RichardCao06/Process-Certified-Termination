@@ -1,0 +1,79 @@
+{
+  "schema_version": "0.2",
+  "record_type": "PCT_P2_REFERENCE_CUSTODY",
+  "custody_id": "PCT-P2-NATURAL-PILOT-REFERENCE-CUSTODY-v0.2",
+  "status": "DEVELOPMENTAL_SINGLE_RATER_DOWNGRADE_RECORDED",
+  "created_at": "2026-08-26T06:00:00Z",
+  "supersedes_for_active_preflight": "governance/p2-reference-custody-v0.1.json",
+  "preserves_history": true,
+  "decision_basis": [
+    "PCT-P2-D17:A",
+    "D17 preapproved downgrade rule",
+    "PR#3 comment 5422046471"
+  ],
+  "task_catalog_digest": "32d0bd6854196fdbac4e5a91ffcfb4fa5bd57f6c0949102919bc5ce0b5742a5c",
+  "highly_verifiable_lane": {
+    "task_ids": [
+      "PCT-P2-NAT-001",
+      "PCT-P2-NAT-002",
+      "PCT-P2-NAT-003",
+      "PCT-P2-NAT-004",
+      "PCT-P2-NAT-005",
+      "PCT-P2-NAT-006",
+      "PCT-P2-NAT-007",
+      "PCT-P2-NAT-008",
+      "PCT-P2-NAT-009",
+      "PCT-P2-NAT-010"
+    ],
+    "reference_type": "INDEPENDENT_DETERMINISTIC_VALIDATOR_RERUN",
+    "validator_catalog": "data/p2/natural-pilot/deterministic-validator-catalog-v0.1.json",
+    "opening_condition": "Candidate-Stop packet and Shadow verdict digest are frozen."
+  },
+  "semi_open_lane": {
+    "task_ids": [
+      "PCT-P2-NAT-011",
+      "PCT-P2-NAT-012",
+      "PCT-P2-NAT-013",
+      "PCT-P2-NAT-014",
+      "PCT-P2-NAT-015",
+      "PCT-P2-NAT-016",
+      "PCT-P2-NAT-017",
+      "PCT-P2-NAT-018",
+      "PCT-P2-NAT-019",
+      "PCT-P2-NAT-020"
+    ],
+    "reference_type": "DEVELOPMENTAL_SINGLE_HUMAN_RATER",
+    "rater_a": {
+      "annotator_id": "P2-RATER-A",
+      "role": "DEVELOPMENTAL_HUMAN_RATER",
+      "assigned": true,
+      "independent_second_rater": false,
+      "must_not_see_shadow_before_submission": true,
+      "blindness_execution_status": "NOT_YET_RUN"
+    },
+    "rater_b": {
+      "annotator_id": null,
+      "declared_alias_not_treated_as_person": "P2-RATER-B",
+      "assigned": false,
+      "availability": "UNAVAILABLE"
+    },
+    "adjudication": {
+      "declared_alias": "P2-ADJUDICATOR",
+      "active_independent_adjudication_role": false,
+      "status": "NOT_APPLICABLE_WITHOUT_TWO_INDEPENDENT_PASSES"
+    },
+    "reporting_label": "DEVELOPMENTAL_SINGLE_RATER_EVIDENCE",
+    "independent_inter_rater_reliability_claim_allowed": false,
+    "gold_label_claim_allowed": false,
+    "reason": "Research Owner explicitly reported that a second distinct independent rater is unavailable."
+  },
+  "runtime_lane_access_to_reference": false,
+  "reference_opening_authorized": false,
+  "natural_task_worker_calls_authorized_by_this_record": false,
+  "remaining_reference_requirements": [
+    "Freeze Shadow output and Candidate-Stop packet before Rater A receives the reference packet.",
+    "Record Rater A judgment append-only.",
+    "Do not describe the semi-open lane as inter-rater reliability or Gold validation."
+  ],
+  "custody_digest": "6066a5213133d0c4a82f420d725e9042df70f792ad267089d2a9c5da3506304c"
+}

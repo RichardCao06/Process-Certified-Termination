@@ -1,0 +1,209 @@
+name: P2 D21 no-model Cordis configuration diagnostic
+
+on:
+  push:
+    branches: [research/p2-shadow-foundation-v0.1]
+    paths:
+      - '.github/workflows/p2-d21-cordis-config-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pct-p2-d21-cordis-config-diagnostic
+  cancel-in-progress: false
+
+jobs:
+  diagnose-cordis-config:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    steps:
+      - name: Checkout PCT branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+
+      - name: Checkout exact frozen DeepSeek Harness
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: b150a551b8d465e31e418e1b2eaf5e79bbb7d28e
+          path: _vendor/deepseek-harness
+          fetch-depth: 1
+
+      - name: Set up exact Node runtime
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22.19.0'
+
+      - name: Install exact frozen DSH dependencies
+        working-directory: _vendor/deepseek-harness
+        shell: bash
+        run: |
+          set -euo pipefail
+          corepack enable
+          corepack prepare pnpm@11.7.0 --activate
+          pnpm install --frozen-lockfile
+
+      - name: Materialize no-model configuration probe
+        shell: bash
+        run: |
+          set -euo pipefail
+          cat > _vendor/deepseek-harness/.pct-cordis-config-probe.mts <<'TS'
+          import { readFileSync, writeFileSync, mkdirSync } from 'node:fs'
+          import { dirname, resolve } from 'node:path'
+          import * as yaml from 'js-yaml'
+          import { boot } from '@deepseek-ai/dsh-app-boot'
+          import { entryListSchema } from '@deepseek-ai/cordis-plugin-include'
+
+          const mode = process.argv[2]
+          const pctConfig = process.env.PCT_CONFIG_PATH!
+          const baseConfig = process.env.PCT_DSH_BASE_CONFIG!
+          const scratch = process.env.PCT_PROBE_SCRATCH!
+          mkdirSync(scratch, { recursive: true })
+          process.chdir(scratch)
+
+          const sanitize = (value: unknown): string => {
+            let text = value instanceof Error ? value.stack ?? value.message : String(value)
+            for (const raw of [process.env.GITHUB_WORKSPACE, process.env.RUNNER_TEMP]) {
+              if (raw) text = text.split(raw).join(raw === process.env.GITHUB_WORKSPACE ? '<GITHUB_WORKSPACE>' : '<RUNNER_TEMP>')
+            }
+            return text.replace(/pct-dummy-[A-Za-z0-9_-]+/g, '<DUMMY_TOKEN>')
+          }
+
+          let configPath = pctConfig
+          let patches: any[] | undefined
+          if (mode === 'nested-builtin') {
+            const value = readFileSync(pctConfig, 'utf8').replace("name: '@deepseek-ai/cordis-plugin-include'", "name: 'cordis:include'")
+            configPath = resolve(scratch, 'nested-builtin.cordis.yml')
+            writeFileSync(configPath, value)
+          } else if (mode === 'direct-root-patches') {
+            const parsed = yaml.load(readFileSync(pctConfig, 'utf8'), { schema: entryListSchema }) as any[]
+            patches = parsed?.[0]?.config?.patches
+            if (!Array.isArray(patches)) throw new Error('PCT overlay did not expose a patch array')
+            configPath = baseConfig
+          } else if (mode !== 'current-nested-package') {
+            throw new Error(`unknown mode: ${mode}`)
+          }
+
+          let ctx: any
+          try {
+            ctx = await boot(`pct-d21-${mode}`, configPath, patches)
+            console.log(JSON.stringify({ mode, status: 'BOOT_PASS', configPath: mode === 'direct-root-patches' ? '<DSH_BASE_CONFIG>' : '<PCT_CONFIG>' }))
+          } catch (error) {
+            console.log(JSON.stringify({ mode, status: 'BOOT_FAIL', error: sanitize(error) }))
+            process.exitCode = 1
+          } finally {
+            await ctx?.fiber.dispose()
+          }
+          TS
+
+      - name: Run current nested-package configuration probe
+        id: current
+        continue-on-error: true
+        working-directory: _vendor/deepseek-harness
+        shell: bash
+        env:
+          PCT_CONFIG_PATH: ${{ github.workspace }}/config/p2/dsh-engineering-smoke.cordis.yml
+          PCT_DSH_BASE_CONFIG: ${{ github.workspace }}/_vendor/deepseek-harness/examples/headless-agent/cordis.yml
+          PCT_PROBE_SCRATCH: ${{ runner.temp }}/pct-probe-current
+          DSH_HOME: ${{ runner.temp }}/pct-dsh-home-current
+          DSH_SNAPSHOT: record
+          DSH_TELEMETRY_DISABLED: '1'
+          DEEPSEEK_API_KEY: pct-dummy-no-provider-call
+          DEEPSEEK_BASE_URL: http://127.0.0.1:9
+          TSX_TSCONFIG_PATH: ${{ github.workspace }}/_vendor/deepseek-harness/tsconfig.json
+        run: |
+          set -o pipefail
+          node --import "$PWD/node_modules/tsx/dist/esm/index.mjs" .pct-cordis-config-probe.mts current-nested-package | tee "$RUNNER_TEMP/current.jsonl"
+
+      - name: Run nested built-in include configuration probe
+        id: builtin
+        continue-on-error: true
+        working-directory: _vendor/deepseek-harness
+        shell: bash
+        env:
+          PCT_CONFIG_PATH: ${{ github.workspace }}/config/p2/dsh-engineering-smoke.cordis.yml
+          PCT_DSH_BASE_CONFIG: ${{ github.workspace }}/_vendor/deepseek-harness/examples/headless-agent/cordis.yml
+          PCT_PROBE_SCRATCH: ${{ runner.temp }}/pct-probe-builtin
+          DSH_HOME: ${{ runner.temp }}/pct-dsh-home-builtin
+          DSH_SNAPSHOT: record
+          DSH_TELEMETRY_DISABLED: '1'
+          DEEPSEEK_API_KEY: pct-dummy-no-provider-call
+          DEEPSEEK_BASE_URL: http://127.0.0.1:9
+          TSX_TSCONFIG_PATH: ${{ github.workspace }}/_vendor/deepseek-harness/tsconfig.json
+        run: |
+          set -o pipefail
+          node --import "$PWD/node_modules/tsx/dist/esm/index.mjs" .pct-cordis-config-probe.mts nested-builtin | tee "$RUNNER_TEMP/builtin.jsonl"
+
+      - name: Run direct root-patches configuration probe
+        id: direct
+        continue-on-error: true
+        working-directory: _vendor/deepseek-harness
+        shell: bash
+        env:
+          PCT_CONFIG_PATH: ${{ github.workspace }}/config/p2/dsh-engineering-smoke.cordis.yml
+          PCT_DSH_BASE_CONFIG: ${{ github.workspace }}/_vendor/deepseek-harness/examples/headless-agent/cordis.yml
+          PCT_PROBE_SCRATCH: ${{ runner.temp }}/pct-probe-direct
+          DSH_HOME: ${{ runner.temp }}/pct-dsh-home-direct
+          DSH_SNAPSHOT: record
+          DSH_TELEMETRY_DISABLED: '1'
+          DEEPSEEK_API_KEY: pct-dummy-no-provider-call
+          DEEPSEEK_BASE_URL: http://127.0.0.1:9
+          TSX_TSCONFIG_PATH: ${{ github.workspace }}/_vendor/deepseek-harness/tsconfig.json
+        run: |
+          set -o pipefail
+          node --import "$PWD/node_modules/tsx/dist/esm/index.mjs" .pct-cordis-config-probe.mts direct-root-patches | tee "$RUNNER_TEMP/direct.jsonl"
+
+      - name: Summarize diagnostic without model or secret access
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          rows = []
+          for name in ('current', 'builtin', 'direct'):
+              path = Path(os.environ['RUNNER_TEMP']) / f'{name}.jsonl'
+              if path.is_file():
+                  for line in path.read_text(encoding='utf-8', errors='replace').splitlines():
+                      try:
+                          value = json.loads(line)
+                      except Exception:
+                          continue
+                      if isinstance(value, dict) and value.get('mode'):
+                          rows.append(value)
+          output = {
+              'schema_version': '0.1',
+              'record_type': 'PCT_P2_D21_NO_MODEL_CORDIS_CONFIG_DIAGNOSTIC',
+              'source_head_sha': os.environ.get('GITHUB_SHA'),
+              'frozen_dsh_commit': 'b150a551b8d465e31e418e1b2eaf5e79bbb7d28e',
+              'model_calls': 0,
+              'provider_requests': 0,
+              'secret_access': False,
+              'results': rows,
+          }
+          target = Path(os.environ['RUNNER_TEMP']) / 'pct-p2-d21-cordis-config-diagnostic.json'
+          target.write_text(json.dumps(output, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          print(target.read_text(encoding='utf-8'))
+          PY
+
+      - name: Upload no-model diagnostic
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pct-p2-d21-no-model-cordis-config-diagnostic-${{ github.run_id }}
+          if-no-files-found: error
+          retention-days: 30
+          path: ${{ runner.temp }}/pct-p2-d21-cordis-config-diagnostic.json
+
+      - name: Enforce that no provider-generating path was used
+        if: always()
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "${{ steps.direct.outcome }}" != "cancelled"
+          echo 'Diagnostic completed with zero model calls and zero secret access.'

@@ -1,0 +1,38 @@
+{
+  "project_id": "PCT",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "record_type": "PCT_P2_FOUNDATION_STATUS",
+  "version": "0.1",
+  "status": "FOUNDATION_ACTIVE_HUMAN_GATES_PENDING",
+  "updated_at": "2026-08-25T09:15:00Z",
+  "p1_closed": true,
+  "p1_merge_commit": "77e991a5c1f5a101ef03ffb5154b6735f73ddef4",
+  "p2_foundation_authorized": true,
+  "authorization_scope": [
+    "A0_ANALYSIS",
+    "A1_DRAFTING",
+    "A2_REVERSIBLE_SANDBOX_FOUNDATION"
+  ],
+  "authorization_source": "Research Owner instruction in project conversation on 2026-08-25",
+  "open_normative_gate_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07"
+  ],
+  "decision_register": "governance/p2-decision-register-v0.1.json",
+  "live_shadow_measurement_authorized": false,
+  "semantic_audit_agent_authorized": false,
+  "private_runtime_trace_collection_authorized": false,
+  "reference_evaluator_opening_authorized": false,
+  "online_intervention_authorized": false,
+  "worker_behavior_change_authorized": false,
+  "effectiveness_claim_allowed": false,
+  "sealed_or_hidden_data_accessed": false,
+  "current_stage": "P2.0_FOUNDATION_SCAFFOLD",
+  "next_gate": "Research Owner decisions PCT-P2-D01 through PCT-P2-D07"
+}

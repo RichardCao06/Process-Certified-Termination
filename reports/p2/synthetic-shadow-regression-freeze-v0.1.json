@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_SYNTHETIC_REGRESSION_FREEZE",
+  "status": "FROZEN",
+  "created_at": "2026-08-26T03:45:00Z",
+  "decision_basis": [
+    "PCT-P2-D01",
+    "PCT-P2-D03",
+    "PCT-P2-D06",
+    "PCT-P2-D12"
+  ],
+  "files": [
+    {
+      "path": "governance/p2-shadow-policy-v0.1.json",
+      "sha256": "2473990406811f8d84a7d0d6dac438b1a1ad553ed73ec15857f151f9b85676f9",
+      "bytes": 3440
+    },
+    {
+      "path": "data/p2/fixtures/synthetic-regression-catalog-v0.1.json",
+      "sha256": "7513a3269ec49e93808f3eee4ecd3e22a71f523fb3b1e25681b04073807d4e82",
+      "bytes": 5353
+    },
+    {
+      "path": "reports/p2/synthetic-shadow-regression-v0.1.json",
+      "sha256": "66a33baaa378c50c6b86928c061ee7133519d170723462720af1b0c20cc00e98",
+      "bytes": 14578
+    },
+    {
+      "path": "schemas/pct-p2-candidate-stop-sidecar-v0.1.schema.json",
+      "sha256": "5bffa58bf138894abba2ee275e536ac4c55b1ff661e3952077b1746dd55f7464",
+      "bytes": 2893
+    },
+    {
+      "path": "pct/shadow/sidecar.py",
+      "sha256": "2461c25c86e5722d784a46564608ae7939f5e37b91b88aefcf48352694f4973d",
+      "bytes": 10134
+    },
+    {
+      "path": "pct/shadow/adapter.py",
+      "sha256": "ed4893a14174266944c143d3da11e8740aef6be4ea564b0afb942fb13baf5206",
+      "bytes": 6115
+    },
+    {
+      "path": "pct/shadow/auditor.py",
+      "sha256": "4f825bf570295b1eb1ccad7da2828c2cb91209e78b38fdc5e71227a84b0c6654",
+      "bytes": 10020
+    },
+    {
+      "path": "pct/shadow/replay.py",
+      "sha256": "b9c0a89e7384561d374eac92fab1e4c0bb875c9a38c3b3062b24536e4c4884c4",
+      "bytes": 5130
+    },
+    {
+      "path": "pct/shadow/regression.py",
+      "sha256": "bb8b7f21f88841a8d5cb4f539b9a154966513b6a0d6aeb14b4d8efd5641c2b31",
+      "bytes": 26489
+    }
+  ],
+  "expected_result": {
+    "total": 30,
+    "passed": 30,
+    "failed": 0,
+    "live_model_calls": 0,
+    "applied_to_runtime": false
+  },
+  "claim_boundary": "Engineering regression only; not natural-task accuracy or effectiveness evidence."
+}

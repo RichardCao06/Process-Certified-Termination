@@ -1,0 +1,140 @@
+{
+  "update_id": "PCT-P2-D13-D18-PROTOCOL-MATERIALIZATION-v0.1",
+  "created_at": "2026-08-26T05:00:00Z",
+  "source_pr": 3,
+  "approval_comment_id": 5420758863,
+  "base_head": "96f1b8c3eee6de745cd1320b7785997fce9792d5",
+  "file_count": 26,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "12d230b82bc0c2fad975591ff3aeb4b3c5b34186f279df062d5ea68ea85dde8b",
+      "bytes": 3768
+    },
+    {
+      "path": "Makefile",
+      "sha256": "d391ef84d40d7bc8fb883a427655f4bc0037e65fd332cc7009e18c2281442a00",
+      "bytes": 1669
+    },
+    {
+      "path": "README.md",
+      "sha256": "cfd52eb2b8442c26586f3f4a79a6a55c35d2ee146b73d070694979fc2d7bc8d4",
+      "bytes": 2894
+    },
+    {
+      "path": "data/p2/natural-pilot/deterministic-validator-catalog-v0.1.json",
+      "sha256": "265e703009a9f2015c9bbdec339a03b4869fc99308cd7e20e80ec86f21491344",
+      "bytes": 2877
+    },
+    {
+      "path": "data/p2/natural-pilot/public-task-catalog-v0.1.json",
+      "sha256": "9dbb6a19b61c6a172592929f860039081cc5d73495fef049263672e0302565c5",
+      "bytes": 48287
+    },
+    {
+      "path": "data/p2/natural-pilot/run-schedule-v0.1.json",
+      "sha256": "066e22485e9117924936b8863b23100fafd65d99555ac83529b8bb37c728b620",
+      "bytes": 18541
+    },
+    {
+      "path": "docs/p2/README.md",
+      "sha256": "c13fb37cf35df4590cd5467f83fde61efe0a0936862724d72778683066812303",
+      "bytes": 1508
+    },
+    {
+      "path": "docs/p2/p2-natural-task-shadow-pilot-protocol-v0.1.md",
+      "sha256": "77c4041e4735055175c7407283e6500141c274f7b3231420c6384d1d68741119",
+      "bytes": 4245
+    },
+    {
+      "path": "docs/p2/p2-preflight-input-request-v0.1.md",
+      "sha256": "87d8d02433194ea37951e8184f368df00f2e4f3cb37e3672b0d2821bd6e74b0e",
+      "bytes": 1480
+    },
+    {
+      "path": "governance/p2-decision-register-v0.3.json",
+      "sha256": "7440de64ab7cb9d8f17b5957945a25b92d3f531298cfdaa2e8ba9c9567fc8287",
+      "bytes": 8167
+    },
+    {
+      "path": "governance/p2-human-approval-d13-d18-v0.1.json",
+      "sha256": "87b2a164887c4b4ba3167bf0d2ae793636bf7a91d2fd9779c8d2467f30a0e617",
+      "bytes": 1174
+    },
+    {
+      "path": "governance/p2-natural-pilot-protocol-v0.1.json",
+      "sha256": "d5780451647d2f268a7e99b230dd9bbc4f8cd3c0452ca47ca8f76277f63b742c",
+      "bytes": 3996
+    },
+    {
+      "path": "governance/p2-reference-custody-v0.1.json",
+      "sha256": "6242c1b0fe73ba7611ea01b7d5d9aa0a70716cffacfa1f061f5119c8bd08ce01",
+      "bytes": 2180
+    },
+    {
+      "path": "governance/p2-status-v0.3.json",
+      "sha256": "974280c62f8265b66077eddb55bbd6a9fa42f6cfac3b15f40dcfe8e5d2d367f0",
+      "bytes": 1990
+    },
+    {
+      "path": "governance/p2-worker-profile-freeze-v0.1.json",
+      "sha256": "260f7b6909c6cdc813e9f5804f5c7db2a0c9b2e943d15992bcc2f0137037bac4",
+      "bytes": 1679
+    },
+    {
+      "path": "pct/pilot/__init__.py",
+      "sha256": "6bd6fca20794bebca99bd85b4b704914e396f7ff14e6dba0738d6edec156e2e9",
+      "bytes": 244
+    },
+    {
+      "path": "pct/pilot/materialize.py",
+      "sha256": "21e2471a4110bdcac5275c50ccc81c0d6647b876eb7949a2c23fb39b9ba87a06",
+      "bytes": 1106
+    },
+    {
+      "path": "pct/pilot/validators.py",
+      "sha256": "eea56828f43c902c09cd06b3b09a4210eee757c0432fd839ef76312914b804b9",
+      "bytes": 5123
+    },
+    {
+      "path": "reports/p2/natural-pilot-preflight-v0.1.json",
+      "sha256": "2a87a42cd972743b04261ff40df6fb102e5fcdb106f329c23ada75ab06ebcc07",
+      "bytes": 2925
+    },
+    {
+      "path": "schemas/pct-p2-natural-pilot-preflight-v0.1.schema.json",
+      "sha256": "ddb3974217f426d3e7873bb0a687d59e5c268f5ed90b9d182899b50aa41b0d58",
+      "bytes": 822
+    },
+    {
+      "path": "schemas/pct-p2-natural-task-catalog-v0.1.schema.json",
+      "sha256": "3d719321cc4e47c0f595d855bb2e5f355cbd143fa4523c9b3b09074f98c0df6b",
+      "bytes": 853
+    },
+    {
+      "path": "schemas/pct-p2-worker-profile-freeze-v0.1.schema.json",
+      "sha256": "9c1cd29c7701bf4403af44e2197edcb05560fbb3d0a18021a247d938300a2ca9",
+      "bytes": 719
+    },
+    {
+      "path": "scripts/materialize_p2_natural_task.py",
+      "sha256": "903578f10b9acc60e0dca3ff8d7611afdbffb7df42a97d81122bfe0b42b66232",
+      "bytes": 664
+    },
+    {
+      "path": "scripts/validate_p2_natural_pilot_preflight.py",
+      "sha256": "0156cd82b9a8b0da50e0b61139f32728685a77fcb4889d887075a18b1013c18a",
+      "bytes": 11571
+    },
+    {
+      "path": "scripts/validate_p2_natural_task_output.py",
+      "sha256": "77089249e0c9cc94469ce983e00bffa8521cb5f920eedd4b57ccd933850ec8d7",
+      "bytes": 609
+    },
+    {
+      "path": "tests/test_p2_natural_pilot_preflight.py",
+      "sha256": "dc93ecfe7f827cf2cae1a484d9376eb173535543bd98f7b0916101a577828227",
+      "bytes": 2562
+    }
+  ]
+}

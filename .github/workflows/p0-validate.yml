@@ -13,9 +13,23 @@ jobs:
   validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Checkout frozen DeepSeek Harness baseline
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          repository: deepseek-ai/deepseek-harness
+          ref: b150a551b8d465e31e418e1b2eaf5e79bbb7d28e
+          path: _vendor/deepseek-harness
+          fetch-depth: 1
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
         with:
           python-version: '3.12'
-      - name: Validate approved P0 and active P1 artifacts
-        run: make validate
+      - name: Validate exact frozen DSH source and envelope contract
+        env:
+          PCT_DSH_SOURCE_DIR: ${{ github.workspace }}/_vendor/deepseek-harness
+          PCT_REQUIRE_DSH_CONFORMANCE: '1'
+        run: python3 scripts/validate_p2_dsh_conformance.py
+      - name: Validate clean PCT repository
+        run: |
+          rm -rf _vendor
+          make validate

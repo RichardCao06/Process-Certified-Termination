@@ -1,0 +1,101 @@
+{
+  "register_id": "PCT-P2-DECISION-REGISTER-v0.4",
+  "project_id": "PCT",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "D01_D19_APPROVED_D19_ENGINEERING_SMOKE_AUTHORIZED_NOT_RUN",
+  "supersedes_for_active_state": "governance/p2-decision-register-v0.3.json",
+  "historical_registers_preserved": [
+    "governance/p2-decision-register-v0.1.json",
+    "governance/p2-decision-register-v0.2.json",
+    "governance/p2-decision-register-v0.3.json"
+  ],
+  "inherited_approved_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07",
+    "PCT-P2-D08",
+    "PCT-P2-D09",
+    "PCT-P2-D10",
+    "PCT-P2-D11",
+    "PCT-P2-D12",
+    "PCT-P2-D13",
+    "PCT-P2-D14",
+    "PCT-P2-D15",
+    "PCT-P2-D16",
+    "PCT-P2-D17",
+    "PCT-P2-D18"
+  ],
+  "new_decisions": [
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D19",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Operational caps and limited engineering smoke",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Freeze conservative runtime limits and authorize no more than two public synthetic engineering-only trajectories outside the 20-task/60-trajectory primary schedule.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5423290038,
+        "created_at": "2026-08-26T09:26:28Z"
+      },
+      "effective_at": "2026-08-26T09:26:28Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "primary natural-task pilot",
+        "Semantic Audit Agent",
+        "Reference opening",
+        "online intervention",
+        "effectiveness claims"
+      ]
+    }
+  ],
+  "approved_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07",
+    "PCT-P2-D08",
+    "PCT-P2-D09",
+    "PCT-P2-D10",
+    "PCT-P2-D11",
+    "PCT-P2-D12",
+    "PCT-P2-D13",
+    "PCT-P2-D14",
+    "PCT-P2-D15",
+    "PCT-P2-D16",
+    "PCT-P2-D17",
+    "PCT-P2-D18",
+    "PCT-P2-D19"
+  ],
+  "open_normative_gate_ids": [],
+  "retired_preflight_blockers": {
+    "PCT-P2-PF-IDENTITY-01": "Provider listing identified deepseek-v4-pro and the v0.1 report hash matches the candidate profile; a fresh exact-artifact binding remains a routine D19 pre-run prerequisite.",
+    "PCT-P2-PF-BUDGET-01": "D19 froze retry, context, output, cumulative-token, and monetary caps.",
+    "PCT-P2-PF-REFERENCE-01": "D17 preapproved single-rater downgrade is active; Reference remains closed."
+  },
+  "active_pre_smoke_requirements": [
+    "fresh pre-smoke provider/profile binding check",
+    "full repository validation before model access",
+    "exact DSH conformance",
+    "protected Environment approval",
+    "exact runtime tool catalog",
+    "Worker secret isolation"
+  ],
+  "next_human_gate": "PCT-P2-D20_AFTER_D19_SMOKE_EVIDENCE",
+  "register_digest": "bf19d930237b2960960d5e3a538d4d39cd97cb6be8acff1d7ede4bade6134a3e"
+}

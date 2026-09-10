@@ -1,0 +1,60 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_NATURAL_PILOT_TOOL_CATALOG",
+  "catalog_id": "PCT-P2-NATURAL-PILOT-TOOL-CATALOG-v0.1",
+  "status": "CANDIDATE_PENDING_RUNTIME_SCHEMA_FREEZE",
+  "created_at": "2026-08-26T06:00:00Z",
+  "frozen_harness": {
+    "repository": "deepseek-ai/deepseek-harness",
+    "commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+    "release_identity": "dsh@0.1.1-rc.2"
+  },
+  "model_facing_tools": [
+    {
+      "tool_id": "read",
+      "source_package": "@deepseek-ai/dsh-tool-fs",
+      "authority": "READ_ONLY_WORKSPACE"
+    },
+    {
+      "tool_id": "write",
+      "source_package": "@deepseek-ai/dsh-tool-fs",
+      "authority": "WORKSPACE_WRITE"
+    },
+    {
+      "tool_id": "edit",
+      "source_package": "@deepseek-ai/dsh-tool-fs",
+      "authority": "WORKSPACE_WRITE"
+    },
+    {
+      "tool_id": "glob",
+      "source_package": "@deepseek-ai/dsh-tool-fs-search",
+      "authority": "READ_ONLY_WORKSPACE"
+    },
+    {
+      "tool_id": "grep",
+      "source_package": "@deepseek-ai/dsh-tool-fs-search",
+      "authority": "READ_ONLY_WORKSPACE"
+    },
+    {
+      "tool_id": "bash",
+      "source_package": "@deepseek-ai/dsh-tool-bash",
+      "authority": "SANDBOXED_WORKSPACE_PROCESS"
+    },
+    {
+      "tool_id": "pct_candidate_stop_propose",
+      "source_package": "PCT read-only Task/Harness adapter",
+      "authority": "METADATA_ONLY_NO_RUNTIME_CONTROL"
+    }
+  ],
+  "non_model_facing_observers": [
+    "session/event",
+    "tools/result",
+    "agent/turn-stopping",
+    "PCT Candidate-Stop Sidecar binder"
+  ],
+  "network_access_for_tasks": false,
+  "runtime_secret_access_for_worker": false,
+  "online_intervention_authorized": false,
+  "note": "Concrete tool JSON schemas and plugin composition remain a pre-execution freeze item; this file freezes intended capability scope only.",
+  "catalog_digest": "c178b9f47b767e278893f096935275d1215c9c294a7bd46d04040bb274f6d15b"
+}

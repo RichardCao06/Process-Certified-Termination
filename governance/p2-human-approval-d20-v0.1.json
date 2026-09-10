@@ -1,0 +1,47 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_HUMAN_APPROVAL",
+  "approval_id": "PCT-P2-HUMAN-APPROVAL-D20-v0.1",
+  "status": "COMPLETE",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "approved_options": {
+    "PCT-P2-D20": "A"
+  },
+  "approval_source": {
+    "repository": "RichardCao06/Process-Certified-Termination",
+    "pull_request": 3,
+    "comment_id": 5434319705,
+    "created_at": "2026-08-27T04:18:28Z",
+    "submitted_by": "RichardCao06"
+  },
+  "approved_remediation_scope": {
+    "preserve_first_failure": true,
+    "repair_only_identified_engineering_defects": true,
+    "rerun_same_engineering_fixtures": [
+      "PCT-P2-SMOKE-ENG-001",
+      "PCT-P2-SMOKE-ENG-002"
+    ],
+    "source_mode_resolution_binding_repair_allowed": true,
+    "sanitized_failure_classification_allowed": true,
+    "append_only_evidence_persistence_repair_allowed": true,
+    "formal_task_catalog_change_allowed": false,
+    "worker_model_change_allowed": false,
+    "system_prompt_change_allowed": false,
+    "primary_metrics_change_allowed": false,
+    "analysis_denominator_change_allowed": false,
+    "reference_rules_change_allowed": false
+  },
+  "does_not_authorize": [
+    "frozen 20-task/60-trajectory primary pilot",
+    "new or substitute Worker model",
+    "Semantic Audit Agent",
+    "Reference opening before Shadow freeze",
+    "private traces",
+    "online blocking, Steering, Resume, or Goal mutation",
+    "production deployment",
+    "accuracy, safety, benchmark-gain, or effectiveness claims"
+  ],
+  "append_only": true,
+  "approval_digest": "92f0a3e10564798ef06675950d6b4bf895843c30d0ccdf04d252d3ee48cc46ba"
+}

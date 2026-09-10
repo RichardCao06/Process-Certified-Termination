@@ -1,0 +1,66 @@
+{
+  "schema_version": "0.2",
+  "record_type": "PCT_P2_DEEPSEEK_PROVIDER_INTROSPECTION",
+  "report_id": "PCT-P2-DEEPSEEK-PROVIDER-INTROSPECTION-v0.3",
+  "status": "PASS",
+  "observed_at": "2026-08-28T01:35:03.464964+00:00",
+  "supersedes_for_active_binding": "reports/p2/deepseek-provider-introspection-v0.2.json",
+  "preserves_history": true,
+  "request": {
+    "method": "GET",
+    "base_url": "https://api.deepseek.com",
+    "endpoint_path": "/models",
+    "requested_model_identifier": "deepseek-v4-pro",
+    "task_generation": false,
+    "chat_completion_calls": 0,
+    "worker_trajectory_calls": 0,
+    "http_status_observed": 200
+  },
+  "response": {
+    "http_status": 200,
+    "object": "list",
+    "requested_model_found": true,
+    "returned_model_identifier": "deepseek-v4-pro",
+    "returned_model_owner": "deepseek",
+    "available_model_ids": [
+      "deepseek-v4-flash",
+      "deepseek-v4-flash-vision-exp",
+      "deepseek-v4-pro"
+    ]
+  },
+  "model_revision_or_snapshot": "NOT_EXPOSED_BY_PROVIDER",
+  "frozen_input_artifacts": {
+    "operational_profile_path": "config/p2/deepseek-v4-pro-operational-profile-v0.2.json",
+    "operational_profile_sha256": "66e4ff6090be7bc5132a80b2722f4571c1d18ed36710fc64ab6f1768ea10b5ec",
+    "system_prompt_path": "config/p2/natural-pilot-system-prompt-v0.1.txt",
+    "system_prompt_sha256": "acdb5a6380a899adba9806aa0881c37828a40905977929d179d45eb8707a1f92",
+    "intended_capability_catalog_path": "config/p2/natural-pilot-tool-catalog-v0.1.json",
+    "intended_capability_catalog_sha256": "896b1d9f3675e9e78de940f95eb28ae04ee58f7c7db440a69f8abec3442142b5",
+    "runtime_tool_catalog_path": "config/p2/d19-runtime-tool-catalog-v0.1.json",
+    "runtime_tool_catalog_sha256": "2d0d2c42a0a19bb7c19270caccadc1dd97c07341123e31424a26f3bcf071db32",
+    "runtime_config_path": "config/p2/dsh-engineering-smoke.cordis.yml",
+    "runtime_config_sha256": "67081984fce88ecf4473b74e20a0338113497c5ba81bb7465aad2b91f0a20d16"
+  },
+  "credential_handling": {
+    "credential_source": "GITHUB_ACTIONS_ENVIRONMENT_SECRET",
+    "environment": "p2-natural-pilot",
+    "secret_name": "DEEPSEEK_API_KEY",
+    "secret_value_recorded": false,
+    "secret_hash_recorded": false,
+    "authorization_header_recorded": false,
+    "secret_available_to_worker_process": false
+  },
+  "binding_policy": {
+    "historical_report_profile_binding_verified": true,
+    "fresh_binding_required_before_generation": true
+  },
+  "research_boundaries": {
+    "natural_primary_task_worker_calls": 0,
+    "semantic_auditor_calls": 0,
+    "reference_packets_opened": 0,
+    "applied_to_runtime": false,
+    "online_intervention": false
+  },
+  "report_digest": "6a8bcc0a0ad80eed26d684bd15a4e108c2e22a9ae996d6eaa2e41a112a88b5e2",
+  "remediation_decision": "PCT-P2-D20-A"
+}

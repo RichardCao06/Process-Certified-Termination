@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_STATE_RECONCILIATION",
+  "record_id": "PCT-P2-I01",
+  "status": "RECORDED_AND_REMEDIATED",
+  "detected_at": "2026-08-26T02:50:00Z",
+  "issue": "Conversation and PR-description claims described D01-D11 active artifacts, but the remote branch still pointed to the earlier Foundation head and did not contain those artifacts.",
+  "pre_reconciliation_branch_head": "e83598787b6d2952f402d4fda4d6c5b9ac9346ca",
+  "pre_reconciliation_tree": "7f8eb1986ad77b323b583256a7e1a5e0ef6181c5",
+  "affected_claims": [
+    "frozen active policy persisted",
+    "30-case regression persisted",
+    "DSH conformance implementation persisted"
+  ],
+  "not_affected": [
+    "P1 merged history",
+    "human PR comments",
+    "original P2 Foundation files",
+    "no natural experiment data existed"
+  ],
+  "confirmed_not_performed": [
+    "live Worker model calls",
+    "natural-task Shadow runs",
+    "private trace ingestion",
+    "Reference Evaluator opening",
+    "runtime verdict application",
+    "Steering",
+    "blocking",
+    "Goal mutation",
+    "online intervention"
+  ],
+  "remediation": "Preserve the old Foundation head, materialize D01-D12 approval and implementation append-only in a new fast-forward commit, validate locally and in CI, and bind completion claims to branch head plus workflow run.",
+  "history_rewritten": false,
+  "force_push_used": false,
+  "research_result_invalidated": false
+}

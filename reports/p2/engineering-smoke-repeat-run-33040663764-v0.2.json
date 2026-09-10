@@ -1,0 +1,145 @@
+{
+  "schema_version": "0.2",
+  "record_type": "PCT_P2_ENGINEERING_SMOKE_REPORT",
+  "report_id": "PCT-P2-D19-ENGINEERING-SMOKE-v0.2",
+  "started_at": "2026-08-27T04:51:41.519565+00:00",
+  "status": "FAIL",
+  "profile_binding": {
+    "status": "PASS",
+    "comparisons": {
+      "operational_profile_sha256": true,
+      "system_prompt_sha256": true,
+      "intended_capability_catalog_sha256": true,
+      "runtime_tool_catalog_sha256": true,
+      "runtime_config_sha256": true
+    },
+    "report_path": "reports/p2/deepseek-provider-introspection-v0.2.json",
+    "report_sha256": "6c80c9c630fd972fbb3b46fdc599808d3d21def764d25dfe8b22f2b4b5668fd0",
+    "returned_model_identifier": "deepseek-v4-pro"
+  },
+  "execution_context": {
+    "github_run_id": "33040663764",
+    "github_run_attempt": "1",
+    "github_event_name": "pull_request",
+    "source_head_sha": "d89137db8f5dc91644d9fe15374163e10a08dda3"
+  },
+  "runs": [
+    {
+      "fixture_id": "PCT-P2-SMOKE-ENG-001",
+      "goal_id": "PCT-P2-SMOKE-GOAL-001",
+      "excluded_from_primary_schedule": true,
+      "driver": {
+        "exit_code": 1,
+        "elapsed_seconds": 0.171,
+        "event_type_counts": {},
+        "request_header_tool_sets": [],
+        "stderr_tail_hash": "6b0e83426258e6ebb39224f92738c07a494b2572da43caac7abc28c463540ca1",
+        "other_output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "cap_violation": null,
+        "secret_output_detected": false
+      },
+      "proxy": {
+        "logical_model_requests": 0,
+        "upstream_attempts": 0,
+        "usage": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "reasoningTokens": 0
+        },
+        "cumulative_tokens": 0,
+        "cost_guard": {
+          "estimated_usd": 0.0,
+          "cny_policy_guard": 0.0
+        },
+        "violations": [
+          "REQUEST_HEADER_TOOL_CATALOG_MISMATCH"
+        ],
+        "request_records": []
+      },
+      "runtime_tool_catalog": {
+        "expected": [
+          "edit",
+          "read",
+          "write"
+        ],
+        "request_header_sets": [],
+        "request_header_exact": false
+      },
+      "validator": {
+        "pass": false,
+        "detail": "MISSING_OUTPUT"
+      },
+      "candidate_stop_binding": {
+        "status": "MISSING_TURN_STOPPING_EVENT"
+      },
+      "workspace_digest": "sha256:0a13f90229db520343cb90affa1b6db53d8aeaae2e208b2908b712f6836601cb",
+      "pass": false
+    },
+    {
+      "fixture_id": "PCT-P2-SMOKE-ENG-002",
+      "goal_id": "PCT-P2-SMOKE-GOAL-002",
+      "excluded_from_primary_schedule": true,
+      "driver": {
+        "exit_code": 1,
+        "elapsed_seconds": 0.145,
+        "event_type_counts": {},
+        "request_header_tool_sets": [],
+        "stderr_tail_hash": "6b0e83426258e6ebb39224f92738c07a494b2572da43caac7abc28c463540ca1",
+        "other_output_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "cap_violation": null,
+        "secret_output_detected": false
+      },
+      "proxy": {
+        "logical_model_requests": 0,
+        "upstream_attempts": 0,
+        "usage": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0,
+          "reasoningTokens": 0
+        },
+        "cumulative_tokens": 0,
+        "cost_guard": {
+          "estimated_usd": 0.0,
+          "cny_policy_guard": 0.0
+        },
+        "violations": [
+          "REQUEST_HEADER_TOOL_CATALOG_MISMATCH"
+        ],
+        "request_records": []
+      },
+      "runtime_tool_catalog": {
+        "expected": [
+          "edit",
+          "read",
+          "write"
+        ],
+        "request_header_sets": [],
+        "request_header_exact": false
+      },
+      "validator": {
+        "pass": false,
+        "detail": "MISSING_OUTPUT"
+      },
+      "candidate_stop_binding": {
+        "status": "MISSING_TURN_STOPPING_EVENT"
+      },
+      "workspace_digest": "sha256:11062f6447cfe56651eaa7d5a6a82445eeca1a820d00d75356455985ecafddf3",
+      "pass": false
+    }
+  ],
+  "research_boundaries": {
+    "maximum_trajectories": 2,
+    "primary_schedule_runs": 0,
+    "reference_packets_opened": 0,
+    "semantic_auditor_calls": 0,
+    "applied_to_runtime": false,
+    "online_intervention": false,
+    "raw_model_or_tool_content_persisted": false
+  },
+  "completed_at": "2026-08-27T04:51:42.950453+00:00",
+  "report_digest": "5e59f4e2e74f325b15b019686a397b2bf04085097e8366adcb23d890b0c0dad5"
+}

@@ -1,0 +1,81 @@
+# PCT-P2-D19 engineering-only DeepSeek Harness composition.
+# This overlay is intentionally least-privilege: the Worker sees only
+# read/write/edit. No shell, subagent, workflow, Ralph, Todo, job,
+# Semantic Auditor, Reference, or runtime-control capability is exposed.
+- id: base
+  name: '@deepseek-ai/cordis-plugin-include'
+  config:
+    path: !!js process.env.PCT_DSH_BASE_CONFIG
+    patches:
+      - id: llm-deepseek
+        name: '@deepseek-ai/dsh-llm-deepseek'
+        config:
+          apiKeyEnv: DEEPSEEK_API_KEY
+          baseURL: !!js process.env.DEEPSEEK_BASE_URL
+          thinking: enabled
+          reasoningEffort: high
+          maxTokens: 16000
+          defaultContextWindow: 128000
+          streamIdleTimeoutMs: 300000
+          retryPolicy:
+            mode: normal
+            maxRetries: 0
+            retryableCodes: [RATE_LIMIT, SERVER, TIMEOUT, TRANSPORT]
+            backoff:
+              initialDelayMs: 2000
+              maxDelayMs: 8000
+              jitterRatio: 0
+          models:
+            - id: deepseek-v4-pro
+              name: DeepSeek-V4-Pro
+              contextWindow: 128000
+              maxTokens: 16000
+      - id: agent-spine
+        name: '@deepseek-ai/dsh-agent-spine-demo'
+        config:
+          agents:
+            - id: main
+              provider: deepseek-official
+              model: deepseek-v4-pro
+              cwd: !!js process.cwd()
+          workspaceContext:
+            maxBytes: 65536
+          persona: |
+            You are the Worker model in a public synthetic engineering-only PCT Shadow smoke run.
+            Use only the provided workspace and the visible filesystem/search tools.
+            Treat every hard obligation as mandatory and verify the exact produced artifact.
+            Before stopping, read and overwrite .pct/candidate-stop-proposal.json with the exact JSON requested by the task.
+            The PCT layer is read-only and cannot block, steer, resume, or mutate the Goal.
+            Never inspect environment variables, secrets, Shadow verdicts, Reference judgments, or other runs.
+      - id: persistence
+        name: '@deepseek-ai/dsh-session-persistence-jsonl'
+        config:
+          root: './.sessions'
+          compression: none
+      - id: bash
+        name: '@deepseek-ai/dsh-bash-local'
+        disabled: true
+      - id: tool-subagent-control
+        name: '@deepseek-ai/dsh-tool-subagent-control'
+        disabled: true
+      - id: tool-subagent-report
+        name: '@deepseek-ai/dsh-tool-subagent-report'
+        disabled: true
+      - id: tool-subagent
+        name: '@deepseek-ai/dsh-tool-subagent'
+        disabled: true
+      - id: tool-subagent-fork
+        name: '@deepseek-ai/dsh-tool-subagent'
+        disabled: true
+      - id: workflow-worker-thread
+        name: '@deepseek-ai/dsh-workflow-worker-thread'
+        disabled: true
+      - id: tool-workflow
+        name: '@deepseek-ai/dsh-tool-workflow'
+        disabled: true
+      - id: tool-ralph
+        name: '@deepseek-ai/dsh-tool-ralph'
+        disabled: true
+      - id: tool-todo
+        name: '@deepseek-ai/dsh-tool-todo'
+        disabled: true

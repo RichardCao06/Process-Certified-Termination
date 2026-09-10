@@ -1,0 +1,95 @@
+# PCT-P2 candidate official user-patch layer for the engineering-only smoke run.
+#
+# Historical note: config/p2/dsh-engineering-smoke.cordis.yml remains preserved
+# as the failed D19/D20 root-include composition. This file uses the frozen DSH
+# user-patch contract: a top-level array of id-targeted Loader patches applied
+# over examples/headless-agent/cordis.yml by loadOptionalPatches() + boot().
+
+- id: llm-deepseek
+  name: '@deepseek-ai/dsh-llm-deepseek'
+  config:
+    apiKeyEnv: DEEPSEEK_API_KEY
+    baseURL: !!js process.env.DEEPSEEK_BASE_URL
+    thinking: enabled
+    reasoningEffort: high
+    maxTokens: 16000
+    defaultContextWindow: 128000
+    streamIdleTimeoutMs: 300000
+    retryPolicy:
+      mode: normal
+      maxRetries: 0
+      retryableCodes: [RATE_LIMIT, SERVER, TIMEOUT, TRANSPORT]
+      backoff:
+        initialDelayMs: 2000
+        maxDelayMs: 8000
+        jitterRatio: 0
+    models:
+      - id: deepseek-v4-pro
+        name: DeepSeek-V4-Pro
+        contextWindow: 128000
+        maxTokens: 16000
+
+- id: agent-spine
+  name: '@deepseek-ai/dsh-agent-spine-demo'
+  config:
+    agents:
+      - id: main
+        provider: deepseek-official
+        model: deepseek-v4-pro
+        cwd: !!js process.cwd()
+    tools:
+      mode: native
+    skills:
+      enabled: false
+    toolBash: false
+    toolJobs: false
+    goals: false
+    workspaceContext:
+      maxBytes: 65536
+    persona: |
+      You are the Worker model in a public synthetic engineering-only PCT Shadow smoke run.
+      Use only the provided workspace and the visible filesystem/search tools.
+      Treat every hard obligation as mandatory and verify the exact produced artifact.
+      Before stopping, read and overwrite .pct/candidate-stop-proposal.json with the exact JSON requested by the task.
+      The PCT layer is read-only and cannot block, steer, resume, or mutate the Goal.
+      Never inspect environment variables, secrets, Shadow verdicts, Reference judgments, or other runs.
+
+- id: persistence
+  name: '@deepseek-ai/dsh-session-persistence-jsonl'
+  config:
+    root: './.sessions'
+    compression: none
+
+# Disable the shell executor and process provider because this smoke exposes no
+# shell tool. agent-spine.toolBash=false independently disables the bundle-owned
+# model-facing bash tool.
+- id: subprocess
+  disabled: true
+- id: bash
+  disabled: true
+
+# Disable both subagent providers and every model-facing subagent control.
+- id: subagent
+  disabled: true
+- id: subagent-spawn-in-process
+  disabled: true
+- id: subagent-fork-in-process
+  disabled: true
+- id: tool-subagent-control
+  disabled: true
+- id: tool-subagent-report
+  disabled: true
+- id: tool-subagent
+  disabled: true
+- id: tool-subagent-fork
+  disabled: true
+
+# Disable workflow, Ralph, and Todo capabilities.
+- id: workflow-worker-thread
+  disabled: true
+- id: tool-workflow
+  disabled: true
+- id: tool-ralph
+  disabled: true
+- id: tool-todo
+  disabled: true

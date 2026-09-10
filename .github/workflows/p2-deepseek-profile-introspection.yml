@@ -1,0 +1,83 @@
+name: P2 DeepSeek read-only profile introspection
+
+on:
+  push:
+    branches:
+      - research/p2-shadow-foundation-v0.1
+    paths:
+      - .github/workflows/p2-deepseek-profile-introspection.yml
+      - scripts/run_p2_deepseek_profile_introspection.py
+      - scripts/validate_p2_deepseek_profile_introspection.py
+      - config/p2/deepseek-v4-pro-profile-candidate-v0.1.json
+      - config/p2/natural-pilot-system-prompt-v0.1.txt
+      - config/p2/natural-pilot-tool-catalog-v0.1.json
+      - governance/p2-preflight-input-source-v0.1.json
+      - governance/p2-reference-custody-v0.2.json
+      - schemas/pct-p2-provider-introspection-v0.1.schema.json
+      - tests/test_p2_profile_introspection.py
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: p2-deepseek-profile-introspection
+  cancel-in-progress: false
+
+jobs:
+  introspect:
+    if: github.repository == 'RichardCao06/Process-Certified-Termination' && github.ref == 'refs/heads/research/p2-shadow-foundation-v0.1'
+    environment: p2-natural-pilot
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout frozen P2 branch
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+          ref: research/p2-shadow-foundation-v0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+
+      - name: Verify approved environment credential is present
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          set +x
+          python3 - <<'PY'
+          import os
+          import sys
+
+          if not os.environ.get("DEEPSEEK_API_KEY"):
+              print("The approved p2-natural-pilot environment did not expose DEEPSEEK_API_KEY.", file=sys.stderr)
+              raise SystemExit(1)
+          print("Approved DeepSeek environment credential is available; value not displayed.")
+          PY
+
+      - name: Run read-only GET /models introspection
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+        run: |
+          set +x
+          python3 scripts/run_p2_deepseek_profile_introspection.py
+
+      - name: Validate sanitized introspection record
+        run: |
+          python3 scripts/validate_p2_deepseek_profile_introspection.py
+          python3 -m unittest tests.test_p2_profile_introspection -v
+
+      - name: Commit sanitized provider evidence
+        run: |
+          git config user.name "PCT Research Agent"
+          git config user.email "pct-research-agent@users.noreply.github.com"
+          git add reports/p2/deepseek-provider-introspection-v0.1.json
+          if git diff --cached --quiet; then
+            echo "No provider-introspection change to commit."
+            exit 0
+          fi
+          git commit -m "p2: record sanitized DeepSeek model introspection"
+          git push origin HEAD:research/p2-shadow-foundation-v0.1

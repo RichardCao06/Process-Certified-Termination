@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/pct/pct-p2-provider-introspection-v0.1.schema.json",
+  "title": "PCT P2 DeepSeek Provider Introspection v0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "record_type",
+    "report_id",
+    "status",
+    "observed_at",
+    "source_mode",
+    "request",
+    "response",
+    "credential_handling",
+    "research_boundaries",
+    "report_digest"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "0.1"
+    },
+    "record_type": {
+      "const": "PCT_P2_DEEPSEEK_PROVIDER_INTROSPECTION"
+    },
+    "status": {
+      "enum": [
+        "PASS",
+        "FAIL_MODEL_NOT_LISTED"
+      ]
+    },
+    "source_mode": {
+      "enum": [
+        "LIVE_READ_ONLY_PROVIDER_INTROSPECTION",
+        "OFFLINE_TEST_FIXTURE"
+      ]
+    },
+    "request": {
+      "type": "object",
+      "required": [
+        "method",
+        "endpoint_path",
+        "requested_model_identifier",
+        "task_generation",
+        "chat_completion_calls",
+        "worker_trajectory_calls"
+      ],
+      "properties": {
+        "method": {
+          "const": "GET"
+        },
+        "endpoint_path": {
+          "const": "/models"
+        },
+        "requested_model_identifier": {
+          "const": "deepseek-v4-pro"
+        },
+        "task_generation": {
+          "const": false
+        },
+        "chat_completion_calls": {
+          "const": 0
+        },
+        "worker_trajectory_calls": {
+          "const": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "response": {
+      "type": "object",
+      "required": [
+        "http_status",
+        "requested_model_found",
+        "returned_model_identifier",
+        "available_model_ids"
+      ],
+      "properties": {
+        "http_status": {
+          "type": "integer"
+        },
+        "requested_model_found": {
+          "type": "boolean"
+        },
+        "returned_model_identifier": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "available_model_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    },
+    "report_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

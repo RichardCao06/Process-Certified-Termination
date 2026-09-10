@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_HUMAN_APPROVAL",
+  "approval_id": "PCT-P2-HUMAN-APPROVAL-D01-D12-v0.1",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "COMPLETE",
+  "approved_options": {
+    "PCT-P2-D01": "A",
+    "PCT-P2-D02": "A",
+    "PCT-P2-D03": "A",
+    "PCT-P2-D04": "A",
+    "PCT-P2-D05": "A",
+    "PCT-P2-D06": "A",
+    "PCT-P2-D07": "A",
+    "PCT-P2-D08": "A",
+    "PCT-P2-D09": "A",
+    "PCT-P2-D10": "A",
+    "PCT-P2-D11": "A",
+    "PCT-P2-D12": "A"
+  },
+  "approval_sources": {
+    "D01_D07": {
+      "comment_id": 5408903464,
+      "created_at": "2026-08-25T10:11:51Z",
+      "body": "PCT-P2-D01: A through PCT-P2-D07: A"
+    },
+    "D08_D11": {
+      "comment_id": 5419218825,
+      "created_at": "2026-08-26T01:13:27Z",
+      "body": "PCT-P2-D08: A through PCT-P2-D11: A"
+    },
+    "D12": {
+      "comment_id": 5419844078,
+      "created_at": "2026-08-26T02:43:51Z",
+      "body": "PCT-P2-D12: A"
+    }
+  },
+  "approved_by": {
+    "github_login": "RichardCao06",
+    "role": "RESEARCH_OWNER"
+  },
+  "normative_effect": "D01-D12 option A is effective; D13-D18 remain separate human gates.",
+  "online_intervention_authorized": false,
+  "effectiveness_claim_allowed": false
+}

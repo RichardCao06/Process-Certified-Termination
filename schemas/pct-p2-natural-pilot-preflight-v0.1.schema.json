@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/pct/schemas/pct-p2-natural-pilot-preflight-v0.1.schema.json",
+  "title": "PCT P2 natural-pilot preflight v0.1",
+  "type": "object",
+  "required": [
+    "preflight_id",
+    "status",
+    "checks",
+    "blocker_ids",
+    "live_worker_model_calls",
+    "natural_task_runs",
+    "preflight_digest"
+  ],
+  "properties": {
+    "status": {
+      "enum": [
+        "BLOCKED",
+        "PASS"
+      ]
+    },
+    "checks": {
+      "type": "array"
+    },
+    "blocker_ids": {
+      "type": "array"
+    },
+    "live_worker_model_calls": {
+      "const": 0
+    },
+    "natural_task_runs": {
+      "const": 0
+    },
+    "preflight_digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  },
+  "additionalProperties": true
+}

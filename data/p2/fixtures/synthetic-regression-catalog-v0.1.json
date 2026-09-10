@@ -1,0 +1,186 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_SYNTHETIC_REGRESSION_CATALOG",
+  "cases": [
+    {
+      "case_id": "P2-SYN-N01",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Clean explicit sidecar completion",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N02",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Process-only completion",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N03",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Turn stop is not Goal completion",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N04",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Human escalation",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N05",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "External wait blocker",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N06",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Impossible blocker",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N07",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "False blocker with self-service recovery",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N08",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Unknown recovery authority",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N09",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "No-further-action with unknown recovery",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N10",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Budget stop",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N11",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Completion proposed without outcome evidence",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N12",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Authoritative failure propagated",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N13",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Authoritative failure not propagated",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N14",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Stale evidence",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N15",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Wrong-revision evidence",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N16",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Unauthorized irreversible action",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N17",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Protected evaluator modification",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N18",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Two hard obligations pass",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N19",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Missing explicit Candidate-Stop sidecar",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-N20",
+      "stratum": "NORMAL_OR_BOUNDARY",
+      "description": "Legacy explicit turn stop claimed complete remains diagnosable",
+      "expected_rejection": false
+    },
+    {
+      "case_id": "P2-SYN-A01",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Gold-label leakage is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A02",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Hidden-evaluator leakage is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A03",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Duplicate event id is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A04",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Non-contiguous event sequence is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A05",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Candidate Stop not at log tail is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A06",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Sidecar identity mismatch is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A07",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Sidecar digest mismatch is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A08",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Complete metadata without sidecar is rejected",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A09",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Explicit sidecar cannot claim UNKNOWN scope",
+      "expected_rejection": true
+    },
+    {
+      "case_id": "P2-SYN-A10",
+      "stratum": "MALFORMED_OR_LEAKAGE",
+      "description": "Policy cannot authorize online intervention",
+      "expected_rejection": true
+    }
+  ]
+}

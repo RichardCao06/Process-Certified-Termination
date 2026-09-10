@@ -1,0 +1,97 @@
+{
+  "register_id": "PCT-P2-DECISION-REGISTER-v0.5",
+  "project_id": "PCT",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "D01_D20_APPROVED_D20_REMEDIATION_AUTHORIZED_NOT_RUN",
+  "supersedes_for_active_state": "governance/p2-decision-register-v0.4.json",
+  "historical_registers_preserved": [
+    "governance/p2-decision-register-v0.1.json",
+    "governance/p2-decision-register-v0.2.json",
+    "governance/p2-decision-register-v0.3.json",
+    "governance/p2-decision-register-v0.4.json"
+  ],
+  "inherited_approved_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07",
+    "PCT-P2-D08",
+    "PCT-P2-D09",
+    "PCT-P2-D10",
+    "PCT-P2-D11",
+    "PCT-P2-D12",
+    "PCT-P2-D13",
+    "PCT-P2-D14",
+    "PCT-P2-D15",
+    "PCT-P2-D16",
+    "PCT-P2-D17",
+    "PCT-P2-D18",
+    "PCT-P2-D19"
+  ],
+  "new_decisions": [
+    {
+      "schema_version": "0.1",
+      "record_type": "PCT_P2_DECISION_RECORD",
+      "decision_id": "PCT-P2-D20",
+      "phase": "P2",
+      "work_order": "PCT-P2-001",
+      "title": "Preserve the first D19 failure and authorize bounded engineering remediation",
+      "status": "APPROVED",
+      "selected_option": "A",
+      "decision_summary": "Preserve the first D19 failure, repair only the identified source-mode launch, sanitized diagnostics, and evidence-persistence defects, then rerun the same two non-primary fixtures.",
+      "approved_by": {
+        "github_login": "RichardCao06",
+        "role": "RESEARCH_OWNER"
+      },
+      "approval_source": {
+        "pull_request": 3,
+        "comment_id": 5434319705,
+        "created_at": "2026-08-27T04:18:28Z"
+      },
+      "effective_at": "2026-08-27T04:18:28Z",
+      "append_only": true,
+      "does_not_authorize": [
+        "primary natural-task pilot",
+        "model/prompt/task substitution",
+        "Semantic Audit Agent",
+        "Reference opening",
+        "online intervention",
+        "effectiveness claims"
+      ]
+    }
+  ],
+  "approved_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07",
+    "PCT-P2-D08",
+    "PCT-P2-D09",
+    "PCT-P2-D10",
+    "PCT-P2-D11",
+    "PCT-P2-D12",
+    "PCT-P2-D13",
+    "PCT-P2-D14",
+    "PCT-P2-D15",
+    "PCT-P2-D16",
+    "PCT-P2-D17",
+    "PCT-P2-D18",
+    "PCT-P2-D19",
+    "PCT-P2-D20"
+  ],
+  "open_normative_gate_ids": [],
+  "first_failure_preserved": {
+    "path": "reports/p2/engineering-smoke-run-v0.2.json",
+    "report_digest": "53f3779c64fe225790cc2c7117241b1d04c2d922d1a87c2477590af40278cef8"
+  },
+  "active_remediation_authorization": "governance/p2-engineering-smoke-remediation-authorization-v0.1.json",
+  "next_human_gate": "PCT-P2-D21_AFTER_D20_REMEDIATION_EVIDENCE",
+  "register_digest": "29a9111888631e4841999b262c447a034d3edf1de857533c966bb742c81d36a5"
+}

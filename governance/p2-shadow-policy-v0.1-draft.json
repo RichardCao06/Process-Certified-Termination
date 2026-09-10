@@ -1,0 +1,34 @@
+{
+  "policy_id": "PCT-P2-SHADOW-POLICY",
+  "version": "0.1-draft",
+  "status": "PENDING_HUMAN_DECISIONS",
+  "open_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07"
+  ],
+  "approved_decision_ids": [],
+  "primary_label_layers": [],
+  "human_review_layers": [],
+  "exploratory_layers": [],
+  "excluded_layers": [],
+  "hard_check_ids": [],
+  "descriptive_check_ids": [],
+  "semantic_auditor": {
+    "enabled": false,
+    "model_id": null
+  },
+  "runtime_data_policy": null,
+  "reference_evaluator_policy": null,
+  "sample_and_budget": null,
+  "online_intervention_evidence_gate": null,
+  "mode": "SHADOW",
+  "applied_to_runtime": false,
+  "online_intervention_authorized": false,
+  "labels_may_be_emitted": false,
+  "note": "The foundation may emit replayable findings only. P1-style verdict labels remain disabled until the human-frozen policy is generated."
+}

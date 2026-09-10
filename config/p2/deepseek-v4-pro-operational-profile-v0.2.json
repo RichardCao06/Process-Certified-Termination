@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.2",
+  "record_type": "PCT_P2_DEEPSEEK_OPERATIONAL_PROFILE",
+  "profile_id": "PCT-P2-DEEPSEEK-V4-PRO-D19-v0.2",
+  "status": "FROZEN_ENGINEERING_SMOKE_ONLY",
+  "created_at": "2026-08-26T10:45:00Z",
+  "provider_route": "deepseek-official",
+  "provider_base_url": "https://api.deepseek.com",
+  "requested_model_identifier": "deepseek-v4-pro",
+  "required_returned_model_identifier": "deepseek-v4-pro",
+  "model_revision_or_snapshot": "NOT_EXPOSED_BY_PROVIDER",
+  "thinking": "enabled",
+  "reasoning_effort": "high",
+  "sampling": {
+    "mode": "PROVIDER_DEFAULT",
+    "temperature": null,
+    "top_p": null
+  },
+  "runtime_caps": {
+    "context_window_tokens": 128000,
+    "max_output_tokens_per_request": 16000,
+    "cumulative_tokens_per_trajectory": 200000,
+    "monetary_cap_per_trajectory": 30,
+    "currency": "CNY"
+  },
+  "retry_policy": {
+    "executor": "PCT_LOCAL_UPSTREAM_PROXY",
+    "dsh_internal_max_retries": 0,
+    "maximum_retries_after_original": 2,
+    "delay_seconds": [
+      2,
+      8
+    ],
+    "jitter_ratio_applied": 0.0,
+    "eligible_only": [
+      "NETWORK_CONNECTION",
+      "NETWORK_TIMEOUT",
+      "HTTP_429",
+      "HTTP_5XX"
+    ],
+    "quality_based_retry": false,
+    "retry_after_partial_stream": false
+  },
+  "artifact_bindings": {
+    "system_prompt_path": "config/p2/natural-pilot-system-prompt-v0.1.txt",
+    "system_prompt_sha256": "acdb5a6380a899adba9806aa0881c37828a40905977929d179d45eb8707a1f92",
+    "intended_capability_catalog_path": "config/p2/natural-pilot-tool-catalog-v0.1.json",
+    "intended_capability_catalog_sha256": "896b1d9f3675e9e78de940f95eb28ae04ee58f7c7db440a69f8abec3442142b5",
+    "runtime_tool_catalog_path": "config/p2/d19-runtime-tool-catalog-v0.1.json",
+    "runtime_tool_catalog_sha256": "2d0d2c42a0a19bb7c19270caccadc1dd97c07341123e31424a26f3bcf071db32",
+    "runtime_config_path": "config/p2/dsh-engineering-smoke.cordis.yml",
+    "runtime_config_sha256": "67081984fce88ecf4473b74e20a0338113497c5ba81bb7465aad2b91f0a20d16"
+  },
+  "credential_reference": {
+    "storage": "GITHUB_ACTIONS_ENVIRONMENT_SECRET",
+    "environment": "p2-natural-pilot",
+    "secret_name": "DEEPSEEK_API_KEY",
+    "secret_value_in_repository": false,
+    "secret_value_in_worker_environment": false,
+    "secret_value_in_artifacts": false
+  },
+  "substitute_model_allowed": false,
+  "primary_60_trajectory_pilot_authorized": false,
+  "profile_digest": "251f1e9433b0192c58af56570aa1518fd32b159669117dc54c3401e5316f6fea"
+}

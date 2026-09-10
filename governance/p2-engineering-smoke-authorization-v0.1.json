@@ -1,0 +1,45 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_ENGINEERING_SMOKE_AUTHORIZATION",
+  "authorization_id": "PCT-P2-D19-ENGINEERING-SMOKE-v0.1",
+  "status": "AUTHORIZED_NOT_RUN",
+  "created_at": "2026-08-26T10:45:00Z",
+  "decision_basis": [
+    "PCT-P2-D19:A"
+  ],
+  "maximum_trajectories": 2,
+  "fixture_class": "PUBLIC_NON_SENSITIVE_SYNTHETIC_ENGINEERING_ONLY",
+  "outside_frozen_task_catalog": true,
+  "outside_frozen_60_trajectory_schedule": true,
+  "included_in_primary_denominator": false,
+  "permitted_objectives": [
+    "provider/API connectivity",
+    "frozen DSH runtime boot",
+    "exact runtime tool-schema observation",
+    "explicit Candidate-Stop sidecar binding",
+    "append-only event logging",
+    "token and monetary guards",
+    "sanitized artifact packaging"
+  ],
+  "prerequisites": [
+    "Full PCT repository validation passes in the protected manual workflow before model access.",
+    "Exact frozen DSH conformance passes.",
+    "Fresh pre-smoke provider/profile binding passes.",
+    "Protected p2-natural-pilot Environment approves the job.",
+    "The real DeepSeek API key is removed from the Worker subprocess environment.",
+    "Runtime tool schemas exactly match the frozen five-tool catalog before forwarding upstream."
+  ],
+  "not_authorized": [
+    "any frozen primary task",
+    "more than two trajectories",
+    "Semantic Audit Agent",
+    "Reference opening",
+    "private data",
+    "runtime verdict application",
+    "Steering, blocking, resume, or Goal mutation",
+    "effectiveness claims"
+  ],
+  "mode": "SHADOW",
+  "applied_to_runtime": false,
+  "authorization_digest": "08561c8861c3f737bdb96e15b86767f3113bf2331a249456415b1b90dba98c16"
+}

@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "record_type": "PCT_P2_HUMAN_APPROVAL",
+  "approval_id": "PCT-P2-HUMAN-APPROVAL-D13-D18-v0.1",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "COMPLETE",
+  "approved_options": {
+    "PCT-P2-D13": "A",
+    "PCT-P2-D14": "A",
+    "PCT-P2-D15": "A",
+    "PCT-P2-D16": "A",
+    "PCT-P2-D17": "A",
+    "PCT-P2-D18": "A"
+  },
+  "approval_source": {
+    "pull_request": 3,
+    "comment_id": 5420758863,
+    "created_at": "2026-08-26T04:51:11Z",
+    "body": "PCT-P2-D13: A through PCT-P2-D18: A",
+    "author_association": "OWNER"
+  },
+  "approved_by": {
+    "github_login": "RichardCao06",
+    "role": "RESEARCH_OWNER"
+  },
+  "recommended_profile_display_name_carried_to_preflight": "DeepSeek V4-Pro",
+  "profile_alias_is_not_exact_identity": true,
+  "normative_effect": "Authorizes protocol materialization and preflight only. Worker calls require a passing exact-identity, budget, task, and Reference-custody preflight.",
+  "natural_task_worker_calls_authorized": false,
+  "reference_opening_authorized": false,
+  "semantic_auditor_authorized": false,
+  "online_intervention_authorized": false,
+  "effectiveness_claim_allowed": false
+}
