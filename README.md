@@ -41,6 +41,8 @@ The former cloud route passed all 105 tests and actual driver boot at `13dddc89d
 
 [Local readiness evidence](governance/p2-d21-local-readiness-v0.1.json) binds `de4738e26845da5427d686c6c5ec4c4c8e2bd08d` to 113 passing repository tests, successful macOS no-model CI, and actual local filesystem/network confinement and Harness boot checks. The local API key remains the only missing execution input in this snapshot; no D21 model request has occurred.
 
+For the requested local env-file workflow, fill `~/.config/pct/deepseek.env` with `DEEPSEEK_API_KEY=...`, then use `python3 scripts/run_p2_d21_env.py`. [Env-file instructions](docs/p2/p2-local-env-file-v0.1.md) describe the private configuration and unchanged execution boundaries. The file is outside the repository and is never included in evidence.
+
 No primary natural-task trajectory, Reference opening, private trace, Semantic Auditor call, Steering, blocking, Goal mutation, online intervention, production deployment, or effectiveness claim is authorized.
 
 ## Current protocol documents
