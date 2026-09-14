@@ -1,0 +1,18 @@
+{
+  "record_type": "PCT_P2_LOCAL_CREDENTIAL_ADAPTER_RECORD",
+  "work_order": "PCT-P2-001",
+  "basis": "D21-A01 existing parent-process environment credential support",
+  "user_request": "给我一个本地的环境变量配置文件，我去配置好，你从配置文件读取",
+  "change": "Read a private external env file before entering the unchanged frozen local runner",
+  "configuration_path_template": "~/.config/pct/deepseek.env",
+  "secret_value_or_hash_recorded": false,
+  "new_attempt_authorized": false,
+  "model_profile_or_caps_changed": false,
+  "file_sha256": {
+    "scripts/run_p2_d21_env.py": "283155005d58205b651d7094ab8e8dcc541685a244df40403ad0eb1250e4a3ea",
+    "tests/test_p2_d21_env.py": "bbdec1c8a9857988bc83aceaf15f971bd3872303a0c3ce12f2238df3e2382950",
+    "docs/p2/p2-local-env-file-v0.1.md": "e39643912e7c284f421d2693c6c9a52f11443065eafa3449c772c6e53cc6baae"
+  },
+  "append_only": true,
+  "record_digest": "8b32bef2fccdebedc07e524907aef3832060bf9f07cbc182a86ec8bc1cdaa334"
+}

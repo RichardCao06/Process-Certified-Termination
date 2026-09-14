@@ -1,0 +1,22 @@
+{
+  "record_type": "PCT_P2_D21_LOCAL_IMPLEMENTATION_FREEZE",
+  "work_order": "PCT-P2-001",
+  "amendment": "PCT-P2-D21-A01",
+  "frozen_dsh_commit": "b150a551b8d465e31e418e1b2eaf5e79bbb7d28e",
+  "file_sha256": {
+    "scripts/run_p2_d21_local.py": "a88ba25ff17fbbe2090af87cbed6f75e4aace5885af2e4187bcd493caf7a3dd4",
+    "scripts/run-p2-local.sh": "2f9576625324bd589352b7c770cb39371d5b511d7d7d8eb71087972208a98b78",
+    "tests/test_p2_d21_local.py": "3eb60462c8024f4317bd0636a9b8d403442430dfa6140cf1d484fa3e55d91569",
+    ".github/workflows/p2-d21-local-validation.yml": "4509328822d622076a0af749f1adc25cb610f37f2e7ac6ad50f1e50d30dc7eaf",
+    "governance/p2-d21-local-execution-amendment-v0.1.json": "e6f5c55f731418e2b073ba92fc160ca6ce90d59988e1356331554fa223771a39",
+    "governance/p2-d21-implementation-freeze-v0.1.json": "9989418752172204e46125372d0a6b0bb6854747005a17e788fa49a7e692d76b",
+    "governance/p2-status-v0.9.json": "ded1466abfdf4bdea26aa60b8e336e3549ace29cb68f2a08b4808652c1c819a6",
+    "governance/p2-decision-register-v0.8.json": "8bb95a162b1c3e4fad5c2b7cff9863275532f14750830644feea093054a88288",
+    "docs/p2/p2-d21-local-execution-v0.1.md": "392b294657036085afd62ef407660537a767922e8a696b58fdbb767204f8bbbc",
+    "scripts/validate_p0.py": "5f1628515fe7ff302483f50b9d23d43b9df2387c1273084c51f01ab1526442a4"
+  },
+  "model_profile_and_caps_changed": false,
+  "source_commit_binding": "Published clean commit with successful repository CI; same shared tag reserved at execution.",
+  "append_only": true,
+  "freeze_digest": "44580ecadc40dfd9e70d05f8153b6f6cf31aeb3537e9c29113c612e7db1ae701"
+}

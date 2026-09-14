@@ -1,6 +1,12 @@
 .PHONY: validate validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure validate-p2-foundation validate-p2-active validate-p2-natural-pilot-preflight validate-p2-dsh-conformance validate-p2-d19 validate-p2-engineering-smoke validate-p2-d20 synthetic-p2-regression unit test materialize-calibration materialize-p1-closure
 
-validate: validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure validate-p2-foundation validate-p2-active validate-p2-natural-pilot-preflight validate-p2-dsh-conformance validate-p2-d19 validate-p2-engineering-smoke validate-p2-d20 unit
+validate: validate-p0 validate-p1 validate-calibration validate-development-pilot validate-analysis-readiness validate-closure-readiness validate-closure validate-p2-foundation validate-p2-active validate-p2-natural-pilot-preflight validate-p2-dsh-conformance validate-p2-d19 validate-p2-engineering-smoke validate-p2-d20 validate-p2-d21 unit
+
+.PHONY: validate-p2-d21
+validate-p2-d21:
+	python3 scripts/validate_p2_d21_preflight.py
+	python3 scripts/validate_p2_d21_execution.py
+	python3 -c 'from scripts.run_p2_d21_local import validate; errors = validate(); print(errors or "D21 local amendment and freeze PASS"); raise SystemExit(bool(errors))'
 
 validate-p0:
 	python3 scripts/validate_p0.py

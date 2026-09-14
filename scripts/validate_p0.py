@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import re
 import sys
 from pathlib import Path
@@ -170,9 +171,19 @@ def validate_required_files() -> list[str]:
     return [f'missing required P0 artifact: {name}' for name in REQUIRED_FILES if not (ROOT / name).is_file()]
 
 
+def research_files(suffix: str):
+    # Local dependencies and raw execution workspaces are not research artifacts.
+    # Prune before traversal, so validation never opens their file contents.
+    for parent, directories, filenames in os.walk(ROOT):
+        directories[:] = [name for name in directories if name not in {'.git', '.pct-local'}]
+        for name in filenames:
+            if name.endswith(suffix):
+                yield Path(parent) / name
+
+
 def validate_json_files() -> list[str]:
     errors: list[str] = []
-    for path in ROOT.rglob('*.json'):
+    for path in research_files('.json'):
         try:
             json.loads(path.read_text(encoding='utf-8'))
         except json.JSONDecodeError as exc:
@@ -183,7 +194,7 @@ def validate_json_files() -> list[str]:
 def validate_markdown_links() -> list[str]:
     errors: list[str] = []
     link_pattern = re.compile(r'(?<!!)\[[^\]]+\]\(([^)]+)\)')
-    for path in ROOT.rglob('*.md'):
+    for path in research_files('.md'):
         text = path.read_text(encoding='utf-8')
         for target in link_pattern.findall(text):
             target = target.strip().split('#', 1)[0]

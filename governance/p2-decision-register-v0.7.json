@@ -1,0 +1,59 @@
+{
+  "register_id": "PCT-P2-DECISION-REGISTER-v0.7",
+  "project_id": "PCT",
+  "phase": "P2",
+  "work_order": "PCT-P2-001",
+  "status": "D01_D21_APPROVED_D21_EXECUTION_PENDING",
+  "supersedes_for_active_state": "governance/p2-decision-register-v0.6.json",
+  "historical_registers_preserved": [
+    "governance/p2-decision-register-v0.1.json",
+    "governance/p2-decision-register-v0.2.json",
+    "governance/p2-decision-register-v0.3.json",
+    "governance/p2-decision-register-v0.4.json",
+    "governance/p2-decision-register-v0.5.json",
+    "governance/p2-decision-register-v0.6.json"
+  ],
+  "approved_decision_ids": [
+    "PCT-P2-D01",
+    "PCT-P2-D02",
+    "PCT-P2-D03",
+    "PCT-P2-D04",
+    "PCT-P2-D05",
+    "PCT-P2-D06",
+    "PCT-P2-D07",
+    "PCT-P2-D08",
+    "PCT-P2-D09",
+    "PCT-P2-D10",
+    "PCT-P2-D11",
+    "PCT-P2-D12",
+    "PCT-P2-D13",
+    "PCT-P2-D14",
+    "PCT-P2-D15",
+    "PCT-P2-D16",
+    "PCT-P2-D17",
+    "PCT-P2-D18",
+    "PCT-P2-D19",
+    "PCT-P2-D20",
+    "PCT-P2-D21"
+  ],
+  "pending_decisions": [],
+  "open_normative_gate_ids": [],
+  "evidence_basis": [
+    "governance/p2-incident-PCT-P2-I04-v0.1.json",
+    "governance/p2-no-model-config-diagnostic-freeze-v0.1.json",
+    "governance/p2-official-patch-validation-freeze-v0.1.json",
+    "governance/p2-human-approval-d21-v0.1.json"
+  ],
+  "still_not_authorized": [
+    "additional engineering model calls outside the one D21-A attempt",
+    "20-task/60-trajectory primary natural-task pilot",
+    "Semantic Audit Agent",
+    "Reference opening",
+    "online intervention or runtime mutation",
+    "effectiveness claims"
+  ],
+  "approved_decision_records": {
+    "PCT-P2-D21": "governance/p2-human-approval-d21-v0.1.json"
+  },
+  "register_digest": "c585eb6d703a180ca05ad13abd39ff750f963b17963fce60384c18cd17d6ec21"
+}

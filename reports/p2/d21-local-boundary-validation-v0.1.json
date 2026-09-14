@@ -1,0 +1,15 @@
+{
+  "work_order": "PCT-P2-001",
+  "status": "PASS",
+  "checks": {
+    "readDenied": true,
+    "writeDenied": true,
+    "inside": true,
+    "proxyAllowed": true,
+    "otherPortDenied": true
+  },
+  "exit_code": 0,
+  "model_calls": 0,
+  "private_files_read": false,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}
